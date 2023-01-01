@@ -1,4 +1,4 @@
-# Configure logstash connector in Microsft Sentinel
+# Logstash with DCR configuration
 
 Link for reference:
 
