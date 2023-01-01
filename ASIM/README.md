@@ -1,5 +1,14 @@
-# ASIM MS Doc
+# ASIM Basic
 https://learn.microsoft.com/en-us/azure/sentinel/normalization
+
+# ASIM Schema
+https://learn.microsoft.com/en-us/azure/sentinel/normalization-about-schemas
+
+# ASIM Parsers
+https://learn.microsoft.com/en-us/azure/sentinel/normalization-parsers-overview
+
+# ASIM Contents
+https://learn.microsoft.com/en-us/azure/sentinel/normalization-content
 
 # ASIM advantages
 1. Cross source detection
@@ -48,3 +57,9 @@ Without the need to create source-specific content.
 
 # ASIM terminology
 https://learn.microsoft.com/en-us/azure/sentinel/normalization#asim-terminology
+```note
+1. Reporting device - The system that sends the records to Microsoft Sentinel.
+2. Record - A unit of data sent from the reporting device. A record is often referred to as log, event, or alert, but can also be other types of data.
+3. Content, or Content Item - The different, customizable, or user-created artifacts than can be used with Microsoft Sentinel.
+```
+
