@@ -39,9 +39,9 @@ Built in parsers could be deployed from MS github
 ```
 3. Content for each normalized schema
 ```note
-1. analytics rules
-2. workbooks
-3. hunting queries
+1. Analytics rules
+2. Workbooks
+3. Hunting queries
 ...
 Without the need to create source-specific content.
 ```
