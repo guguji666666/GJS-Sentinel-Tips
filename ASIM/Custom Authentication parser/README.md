@@ -1,7 +1,10 @@
 # Custom authentication parser
 https://learn.microsoft.com/en-us/azure/sentinel/authentication-normalization-schema#unifying-parsers
 
-1. imAuthentication - supports filtering
+## Requirements for authentication schemas
+https://learn.microsoft.com/en-us/azure/sentinel/authentication-normalization-schema#all-common-fields
+
+## ImAuthentication - supports filtering
 ```kusto
 let Generic=(starttime:datetime=datetime(null), endtime:datetime=datetime(null), targetusername_has:string="*"){
 let DisabledParsers=materialize(_GetWatchlist('ASimDisabledParsers') | where SearchKey in ('Any', 'ExcludeimAuthentication') | extend SourceSpecificParser=column_ifexists('SourceSpecificParser','') | distinct SourceSpecificParser);
@@ -21,7 +24,7 @@ union isfuzzy=true
 Generic(starttime, endtime, targetusername_has)
 ```
 
-2. ASimAuthentication - parameter-less parser
+## ASimAuthentication - parameter-less parser
 ```kusto
 let DisabledParsers=materialize(_GetWatchlist('ASimDisabledParsers') | where SearchKey in ('Any', 'ExcludeASimAuthentication') | extend SourceSpecificParser=column_ifexists('SourceSpecificParser','') | distinct SourceSpecificParser);
 let ASimAuthenticationDisabled=toscalar('ExcludeASimAuthentication' in (DisabledParsers) or 'Any' in (DisabledParsers)); 
