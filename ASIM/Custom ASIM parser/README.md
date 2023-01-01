@@ -1,7 +1,7 @@
 # Custom authentication parser
 https://learn.microsoft.com/en-us/azure/sentinel/authentication-normalization-schema#unifying-parsers
 
-1. imAuthentication - filtering parser
+1. imAuthentication - supports filtering
 ```kusto
 let Generic=(starttime:datetime=datetime(null), endtime:datetime=datetime(null), targetusername_has:string="*"){
 let DisabledParsers=materialize(_GetWatchlist('ASimDisabledParsers') | where SearchKey in ('Any', 'ExcludeimAuthentication') | extend SourceSpecificParser=column_ifexists('SourceSpecificParser','') | distinct SourceSpecificParser);
