@@ -210,7 +210,7 @@ union isfuzzy=true
   , ASimAuthenticationMD4IoT  (ASimAuthenticationDisabled or ('ExcludeASimAuthenticationMD4IoT'  in (DisabledParsers) ))
 ```
 
-## Filter out failed password events in the info level
+## Linux - Filter out failed password events in the info level
 https://www.linkedin.com/pulse/microsoft-sentinel-asim-custom-authentication-parser-securiment?trk=pulse-article_more-articles_related-content-card
 ```kusto
 Syslog
@@ -221,7 +221,7 @@ Syslog
 " from " IpAddress
 " port " IpPort
 " " Protocol
-| where TargetUserName contains "invalid user"// Filtering where the invalid user is mentioned in the event
+//| where TargetUserName contains "invalid user"// Filtering where the invalid user is mentioned in the event
 | extend tmp_Username = split(TargetUserName," ")
 | extend TargetUserName = tostring(tmp_Username[2]) //breaking the username string to find the actual username
 | extend
