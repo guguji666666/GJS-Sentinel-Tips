@@ -210,7 +210,7 @@ union isfuzzy=true
   , ASimAuthenticationMD4IoT  (ASimAuthenticationDisabled or ('ExcludeASimAuthenticationMD4IoT'  in (DisabledParsers) ))
 ```
 
-## Linux - Filter out failed password events in the info level
+## Syslog - Filter out failed password events in the info level
 https://www.linkedin.com/pulse/microsoft-sentinel-asim-custom-authentication-parser-securiment?trk=pulse-article_more-articles_related-content-card
 ```kusto
 Syslog
