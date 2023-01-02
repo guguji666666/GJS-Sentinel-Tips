@@ -81,7 +81,7 @@
  RegistryEvents_M365D
  ```
  
-# Parser for SecurityEvent
+# Parser for SecurityEvent 4657
 ```kusto
  let RegistryType = datatable (TypeCode: string, TypeName: string) [
  "%%1872", "Reg_None",
