@@ -213,79 +213,41 @@ union isfuzzy=true
 ## Filter out failed password events in the info level
 ```kusto
 Syslog
-
 | where SyslogMessage contains "failed password" and SeverityLevel == "info"
-
 | limit 100
-
 | parse SyslogMessage with Activity:string
-
 " for " TargetUserName
-
 " from " IpAddress
-
 " port " IpPort
-
 " " Protocol
-
 | where TargetUserName contains "invalid user"// Filtering where the invalid user is mentioned in the event
-
 | extend tmp_Username = split(TargetUserName," ")
-
 | extend TargetUserName = tostring(tmp_Username[2]) //breaking the username string to find the actual username
-
 | extend
-
 EventVendor = 'Linux'
-
 , EventProduct = 'Syslog'
-
 , EventCount=int(1)
-
 , EventSchemaVersion='0.1.0'
-
 , EventResult = iff (Facility ==0, 'Success', 'Failure')
-
 , EventStartTime = TimeGenerated
-
 , EventEndTime= TimeGenerated
-
 , EventType= 'Logon'
-
 , SrcDvcId=tostring(Computer)
-
 , SrcDvcHostname =tostring(HostName)
-
 , SrcDvcOs=tostring(Computer)
-
 | project-rename
-
 EventOriginalUid =ProcessID
-
 , LogonMethod = ProcessName
-
 | project-reorder
-
 TimeGenerated
-
 ,EventProduct
-
 , EventOriginalUid
-
 , EventResult
-
 , EventStartTime
-
 , EventEndTime
-
 , LogonMethod
-
 , SrcDvcId
-
 , SrcDvcHostname
-
 , SrcDvcOs
-
-// Created 22-09-2022
 ```
 
