@@ -95,10 +95,14 @@ cd /etc/logstash/conf.d/
 sudo vi syslog.conf
 ```
 
-
 * Pipeline configuration files
 ```
 /etc/logstash/conf.d directory
 ```
 
+## 8.
+https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html
 
+```sh
+sudo /usr/share/logstash/bin/logstash-plugin install logstash-filter-dns
+sudo /usr/share/logstash/bin/logstash-plugin install logstash-filter-dns
