@@ -115,12 +115,12 @@ bin/logstash-plugin list --verbose
 
 * Updates all installed plugins
 ```sh
-bin/logstash-plugin update
+sudo /usr/share/logstash/bin/logstash-plugin update
 ```
 
 * Updates only the plugin you specify
 ```sh
-bin/logstash-plugin update logstash-input-github
+sudo /usr/share/logstash/bin/logstash-plugin update <name of plugin>
 ```
 
 * Install microsoft-sentinel-logstash-output-plugin
