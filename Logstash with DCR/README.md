@@ -196,7 +196,7 @@ output {
       dcr_immutable_id => "<enter your DCR immutableId here> "
       dcr_stream_name => "<enter your stream name here> "
       create_sample_file=> false
-      sample_file_path => "c:\\temp"
+      sample_file_path => "/tmp"
     }
 }
 ```
