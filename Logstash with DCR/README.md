@@ -167,6 +167,10 @@ output {
 
 * The following sample file will be generated under var/log
 
+```sh
+sudo systemctl restart logstash
+```
+
 ```
 [
 	{
