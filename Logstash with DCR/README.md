@@ -146,6 +146,7 @@ cd /etc/logstash/conf.d
 sudo vi pipeline1.conf
 ```
 
+Paste the context below to pipeline1.conf
 ```
 input {
       generator {
