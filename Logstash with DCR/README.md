@@ -150,15 +150,17 @@ Paste the context below to pipeline1.conf
 ```
 input {
       generator {
-        lines => ["This is a test log message from gjs"]
-        count => 20
+            lines => [
+                 "This is a test log message from gjs"
+            ]
+           count => 20
       }
 }
 
 output {
     microsoft-sentinel-logstash-output-plugin {
-        create_sample_file => true
-        sample_file_path => "/var/log"
+      create_sample_file => true
+      sample_file_path => "/tmp" #for example: "c:\\temp" (for windows) or "/tmp" for Linux. 
     }
 }
 ```
