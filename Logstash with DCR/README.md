@@ -171,18 +171,6 @@ output {
 sudo systemctl restart logstash
 ```
 
-```
-[
-	{
-		"host": "logstashMachine",
-		"sequence": 0,
-		"message": "This is a test log message from gjs",
-		"ls_timestamp": "2023-10-29T13:19:28.116Z",
-		"ls_version": "1"
-	},
-	...
-]
-```
 ![image](https://user-images.githubusercontent.com/96930989/210318373-94b801be-981c-4726-82d6-7f9a0d161cd4.png)
 
 ![image](https://user-images.githubusercontent.com/96930989/210318465-41dcb855-d546-4c40-906e-f9cf34206986.png)
