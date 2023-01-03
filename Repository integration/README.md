@@ -17,4 +17,13 @@
 
 ### Steps to fix
 * Fill the form in https://aka.ms/azpipelines-parallelism-request 
-* Wait for 2-3 days
+* Wait for 2-3 days until the request is aprroved
+
+![image](https://user-images.githubusercontent.com/96930989/210358343-9be4324d-50e6-4b0c-b4e5-84910fd975a1.png)
+
+
+Reference link(Chinese)
+
+```
+https://ithelp.ithome.com.tw/m/articles/10268594
+```
