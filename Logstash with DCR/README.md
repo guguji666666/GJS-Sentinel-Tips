@@ -162,3 +162,20 @@ output {
     }
 }
 ```
+![image](https://user-images.githubusercontent.com/96930989/210313503-7b7833d1-f4de-4516-a8c9-8672d99de05e.png)
+
+
+* The following sample file will be generated under var/log
+
+```
+[
+	{
+		"host": "logstashMachine",
+		"sequence": 0,
+		"message": "This is a test log message from gjs",
+		"ls_timestamp": "2023-10-29T13:19:28.116Z",
+		"ls_version": "1"
+	},
+	...
+]
+```
