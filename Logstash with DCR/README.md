@@ -153,7 +153,7 @@ input {
             lines => [
                  "This is a test log message from gjs"
             ]
-           count => 20
+           count => 10
       }
 }
 
@@ -183,7 +183,7 @@ input {
             lines => [
                  "This is a test log message from gjs"
             ]
-           count => 20
+           count => 10
       }
 }
 
