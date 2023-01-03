@@ -164,10 +164,8 @@ output {
     }
 }
 ```
-![image](https://user-images.githubusercontent.com/96930989/210313503-7b7833d1-f4de-4516-a8c9-8672d99de05e.png)
 
-
-* The following sample file will be generated under var/log
+* The following sample file will be generated under /tmp
 
 ```sh
 sudo systemctl restart logstash
@@ -185,3 +183,6 @@ sudo systemctl restart logstash
 	...
 ]
 ```
+![image](https://user-images.githubusercontent.com/96930989/210318373-94b801be-981c-4726-82d6-7f9a0d161cd4.png)
+
+![image](https://user-images.githubusercontent.com/96930989/210318465-41dcb855-d546-4c40-906e-f9cf34206986.png)
