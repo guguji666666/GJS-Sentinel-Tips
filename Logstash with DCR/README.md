@@ -100,16 +100,21 @@ sudo vi syslog.conf
 /etc/logstash/conf.d directory
 ```
 
-## 8. Install pugin
+## 8. Install microsoft-sentinel-logstash-output-plugin
 https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html
+
+* Lists all installed plugins
 ```sh
-bin/logstash-plugin list 
+sudo /usr/share/logstash/bin/logstash-plugin list 
 ```
 
+* Lists installed plugins with version information
 ```sh
 bin/logstash-plugin list --verbose
 ```
 
+* Install microsoft-sentinel-logstash-output-plugin
 ```sh
-sudo /usr/share/logstash/bin/logstash-plugin install logstash-filter-dns
+sudo /usr/share/logstash/bin/logstash-plugin install microsoft-sentinel-logstash-output-plugin
 ```
+![image](https://user-images.githubusercontent.com/96930989/210308978-48ba5b37-5346-4112-87ef-27f85252350a.png)
