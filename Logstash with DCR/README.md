@@ -100,9 +100,16 @@ sudo vi syslog.conf
 /etc/logstash/conf.d directory
 ```
 
-## 8.
+## 8. Install pugin
 https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html
+```sh
+bin/logstash-plugin list 
+```
+
+```sh
+bin/logstash-plugin list --verbose
+```
 
 ```sh
 sudo /usr/share/logstash/bin/logstash-plugin install logstash-filter-dns
-sudo /usr/share/logstash/bin/logstash-plugin install logstash-filter-dns
+```
