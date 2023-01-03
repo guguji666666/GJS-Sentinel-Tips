@@ -137,3 +137,27 @@ You create pipeline configuration files when you define the stages of your Logst
 On deb and rpm, you place the pipeline configuration files in the /etc/logstash/conf.d directory. 
 Logstash tries to load only files with .conf extension in the /etc/logstash/conf.d directory and ignores all other files.
 ```
+
+```sh
+cd /etc/logstash/conf.d
+```
+
+```sh
+sudo vi pipeline1.conf
+```
+
+```
+input {
+      generator {
+        lines => [ "This is a test log message from gjs"]
+        count => 10
+      }
+}
+
+output {
+    microsoft-sentinel-logstash-output-plugin {
+        create_sample_file => true
+        sample_file_path => "/var/log" #for example: "c:\\temp" (for windows) or "/var/log" for Linux.
+    }
+}
+```
