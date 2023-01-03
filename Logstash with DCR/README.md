@@ -113,6 +113,16 @@ sudo /usr/share/logstash/bin/logstash-plugin list
 bin/logstash-plugin list --verbose
 ```
 
+* Updates all installed plugins
+```sh
+bin/logstash-plugin update
+```
+
+* Updates only the plugin you specify
+```sh
+bin/logstash-plugin update logstash-input-github
+```
+
 * Install microsoft-sentinel-logstash-output-plugin
 ```sh
 sudo /usr/share/logstash/bin/logstash-plugin install microsoft-sentinel-logstash-output-plugin
