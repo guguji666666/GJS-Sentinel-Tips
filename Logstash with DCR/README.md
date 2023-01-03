@@ -87,6 +87,15 @@ sudo lsof -i -P -n | grep logstash
 ```
 /etc/logstash/logstash.yml
 ```
+* Writing your own pipeline configuration file
+```sh
+cd /etc/logstash/conf.d/
+```
+```sh
+sudo vi syslog.conf
+```
+
+
 * Pipeline configuration files
 ```
 /etc/logstash/conf.d directory
