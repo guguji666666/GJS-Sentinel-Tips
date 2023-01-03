@@ -117,4 +117,4 @@ bin/logstash-plugin list --verbose
 ```sh
 sudo /usr/share/logstash/bin/logstash-plugin install microsoft-sentinel-logstash-output-plugin
 ```
-![image](https://user-images.githubusercontent.com/96930989/210308978-48ba5b37-5346-4112-87ef-27f85252350a.png)
+![image](https://user-images.githubusercontent.com/96930989/210309117-af8ebd3c-c9f1-4a15-9423-497bece59cc3.png)
