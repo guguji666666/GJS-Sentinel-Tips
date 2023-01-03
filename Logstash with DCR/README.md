@@ -174,3 +174,30 @@ sudo systemctl restart logstash
 ![image](https://user-images.githubusercontent.com/96930989/210318373-94b801be-981c-4726-82d6-7f9a0d161cd4.png)
 
 ![image](https://user-images.githubusercontent.com/96930989/210318465-41dcb855-d546-4c40-906e-f9cf34206986.png)
+
+* New pipeline file
+
+```
+input {
+      generator {
+            lines => [
+                 "This is a test log message from gjs"
+            ]
+           count => 20
+      }
+}
+
+output {
+    microsoft-sentinel-logstash-output-plugin {
+      client_app_Id => "<enter your client_app_id value here>"
+      client_app_secret => "<enter your client_app_secret value here>"
+      tenant_id => "<enter your tenant id here> "
+      data_collection_endpoint => "<enter your DCE logsIngestion URI here> "
+      dcr_immutable_id => "<enter your DCR immutableId here> "
+      dcr_stream_name => "<enter your stream name here> "
+      create_sample_file=> false
+      sample_file_path => "c:\\temp"
+    }
+}
+```
+
