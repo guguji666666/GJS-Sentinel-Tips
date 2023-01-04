@@ -1,4 +1,4 @@
-# Export playbook
+# Export existing playbook to ARM template
 
 ## 1. Navigate to the subscription where the playbook locates
 ![image](https://user-images.githubusercontent.com/96930989/210464795-b39b882c-10d1-4452-a94c-840577afb23a.png)
