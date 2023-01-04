@@ -7,7 +7,7 @@
 ## 2. Select the resources group where the playbook locates
 ![image](https://user-images.githubusercontent.com/96930989/210465404-b7f4f240-1a8b-468c-a212-03ce5fd42c07.png)
 
-## 3. In resources, modify the existing filter `Type`
+## 3. In `Resources`, modify the existing filter `Type`
 * Operator `Equals`
 * Value `logic app`
 * Click `Apply`
