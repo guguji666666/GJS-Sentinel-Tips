@@ -19,7 +19,7 @@ taxii2
 ```
 `Password`
 ```
-your `API key` which can be found on your account page
+your `API key` which can be found on your account page https://pulsedive.com/api/taxii
 ```
 ![image](https://user-images.githubusercontent.com/96930989/210726680-05da9fef-43ba-4e00-a3a1-72fced7cad89.png)
 
