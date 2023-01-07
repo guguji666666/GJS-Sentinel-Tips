@@ -4,7 +4,9 @@
 
 ```sh
 cd /etc/rsyslog.d
+```
 
+```sh
 sudo rsyslogd -N 5
 ```
 You will see the result below if the configuration is good
