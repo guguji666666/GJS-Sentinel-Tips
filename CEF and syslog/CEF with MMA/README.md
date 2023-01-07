@@ -1,6 +1,15 @@
 # Basic troubleshooting steps for CEF log forwarder
 ## 1. Check if CEF parsing is correct
 
+### Path 1 : /etc/rsyslog.d
+
+```sh
+sudo ls /etc/rsyslog.d
+```
+![image](https://user-images.githubusercontent.com/96930989/211133207-f579d5ac-7681-4fe5-874b-4bbb0720f581.png)
+
+
+
 
 ## 2. Check if CEF parsing is correct
 
