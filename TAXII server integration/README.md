@@ -2,7 +2,7 @@
 
 ### 1. Create a free Pulsedive account at https://pulsedive.com/register
 ![image](https://user-images.githubusercontent.com/96930989/210725910-a9c96f0b-caf6-4433-bfa5-b14e83dfd985.png)
-### 2. For test purpose we will use free feed plan. You can also check the plan in https://pulsedive.com/api/taxii
+### 2. For test purpose we will use free API plan. You can also check the plan in https://pulsedive.com/api/taxii
 ![image](https://user-images.githubusercontent.com/96930989/210726190-6b6f054f-4886-4e03-9664-b5649232cb67.png)
 ### 3. In Sentinel, configure the TAXII client in Sentinel with the following information:
 `API root`
