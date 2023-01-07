@@ -1,4 +1,4 @@
-# Basic troubleshooting steps for CEF log forwarder
+# Basic TSG for CEF log forwarder
 ## 1. Check Firewall rules and forwarding rules between rsyslog daemon and MMA
 ### Path : /etc/rsyslog.d 
 ```sh
