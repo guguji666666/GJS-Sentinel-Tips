@@ -82,8 +82,10 @@ You can find them in the workspace settings, under Agents management.
 ```sh
 sudo  python3 --version
 ```
+![image](https://user-images.githubusercontent.com/96930989/211135099-37eb9632-72ca-4757-8882-0574b392c865.png)
 
-2. Install pyhton3 if not exisits on the local machine
+
+2. Manually install pyhton3 if not exisits on the local machine
 ```sh
 sudo apt-get update
 sudo apt-get install python3.6
