@@ -98,8 +98,28 @@ sudo tcpdump -A -ni any port 514 -vv
 sudo tcpdump -A -ni any port 25226 -vv
 ```
 
+## 7. Check connection between OMS agent and Microsoft sentinel  
+[Troubleshoot a connection between Microsoft Sentinel and a CEF or Syslog data connector](https://learn.microsoft.com/en-us/azure/sentinel/troubleshooting-cef-syslog?tabs=cef#linux-and-oms-agent-related-issues)
 
-## 7. Check if the log matches the CEF format
+Make sure that you can see packets arriving on TCP/UDP port 514 on the Syslog collector
+
+Make sure that you can see logs being written to the local log file, either `/var/log/messages` or `/var/log/syslog`
+![image](https://user-images.githubusercontent.com/96930989/211135011-7d447f4a-c0d0-4874-ba87-e0795fadcc8c.png)
+
+```sh
+sudo cat /var/log/messages
+```
+![image](https://user-images.githubusercontent.com/96930989/211135017-485afc6d-8314-43a1-863c-e71829a441cc.png)
+
+Make sure that you can see data packets flowing on port 25226
+
+Make sure that your virtual machine has an outbound connection to port 443 via TCP, or can connect to the [Log Analytics endpoints](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
+
+Make sure that you have access to required URLs from your CEF collector through your firewall policy. 
+[Firewall requirements](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/log-analytics-agent#firewall-requirements)
+
+
+## 8. Check if the log matches the CEF format
 
 #### Navigate to [CEF debug regex](https://regex101.com/)
 
