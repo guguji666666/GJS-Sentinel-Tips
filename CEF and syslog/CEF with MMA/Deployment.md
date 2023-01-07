@@ -98,5 +98,5 @@ sudo dnf install python3
 ```sh
 sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python3 cef_installer.py [WorkspaceID] [Workspace Primary Key]
 ```
-Read if there is error during the deployment
+Deal with the error if exists in the output
 ![image](https://user-images.githubusercontent.com/96930989/211133003-01c01f1c-cb55-4e62-b6b9-564589b3cdad.png)
