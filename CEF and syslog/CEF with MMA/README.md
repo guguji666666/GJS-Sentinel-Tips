@@ -46,7 +46,7 @@ grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/
 
 Check if CEF mapping exists in configuration file
 ```sh
-grep -i "return ident if ident.include?('CEF')" /opt/microsoft/omsagent/plugin/security_lib.rb
+grep -i "return 'CEF' if ident.include?('CEF')" /opt/microsoft/omsagent/plugin/security_lib.rb
 ```
 
 Check mapping file
