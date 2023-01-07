@@ -35,7 +35,7 @@ cat /etc/rsyslog.conf
 In this file we can check the protocol and port set on the rsyslog daemon
 ![image](https://user-images.githubusercontent.com/96930989/211134060-7ddf3240-b896-4ff0-98d9-f75268f005ff.png)
 
-## 3. Check mapping configuration
+## 3. Check ASA firewall/CEF parsing
 
 Check if ASA firewall mapping exists in configuration file
 ```sh
@@ -48,6 +48,7 @@ Check if CEF mapping exists in configuration file
 ```sh
 grep -i "return 'CEF' if ident.include?('CEF')" /opt/microsoft/omsagent/plugin/security_lib.rb
 ```
+![image](https://user-images.githubusercontent.com/96930989/211134629-aa844aa7-af04-4e64-b0b9-26afb11bafdb.png)
 
 Check mapping file
 ```sh
@@ -55,9 +56,50 @@ cat /opt/microsoft/omsagent/plugin/security_lib.rb
 ```
 ![image](https://user-images.githubusercontent.com/96930989/211134339-1797f29e-e62d-4867-89ac-48502cf10a96.png)
 
+## 4. Check hostname mapping 
+```sh
+grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
+```
+![image](https://user-images.githubusercontent.com/96930989/211134727-73c2da08-9dbb-42ef-8a25-9e2ef2ce2c59.png)
+
+```sh
+cat /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
+```
+![image](https://user-images.githubusercontent.com/96930989/211134733-f4691063-5d0b-4a01-bdd6-89b22e8c7b0b.png)
 
 
-## 4. Check if the log matches the CEF format
+Restarts the syslog daemon and the Log Analytics agent if necessary
+```sh
+service rsyslog restart
+```
+```sh
+/opt/microsoft/omsagent/bin/service_control restart <workspaceID>
+```
+
+## 5. Check rsyslog daemon listening on port 514 and 25226 (or customized ports being used)
+
+Checks that the necessary connections are established: 
+* tcp 514 for receiving data
+* tcp 25226 for internal communication between the syslog daemon and the Log Analytics agent
+```sh
+netstat -an | grep 514
+netstat -an | grep 25226![image](https://user-images.githubusercontent.com/96930989/211134834-c02ebf86-c7a8-4701-a8fe-0d2683765acc.png)
+```
+![image](https://user-images.githubusercontent.com/96930989/211134831-a47385d9-835d-4447-b950-ba553cacd3c3.png)
+
+## 6. Verify data flow on port 514 and 25226 (or customized ports being used)
+
+Checks that the syslog daemon is receiving data on port 514, and that the agent is receiving data on port 25226:
+
+```sh
+sudo tcpdump -A -ni any port 514 -vv
+```
+```sh
+sudo tcpdump -A -ni any port 25226 -vv
+```
+
+
+## 7. Check if the log matches the CEF format
 
 #### Navigate to [CEF debug regex](https://regex101.com/)
 
