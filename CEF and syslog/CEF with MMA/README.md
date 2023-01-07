@@ -68,7 +68,7 @@ cat /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
 ![image](https://user-images.githubusercontent.com/96930989/211134733-f4691063-5d0b-4a01-bdd6-89b22e8c7b0b.png)
 
 
-Restarts the syslog daemon and the Log Analytics agent if necessary
+Restart the `syslog daemon` and the `Log Analytics agent` if necessary
 ```sh
 service rsyslog restart
 ```
