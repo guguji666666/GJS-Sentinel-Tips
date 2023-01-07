@@ -1,4 +1,4 @@
-# CEF forwarder with MMA(Microsoft monitor agent)
+# CEF forwarder with MMA (Microsoft monitor agent)
 ## 1. Understand workflow 
 [CEF with MMA](https://learn.microsoft.com/en-us/azure/sentinel/connect-common-event-format)
 
@@ -27,5 +27,8 @@ CEF forwarder server is on-prem/other cloud server
 
 To search for CEF events in Log Analytics, query the `CommonSecurityLog` table in the query window.
 
-# CEF forwarder with AMA(Azure monitor agent)
+## 3. Start deployment
+
+### OS supported
+
 
