@@ -27,7 +27,7 @@ CEF forwarder server is on-prem/other cloud server
 
 To search for CEF events in Log Analytics, query the `CommonSecurityLog` table in the query window.
 
-## 3. Start deployment of log forwarder
+## 3. Checkpoints before deployment
 ### [Hardware and OS requirements](https://learn.microsoft.com/en-us/azure/sentinel/connect-log-forwarder?tabs=rsyslog#prerequisites)
 
 `Hardware (physical/virtual)`
@@ -76,3 +76,27 @@ The Linux machine must not be connected to any Azure workspaces before you insta
 You may need your Microsoft Sentinel workspace's Workspace ID and Workspace Primary Key at some point in this process. 
 You can find them in the workspace settings, under Agents management.
 ```
+## 4. Start deployment of log forwarder
+
+1. Check the current python version installed
+```sh
+sudo  python3 --version
+```
+
+2. Install pyhton3 if not exisits on the local machine
+```sh
+sudo apt-get update
+sudo apt-get install python3.6
+```
+or
+
+```sh
+sudo dnf install python3
+```
+
+3. Run deployment script
+```sh
+sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python3 cef_installer.py [WorkspaceID] [Workspace Primary Key]
+```
+Read if there is error during the deployment
+![image](https://user-images.githubusercontent.com/96930989/211133003-01c01f1c-cb55-4e62-b6b9-564589b3cdad.png)
