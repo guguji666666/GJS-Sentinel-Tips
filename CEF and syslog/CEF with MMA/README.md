@@ -32,8 +32,28 @@ cat security-config-omsagent.conf
 ```sh
 cat /etc/rsyslog.conf
 ```
-In this file we can check the protocol and port set on the rsyslog daemen
+In this file we can check the protocol and port set on the rsyslog daemon
 ![image](https://user-images.githubusercontent.com/96930989/211134060-7ddf3240-b896-4ff0-98d9-f75268f005ff.png)
+
+## 3. Check mapping configuration
+
+Check if ASA firewall mapping exists in configuration file
+```sh
+grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
+```
+![image](https://user-images.githubusercontent.com/96930989/211134320-9f563d0d-6d56-422f-867d-cae81892b946.png)
+
+
+Check if CEF mapping exists in configuration file
+```sh
+grep -i "return ident if ident.include?('CEF')" /opt/microsoft/omsagent/plugin/security_lib.rb
+```
+
+Check mapping file
+```sh
+cat /opt/microsoft/omsagent/plugin/security_lib.rb
+```
+![image](https://user-images.githubusercontent.com/96930989/211134339-1797f29e-e62d-4867-89ac-48502cf10a96.png)
 
 
 
