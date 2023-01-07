@@ -82,7 +82,7 @@ You can find them in the workspace settings, under Agents management.
 ```sh
 sudo  python3 --version
 ```
-![image](https://user-images.githubusercontent.com/96930989/211135099-37eb9632-72ca-4757-8882-0574b392c865.png)
+![image](https://user-images.githubusercontent.com/96930989/211135113-c54ab63b-8e67-4d55-ba37-0eac83dd9c6b.png)
 
 
 2. Manually install pyhton3 if not exisits on the local machine
