@@ -1,4 +1,4 @@
-# Configure CEF forwareder or raw syslog forwarder connectors in Sentinel
+# Configure CEF/raw syslog forwarder connectors in Sentinel
 
 ### 1. Check if the rsyslog configuration file is good before restating service/server
 
