@@ -1,7 +1,7 @@
 # Basic troubleshooting steps for CEF log forwarder
 ## 1. Check if CEF parsing is correct
 
-### Path 1 : /etc/rsyslog.d > Check firewall rules and forwarding rules between rsyslog daemon and MMA
+### Path 1 : /etc/rsyslog.d > Firewall rules and forwarding rules between rsyslog daemon and MMA
 
 ```sh
 sudo ls /etc/rsyslog.d
@@ -30,7 +30,12 @@ cat security-config-omsagent.conf
 ![image](https://user-images.githubusercontent.com/96930989/211133635-8add4994-1182-4eb7-8c89-e3bed0c6e6d8.png)
 
 
-### Path 2 : /etc/rsyslog.conf
+### Path 2 : /etc/rsyslog.conf > Configuration betwween CEF data sources and rsyslog daemon
+```sh
+cat /etc/rsyslog.conf
+```
+In this file we can check the protocol and port set on the rsyslog daemen
+![image](https://user-images.githubusercontent.com/96930989/211134060-7ddf3240-b896-4ff0-98d9-f75268f005ff.png)
 
 
 
