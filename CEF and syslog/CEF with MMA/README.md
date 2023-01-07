@@ -1,7 +1,10 @@
-# Useful CEF tips
+# Basic troubleshooting steps for CEF log forwarder
 ## 1. Check if CEF parsing is correct
 
-#### Navigate to [CEF parsing](https://regex101.com/)
+
+## 2. Check if CEF parsing is correct
+
+#### Navigate to [CEF debug regex](https://regex101.com/)
 
 #### CEF format
 ```
@@ -15,3 +18,5 @@ The CEF formart could also be found in the path if you configured CEF forwarder 
 cat /etc/opt/microsoft/omsagent/<your workspace ID>/conf/omsagent.d/security_events.conf
 ```
 ![image](https://user-images.githubusercontent.com/96930989/211126976-4fdeec09-77d4-4065-b938-dcdba4192857.png)
+
+
