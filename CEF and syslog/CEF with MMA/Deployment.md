@@ -76,7 +76,7 @@ The Linux machine must not be connected to any Azure workspaces before you insta
 You may need your Microsoft Sentinel workspace's Workspace ID and Workspace Primary Key at some point in this process. 
 You can find them in the workspace settings, under Agents management.
 ```
-## 4. Start deployment of log forwarder
+## 4. Start deployment of CEF log forwarder
 
 1. Check the current python version installed
 ```sh
