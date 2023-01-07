@@ -11,7 +11,7 @@
 
 The CEF formart could also be found in the path if you configured CEF forwarder on Linux machine
 
-```
+```sh
 cat /etc/opt/microsoft/omsagent/<your workspace ID>/conf/omsagent.d/security_events.conf
 ```
 ![image](https://user-images.githubusercontent.com/96930989/211126976-4fdeec09-77d4-4065-b938-dcdba4192857.png)
