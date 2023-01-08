@@ -95,7 +95,7 @@ sudo vi syslog.conf
 /etc/logstash/conf.d directory
 ```
 
-### 8. Install microsoft-sentinel-logstash-output-plugin
+### 8. Install `microsoft-sentinel-logstash-output-plugin`
 https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html
 
 * Lists all installed plugins
