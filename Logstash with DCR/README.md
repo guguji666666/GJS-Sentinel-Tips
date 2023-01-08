@@ -141,7 +141,7 @@ sudo vi pipeline1.conf
 ```
 
 Paste the context below to pipeline1.conf
-```
+```sh
 input {
       generator {
             lines => [
@@ -171,7 +171,7 @@ sudo systemctl restart logstash
 
 * New pipeline file would be
 
-```
+```sh
 input {
       generator {
             lines => [
