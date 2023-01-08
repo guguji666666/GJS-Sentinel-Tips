@@ -1,17 +1,13 @@
-# Logstash with DCR configuration
+# Configure Logstash plugin and collect the logs via AMA
+Links for reference:
 
-Link for reference:
+[Use Logstash to stream logs with pipeline transformations via DCR-based API](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules)
 
-https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules
+[Using Azure Sentinel with Logstash](https://www.youtube.com/watch?v=JnG1EvFmWkU)
 
-https://www.youtube.com/watch?v=JnG1EvFmWkU
+[microsoft-sentinel-logstash-output-plugin](https://github.com/guguji666666/MS-Sentinel-builtin-parsers/tree/master/DataConnectors/microsoft-sentinel-logstash-output-plugin)
 
-
-## microsoft-sentinel-logstash-output-plugin
-https://github.com/guguji666666/MS-Sentinel-builtin-parsers/tree/master/DataConnectors/microsoft-sentinel-logstash-output-plugin
-
-## microsoft-logstash-output-azure-loganalytics
-https://github.com/guguji666666/MS-Sentinel-builtin-parsers/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics
+[microsoft-logstash-output-azure-loganalytics](https://github.com/guguji666666/MS-Sentinel-builtin-parsers/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)
 
 ## Install logstash
 https://devconnected.com/how-to-install-logstash-on-ubuntu-18-04-and-debian-9/
