@@ -10,23 +10,22 @@ Links for reference:
 [microsoft-logstash-output-azure-loganalytics](https://github.com/guguji666666/MS-Sentinel-builtin-parsers/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)
 
 ## Install logstash
-https://devconnected.com/how-to-install-logstash-on-ubuntu-18-04-and-debian-9/
-https://www.elastic.co/guide/en/logstash/current/installing-logstash.html#_yum
+[How To Install Logstash on Ubuntu 18.04 and Debian 9](https://devconnected.com/how-to-install-logstash-on-ubuntu-18-04-and-debian-9/)
 
-## 1. Check java version
+[Elastic doc:Installing Logstash ](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html#_yum)
+
+## 1. Check current java version
 ```sh
 java -version
 ```
 ![image](https://user-images.githubusercontent.com/96930989/210304941-0cb6d6fa-8867-49a0-9179-a56538c60a76.png)
 
 ## 2. Install Java
-
 ```sh
 sudo apt-get install default-jre
 ```
 
 ## 3. Add the GPG key to install signed packages
-
 ```sh
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 ```
