@@ -169,7 +169,7 @@ sudo systemctl restart logstash
 
 ![image](https://user-images.githubusercontent.com/96930989/210318465-41dcb855-d546-4c40-906e-f9cf34206986.png)
 
-* New pipeline file
+* New pipeline file would be
 
 ```
 input {
