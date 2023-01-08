@@ -14,18 +14,18 @@ Links for reference:
 
 [Elastic doc:Installing Logstash ](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html#_yum)
 
-## 1. Check current java version
+### 1. Check current java version
 ```sh
 java -version
 ```
 ![image](https://user-images.githubusercontent.com/96930989/210304941-0cb6d6fa-8867-49a0-9179-a56538c60a76.png)
 
-## 2. Install Java
+### 2. Install Java
 ```sh
 sudo apt-get install default-jre
 ```
 
-## 3. Add the GPG key to install signed packages
+### 3. Add the GPG key to install signed packages
 ```sh
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 ```
@@ -37,7 +37,7 @@ echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee 
 ```
 ![image](https://user-images.githubusercontent.com/96930989/210305007-6b825902-d188-4285-bee5-79ca822b2f9f.png)
 
-## 4. Install Logstash with apt
+### 4. Install Logstash with apt
 ```sh
 sudo apt-get update
 sudo apt-get install logstash
@@ -51,7 +51,7 @@ create a logstash group
 create a dedicated service file for Logstash
 ```
 
-## 5. Check Logstash service health and start the service
+### 5. Check Logstash service health and start the service
 ```sh
 sudo systemctl status logstash
 ```
@@ -72,12 +72,12 @@ sudo systemctl status logstash
 ```
 ![image](https://user-images.githubusercontent.com/96930989/210305119-4fdec2d4-2e38-4210-8278-ca5be29f68c6.png)
 
-## 6. Check if Logstash is actually listening on its default port 5044.
+### 6. Check if Logstash is actually listening on its default port 5044.
 ```sh
 sudo lsof -i -P -n | grep logstash
 ```
 
-## 7. Check logstash config file
+### 7. Check logstash config file
 * Standard configuration files, that configures Logstash itself.
 ```
 /etc/logstash/logstash.yml
@@ -95,7 +95,7 @@ sudo vi syslog.conf
 /etc/logstash/conf.d directory
 ```
 
-## 8. Install microsoft-sentinel-logstash-output-plugin
+### 8. Install microsoft-sentinel-logstash-output-plugin
 https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html
 
 * Lists all installed plugins
@@ -124,8 +124,7 @@ sudo /usr/share/logstash/bin/logstash-plugin install microsoft-sentinel-logstash
 ```
 ![image](https://user-images.githubusercontent.com/96930989/210309117-af8ebd3c-c9f1-4a15-9423-497bece59cc3.png)
 
-## 9. Create sample pipeline conf
-
+### 9. Create sample pipeline conf
 ```
 https://www.elastic.co/guide/en/logstash/current/config-setting-files.html
 You create pipeline configuration files when you define the stages of your Logstash processing pipeline. 
