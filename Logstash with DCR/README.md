@@ -159,7 +159,7 @@ output {
 }
 ```
 
-* The following sample file will be generated under /tmp
+* The following sample file will be generated under /tmp (verify if the pipeline works as expected)
 
 ```sh
 sudo systemctl restart logstash
