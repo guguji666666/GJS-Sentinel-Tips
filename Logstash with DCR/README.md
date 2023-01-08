@@ -124,7 +124,7 @@ sudo /usr/share/logstash/bin/logstash-plugin install microsoft-sentinel-logstash
 ```
 ![image](https://user-images.githubusercontent.com/96930989/210309117-af8ebd3c-c9f1-4a15-9423-497bece59cc3.png)
 
-### 9. Create sample pipeline conf
+### 9. Create sample pipeline conf (we will need it later when configuring DCR)
 ```
 https://www.elastic.co/guide/en/logstash/current/config-setting-files.html
 You create pipeline configuration files when you define the stages of your Logstash processing pipeline. 
