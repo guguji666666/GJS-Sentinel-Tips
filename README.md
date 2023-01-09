@@ -5,7 +5,7 @@
 
 Each time you open the data connectors page, sentinel runs backend queries for all the connectors configured, if something wrong happens in the query, then it is expected that you got the error in UI.
 
-Though this error shows, but your data connectors are still ingesting the data to your workspace, normally the error in UI `will not` affect your production environment.
+Though this error shows, but your data connectors are still sending the data to your workspace, normally the error in UI `will not` affect your production environment.
 
 Possible reasons:
 1. The volume of incoming data from specified data source is too high
