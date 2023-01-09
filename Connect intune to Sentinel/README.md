@@ -22,4 +22,7 @@ IntuneOperationalLogs
 
 ![image](https://user-images.githubusercontent.com/96930989/211248752-bc756c0c-f673-4d59-9291-3313e5794f9c.png)
 
+IntuneDevices (updated every 24 hours)
+
+
 #### 6. [Useful Intune-specific Workbooks](https://github.com/rod-trent/SentinelWorkbooks)
