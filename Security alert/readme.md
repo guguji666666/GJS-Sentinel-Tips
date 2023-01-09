@@ -1,6 +1,17 @@
 ## Sentinel Security alerts/incidents FAQ 
 
-#### 1. `Custom details` in analytics rules
+#### 1. `Entity mapping` in analytics rules
+Settings in analytics rules
+![image](https://user-images.githubusercontent.com/96930989/211316422-18a7beea-9290-4100-b939-7548162e3f60.png)
+
+Results in incidents
+![image](https://user-images.githubusercontent.com/96930989/211316824-9cf585a8-77c3-4240-9def-1d29b66a1b4e.png)
+
+Details in incidents
+![image](https://user-images.githubusercontent.com/96930989/211316982-3e3776e7-8504-4c25-a75b-a8abcdf420d4.png)
+
+
+#### 2. `Custom details` in analytics rules
 
 Settings in analytics rules
 ![image](https://user-images.githubusercontent.com/96930989/211313847-8b512054-1339-4ac2-a950-0c87a9b51e4d.png)
@@ -13,7 +24,7 @@ Results in incidents
 ![image](https://user-images.githubusercontent.com/96930989/211315062-98276dea-606b-4066-8004-fe3c803bcc11.png)
 
 
-#### 2. `Alert details` in analytics rules
+#### 3. `Alert details` in analytics rules
 
 Settings in analytics rules
 ![image](https://user-images.githubusercontent.com/96930989/211314853-1f735f7e-e2f3-4922-9667-1c5f464f695a.png)
