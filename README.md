@@ -1,1 +1,2 @@
-# GJS-Sentinel-Doc
+# Azure Sentinel FAQ
+
