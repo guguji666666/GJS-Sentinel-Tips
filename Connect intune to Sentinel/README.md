@@ -22,4 +22,4 @@ IntuneOperationalLogs
 
 ![image](https://user-images.githubusercontent.com/96930989/211248752-bc756c0c-f673-4d59-9291-3313e5794f9c.png)
 
-#### 6.[Useful Intune-specific Workbooks](https://github.com/rod-trent/SentinelWorkbooks)
+#### 6. [Useful Intune-specific Workbooks](https://github.com/rod-trent/SentinelWorkbooks)
