@@ -15,7 +15,8 @@ Details in incidents
 
 ![image](https://user-images.githubusercontent.com/96930989/211522011-641947ff-60b4-410d-88a4-95df9217cde5.png)
 
-Results in incidents
+Results in incidents (No information of IP address)
+![image](https://user-images.githubusercontent.com/96930989/211523242-00daa4f4-bd18-4099-86a6-cb1e7aa2710f.png)
 
 
 
