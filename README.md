@@ -16,6 +16,7 @@ Troubleshooting steps:
 1. Capture the `HAR` log when `refreshing` the data connector page
 ![image](https://user-images.githubusercontent.com/96930989/211319057-e6e73958-4476-4441-985e-f03d01a2c7fb.png)
 2. In HAR log, look for the event whose `response` is "400"
+![image](https://user-images.githubusercontent.com/96930989/211438200-4f3d2f62-e365-45b4-854a-8c9d43007ae2.png)
 3. Check the data connector mentioned in the "400" error separately and see if we meet the issue when running the query for this data source `alone`
 4. Check the `volume` of incoming logs from the affected data source found in the HAR log
 5. Check the `time` it takes to perform the query
