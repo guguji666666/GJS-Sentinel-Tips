@@ -5,7 +5,7 @@
 
 Each time you open the data connectors page, sentinel runs backend queries for all the connectors configured, if something wrong happens in the query, then it is expected that you got the error in UI.
 
-Backend query found in the kusto query
+Backend query found in the post request
 ```kusto
 let emptyTable = datatable(TimeGenerated:datetime)[];let cefTableBase = materialize(union isfuzzy=true
 (emptyTable),(CommonSecurityLog | summarize TimeGenerated = max(TimeGenerated) by DeviceVendor, DeviceProduct));
