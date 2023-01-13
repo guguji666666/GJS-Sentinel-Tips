@@ -805,6 +805,8 @@ Sample for `CrowdStrike Falcon Endpoint Protection`
 
 API reference:
 
+[Saved Searches - List By Workspace](https://learn.microsoft.com/en-us/rest/api/loganalytics/saved-searches/list-by-workspace?tabs=HTTP)
+
 [Saved Searches - Get](https://learn.microsoft.com/en-us/rest/api/loganalytics/saved-searches/get?tabs=HTTP)
 
 [Saved Searches - Delete](https://learn.microsoft.com/en-us/rest/api/loganalytics/saved-searches/delete?tabs=HTTP#code-try-0)
