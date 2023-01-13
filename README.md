@@ -785,6 +785,7 @@ Possible reasons:
 1. The volume of incoming data from specified data source is too high
 2. Query timeout due to high volume of incoming data
 3. Query fails due to wrong parameter defined
+4. Custom parsers failed
 
 Troubleshooting steps:
 1. Capture the `HAR` log when `refreshing` the data connector page
@@ -794,4 +795,11 @@ Troubleshooting steps:
 3. Check the data connector mentioned in the "400" error separately and see if we meet the issue when running the query for this data source `alone`
 4. Check the `volume` of incoming logs from the affected data source found in the HAR log
 5. Check the `time` it takes to perform the query
+
+
+#### 2. When uninstalling the solution from content hub, will the contents be removed as well?
+NO, only the solution is removed, the contents deployed by it will not be removed
+
+Sample for `CrowdStrike Falcon Endpoint Protection`
+![image](https://user-images.githubusercontent.com/96930989/212284641-77218147-2ecb-4067-a08d-2c944895bfad.png)
 
