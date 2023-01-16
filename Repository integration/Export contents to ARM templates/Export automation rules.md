@@ -201,7 +201,7 @@ With the reference from the existing automation rules, the format of ARM templat
                           "classificationReason": null,
                           "classificationComment": null,
                           "owner": {
-                            "objectId": "e17f5a08-b6aa-4d10-a084-d1e6e9a6e441",
+                            "objectId": "e19f5a08-b9aa-3d10-a084-d1e6e9a6e441",
                             "email": "gjs@ultramanorb.onmicrosoft.com",
                             "assignedTo": "ultramangjs",
                             "userPrincipalName": "gjs@ultramanorb.onmicrosoft.com"
