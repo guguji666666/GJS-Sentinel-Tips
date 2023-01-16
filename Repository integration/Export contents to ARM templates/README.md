@@ -4,5 +4,4 @@
 ### 2. Automation rules (needs manual work on the format)
 ### 3. Hunting queries (needs manual work on the format)
 ### 4. Parsers (needs manual work on the format)
-### 4. Parsers (needs manual work on the format)
 ### 5. Playbooks (could be exported from portal)
