@@ -45,3 +45,8 @@ API reference:
 Please notice that the `savedSearchId` is the name here
 ![image](https://user-images.githubusercontent.com/96930989/212293144-47c00d16-40ae-408f-a798-c03f18bf5fa9.png)
 
+#### 3. How to check the expiration time of Sentinel free trial?
+As mentioned in the doc [Sentinel free trial](https://learn.microsoft.com/en-us/azure/sentinel/billing?tabs=free-data-meters#free-trial), the expiration time could be found under `News & guides > Free trial` tab in Microsoft Sentinel.
+
+![image](https://user-images.githubusercontent.com/96930989/212594442-78ac7919-8634-41db-9d50-099278938fd2.png)
+
