@@ -132,11 +132,9 @@ List the all existing automation rules with details, type name of resourcegroup 
 ![image](https://user-images.githubusercontent.com/96930989/212606125-3bf4e0f2-a177-415f-ab2e-5aea8cb2c722.png)
 
 I define all the actions in the test automation rule
-![image](https://user-images.githubusercontent.com/96930989/212609555-f44e4b95-91df-493e-af8a-4cd50d5d04be.png)
+![image](https://user-images.githubusercontent.com/96930989/212612370-7da240c4-fdaa-4762-bc36-40f083d53a2a.png)
 
-
-
-The Format of ARM template used in github/devops repository pipeline
+With the reference from the existing automation rules, the Format of ARM template used in github/devops repository pipeline should be
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
