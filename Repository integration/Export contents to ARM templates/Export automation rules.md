@@ -134,7 +134,7 @@ List the all existing automation rules with details, type name of resourcegroup 
 I define all the actions in the test automation rule
 ![image](https://user-images.githubusercontent.com/96930989/212612370-7da240c4-fdaa-4762-bc36-40f083d53a2a.png)
 
-With the reference from the existing automation rules, the Format of ARM template used in github/devops repository pipeline should be
+With the reference from the existing automation rules, the format of ARM template used in github/devops repository pipeline should follow:
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -146,14 +146,14 @@ With the reference from the existing automation rules, the Format of ARM templat
     },
     "resources": [
         {
-            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/automationRules/85f2eac9-43f1-480e-b8ad-473375c195c0')]",
-            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/85f2eac9-43f1-480e-b8ad-473375c195c0')]",
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/automationRules/2f8aa7b1-ff94-4251-8c71-44a63e468bd4')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/2f8aa7b1-ff94-4251-8c71-44a63e468bd4')]",
             "type": "Microsoft.OperationalInsights/workspaces/providers/automationRules",
             "kind": "Scheduled",
             "apiVersion": "2019-01-01-preview",
             "properties": {
-                "displayName": "Repositories automation rule 1",
-                "order": 1,
+                "displayName": "GJS Test Repositories automation rule 1",
+                "order": 77,
                 "triggeringLogic": {
                     "isEnabled": true,
                     "expirationTimeUtc": null,
@@ -177,11 +177,36 @@ With the reference from the existing automation rules, the Format of ARM templat
                         "order": 1,
                         "actionType": "ModifyProperties",
                         "actionConfiguration": {
-                            "owner": {
-                                "objectId": "b18ef471-be11-439d-9279-5ce4e18b976e",
-                                "email": "SampleEmail@Contoso.com",
-                                "userPrincipalName": "SampleUser@Contoso.com"
+                            "severity": null,
+                            "status": null,
+                            "classification": null,
+                            "classificationReason": null,
+                            "classificationComment": null,
+                            "owner": null,
+                            "labels": [
+                              {
+                                "labelName": "test tag",
+                                "labelType": "User"
                             }
+                        ]
+                        }
+                    },
+                    {
+                        "order": 3,
+                        "actionType": "ModifyProperties",
+                        "actionConfiguration": {
+                          "severity": null,
+                          "status": null,
+                          "classification": null,
+                          "classificationReason": null,
+                          "classificationComment": null,
+                          "owner": {
+                            "objectId": "e17f5a08-b6aa-4d10-a084-d1e6e9a6e441",
+                            "email": "gjs@ultramanorb.onmicrosoft.com",
+                            "assignedTo": "ultramangjs",
+                            "userPrincipalName": "gjs@ultramanorb.onmicrosoft.com"
+                          },
+                          "labels": null
                         }
                     }
                 ]
@@ -190,9 +215,11 @@ With the reference from the existing automation rules, the Format of ARM templat
     ]
 }
 ```
-
-
-
+You can also add more actions if required in the automation rule
 
 You can generate your own guid by powershell command `new-guid` and then fill it in the parts below accordingly
 ![image](https://user-images.githubusercontent.com/96930989/212597866-c0cc7596-3747-43f6-8b84-0a43392b4e5d.png)
+
+Sample with successful deployment
+![image](https://user-images.githubusercontent.com/96930989/212619200-45f3afac-61c6-4ecb-aa19-3959475f22ed.png)
+
