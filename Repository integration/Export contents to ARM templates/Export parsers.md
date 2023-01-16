@@ -55,4 +55,46 @@ let DisabledParsers=materialize(_GetWatchlist('ASimDisabledParsers') | where Sea
 ![image](https://user-images.githubusercontent.com/96930989/212622391-9ebfe764-230c-46fb-bad0-c6f16c540c52.png)
 
 
-Sample in my lab
+### Sample in my lab
+KQL query i use
+```kusto
+resourcecontainers
+| where type == 'microsoft.resources/subscriptions'
+| mv-expand managementGroupParent = properties.managementGroupAncestorsChain
+| where managementGroupParent.name =~ 'Test-GJS-MG1'
+| project name, id
+| sort by name asc
+```
+After `Escape`
+```
+resourcecontainers\r\n| where type == 'microsoft.resources\/subscriptions'\r\n| mv-expand managementGroupParent = properties.managementGroupAncestorsChain\r\n| where managementGroupParent.name =~ 'Test-GJS-MG1'\r\n| project name, id\r\n| sort by name asc
+```
+Put it in the Json file used for deployment
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/ASimAuthenticationAWSCloudTrail')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "etag": "*",
+        "displayName": "GJS test repository parser1",
+        "category": "Security",
+        "FunctionAlias": "Testrepositoryparser1",
+        "query": "resourcecontainers\r\n| where type == 'microsoft.resources\/subscriptions'\r\n| mv-expand managementGroupParent = properties.managementGroupAncestorsChain\r\n| where managementGroupParent.name =~ 'Test-GJS-MG1'\r\n| project name, id\r\n| sort by name asc",
+        "version": 1,
+        "functionParameters": "disabled:bool=False"
+      }
+    }
+  ]
+}
+```
