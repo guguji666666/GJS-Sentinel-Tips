@@ -1,4 +1,4 @@
-## Azure Sentinel FAQ
+## Microsoft Sentinel FAQ
 
 #### 1. When we try to open the data connectors page in sentinel, we get the `"Unexpected error"`
 ![image](https://user-images.githubusercontent.com/96930989/211318356-9e6403e3-6856-4a7a-a71f-322d63cfb356.png)
