@@ -1,5 +1,5 @@
 # Export existing playbook to ARM template
-
+## Export existing playbook to ARM template with the configuration inside
 ### 1. Navigate to the subscription where the playbook locates
 ![image](https://user-images.githubusercontent.com/96930989/210464795-b39b882c-10d1-4452-a94c-840577afb23a.png)
 ![image](https://user-images.githubusercontent.com/96930989/210464823-9a64843f-89f9-47af-ab36-eb8c6011c723.png)
@@ -21,3 +21,6 @@
 ### 5. Download the template
 
 ![image](https://user-images.githubusercontent.com/96930989/210465759-fceaafcf-c4cc-476c-91f7-647eeef6f760.png)
+
+
+## Export existing playbook to ARM template without any tenant-specified parameters inside
