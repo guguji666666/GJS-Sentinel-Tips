@@ -1,6 +1,6 @@
 ## Deploy automation rules via ARM template
-
-If we used the template mentioned in [Creates a new Microsoft Sentinel Automation Rule](https://learn.microsoft.com/en-us/samples/azure/azure-quickstart-templates/sentinel-automation-rule/), then we will see the page where we can interactively input the parameters required
+### Deploy automation rules using ARM template and input the parameters interactively
+If we use the template mentioned in [Creates a new Microsoft Sentinel Automation Rule](https://learn.microsoft.com/en-us/samples/azure/azure-quickstart-templates/sentinel-automation-rule/), then we will see the page where we can interactively input the parameters required
 ![image](https://user-images.githubusercontent.com/96930989/212603290-b99748ec-255a-4424-86eb-d74d6ac2befa.png)
 ```json
 {
@@ -118,11 +118,23 @@ If we used the template mentioned in [Creates a new Microsoft Sentinel Automatio
 }
 ```
 
-But if we deplot the automation rules via github/devops repository pipeline, the process will run in `backend` and we'll not see this page
+But if we deploy the automation rules via github/devops repository pipeline, the process will run in `backend` and we'll not see this page
 
-We could get the existing automation rule using 
-[Automation Rules - List](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/list?tabs=HTTP)
-[Automation Rules - Get](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/get?tabs=HTTP)
+### Deploy automation rules using ARM template `without` typing the parameters interactively
+
+We could get the existing automation rule using
+* [Automation Rules - List](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/list?tabs=HTTP)
+* [Automation Rules - Get](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/get?tabs=HTTP)
+
+Sample in the lab:
+
+List the all existing automation rules with details, type name of resourcegroup where the `workspace` belongs to
+![image](https://user-images.githubusercontent.com/96930989/212606125-3bf4e0f2-a177-415f-ab2e-5aea8cb2c722.png)
+
+I define all the actions in the test automation rule
+![image](https://user-images.githubusercontent.com/96930989/212609555-f44e4b95-91df-493e-af8a-4cd50d5d04be.png)
+
+
 
 The Format of ARM template used in github/devops repository pipeline
 ```json
