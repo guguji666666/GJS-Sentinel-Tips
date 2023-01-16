@@ -1,4 +1,4 @@
-## Deploy automation rules via ARM template
+## Deploy automation rules via ARM template and additional work
 ### Deploy automation rules using ARM template and input the parameters interactively
 If we use the template mentioned in [Creates a new Microsoft Sentinel Automation Rule](https://learn.microsoft.com/en-us/samples/azure/azure-quickstart-templates/sentinel-automation-rule/), then we will see the page where we can interactively input the parameters required
 ![image](https://user-images.githubusercontent.com/96930989/212603290-b99748ec-255a-4424-86eb-d74d6ac2befa.png)
