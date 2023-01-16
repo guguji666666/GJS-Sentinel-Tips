@@ -98,3 +98,9 @@ Put it in the Json file used for deployment
   ]
 }
 ```
+After successful deployment
+![image](https://user-images.githubusercontent.com/96930989/212625894-3a881de8-719d-4eef-9ca3-5b1092482d9d.png)
+
+If we check the function code inside, the context should be the query we defined before
+![image](https://user-images.githubusercontent.com/96930989/212626034-2d023a85-13c2-4450-aeb1-6ddf8f1f83a3.png)
+
