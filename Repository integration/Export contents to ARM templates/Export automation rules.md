@@ -120,7 +120,9 @@ If we used the template mentioned in [Creates a new Microsoft Sentinel Automatio
 
 But if we deplot the automation rules via github/devops repository pipeline, the process will run in `backend` and we'll not see this page
 
-We could get the existing automation rule using [Automation Rules - Get](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/get?tabs=HTTP)
+We could get the existing automation rule using 
+[Automation Rules - List](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/list?tabs=HTTP)
+[Automation Rules - Get](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/get?tabs=HTTP)
 
 The Format of ARM template used in github/devops repository pipeline
 ```json
