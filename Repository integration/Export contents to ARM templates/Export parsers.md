@@ -1,6 +1,6 @@
 ## Deploy parsers with ARM template and additional work
 
-### Format of json file
+### Format of json file used in the repository
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
