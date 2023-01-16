@@ -29,7 +29,7 @@
   ]
 }
 ```
-We may need the tool [JSON Escape / Unescape](https://appdevtools.com/json-escape-unescape) to fill the `query` part
+We may need the tool [JSON Escape / Unescape](https://www.freeformatter.com/json-escape.html#before-output) to fill the `query` part
 
 Suppose your kql query is 
 ```kusto
