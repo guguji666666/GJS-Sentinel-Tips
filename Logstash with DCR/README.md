@@ -254,7 +254,6 @@ The name of the custom table i created is `customlogstash_CL`
 Check if the AMA has been installed successfully and heartbeat
 ![image](https://user-images.githubusercontent.com/96930989/213171055-2579d00d-2be4-4fab-9c96-411277e8abf6.png)
 
-Assign the new DCR we created to the new Arc-enabled VM
-![image](https://user-images.githubusercontent.com/96930989/213171389-59a734cc-cf61-4a90-99c6-adfe9651ac30.png)
-
+Assign the new DCR and DCE we created to the new Arc-enabled VM
+![image](https://user-images.githubusercontent.com/96930989/213172622-c45ef747-8ad3-4648-850a-e4f36ae9d9d3.png)
 
