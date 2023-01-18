@@ -9,6 +9,7 @@ Links for reference:
 * [Use Logstash to stream logs with pipeline transformations via DCR-based API](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules)
 * [How To Install Logstash on Ubuntu 18.04 and Debian 9](https://devconnected.com/how-to-install-logstash-on-ubuntu-18-04-and-debian-9/)
 * [Elastic doc:Installing Logstash ](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html#_yum)
+You can keep the auto-provisioning setting on in the defender for cloud since mutiple DCR could be assigned to a single VM.
 
 ### 1. Check current java version
 ```sh
