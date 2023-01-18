@@ -241,3 +241,15 @@ output {
 ```
 ### 12. Connect your on-prem VM to Arc
 [Generate the script and run it on your VM](https://learn.microsoft.com/en-us/azure/azure-arc/servers/learn/quick-enable-hybrid-vm#generate-installation-script)
+
+![image](https://user-images.githubusercontent.com/96930989/213164283-31309c9a-66cd-4110-8500-9220f38dd548.png)
+
+### 13. Restart logstesh service and check the logs ingestion
+```sh
+systemctl restart logstash
+```
+The name of the custom table i created is `customlogstash_CL`
+![image](https://user-images.githubusercontent.com/96930989/213165872-6b71d1fe-e520-4ec7-8b6b-80f274dd7a93.png)
+
+
+
