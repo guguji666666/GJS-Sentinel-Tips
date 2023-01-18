@@ -25,12 +25,18 @@ cd ~
 ```sh
 java -version
 ```
-![image](https://user-images.githubusercontent.com/96930989/210304941-0cb6d6fa-8867-49a0-9179-a56538c60a76.png)
+![image](https://user-images.githubusercontent.com/96930989/213087596-73cd7809-a52b-4b6f-ab2d-ec434aba9b0b.png)
 
 ### 2. Install Java
 ```sh
-sudo apt-get install default-jre
+apt-get install default-jre
 ```
+Check java version again
+```sh
+java -version
+```
+![image](https://user-images.githubusercontent.com/96930989/213089641-47a075fc-b5f2-4b87-b99f-ef43d4eba729.png)
+
 
 ### 3. Add the GPG key to install signed packages
 ```sh
@@ -42,14 +48,14 @@ sudo apt-get install apt-transport-https
 ```sh
 echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list
 ```
-![image](https://user-images.githubusercontent.com/96930989/210305007-6b825902-d188-4285-bee5-79ca822b2f9f.png)
 
-### 4. Install Logstash with apt
+### 4. Install Logstash
 ```sh
-sudo apt-get update
-sudo apt-get install logstash
+apt-get update
 ```
-![image](https://user-images.githubusercontent.com/96930989/210305033-38cc80e6-310e-41d4-b41f-7e8ce1faeec9.png)
+```sh
+apt-get install logstash
+```
 
 ```
 This directive will :
@@ -60,28 +66,28 @@ create a dedicated service file for Logstash
 
 ### 5. Check Logstash service health and start the service
 ```sh
-sudo systemctl status logstash
+systemctl status logstash
 ```
 ![image](https://user-images.githubusercontent.com/96930989/210305092-b87aed4a-77fa-423d-9b7e-283dd9bcd32c.png)
 
 ```sh
-sudo systemctl enable logstash
+systemctl enable logstash
 ```
 
 ```sh
-sudo systemctl start logstash
+systemctl start logstash
 ```
 ![image](https://user-images.githubusercontent.com/96930989/210305107-bdc66df1-bbc5-4bb6-b9db-761b767dc059.png)
 
 Check the service state again
 ```sh
-sudo systemctl status logstash
+systemctl status logstash
 ```
 ![image](https://user-images.githubusercontent.com/96930989/210305119-4fdec2d4-2e38-4210-8278-ca5be29f68c6.png)
 
 ### 6. Check if Logstash is actually listening on its default port 5044.
 ```sh
-sudo lsof -i -P -n | grep logstash
+lsof -i -P -n | grep logstash
 ```
 
 ### 7. Check logstash config file
@@ -94,7 +100,7 @@ sudo lsof -i -P -n | grep logstash
 cd /etc/logstash/conf.d/
 ```
 ```sh
-sudo vi syslog.conf
+vi syslog.conf
 ```
 
 * Pipeline configuration files
