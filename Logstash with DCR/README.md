@@ -14,7 +14,7 @@ Note
 ```
 You can keep the auto-provisioning setting on in the defender for cloud since mutiple DCR could be assigned to a single VM.
 ```
-## Deployment on Azure VM running Ubuntu 2204 LTS
+## Deployment on on-prem VM running Ubuntu 2204 LTS
 ### Swtich to root 
 ```sh
 sudo su root
@@ -59,9 +59,6 @@ apt-get update
 ```sh
 apt-get install logstash
 ```
-It may take some time in this step
-![image](https://user-images.githubusercontent.com/96930989/213090237-7d1075ad-1182-479b-852b-6bb475b24f94.png)
-
 
 ```
 This directive will :
@@ -205,19 +202,25 @@ ll
 ![image](https://user-images.githubusercontent.com/96930989/213141866-432c8732-c89c-4834-90da-4b6685a85652.png)
 
 If we check the sample file inside
-![image](https://user-images.githubusercontent.com/96930989/213142855-9e7cf9ea-1833-4f46-940d-948149baad3b.png)
+![image](https://user-images.githubusercontent.com/96930989/213159563-66949058-cd53-4285-856f-32e6a05b835b.png)
 
 ### 11. Create DCR related resources for ingestion into a `custom` table
 [Create the required DCR resources](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules#create-the-required-dcr-resources)
+* Configure the application
+* Create a data collection endpoint
+* Add a custom log table
+* Parse and filter sample data using the sample file you created in the previous section
+* Collect information from the DCR
+* Assign permissions to the DCR
 
 
-* New pipeline file would be
+Replace the content in `pipeline1.conf` following the format
 
-```sh
+```
 input {
       generator {
             lines => [
-                 "This is a test log message from gjs"
+                 "This is a test log message from demo"
             ]
            count => 10
       }
@@ -236,4 +239,5 @@ output {
     }
 }
 ```
-
+### 12. Connect your on-prem VM to Arc
+[Generate the script and run it on your VM](https://learn.microsoft.com/en-us/azure/azure-arc/servers/learn/quick-enable-hybrid-vm#generate-installation-script)
