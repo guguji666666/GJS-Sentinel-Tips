@@ -152,7 +152,7 @@ You can also update only the plugin you specify
 ```
 ![image](https://user-images.githubusercontent.com/96930989/213118865-6754a9fd-d1b5-4f3e-91a5-31319cef8df4.png)
 
-### 9. Create pipeline conf or custom log (we will need it later when configuring DCR)
+### 9. Create pipeline conf for custom log (we will need it later when configuring DCR)
 * [Elastic doc:Logstash configuration files](https://www.elastic.co/guide/en/logstash/current/config-setting-files.html)
 * [Sample for complete pipeline file](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-sentinel-logstash-output-plugin#complete-example)
 ```
