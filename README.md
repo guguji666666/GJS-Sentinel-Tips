@@ -9,7 +9,7 @@ Context in the query
 [backend query.txt](https://github.com/guguji666666/GJS-Sentinel-Tips/files/10422343/backend.query.txt)
 
 
-Though this error shows, but your data connectors are still sending the data to your workspace, normally the error in UI `will not` affect your production environment.
+Though this error shows, your data connectors are still sending the data to your workspace, normally the error in UI `will not` affect your production environment.
 
 Possible reasons:
 1. The volume of incoming data from specified data source is too high
