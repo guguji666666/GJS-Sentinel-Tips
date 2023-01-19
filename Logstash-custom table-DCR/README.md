@@ -15,7 +15,7 @@ Note
 You can keep the auto-provisioning setting on in the defender for cloud since mutiple DCR could be assigned to a single VM.
 ```
 ## Deployment on on-prem VM running Ubuntu 2204 LTS
-### Swtich to root 
+### Switch to root 
 ```sh
 sudo su root
 cd ~
