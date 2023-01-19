@@ -113,7 +113,7 @@ lsof -i -P -n
 cd /etc/logstash/conf.d/
 ```
 ```sh
-cat > pipeline1.conf
+cat > syslog.conf
 ```
 
 
@@ -163,7 +163,7 @@ cd /etc/logstash/conf.d
 ```
 
 ```sh
-vi pipeline1.conf
+vi syslog.conf
 ```
 
 Paste the context below to pipeline1.conf
