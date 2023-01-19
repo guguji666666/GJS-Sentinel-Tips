@@ -149,9 +149,9 @@ You can also update only the plugin you specify
 ```
 ![image](https://user-images.githubusercontent.com/96930989/213118865-6754a9fd-d1b5-4f3e-91a5-31319cef8df4.png)
 
-### 9. Create pipeline conf for custom log (we will need it later when configuring DCR)
-* [Elastic doc:Logstash configuration files](https://www.elastic.co/guide/en/logstash/current/config-setting-files.html)
-* [Sample for complete pipeline file](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-sentinel-logstash-output-plugin#complete-example)
+### 9. Create a sample file to ingest logs into the Syslog table
+* [Create a sample file to ingest logs into the Syslog table](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules#create-a-sample-file-to-ingest-logs-into-the-syslog-table)
+
 ```
 You create pipeline configuration files when you define the stages of your Logstash processing pipeline. 
 On deb and rpm, you place the pipeline configuration files in the /etc/logstash/conf.d directory. 
@@ -168,15 +168,13 @@ vi pipeline1.conf
 
 Paste the context below to pipeline1.conf
 ```sh
+logger -p local4.warn --rfc3164 --tcp -t CEF: "0|Microsoft|Device|cef-test|example|data|1|here is some more data for the example" -P 514 -d -n 127.0.0.1
+Here is an example for the Logstash input plugin:
 input {
-      generator {
-            lines => [
-                 "This is a test log message from demo"
-            ]
-           count => 10
-      }
+     syslog {
+         port => 514
+    }
 }
-
 output {
     microsoft-sentinel-logstash-output-plugin {
       create_sample_file => true
@@ -184,7 +182,6 @@ output {
     }
 }
 ```
-![image](https://user-images.githubusercontent.com/96930989/213140070-4c6c8314-07d7-41dd-a85a-386d6c00eb42.png)
 
 ### 10. Verify if the pipeline works as expected
 Restart the service to load the new pipline config file
