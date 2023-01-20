@@ -37,4 +37,8 @@ You can turn them back on after your data connector is completely set up. [syslo
 ![image](https://user-images.githubusercontent.com/96930989/213688626-da79b9ec-0eba-42e5-a7d5-447915484fa9.png)
 
 
+## After deployment
 
+```sh
+ls /etc/rsyslog.d
+```
