@@ -29,8 +29,8 @@ You can turn them back on after your data connector is completely set up. [syslo
 ### 1. [Install the OMS agent (MMA)](https://learn.microsoft.com/en-us/azure/sentinel/connect-syslog#configure-your-linux-machine-or-appliance)
 ### 2. [Configure the data logging](https://learn.microsoft.com/en-us/azure/sentinel/connect-syslog#configure-your-devices-logging-settings)
 ##### Sample for Azure VM
-![image](https://user-images.githubusercontent.com/96930989/213688968-aaa0ea89-cc78-4b00-a65e-835f1095148a.png)
-![image](https://user-images.githubusercontent.com/96930989/213693350-ca4c5226-bbe6-42eb-85f4-b9cc33cc17ca.png)
+![image](https://user-images.githubusercontent.com/96930989/213717017-90f34728-2cea-492c-b932-2f72fc1c73bb.png)
+![image](https://user-images.githubusercontent.com/96930989/213717622-3fc93fa6-f518-4c72-be41-fdff85917501.png)
 
 ### 3. [Configure OMS agent (MMA) the logs it should collect](https://learn.microsoft.com/en-us/azure/sentinel/connect-syslog#configure-the-log-analytics-agent)
 ##### Sample
