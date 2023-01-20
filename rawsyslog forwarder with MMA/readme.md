@@ -46,4 +46,17 @@ More details could be found in [Configure Syslog in the Azure portal](https://le
 sudo su root
 ls /etc/rsyslog.d
 ```
+![image](https://user-images.githubusercontent.com/96930989/213731063-6f9b8ea2-7e35-4230-8f9f-0e17d1f0a855.png)
+
+```sh
+cd /etc/rsyslog.d
+cat 95-omsagent.conf
+```
+![image](https://user-images.githubusercontent.com/96930989/213731369-625dd3c2-4721-41c2-99da-0ed776f931e0.png)
+
+By default, all configuration changes are automatically pushed to all agents. 
+If you want to configure Syslog manually on each Linux agent, clear the Apply below configuration to my machines checkbox.
+![image](https://user-images.githubusercontent.com/96930989/213731633-f95cae6a-998d-4ea2-ab2a-3f1bbd451972.png)
+![image](https://user-images.githubusercontent.com/96930989/213731664-5ca54fbc-94c4-420a-b9f6-c6c643bda869.png)
+
 
