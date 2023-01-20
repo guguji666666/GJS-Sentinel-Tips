@@ -38,7 +38,11 @@ You can turn them back on after your data connector is completely set up. [syslo
 
 
 ## After deployment
-
+### 1. Check `95-omsagent.conf`
+`95.omsagent.conf`file is populated automatically from the settings in the Log Analytics Workspace - Agent Configuration - Syslog. 
+You will need to add the facilities and Severity Log levels to be ingested. This process of settings and populated the file takes around `20 minutes`.
+More details could be found in [Configure Syslog in the Azure portal](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/data-sources-syslog#configure-syslog-in-the-azure-portal)
 ```sh
 ls /etc/rsyslog.d
 ```
+
