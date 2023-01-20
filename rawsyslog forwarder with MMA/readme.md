@@ -27,7 +27,10 @@ You can turn them back on after your data connector is completely set up. [syslo
 
 ## Deployment guidance
 ### 1. [Install the OMS agent (MMA)](https://learn.microsoft.com/en-us/azure/sentinel/connect-syslog#configure-your-linux-machine-or-appliance)
-### 2. Configure the data logging, configure the parse if required
-* Configure OMS agent (MMA) the logs it should collect
+### 2. [Configure the data logging](https://learn.microsoft.com/en-us/azure/sentinel/connect-syslog#configure-your-devices-logging-settings)
+### 3. [Configure OMS agent (MMA) the logs it should collect](https://learn.microsoft.com/en-us/azure/sentinel/connect-syslog#configure-the-log-analytics-agent)
+Sample
+![image](https://user-images.githubusercontent.com/96930989/213688626-da79b9ec-0eba-42e5-a7d5-447915484fa9.png)
+
 
 
