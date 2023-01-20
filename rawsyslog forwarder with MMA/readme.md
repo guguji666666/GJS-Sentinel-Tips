@@ -43,6 +43,7 @@ You can turn them back on after your data connector is completely set up. [syslo
 You will need to add the facilities and Severity Log levels to be ingested. This process of settings and populated the file takes around `20 minutes`.
 More details could be found in [Configure Syslog in the Azure portal](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/data-sources-syslog#configure-syslog-in-the-azure-portal)
 ```sh
+sudo su root
 ls /etc/rsyslog.d
 ```
 
