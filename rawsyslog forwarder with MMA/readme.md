@@ -73,8 +73,11 @@ You can turn them back on after your data connector is completely set up. [syslo
 ## After deployment
 ### 1. Check `95-omsagent.conf`
 `95.omsagent.conf` file is populated automatically from the settings in the Log Analytics Workspace - Agent Configuration - Syslog. 
+
 You will need to add the facilities and Severity Log levels to be ingested. This process of settings and populated the file takes around `20 minutes`.
+
 More details could be found in [Configure Syslog in the Azure portal](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/data-sources-syslog#configure-syslog-in-the-azure-portal)
+
 ```sh
 sudo su root
 ls /etc/rsyslog.d
@@ -85,7 +88,9 @@ ls /etc/rsyslog.d
 cd /etc/rsyslog.d
 cat 95-omsagent.conf
 ```
+rsyslog daemon is configured to forward the syslogs to port 252256
 ![image](https://user-images.githubusercontent.com/96930989/213731369-625dd3c2-4721-41c2-99da-0ed776f931e0.png)
+
 
 By default, all configuration changes are automatically pushed to all agents. 
 If you want to configure Syslog manually on each Linux agent, clear the Apply below configuration to my machines checkbox.
@@ -93,4 +98,5 @@ If you want to configure Syslog manually on each Linux agent, clear the Apply be
 ![image](https://user-images.githubusercontent.com/96930989/213731664-5ca54fbc-94c4-420a-b9f6-c6c643bda869.png)
 
 ### 2.  TSG steps
+
 
