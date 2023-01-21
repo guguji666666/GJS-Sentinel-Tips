@@ -66,19 +66,21 @@ To search for CEF events in Log Analytics, query the `CommonSecurityLog` table i
 * You can find them in the workspace settings, under `Agents management`.
 ![image](https://user-images.githubusercontent.com/96930989/213843660-69a25dcb-2649-4bb1-a7b1-4e3e4879647f.png)
 
-## 4. Start deployment of CEF log forwarder
+## 4. Deployment of CEF log forwarder
 
 1. Check the current python version installed
 ```sh
-sudo  python3 --version
+sudo su root
+python3 --version
 ```
 ![image](https://user-images.githubusercontent.com/96930989/211135113-c54ab63b-8e67-4d55-ba37-0eac83dd9c6b.png)
 
 
 2. Manually install pyhton3 if not exisits on the local machine
 ```sh
-sudo apt-get update
-sudo apt-get install python3.6
+sudo su root
+apt-get update
+apt-get install python3.6
 ```
 or
 
@@ -86,7 +88,7 @@ or
 sudo dnf install python3
 ```
 
-3. Run deployment script
+3. Run deployment script (replace the `python` with `python3` in the command)
 ```sh
 sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python3 cef_installer.py [WorkspaceID] [Workspace Primary Key]
 ```
