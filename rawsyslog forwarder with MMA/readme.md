@@ -57,7 +57,7 @@ You can turn them back on after your data connector is completely set up. [syslo
 7. Data
 * You may need your Microsoft Sentinel workspace's `Workspace ID` and `Workspace Primary Key` at some point in this process. 
 * You can find them in the workspace settings, under `Agents management`.
-
+![image](https://user-images.githubusercontent.com/96930989/213843660-69a25dcb-2649-4bb1-a7b1-4e3e4879647f.png)
 
 ## Deployment guidance
 ### 1. [Install the OMS agent (MMA)](https://learn.microsoft.com/en-us/azure/sentinel/connect-syslog#configure-your-linux-machine-or-appliance)
