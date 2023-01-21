@@ -125,23 +125,23 @@ For Ubuntu/Debian
 ```sh
 sudo tac /var/log/syslog | grep CEF -m 10
 ```
-
-
+![image](https://user-images.githubusercontent.com/96930989/213848193-af1d4e9d-46c7-4f98-9143-a46680fbb34e.png)
 
 ## 8. Check if the CEF log received matches the CEF format
 
 1. Navigate to [CEF debug regex](https://regex101.com/)
-2. CEF format
+2. Input CEF format
 ```
 /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
 ```
-![image](https://user-images.githubusercontent.com/96930989/211126902-5a7bfa6c-6ece-45c6-8045-8a9809f97a8a.png)
-
 The CEF formart could also be found in the path if you configured CEF forwarder on Linux machine
-
 ```sh
 cat /etc/opt/microsoft/omsagent/<your workspace ID>/conf/omsagent.d/security_events.conf
 ```
 ![image](https://user-images.githubusercontent.com/96930989/211126976-4fdeec09-77d4-4065-b938-dcdba4192857.png)
+
+3. Input the CEF logs you received
+![image](https://user-images.githubusercontent.com/96930989/213848436-8e31cc32-609f-4fb6-9fb6-7fc7309c1f8e.png)
+
 
 
