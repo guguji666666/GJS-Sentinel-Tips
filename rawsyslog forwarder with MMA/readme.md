@@ -59,4 +59,4 @@ If you want to configure Syslog manually on each Linux agent, clear the Apply be
 ![image](https://user-images.githubusercontent.com/96930989/213731633-f95cae6a-998d-4ea2-ab2a-3f1bbd451972.png)
 ![image](https://user-images.githubusercontent.com/96930989/213731664-5ca54fbc-94c4-420a-b9f6-c6c643bda869.png)
 
-
+### 2.  TSG steps 1231123
