@@ -76,11 +76,11 @@ service rsyslog restart
 /opt/microsoft/omsagent/bin/service_control restart <workspaceID>
 ```
 
-## 5. Check rsyslog daemon listening on port 514 and 25226 (or customized ports being used)
+## 5. Check if rsyslog daemon and MMA are listening to port 514/25226 (or customized ports being used)
 
 Checks that the necessary connections are established: 
 * tcp 514 for receiving data
-* tcp 25226 for internal communication between the syslog daemon and the Log Analytics agent
+* tcp 25226 for internal communication between the rsyslog daemon and the Log Analytics agent
 ```sh
 netstat -an | grep 514
 netstat -an | grep 25226![image](https://user-images.githubusercontent.com/96930989/211134834-c02ebf86-c7a8-4701-a8fe-0d2683765acc.png)
