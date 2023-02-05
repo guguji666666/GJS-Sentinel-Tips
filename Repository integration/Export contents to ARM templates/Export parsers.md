@@ -48,10 +48,7 @@ let DisabledParsers=materialize(_GetWatchlist('ASimDisabledParsers') | where Sea
 ```
 ![image](https://user-images.githubusercontent.com/96930989/212622538-a5f1ad6a-68d8-479e-9e7e-02c72c3cc225.png)
 
-For escaped query, after `Unescape`, you can get the format in KQL query
-```
-let DisabledParsers=materialize(_GetWatchlist('ASimDisabledParsers') | where SearchKey in ('Any', 'ExcludeASimAuditEvent') | extend SourceSpecificParser=column_ifexists('SourceSpecificParser','') | distinct SourceSpecificParser);\r\nlet BuiltInDisabled=toscalar('ExcludeASimAuditEventBuiltIn' in (DisabledParsers) or 'Any' in (DisabledParsers)); \r\nunion isfuzzy=true\r\n  vimAuditEventEmpty, \r\n  ASimAuditEventMicrosoftExchangeAdmin365  (BuiltInDisabled or ('ExcludeASimAuditEventMicrosoftExchangeAdmin365' in (DisabledParsers))),\r\n  ASimAuditEventMicrosoftWindowsEvents  (BuiltInDisabled or ('ExcludeASimAuditEventMicrosoftWindowsEvents' in (DisabledParsers))),\r\n  ASimAuditEventAzureActivity  (BuiltInDisabled or ('ExcludeASimAuditEventAzureActivity' in (DisabledParsers)))
-```
+For escaped query, after `Unescape`, you can get the format into original KQL query
 ![image](https://user-images.githubusercontent.com/96930989/212622391-9ebfe764-230c-46fb-bad0-c6f16c540c52.png)
 
 
@@ -98,7 +95,7 @@ Put it in the Json file used for deployment
   ]
 }
 ```
-After successful deployment
+After successful deployment. Please notice that the display name of the workspace function is the paramter `FunctionAlias` we defined in the json file before.
 ![image](https://user-images.githubusercontent.com/96930989/212625894-3a881de8-719d-4eef-9ca3-5b1092482d9d.png)
 
 If we check the function code inside, the context should be the query we defined before
