@@ -1,4 +1,4 @@
-# Export analytics rules ro ARM template
+# Export analytics rules to ARM template
 ### 1. Navigate to `Sentinel > Analytics`, check the box of the rule you want to export, click `export`
 ![image](https://user-images.githubusercontent.com/96930989/212596696-08040048-72c8-4697-a704-5279adf61da6.png)
 ### 2. The rule will be exported to `json` file
