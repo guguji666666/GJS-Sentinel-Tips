@@ -15,7 +15,10 @@ Note
 You can keep the auto-provisioning setting on in the defender for cloud since mutiple DCR could be assigned to a single VM.
 ```
 
-## Deployment on Azure VM running Ubuntu 2204 LTS (RAM 3G+, recommend `Standard B2s` )
+## Deployment on Azure VM running Ubuntu 2204 LTS
+* RAM 3G+
+* recommend `Standard B2s`
+
 ### Switch to root 
 ```sh
 sudo su root
@@ -91,10 +94,12 @@ systemctl status logstash
 
 ### 6. Install `microsoft-sentinel-logstash-output-plugin`
 ```
-/usr/share/logstash/bin/logstash-plugin install microsoft-sentinel-logstash-output-plugin
+In this step the RAM used may up to 2.6G
+```
 ```
 /usr/share/logstash/bin/logstash-plugin install microsoft-sentinel-logstash-output-plugin
-![image](https://user-images.githubusercontent.com/96930989/217974741-ebaebd76-5454-4b22-91db-4854fe117e96.png)
+```
+![image](https://user-images.githubusercontent.com/96930989/217975482-2b3c7087-8e3b-4c04-9d74-274b46e40801.png)
 
 
 ### Path of logstash config file
@@ -139,4 +144,66 @@ You can also update only the plugin you specify
 ```sh
 /usr/share/logstash/bin/logstash-plugin update <name of plugin>
 ```
+
+### 7. Create sample file to ingest logs into the Custom table
+```
+cd /etc/logstash/conf.d
+```
+```
+cat > pipeline.conf
+```
+copy the content below to pipeline.conf
+
+```
+input {
+    generator {
+          lines => [
+               "This is a test log message from demo"
+          ]
+         count => 10
+    }
+}
+output {
+  microsoft-sentinel-logstash-output-plugin {
+    create_sample_file => true
+    sample_file_path => "/tmp" #for example: "c:\\temp" (for windows) or "/tmp" for Linux. 
+  }
+}
+```
+
+### 8. Verify if the pipeline configuration works as expected
+```
+systemctl restart logstash
+```
+```
+cd /tmp
+```
+```
+ll
+``` 
+You should see the new sample files generated, `download` this file
+![image](https://user-images.githubusercontent.com/96930989/217975380-35ff9cf2-61a3-4324-80d0-d8ddad7913a7.png)
+
+Check this sample file
+![image](https://user-images.githubusercontent.com/96930989/217975602-8ad51192-88d9-403c-a97a-cc88bcdbf0a0.png)
+![image](https://user-images.githubusercontent.com/96930989/217975608-a8d73c10-9c27-4788-8bca-58430054f6a7.png)
+
+### 9. [Create DCR resources for ingestion into a custom table](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules#create-dcr-resources-for-ingestion-into-a-custom-table)
+#### 1. [Configure the application](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#configure-the-application)
+##### Collect the information:
+* tenant id
+* app name
+* app od
+* client secret
+#### 2. [Create data collection endpoint](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-a-data-collection-endpoint)
+##### Collect the information:
+* DCE name
+* Log ingestion URI
+#### 3. Create a custom table in the workspace 
+#### [Parse and filter sample data](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#parse-and-filter-sample-data)
+![image](https://user-images.githubusercontent.com/96930989/217976554-c7fcf066-8d80-4299-99c7-13db378fcb4f.png)
+![image](https://user-images.githubusercontent.com/96930989/217976584-99ad21cb-6608-45dc-8f75-665ba077455e.png)
+
+
+#### 4. 
 
