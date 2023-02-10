@@ -2,9 +2,9 @@
 ![image](https://user-images.githubusercontent.com/96930989/213092655-8c7f49d1-aec3-4876-a76a-d2a1c2385f67.png)
 
 
-## Deployment on Azure VM running Ubuntu 2204 LTS
+## Deployment on `Azure VM` running Ubuntu 2204 LTS
 * RAM 3G+
-* recommend `Standard B2s`
+* Recommend `Standard B2s`
 
 Note
 ```
@@ -56,8 +56,8 @@ apt-get update
 apt-get install logstash
 ```
 
-```
 This directive will :
+```
 create a logstash user
 create a logstash group
 create a dedicated service file for Logstash
@@ -200,7 +200,7 @@ rm pipeline.conf
 ```
 
 ```
-cat > pipeline2.conf
+cat > pipeline1.conf
 ```
 
 New pipeline configuration file should be in the format below
