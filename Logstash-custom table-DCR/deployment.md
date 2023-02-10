@@ -1,23 +1,15 @@
-# Configure Logstash plugin and collect the logs via AMA
-Links for reference:
-* [Use Logstash to stream logs with pipeline transformations via DCR-based API](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules)
-* [Using Azure Sentinel with Logstash](https://www.youtube.com/watch?v=JnG1EvFmWkU)
-* [microsoft-sentinel-logstash-output-plugin](https://github.com/guguji666666/MS-Sentinel-builtin-parsers/tree/master/DataConnectors/microsoft-sentinel-logstash-output-plugin)
-* [microsoft-logstash-output-azure-loganalytics](https://github.com/guguji666666/MS-Sentinel-builtin-parsers/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)
+## Workflow of logstash
+![image](https://user-images.githubusercontent.com/96930989/213092655-8c7f49d1-aec3-4876-a76a-d2a1c2385f67.png)
 
-## Install logstash (must read)
-* [Use Logstash to stream logs with pipeline transformations via DCR-based API](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules)
-* [How To Install Logstash on Ubuntu 18.04 and Debian 9](https://devconnected.com/how-to-install-logstash-on-ubuntu-18-04-and-debian-9/)
-* [Elastic doc:Installing Logstash ](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html#_yum)
+
+## Deployment on Azure VM running Ubuntu 2204 LTS
+* RAM 3G+
+* recommend `Standard B2s`
 
 Note
 ```
 You can keep the auto-provisioning setting on in the defender for cloud since mutiple DCR could be assigned to a single VM.
 ```
-
-## Deployment on Azure VM running Ubuntu 2204 LTS
-* RAM 3G+
-* recommend `Standard B2s`
 
 ### Switch to root 
 ```sh
@@ -102,49 +94,6 @@ In this step the RAM used may up to 2.6G
 ![image](https://user-images.githubusercontent.com/96930989/217975482-2b3c7087-8e3b-4c04-9d74-274b46e40801.png)
 
 
-### Path of logstash config file
-* Workflow of logstash
-  ![image](https://user-images.githubusercontent.com/96930989/213092655-8c7f49d1-aec3-4876-a76a-d2a1c2385f67.png)
-
-* Standard configuration files, that configures Logstash itself.
-```
-/etc/logstash/logstash.yml
-```
-* Pipeline configuration files
-```
-/etc/logstash/conf.d
-```
-* Create your own pipeline configuration file, we will fill the content later
-```sh
-cd /etc/logstash/conf.d/
-```
-```sh
-cat > pipeline1.conf
-```
-
-### Lists all installed plugins
-```sh
-cd ~
-```
-```sh
-/usr/share/logstash/bin/logstash-plugin list 
-```
-
-You can also list installed plugins with version information
-```sh
-bin/logstash-plugin list --verbose
-```
-
-Updates all installed plugins
-```sh
-/usr/share/logstash/bin/logstash-plugin update
-```
-
-You can also update only the plugin you specify
-```sh
-/usr/share/logstash/bin/logstash-plugin update <name of plugin>
-```
-
 ### 7. Create sample file to ingest logs into the Custom table
 ```
 cd /etc/logstash/conf.d
@@ -193,12 +142,12 @@ Check this sample file
 ##### Collect the information:
 * tenant id
 * app name
-* app od
+* app id (client id)
 * client secret
 #### 2. [Create data collection endpoint](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-a-data-collection-endpoint)
 ##### Collect the information:
 * DCE name
-* Log ingestion URI
+* DCE Log ingestion URI
 #### 3. Create a custom table in the workspace 
 #### [Parse and filter sample data](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#parse-and-filter-sample-data)
 ![image](https://user-images.githubusercontent.com/96930989/217976554-c7fcf066-8d80-4299-99c7-13db378fcb4f.png)
@@ -233,9 +182,29 @@ Skip the Send sample data step.
 
 ### 10. [Configure Logstash configuration file](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules#configure-logstash-configuration-file)
 
+#### Information requried
+* tenant id
+* app id (client id)
+* client secret
+* DCE Logs ingestion URI
+* DCR immutable ID
+* DCR stream name
 
+Run the commands below
+```
+cd /etc/logstash/conf.d
+```
+
+```
+rm pipeline.conf
+```
+
+```
+cat > pipeline2.conf
+```
 
 New pipeline configuration file should be in the format below
+
 ```
 input {
     generator {
@@ -257,4 +226,65 @@ output {
     sample_file_path => "/tmp"
   }
 }
+```
+
+```
+systemctl restart logstash
+``` 
+
+Then wait for 10 mins and check the results in the workspace. If the configuration is correct you will see the output:
+![image](https://user-images.githubusercontent.com/96930989/217994591-d8d67409-11c5-44f1-b275-6ebdc0aea3b8.png)
+
+
+### Reference
+* [Use Logstash to stream logs with pipeline transformations via DCR-based API](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules)
+* [Using Azure Sentinel with Logstash](https://www.youtube.com/watch?v=JnG1EvFmWkU)
+* [microsoft-sentinel-logstash-output-plugin](https://github.com/guguji666666/MS-Sentinel-builtin-parsers/tree/master/DataConnectors/microsoft-sentinel-logstash-output-plugin)
+* [microsoft-logstash-output-azure-loganalytics](https://github.com/guguji666666/MS-Sentinel-builtin-parsers/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)
+
+### Install logstash
+* [Use Logstash to stream logs with pipeline transformations via DCR-based API](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules)
+* [How To Install Logstash on Ubuntu 18.04 and Debian 9](https://devconnected.com/how-to-install-logstash-on-ubuntu-18-04-and-debian-9/)
+* [Elastic doc:Installing Logstash ](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html#_yum)
+
+
+### Path of logstash config file
+
+* Standard configuration files, that configures Logstash itself.
+```
+/etc/logstash/logstash.yml
+```
+* Pipeline configuration files
+```
+/etc/logstash/conf.d
+```
+* Create your own pipeline configuration file, we will fill the content later
+```sh
+cd /etc/logstash/conf.d/
+```
+```sh
+cat > pipeline1.conf
+```
+
+### Lists all installed plugins
+```sh
+cd ~
+```
+```sh
+/usr/share/logstash/bin/logstash-plugin list 
+```
+
+You can also list installed plugins with version information
+```sh
+bin/logstash-plugin list --verbose
+```
+
+Updates all installed plugins
+```sh
+/usr/share/logstash/bin/logstash-plugin update
+```
+
+You can also update only the plugin you specify
+```sh
+/usr/share/logstash/bin/logstash-plugin update <name of plugin>
 ```
