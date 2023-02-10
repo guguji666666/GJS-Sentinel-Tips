@@ -182,7 +182,7 @@ Skip the Send sample data step.
 
 ### 10. [Configure Logstash configuration file](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules#configure-logstash-configuration-file)
 
-#### Information requried
+#### Information required
 * tenant id
 * app id (client id)
 * client secret
