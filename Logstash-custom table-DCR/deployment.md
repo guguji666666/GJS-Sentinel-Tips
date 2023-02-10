@@ -215,8 +215,46 @@ Then save the results
 
 ![image](https://user-images.githubusercontent.com/96930989/217982794-109104b1-be56-4333-9d71-7cf70b050d80.png)
 
-#### 4. 
+#### 4. [Collect information from DCR](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#collect-information-from-the-dcr)
 * DCR name
 * DCR immutableId
 * DCR stream name
 
+#### 5. Assign permission to DCR
+```
+This step is to give the application permission to use the DCR. Any application that uses the correct application ID and application key can now send data to the new DCE and DCR.
+```
+![image](https://user-images.githubusercontent.com/96930989/217984174-1ee6f384-6ad8-45ee-ad6f-95725bdcd9cc.png)
+Skip the Send sample data step.
+
+#### 6. Assign new DCR to the VM
+![image](https://user-images.githubusercontent.com/96930989/217984223-fe06060e-1d9f-4e7c-b375-e2876caf7ef4.png)
+
+
+### 10. [Configure Logstash configuration file](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules#configure-logstash-configuration-file)
+
+
+
+New pipeline configuration file should be in the format below
+```
+input {
+    generator {
+          lines => [
+               "This is a test log message from demo"
+          ]
+         count => 10
+    }
+}
+output {
+  microsoft-sentinel-logstash-output-plugin {
+    client_app_Id => "<enter your client_app_id value here>"
+    client_app_secret => "<enter your client_app_secret value here>"
+    tenant_id => "<enter your tenant id here> "
+    data_collection_endpoint => "<enter your DCE logsIngestion URI here> "
+    dcr_immutable_id => "<enter your DCR immutableId here> "
+    dcr_stream_name => "<enter your stream name here> "
+    create_sample_file=> false
+    sample_file_path => "/tmp"
+  }
+}
+```
