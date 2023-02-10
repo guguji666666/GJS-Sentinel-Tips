@@ -148,6 +148,8 @@ Check this sample file
 ##### Collect the information:
 * DCE name
 * DCE Log ingestion URI
+![image](https://user-images.githubusercontent.com/96930989/217995625-8a16f928-2aad-4ef4-9b6b-b5a4b8c7cf7b.png)
+
 #### 3. Create a custom table in the workspace 
 #### [Parse and filter sample data](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#parse-and-filter-sample-data)
 ![image](https://user-images.githubusercontent.com/96930989/217976554-c7fcf066-8d80-4299-99c7-13db378fcb4f.png)
@@ -168,6 +170,7 @@ Then save the results
 * DCR name
 * DCR immutableId
 * DCR stream name
+![image](https://user-images.githubusercontent.com/96930989/217995923-f3c9c9da-6347-4136-bf09-c049b0851874.png)
 
 #### 5. Assign permission to DCR
 ```
