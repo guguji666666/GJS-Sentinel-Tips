@@ -204,6 +204,18 @@ Check this sample file
 ![image](https://user-images.githubusercontent.com/96930989/217976554-c7fcf066-8d80-4299-99c7-13db378fcb4f.png)
 ![image](https://user-images.githubusercontent.com/96930989/217976584-99ad21cb-6608-45dc-8f75-665ba077455e.png)
 
+Modify the KQL query
+```kusto
+source
+| extend TimeGenerated = ls_timestamp
+```
+![image](https://user-images.githubusercontent.com/96930989/217982753-7ae92e05-efca-441a-92c6-394147e37f97.png)
+![image](https://user-images.githubusercontent.com/96930989/217982769-d31c11f7-4e37-4c78-b1cf-76b08805bead.png)
+Then save the results
+![image](https://user-images.githubusercontent.com/96930989/217982794-109104b1-be56-4333-9d71-7cf70b050d80.png)
 
 #### 4. 
+* DCR name
+* DCR immutableId
+* DCR stream name
 
