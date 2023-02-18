@@ -1,6 +1,6 @@
-#### 1.Alert when the times of same password from same IP exceeds thereshold
+#### 1. Generate alerts when the times of same password from same IP exceeds thereshold
 
-Due to igestion delay we can only use scheduled analytics rule
+Due to ingestion delay we can only use scheduled analytics rule
 ```kusto
 let ingestion_delay = 3min;
 let rule_look_back = 5min;
