@@ -23,7 +23,7 @@ Possible reasons:
 4. Custom parsers failed
 
 Troubleshooting steps:
-1. Capture the `HAR` log when `refreshing` the data connector page
+1. Capture the `HAR` log following the steps [Capture HAR logs in Edge/Chrome](https://github.com/guguji666666/Logs-tracing#capture-har-logs-in-edgechrome) when `refreshing` the data connector page
 ![image](https://user-images.githubusercontent.com/96930989/211319057-e6e73958-4476-4441-985e-f03d01a2c7fb.png)
 2. In HAR log, look for the event whose `response` is "400"
 ![image](https://user-images.githubusercontent.com/96930989/211438200-4f3d2f62-e365-45b4-854a-8c9d43007ae2.png)
