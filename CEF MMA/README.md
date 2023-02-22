@@ -32,6 +32,7 @@ cat security-config-omsagent.conf
 ```
 /etc/opt/microsoft/omsagent/[WorkspaceID]/conf/omsagent.d/security_events.conf
 ```
+![image](https://user-images.githubusercontent.com/96930989/220628825-e7cb6a95-e74e-4f9a-860c-8318bbd80fb8.png)
 
 
 ## 2. Check configuration betwween CEF data sources and rsyslog daemon
