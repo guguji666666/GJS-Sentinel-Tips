@@ -1,4 +1,5 @@
 # TSG for CEF log forwarder with MMA
+## TSG steps
 ## 1. Check Firewall rules and forwarding rules between rsyslog daemon and MMA
 ### Path : /etc/rsyslog.d 
 ```sh
@@ -7,10 +8,19 @@ sudo ls /etc/rsyslog.d
 ![image](https://user-images.githubusercontent.com/96930989/211133207-f579d5ac-7681-4fe5-874b-4bbb0720f581.png)
 
 * 20-ufw.conf : Firewall rules on local machine
-
+```
+/etc/rsyslog.d
+```
 * 50-default.conf : Could configure local logging and so on
-
+```
+/etc/rsyslog.d
+```
 * security-config-omsagent.conf : Forwarding configuration between rsyslog daemon and MMA (filter to receive `CEF` logs only)
+
+* security_events.conf : Rules set on OMS agent
+```
+/etc/opt/microsoft/omsagent/[WorkspaceID]/conf/omsagent.d/security_events.conf
+```
 
 ```sh
 cat 20-ufw.conf
