@@ -1,5 +1,19 @@
 # TSG for CEF log forwarder with MMA
-## TSG steps
+## [Workflow](https://learn.microsoft.com/en-us/azure/sentinel/connect-common-event-format) 
+### CEF forwarder server is Azure VM
+![image](https://user-images.githubusercontent.com/96930989/220794512-eba62a76-b297-4bb9-aacb-041861621341.png)
+### CEF forwarder server is on-prem/other cloud server
+![image](https://user-images.githubusercontent.com/96930989/220794518-e0f67296-5016-49e2-92ba-b9cd41c04961.png)
+
+1. Data source send out data through firewall
+2. Syslog daemon on syslog forwarder server > listening for logs on TCP port 514 by default
+3. Syslog daemon on syslog forwarder server > set filter to collect CEF logs only
+4. Syslog daemon forwards log to MMA(OMS agent) via TCP port 25226
+5. MMA listens for CEF logs from built-in syslog daemon on TCP port 25226 
+6. MMA performs CEF logs mapping so that the logs parsed could be accepted by workspace
+7. MMA sends the CEF logs to the workspace
+
+## Basic troubleshooting steps
 ## 1. Check Firewall rules and forwarding rules between rsyslog daemon and MMA
 ### Path : /etc/rsyslog.d 
 ```sh
