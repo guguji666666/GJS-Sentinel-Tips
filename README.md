@@ -38,13 +38,10 @@ NO, only the solution is removed, the contents deployed by it will not be remove
 Sample for `CrowdStrike Falcon Endpoint Protection`
 ![image](https://user-images.githubusercontent.com/96930989/212284641-77218147-2ecb-4067-a08d-2c944895bfad.png)
 
-API reference:
+## API reference:
 * [List workspaces under subscription](https://learn.microsoft.com/en-us/rest/api/loganalytics/workspaces/list?tabs=HTTP)
-
 * [Saved Searches - List By Workspace](https://learn.microsoft.com/en-us/rest/api/loganalytics/saved-searches/list-by-workspace?tabs=HTTP)
-
 * [Saved Searches - Get](https://learn.microsoft.com/en-us/rest/api/loganalytics/saved-searches/get?tabs=HTTP)
-
 * [Saved Searches - Delete](https://learn.microsoft.com/en-us/rest/api/loganalytics/saved-searches/delete?tabs=HTTP#code-try-0)
 
 Please notice that the `savedSearchId` is the name here
