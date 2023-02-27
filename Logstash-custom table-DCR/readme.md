@@ -1,11 +1,11 @@
-## Workflow of logstash
+## 1. Workflow of logstash
 ![image](https://user-images.githubusercontent.com/96930989/213092655-8c7f49d1-aec3-4876-a76a-d2a1c2385f67.png)
 * The logstash pipeline conguration file consists of three parts: inputs, filters, and outputs.
 * Logstash checks the pipeline configuration files under path `/etc/logstash/conf.d/`, then handles the incoming data.
 
 
-## Deployment on Azure VM
-* OS:Ubuntu 2204 LTS
+## 2. eployment on Azure VM
+* OS : Ubuntu 2204 LTS
 * RAM 3G+ (recommended)
 * Recommend `Standard B2s`
 
@@ -242,6 +242,12 @@ Then wait for 10 mins and check the results in the workspace. If the configurati
 ![image](https://user-images.githubusercontent.com/96930989/217994591-d8d67409-11c5-44f1-b275-6ebdc0aea3b8.png)
 
 
+## 3. TSG steps
+
+
+
+
+
 ### Reference
 * [Use Logstash to stream logs with pipeline transformations via DCR-based API](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules)
 * [Using Azure Sentinel with Logstash](https://www.youtube.com/watch?v=JnG1EvFmWkU)
@@ -294,6 +300,4 @@ You can also update only the plugin you specify
 ```sh
 /usr/share/logstash/bin/logstash-plugin update <name of plugin>
 ```
-
-## TSG steps
 
