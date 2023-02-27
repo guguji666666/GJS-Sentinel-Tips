@@ -244,7 +244,7 @@ Then wait for 10 mins and check the results in the workspace. If the configurati
 
 ## 3. TSG steps
 If cx fails to find the incoming log in the custom table, we could then follow the steps below
-* 
+1. Check 
 
 
 
