@@ -4,7 +4,7 @@
 * Logstash checks the pipeline configuration files under path `/etc/logstash/conf.d/`, then handles the incoming data.
 
 
-## 2. eployment on Azure VM
+## 2. Deployment on Azure VM
 * OS : Ubuntu 2204 LTS
 * RAM 3G+ (recommended)
 * Recommend `Standard B2s`
@@ -189,8 +189,8 @@ Skip the Send sample data step.
 ### 10. [Configure Logstash configuration file](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules#configure-logstash-configuration-file)
 
 #### Information required
-* tenant id
-* app id (client id)
+* Tenant id
+* App id (client id)
 * client secret
 * DCE Logs ingestion URI
 * DCR immutable ID
@@ -254,7 +254,55 @@ If cx fails to find the incoming log in the custom table, we could then follow t
 ![image](https://user-images.githubusercontent.com/96930989/221455924-a64d3ce8-9135-4320-8a40-8184ef1f3e13.png)
 ![image](https://user-images.githubusercontent.com/96930989/221455946-88d7e80b-248f-4481-8f1d-7dd60d5ff684.png)
 
+4. Check the state of logstash service on VM
+Run command
+```sh
+systemctl status logstash
+```
+![image](https://user-images.githubusercontent.com/96930989/213091935-d89b3f36-995c-4559-a49e-bf9e66d4d9fb.png)
 
+Reinstall logstash running commmands
+```sh
+apt-get install logstash
+
+systemctl enable logstash
+
+systemctl start logstash
+```
+* If the logstash service could run successfully after reinstallation, we continue troubleshooting
+* If the logstash service can't run successfully, we'd suggest cx to involve the enginner from logstash team
+
+5. Check the parameters configured in the pipeline file
+* Tenant id
+* App id (client id)
+* client secret
+* DCE Logs ingestion URI
+* DCR immutable ID
+* DCR stream name
+
+6. Create a backup of the current pipeline file, remove it and create a test piepeline file
+```
+input {
+    generator {
+          lines => [
+               "This is a test log message from demo"
+          ]
+         count => 10
+    }
+}
+output {
+  microsoft-sentinel-logstash-output-plugin {
+    create_sample_file => true
+    sample_file_path => "/tmp" #for example: "c:\\temp" (for windows) or "/tmp" for Linux. 
+  }
+}
+```
+Then run the command and see if the sample logs could be generated 
+```
+systemctl restart logstash
+```
+* If the sample logs couldn't be generated, we'd suggest cx to involve the enginner from logstash team since the logstash service is not working properly
+* If the sample logs could be generated and the parameters in the pipeline configration file are correct, we'd suggest to involve Azure monitoring team for further investigation
 
 ## 4. Other reference
 ### Doc
