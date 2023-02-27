@@ -305,7 +305,7 @@ systemctl restart logstash
 * If the sample logs could be generated and the parameters in the pipeline configuration file are verified, we'd suggest to involve Azure monitoring team for further investigation
 
 ## 4. Other reference
-### Doc
+### MS Doc
 * [Use Logstash to stream logs with pipeline transformations via DCR-based API](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules)
 * [Using Azure Sentinel with Logstash](https://www.youtube.com/watch?v=JnG1EvFmWkU)
 * [microsoft-sentinel-logstash-output-plugin](https://github.com/guguji666666/MS-Sentinel-builtin-parsers/tree/master/DataConnectors/microsoft-sentinel-logstash-output-plugin)
