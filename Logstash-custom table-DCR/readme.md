@@ -1,9 +1,12 @@
 ## Workflow of logstash
 ![image](https://user-images.githubusercontent.com/96930989/213092655-8c7f49d1-aec3-4876-a76a-d2a1c2385f67.png)
+* The logstash pipeline conguration file consists of three parts: inputs, filters, and outputs.
+* Logstash checks the pipeline configuration files under path `/etc/logstash/conf.d/`, then handles the incoming data.
 
 
-## Deployment on `Azure VM` running Ubuntu 2204 LTS
-* RAM 3G+
+## Deployment on Azure VM
+* OS:Ubuntu 2204 LTS
+* RAM 3G+ (recommended)
 * Recommend `Standard B2s`
 
 Note
@@ -269,7 +272,7 @@ cd /etc/logstash/conf.d/
 cat > pipeline1.conf
 ```
 
-### Lists all installed plugins
+### Lists all installed logstash plugins
 ```sh
 cd ~
 ```
@@ -291,3 +294,6 @@ You can also update only the plugin you specify
 ```sh
 /usr/share/logstash/bin/logstash-plugin update <name of plugin>
 ```
+
+## TSG steps
+
