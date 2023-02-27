@@ -244,7 +244,15 @@ Then wait for 10 mins and check the results in the workspace. If the configurati
 
 ## 3. TSG steps
 If cx fails to find the incoming log in the custom table, we could then follow the steps below
-1. Check 
+1. Check if DCR is assigne to the VM and DCE is selected
+![image](https://user-images.githubusercontent.com/96930989/221455738-e43af103-4b5b-4278-b426-047b52ab9b46.png)
+
+2. Check if the desination is the custom table in the workspace with sentinel enabled
+![image](https://user-images.githubusercontent.com/96930989/221455636-0bbd3c78-9cd5-4029-80ef-62e4cba063dd.png)
+
+3. Check the schema of the custom table (we may need it if we want to invole the Azure monitoring team later)
+![image](https://user-images.githubusercontent.com/96930989/221455924-a64d3ce8-9135-4320-8a40-8184ef1f3e13.png)
+![image](https://user-images.githubusercontent.com/96930989/221455946-88d7e80b-248f-4481-8f1d-7dd60d5ff684.png)
 
 
 
