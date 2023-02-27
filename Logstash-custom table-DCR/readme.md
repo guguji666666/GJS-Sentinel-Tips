@@ -302,7 +302,7 @@ Then run the command and see if the sample logs could be generated
 systemctl restart logstash
 ```
 * If the sample logs couldn't be generated, we'd suggest cx to involve the enginner from logstash team since the logstash service is not working properly
-* If the sample logs could be generated and the parameters in the pipeline configration file are correct, we'd suggest to involve Azure monitoring team for further investigation
+* If the sample logs could be generated and the parameters in the pipeline configuration file are verified, we'd suggest to involve Azure monitoring team for further investigation
 
 ## 4. Other reference
 ### Doc
