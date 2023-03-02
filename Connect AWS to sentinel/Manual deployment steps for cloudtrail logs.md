@@ -46,9 +46,17 @@ Double check the IAM permissions once the role is created
 
 ### 5. Configure an AWS service to export logs to an S3 bucket
 
+In this article we use cloudtrail as the source [Creating a trail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-a-trail-using-the-console-first-time.html)
 
+![image](https://user-images.githubusercontent.com/96930989/222441761-ea2f17ae-75bc-45dc-bfe3-aa072fd43c0b.png)
 
-### 6. Apply required policeis to SQS
+We can use existing S3 bucket to store cloudtrail logs
+![image](https://user-images.githubusercontent.com/96930989/222442908-c12e66d0-b81b-4d94-b42a-e9d5cf1ec6b8.png)
+
+Create the cloudtrail
+![image](https://user-images.githubusercontent.com/96930989/222444572-a02be7b1-4dcf-4378-973a-639b19e2291b.png)
+
+### 6. Apply required policies to SQS
 
 ### 7. Apply required policies to S3 bucket
 
