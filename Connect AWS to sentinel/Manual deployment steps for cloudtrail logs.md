@@ -86,10 +86,20 @@ or
 ![image](https://user-images.githubusercontent.com/96930989/222450051-0dfed638-5068-4901-b6a4-64e85d711e6a.png)
 
 
+### 8. [Enable notification to SQS at S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-event-notifications.html)
+
+Please notice the FIFO SQS is not supported here
+![image](https://user-images.githubusercontent.com/96930989/222451588-b92724f3-41c7-4bc6-99d4-a95f9da12b0a.png)
+
+We must use a standard SQS
+![image](https://user-images.githubusercontent.com/96930989/222451874-677366a7-2eed-411c-934a-8127b4bd6629.png)
 
 
+### 9. Complete configuration in Microsft Sentinel
 
-### 8. Enable SQS notification
+![image](https://user-images.githubusercontent.com/96930989/222452552-e95cafc7-8341-4c51-93fa-538ff8b776db.png)
 
-### 9. Check incoming logs in sentinel
+![image](https://user-images.githubusercontent.com/96930989/222452671-29389980-b7a0-4ddf-9fd5-f3611fb8c762.png)
+
+### 10. Wait for 2 hours and check incoming logs in sentinel
 
