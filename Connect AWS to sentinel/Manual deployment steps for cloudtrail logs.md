@@ -61,12 +61,33 @@ Navigate to the SQS you just created, go to Access policy > Edit
 ![image](https://user-images.githubusercontent.com/96930989/222447122-42a4a893-a86e-4ccc-abe7-8a8c7b4f7b67.png)
 
 
-Replace the SQS policy here, fill in the parameters in your exact environment
+Replace the SQS policy with the context here, fill in the parameters in your exact environment and save
 ![image](https://user-images.githubusercontent.com/96930989/222446720-7d3cc516-5cc4-4fd5-b24b-692c5336473b.png)
 
+### 7. [Apply required policies at S3 bucket](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#cloudtrail)
+
+Navigate to S3 bucket you created before, check the bucket policy here
+![image](https://user-images.githubusercontent.com/96930989/222449009-105e78f2-7110-43f7-8dd6-b3ddd45b95e2.png)
+
+Find the Cloudtrail section in [AWS S3 connector permissions policies
+](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#cloudtrail)
+
+![image](https://user-images.githubusercontent.com/96930989/222449604-8a2b8d62-0fee-449e-bf9d-c4f700bd2044.png)
+
+The S3 bucket must have the polices below
+![image](https://user-images.githubusercontent.com/96930989/222449934-37c07d42-7288-4422-8a32-cf22e791cdfa.png)
+
+and 
+
+![image](https://user-images.githubusercontent.com/96930989/222449974-20b7fead-5088-4f3f-ba27-127a9b96505c.png)
+
+or
+
+![image](https://user-images.githubusercontent.com/96930989/222450051-0dfed638-5068-4901-b6a4-64e85d711e6a.png)
 
 
-### 7. Apply required policies at S3 bucket
+
+
 
 ### 8. Enable SQS notification
 
