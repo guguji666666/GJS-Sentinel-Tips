@@ -18,6 +18,13 @@ Create the SQS
 <img width="1519" alt="image" src="https://user-images.githubusercontent.com/96930989/222417859-d4500195-ef9f-48f4-a964-00ea87f72fef.png">
 
 ### 2. [Create a S3 bucket in AWS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
+We followed the steps here
+![image](https://user-images.githubusercontent.com/96930989/222437966-558e3637-ce38-4aea-8022-89cb5f70b9bf.png)
+
+Uncheck the box
+![image](https://user-images.githubusercontent.com/96930989/222438402-6dbeaae3-65c7-4759-990b-61ecf64e0d09.png)
+
+![image](https://user-images.githubusercontent.com/96930989/222438326-a938532a-1165-415f-a6fe-58f8a2cfa041.png)
 
 
 
