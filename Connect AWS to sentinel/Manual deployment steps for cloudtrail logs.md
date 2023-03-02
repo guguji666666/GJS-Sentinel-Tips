@@ -7,11 +7,20 @@
 
 ## Steps
 ### 1. Create an AWS assumed role and grant access to the AWS Sentinel account
-### 3. Create a Simple Queue Service (SQS) in AWS
-### 3. Create a Simple Queue Service (SQS) in AWS
 
-### 2. Configure an AWS service to export logs to an S3 bucket
+### 2. Create a Simple Queue Service (SQS) in AWS
 
-### 5. Apply IAM permissions policies
-### 4. Enable SQS notification
+### 3. Create a S3 bucket in AWS
+
+### 4. Configure an AWS service to export logs to an S3 bucket
+
+### 5. Apply required IAM permissions to the custom role
+
+### 6. Apply required policeis to SQS
+
+### 7. Apply required policeis to S3 bucket
+
+### 8. Enable SQS notification
+
+### 9. Check incoming logs in sentinel
 
