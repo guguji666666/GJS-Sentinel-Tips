@@ -56,9 +56,17 @@ We can use existing S3 bucket to store cloudtrail logs
 Create the cloudtrail
 ![image](https://user-images.githubusercontent.com/96930989/222444572-a02be7b1-4dcf-4378-973a-639b19e2291b.png)
 
-### 6. Apply required policies to SQS
+### 6. [Apply required policies at SQS](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#common-policies)
+Navigate to the SQS you just created, go to Access policy > Edit
+![image](https://user-images.githubusercontent.com/96930989/222447122-42a4a893-a86e-4ccc-abe7-8a8c7b4f7b67.png)
 
-### 7. Apply required policies to S3 bucket
+
+Replace the SQS policy here, fill in the parameters in your exact environment
+![image](https://user-images.githubusercontent.com/96930989/222446720-7d3cc516-5cc4-4fd5-b24b-692c5336473b.png)
+
+
+
+### 7. Apply required policies at S3 bucket
 
 ### 8. Enable SQS notification
 
