@@ -1,11 +1,11 @@
 ## Manualy connect AWS to sentinel and send cloudtrail log
 
-## Doc
+## Reference doc
 * [Manual setup](https://learn.microsoft.com/en-us/azure/sentinel/connect-aws?tabs=s3#manual-setup)
 * [Common SQS policy and S3 bucket policy](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#sqs-policy)
 * [Permission set on S3 bucket for cloudtrail logs](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#cloudtrail)
 
-## Steps
+## Deployment steps
 
 ### 1. [Create a Simple Queue Service (SQS) in AWS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/step-create-queue.html)
 The type should be `standard`
@@ -24,21 +24,33 @@ We followed the steps here
 Uncheck the box
 ![image](https://user-images.githubusercontent.com/96930989/222438402-6dbeaae3-65c7-4759-990b-61ecf64e0d09.png)
 
-![image](https://user-images.githubusercontent.com/96930989/222438326-a938532a-1165-415f-a6fe-58f8a2cfa041.png)
+![image](https://user-images.githubusercontent.com/96930989/222438580-e8454639-589a-47d6-872c-ba538784c7cb.png)
+
+Create the S3 bucket
+![image](https://user-images.githubusercontent.com/96930989/222438834-76e2c6c9-527e-462a-9e1f-215ec5f7e63e.png)
+
+### 3. [Create an AWS assumed role and grant access to the AWS Sentinel account](https://learn.microsoft.com/en-us/azure/sentinel/connect-aws?tabs=s3#create-an-aws-assumed-role-and-grant-access-to-the-aws-sentinel-account)
+
+### 4. Apply required IAM permissions to the custom role
+* AmazonSQSReadOnlyAccess
+* AWSLambdaSQSQueueExecutionRole
+* AmazonS3ReadOnlyAccess
+* KMS access (optional)
+
+Create the custom role
+![image](https://user-images.githubusercontent.com/96930989/222441344-d9b584ed-b27d-470c-b125-feb32fa07324.png)
+
+Double check the IAM permissions once the role is created
+![image](https://user-images.githubusercontent.com/96930989/222441545-9cf3802c-e5a0-4205-9168-fcfa1bbd2382.png)
 
 
-
-### 3. Create an AWS assumed role and grant access to the AWS Sentinel account
-
+### 5. Configure an AWS service to export logs to an S3 bucket
 
 
-### 4. Configure an AWS service to export logs to an S3 bucket
-
-### 5. Apply required IAM permissions to the custom role
 
 ### 6. Apply required policeis to SQS
 
-### 7. Apply required policeis to S3 bucket
+### 7. Apply required policies to S3 bucket
 
 ### 8. Enable SQS notification
 
