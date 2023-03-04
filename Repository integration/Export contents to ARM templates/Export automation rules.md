@@ -131,7 +131,7 @@ Sample in the lab:
 List the all existing automation rules with details, type name of resourcegroup where the `workspace` belongs to
 ![image](https://user-images.githubusercontent.com/96930989/212606125-3bf4e0f2-a177-415f-ab2e-5aea8cb2c722.png)
 
-I define all the actions in the test automation rule
+I define several actions in the test automation rule so that i could get more details from the sample
 ![image](https://user-images.githubusercontent.com/96930989/212612370-7da240c4-fdaa-4762-bc36-40f083d53a2a.png)
 
 With the reference from the existing automation rules, the format of ARM template used in github/devops repository pipeline should follow:
