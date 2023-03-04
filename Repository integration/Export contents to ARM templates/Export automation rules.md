@@ -118,7 +118,7 @@ If we use the template mentioned in [Creates a new Microsoft Sentinel Automation
 }
 ```
 
-## But if we deploy the automation rules via `github/devops` repository pipeline, the process will run in `backend` and we'll not see this page
+### But if we deploy the automation rules via `github/devops` repository pipeline, the process will run in `backend` and we'll not see this page to define the parameters interactively
 
 ### Deploy automation rules using ARM template `without` typing the parameters interactively
 
