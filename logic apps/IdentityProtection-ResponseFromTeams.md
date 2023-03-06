@@ -1,5 +1,7 @@
 ## IdentityProtection-ResponseFromTeams
 
+![image](https://user-images.githubusercontent.com/96930989/223096206-6dbec184-c6f3-4861-aea5-819764fe4362.png)
+
 ### Compose-Adaptive card body
 ```json
 {
@@ -162,3 +164,9 @@
   "type": "AdaptiveCard",
   "version": "1.0"
 ```
+
+### Sample output
+
+![image](https://user-images.githubusercontent.com/96930989/223096533-7b810229-5416-4bd0-a17b-2c904c8e297e.png)
+
+![image](https://user-images.githubusercontent.com/96930989/223096577-f1227fc2-499c-4679-b4d7-504709fb32c2.png)
