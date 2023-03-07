@@ -170,3 +170,5 @@
 ![image](https://user-images.githubusercontent.com/96930989/223096533-7b810229-5416-4bd0-a17b-2c904c8e297e.png)
 
 ![image](https://user-images.githubusercontent.com/96930989/223096577-f1227fc2-499c-4679-b4d7-504709fb32c2.png)
+
+Once we close the incident in teams, the incident is closed in sentinel as well
