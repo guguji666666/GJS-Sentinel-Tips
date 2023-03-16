@@ -1,9 +1,9 @@
 ## [Deploy CEF forwarder with AMA](https://learn.microsoft.com/en-us/azure/sentinel/connect-cef-ama)
 
 ### Workflow
-#### CEF source and forwarder set on a single server
+#### 1. CEF source and forwarder set on a single server
 ![image](https://user-images.githubusercontent.com/96930989/225633906-299fca10-2f80-49f6-b366-205a25c07824.png)
-#### CEF source and forwarder set on different servers
+#### 2. CEF source and forwarder set on different servers
 ![image](https://user-images.githubusercontent.com/96930989/225633923-4f1c8262-394f-4d62-898d-8ebb9bc8c3eb.png)
 
 ### MS TSG guidance
