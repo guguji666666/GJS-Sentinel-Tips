@@ -14,7 +14,7 @@
 7. MMA sends the CEF logs to the workspace
 
 ## [Basic troubleshooting steps](https://learn.microsoft.com/en-us/azure/sentinel/troubleshooting-cef-syslog?tabs=cef)
-## 1. Check Firewall rules and forwarding rules between rsyslog daemon and MMA
+### 1. Check Firewall rules and forwarding rules between rsyslog daemon and MMA
 ### Path : /etc/rsyslog.d 
 ```sh
 sudo ls /etc/rsyslog.d
@@ -49,7 +49,7 @@ cat security-config-omsagent.conf
 ![image](https://user-images.githubusercontent.com/96930989/220628825-e7cb6a95-e74e-4f9a-860c-8318bbd80fb8.png)
 
 
-## 2. Check configuration betwween CEF data sources and rsyslog daemon
+### 2. Check configuration betwween CEF data sources and rsyslog daemon
 ### Path : /etc/rsyslog.conf 
 ```sh
 cat /etc/rsyslog.conf
@@ -57,7 +57,7 @@ cat /etc/rsyslog.conf
 In this file we can check the protocol and port set on the rsyslog daemon
 ![image](https://user-images.githubusercontent.com/96930989/211134060-7ddf3240-b896-4ff0-98d9-f75268f005ff.png)
 
-## 3. Check ASA firewall/CEF parsing
+### 3. Check ASA firewall/CEF parsing
 
 Check if ASA firewall mapping exists in configuration file
 ```sh
@@ -78,7 +78,7 @@ cat /opt/microsoft/omsagent/plugin/security_lib.rb
 ```
 ![image](https://user-images.githubusercontent.com/96930989/211134339-1797f29e-e62d-4867-89ac-48502cf10a96.png)
 
-## 4. Check hostname mapping 
+### 4. Check hostname mapping 
 ```sh
 grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
 ```
@@ -98,7 +98,7 @@ service rsyslog restart
 /opt/microsoft/omsagent/bin/service_control restart <workspaceID>
 ```
 
-## 5. Check if rsyslog daemon and MMA are listening to port 514/25226 (or customized ports being used)
+### 5. Check if rsyslog daemon and MMA are listening to port 514/25226 (or customized ports being used)
 
 Checks that the necessary connections are established: 
 * tcp 514 for receiving data
@@ -110,7 +110,7 @@ netstat -an | grep 25226![image](https://user-images.githubusercontent.com/96930
 ![image](https://user-images.githubusercontent.com/96930989/211134831-a47385d9-835d-4447-b950-ba553cacd3c3.png)
 
 
-## 6. Verify data flow on port 514 and 25226 (or customized ports being used)
+### 6. Verify data flow on port 514 and 25226 (or customized ports being used)
 
 Checks that the syslog daemon is receiving data on port 514, and that the agent is receiving data on port 25226:
 
@@ -122,7 +122,7 @@ sudo tcpdump -A -ni any port 25226 -vv
 ```
 
 
-## 7. Check connection between OMS agent and Microsoft sentinel  
+### 7. Check connection between OMS agent and Microsoft sentinel  
 [Troubleshoot a connection between Microsoft Sentinel and a CEF or Syslog data connector](https://learn.microsoft.com/en-us/azure/sentinel/troubleshooting-cef-syslog?tabs=cef#linux-and-oms-agent-related-issues)
 
 Make sure that you can see packets arriving on TCP/UDP port 514 on the Syslog collector
@@ -149,7 +149,7 @@ sudo tac /var/log/syslog | grep CEF -m 10
 ```
 ![image](https://user-images.githubusercontent.com/96930989/213848193-af1d4e9d-46c7-4f98-9143-a46680fbb34e.png)
 
-## 8. Check if the CEF log received matches the CEF format
+### 8. Check if the CEF log received matches the CEF format
 
 1. Navigate to [CEF debug regex](https://regex101.com/)
 2. Input CEF format
@@ -166,7 +166,7 @@ cat /etc/opt/microsoft/omsagent/<your workspace ID>/conf/omsagent.d/security_eve
 ![image](https://user-images.githubusercontent.com/96930989/213848436-8e31cc32-609f-4fb6-9fb6-7fc7309c1f8e.png)
 
 
-## 9. Sample CEF logs with logger command
+### 9. Sample CEF logs with logger command
 ```cmd
 logger -p local4.warn -P 514 -n 127.0.0.1 -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c113d028ca1ec1250ca0491"
 ```
