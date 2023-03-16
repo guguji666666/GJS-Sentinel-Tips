@@ -13,7 +13,7 @@
 6. MMA performs CEF logs mapping so that the logs parsed could be accepted by workspace
 7. MMA sends the CEF logs to the workspace
 
-## [Basic troubleshooting steps](https://learn.microsoft.com/en-us/azure/sentinel/troubleshooting-cef-syslog?tabs=cef）
+## [Basic troubleshooting steps](https://learn.microsoft.com/en-us/azure/sentinel/troubleshooting-cef-syslog?tabs=cef)
 ## 1. Check Firewall rules and forwarding rules between rsyslog daemon and MMA
 ### Path : /etc/rsyslog.d 
 ```sh
