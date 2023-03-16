@@ -16,3 +16,17 @@
 netstat -an | grep 514
 ```
 
+#### 4. Make sure that you can see logs being written to the local log file, either `/var/log/messages` or `/var/log/syslog`
+![image](https://user-images.githubusercontent.com/96930989/211135011-7d447f4a-c0d0-4874-ba87-e0795fadcc8c.png)
+
+For Centos/Redhat
+```sh
+sudo tac /var/log/messages | grep CEF -m 10
+```
+![image](https://user-images.githubusercontent.com/96930989/211135017-485afc6d-8314-43a1-863c-e71829a441cc.png)
+
+For Ubuntu/Debian
+```sh
+sudo tac /var/log/syslog | grep CEF -m 10
+```
+![image](https://user-images.githubusercontent.com/96930989/213848193-af1d4e9d-46c7-4f98-9143-a46680fbb34e.png)
