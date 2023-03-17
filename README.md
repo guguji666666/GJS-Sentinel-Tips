@@ -1,14 +1,14 @@
-## Connect differnent data source to Microsoft Sentinel
+## Connect different data source to Microsoft Sentinel
 * [Configure big data analytics settings for Azure Synapse Analytics](https://learn.microsoft.com/en-us/azure/sentinel/notebooks-with-synapse)
 * [Send Azure Databricks application logs to Azure Monitor](https://learn.microsoft.com/en-us/azure/architecture/databricks-monitoring/application-logs)
 * [Stream data from Microsoft Purview Information Protection to Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/connect-microsoft-purview)
 * [Enable streaming execution logs in Azure Functions apps](https://learn.microsoft.com/en-us/azure/azure-functions/streaming-logs)
 * [Stream API management logs to sentinel](https://techcommunity.microsoft.com/t5/microsoft-sentinel/azure-api-management-in-sentinel/m-p/952112)
 * [Monitor and collect diagnostic data for workflows in Azure Logic Apps](https://learn.microsoft.com/en-us/azure/logic-apps/monitor-workflows-collect-diagnostic-data?tabs=consumption)
-* []()
-* []()
-* []()
-
+* [Monitoring Azure Service Bus data reference](https://learn.microsoft.com/en-us/azure/service-bus-messaging/monitor-service-bus-reference)
+* [Monitoring Azure Event Hubs data reference](https://learn.microsoft.com/en-us/azure/event-hubs/monitor-event-hubs-reference)
+* [https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/network-security-groups](https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/network-security-groups)
+* [Analytics rules templates in github](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions)
 
 ## Microsoft Sentinel FAQ
 
