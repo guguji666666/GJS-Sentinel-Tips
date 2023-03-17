@@ -1,4 +1,4 @@
-## Connect different data source to Microsoft Sentinel
+## 1. Connect different data source to Microsoft Sentinel
 * [Configure big data analytics settings for Azure Synapse Analytics](https://learn.microsoft.com/en-us/azure/sentinel/notebooks-with-synapse)
 * [Send Azure Databricks application logs to Azure Monitor](https://learn.microsoft.com/en-us/azure/architecture/databricks-monitoring/application-logs)
 * [Azure Storage Account connector for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/azure-storage-account)
@@ -11,8 +11,7 @@
 * [https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/network-security-groups](https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/network-security-groups)
 * [Analytics rules templates in github](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions)
 
-## Microsoft Sentinel FAQ
-
+## 2. Microsoft Sentinel FAQ
 #### Must read before you enable sentinel
 * [Best practices for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/best-practices)
 * [Best practices for designing a Microsoft Sentinel or Azure Defender for Cloud workspace](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/best-practices-for-designing-a-microsoft-sentinel-or-azure/ba-p/832574)
@@ -40,7 +39,7 @@ As mentioned in the doc [Sentinel free trial](https://learn.microsoft.com/en-us/
 ![image](https://user-images.githubusercontent.com/96930989/212594442-78ac7919-8634-41db-9d50-099278938fd2.png)
 
 
-## Possible errors in the data connector portal
+## 3. Possible errors in the data connector portal
 #### 1. When we try to open the data connectors page in sentinel, we get the `"Unexpected error"`
 ![image](https://user-images.githubusercontent.com/96930989/211318356-9e6403e3-6856-4a7a-a71f-322d63cfb356.png)
 
