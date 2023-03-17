@@ -5,6 +5,29 @@
 * [Best practices for designing a Microsoft Sentinel or Azure Defender for Cloud workspace](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/best-practices-for-designing-a-microsoft-sentinel-or-azure/ba-p/832574)
 * [What’s New: 250+ Solutions in Microsoft Sentinel Content hub!](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/what-s-new-250-solutions-in-microsoft-sentinel-content-hub/ba-p/3692881)
 
+
+#### 1. When uninstalling the solution from content hub, will the contents be removed as well?
+NO, only the solution is removed, the contents deployed by it will not be removed
+
+Sample for `CrowdStrike Falcon Endpoint Protection`
+![image](https://user-images.githubusercontent.com/96930989/212284641-77218147-2ecb-4067-a08d-2c944895bfad.png)
+
+## API reference:
+* [List workspaces under subscription](https://learn.microsoft.com/en-us/rest/api/loganalytics/workspaces/list?tabs=HTTP)
+* [Saved Searches - List By Workspace](https://learn.microsoft.com/en-us/rest/api/loganalytics/saved-searches/list-by-workspace?tabs=HTTP)
+* [Saved Searches - Get](https://learn.microsoft.com/en-us/rest/api/loganalytics/saved-searches/get?tabs=HTTP)
+* [Saved Searches - Delete](https://learn.microsoft.com/en-us/rest/api/loganalytics/saved-searches/delete?tabs=HTTP#code-try-0)
+
+Please notice that the `savedSearchId` is the name here
+![image](https://user-images.githubusercontent.com/96930989/212293144-47c00d16-40ae-408f-a798-c03f18bf5fa9.png)
+
+#### 2. How to check the expiration time of Sentinel free trial?
+As mentioned in the doc [Sentinel free trial](https://learn.microsoft.com/en-us/azure/sentinel/billing?tabs=free-data-meters#free-trial), the expiration time could be found under `News & guides > Free trial` tab in Microsoft Sentinel.
+
+![image](https://user-images.githubusercontent.com/96930989/212594442-78ac7919-8634-41db-9d50-099278938fd2.png)
+
+
+## Possible errors in the data connector portal
 #### 1. When we try to open the data connectors page in sentinel, we get the `"Unexpected error"`
 ![image](https://user-images.githubusercontent.com/96930989/211318356-9e6403e3-6856-4a7a-a71f-322d63cfb356.png)
 
@@ -30,25 +53,4 @@ Troubleshooting steps:
 3. Check the data connector mentioned in the "400" error separately and see if we meet the issue when running the query for this data source `alone`
 4. Check the `volume` of incoming logs from the affected data source found in the HAR log
 5. Check the `time` it takes to perform the query
-
-
-#### 2. When uninstalling the solution from content hub, will the contents be removed as well?
-NO, only the solution is removed, the contents deployed by it will not be removed
-
-Sample for `CrowdStrike Falcon Endpoint Protection`
-![image](https://user-images.githubusercontent.com/96930989/212284641-77218147-2ecb-4067-a08d-2c944895bfad.png)
-
-## API reference:
-* [List workspaces under subscription](https://learn.microsoft.com/en-us/rest/api/loganalytics/workspaces/list?tabs=HTTP)
-* [Saved Searches - List By Workspace](https://learn.microsoft.com/en-us/rest/api/loganalytics/saved-searches/list-by-workspace?tabs=HTTP)
-* [Saved Searches - Get](https://learn.microsoft.com/en-us/rest/api/loganalytics/saved-searches/get?tabs=HTTP)
-* [Saved Searches - Delete](https://learn.microsoft.com/en-us/rest/api/loganalytics/saved-searches/delete?tabs=HTTP#code-try-0)
-
-Please notice that the `savedSearchId` is the name here
-![image](https://user-images.githubusercontent.com/96930989/212293144-47c00d16-40ae-408f-a798-c03f18bf5fa9.png)
-
-#### 3. How to check the expiration time of Sentinel free trial?
-As mentioned in the doc [Sentinel free trial](https://learn.microsoft.com/en-us/azure/sentinel/billing?tabs=free-data-meters#free-trial), the expiration time could be found under `News & guides > Free trial` tab in Microsoft Sentinel.
-
-![image](https://user-images.githubusercontent.com/96930989/212594442-78ac7919-8634-41db-9d50-099278938fd2.png)
 
