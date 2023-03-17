@@ -1,6 +1,7 @@
 ## Connect different data source to Microsoft Sentinel
 * [Configure big data analytics settings for Azure Synapse Analytics](https://learn.microsoft.com/en-us/azure/sentinel/notebooks-with-synapse)
 * [Send Azure Databricks application logs to Azure Monitor](https://learn.microsoft.com/en-us/azure/architecture/databricks-monitoring/application-logs)
+* [Azure Storage Account connector for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/azure-storage-account)
 * [Stream data from Microsoft Purview Information Protection to Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/connect-microsoft-purview)
 * [Enable streaming execution logs in Azure Functions apps](https://learn.microsoft.com/en-us/azure/azure-functions/streaming-logs)
 * [Stream API management logs to sentinel](https://techcommunity.microsoft.com/t5/microsoft-sentinel/azure-api-management-in-sentinel/m-p/952112)
