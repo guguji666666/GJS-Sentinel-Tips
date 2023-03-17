@@ -8,7 +8,7 @@
 * [Monitor and collect diagnostic data for workflows in Azure Logic Apps](https://learn.microsoft.com/en-us/azure/logic-apps/monitor-workflows-collect-diagnostic-data?tabs=consumption)
 * [Monitoring Azure Service Bus data reference](https://learn.microsoft.com/en-us/azure/service-bus-messaging/monitor-service-bus-reference)
 * [Monitoring Azure Event Hubs data reference](https://learn.microsoft.com/en-us/azure/event-hubs/monitor-event-hubs-reference)
-* [https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/network-security-groups](https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/network-security-groups)
+* [Network Security Groups connector for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/network-security-groups)
 * [Analytics rules templates in github](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions)
 
 ## 2. Microsoft Sentinel FAQ
