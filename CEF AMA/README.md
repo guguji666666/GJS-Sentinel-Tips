@@ -28,7 +28,36 @@ du -h syslog*
 ```
 ![image](https://user-images.githubusercontent.com/96930989/226531751-e74e25d5-2e24-4806-9d5f-336845c13c84.png)
 
+On some popular distros (for example Ubuntu 18.04 LTS), rsyslog ships with a default configuration file (`/etc/rsyslog.d/50-default.conf`) which will log events from nearly all facilities to disk at /var/log/syslog.
 
+AMA `doesn't rely on` syslog events being logged to /var/log/syslog. Instead, it configures rsyslog to forward events over a socket directly to the azuremonitoragent service process (mdsd).
+
+If you're sending a `high log volume` through rsyslog, consider modifying the default rsyslog config to `avoid logging these events` to this location /var/log/syslog. The events for this facility would still be forwarded to AMA because of the config in `/etc/rsyslog.d/10-azuremonitoragent.conf`
+
+Check `/etc/rsyslog.d/50-default.conf`
+```sh
+cat /etc/rsyslog.d/50-default.conf
+```
+![image](https://user-images.githubusercontent.com/96930989/226532794-a7b6ed65-ab9f-40e5-9e74-e5f4f4e1ac26.png)
+
+For example, to remove local4 events from being logged at /var/log/syslog, change this line in /etc/rsyslog.d/50-default.conf from this:
+```
+*.*;auth,authpriv.none          -/var/log/syslog
+```
+To this
+```
+*.*;local4.none;auth,authpriv.none          -/var/log/syslog
+```
+Then
+```sh
+sudo systemctl restart rsyslog
+```
+
+Check `/etc/rsyslog.d/10-azuremonitoragent.conf`
+```sh
+cat /etc/rsyslog.d/10-azuremonitoragent.conf
+```
+![image](https://user-images.githubusercontent.com/96930989/226533023-869953b6-c9d7-49e9-89bd-415a8fa179af.png)
 
 #### 3. Check if rsyslog daemon is listening to port 514
 ```sh
