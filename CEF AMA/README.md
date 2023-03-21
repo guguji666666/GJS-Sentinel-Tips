@@ -13,10 +13,28 @@
 
 #### 2. [Rsyslog data not uploaded due to Full Disk space issue on AMA Linux Agent](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot-linux-vm-rsyslog?context=%2Fazure%2Fvirtual-machines%2Fcontext%2Fcontext)
 
+The df command shows almost no space available on /dev/sda1, as shown below
+```sh
+df -h
+```
+![image](https://user-images.githubusercontent.com/96930989/226531417-bf1ba739-e30b-460b-8cae-1988c1046e43.png)
+
+The du command can be used to inspect the disk to determine which files are causing the disk to be full. As shown below (machine is running Ubuntu/Debian)
+```sh
+cd /var/log
+```
+```sh
+du -h syslog*
+```
+![image](https://user-images.githubusercontent.com/96930989/226531751-e74e25d5-2e24-4806-9d5f-336845c13c84.png)
+
+
+
 #### 3. Check if rsyslog daemon is listening to port 514
 ```sh
 netstat -an | grep 514
 ```
+![image](https://user-images.githubusercontent.com/96930989/226531248-7aeabe91-8666-4781-84c7-f0dffd32b326.png)
 
 #### 4. Make sure that you can see logs being written to the local log file, either `/var/log/messages` or `/var/log/syslog`
 ![image](https://user-images.githubusercontent.com/96930989/211135011-7d447f4a-c0d0-4874-ba87-e0795fadcc8c.png)
