@@ -1,4 +1,8 @@
-## [Connect your threat intelligence platform to Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/connect-threat-intelligence-tip#enable-the-threat-intelligence-platforms-data-connector-in-microsoft-sentinel)
+## Connect your threat intelligence platform to Microsoft Sentinel
+
+### Reference doc
+* [Connect your threat intelligence platform to Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/connect-threat-intelligence-tip#enable-the-threat-intelligence-platforms-data-connector-in-microsoft-sentinel)
+* [Create threat intelligence indicator - Graph](https://learn.microsoft.com/en-us/graph/api/tiindicators-post?view=graph-rest-beta&tabs=http)
 
 ### Workflow
 ![image](https://user-images.githubusercontent.com/96930989/226834203-ec5aaf75-069c-404e-9a33-24af28424512.png)
