@@ -80,8 +80,9 @@ sudo tac /var/log/syslog | grep CEF -m 10
 ```
 ![image](https://user-images.githubusercontent.com/96930989/213848193-af1d4e9d-46c7-4f98-9143-a46680fbb34e.png)
 
+#### 5. [Configure syslog rotation](https://www.systutorials.com/docs/linux/man/5-logrotate.conf/)
 
-#### 5. Sample CEF logs with logger command
+#### 6. Sample CEF logs with logger command
 ```cmd
 logger -p local4.warn -P 514 -n 127.0.0.1 -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c113d028ca1ec1250ca0491"
 ```
