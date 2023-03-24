@@ -102,3 +102,32 @@ logger -p local4.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|EncryptionDowngradeSus
 ```cmd
 logger -p user.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|LdapBruteForceSuspiciousActivity|Brute force attack using LDAP simple bind|5|start=2018-12-12T17:52:10.2350665Z app=Ldap msg=10000 password guess attempts were made on 100 accounts from W2012R2-000000-Server. One account password was successfully guessed. externalId=2004 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c114acb8ca1ec1250cacdcb"
 ```
+
+
+#### 7. Capture TC dump logs
+```sh
+sudo tcpdump -w '/tmp/capture.pcap' &
+```
+Note the process id here
+![image](https://user-images.githubusercontent.com/96930989/227417734-2af2edf2-c27d-4f47-8faa-e0d6c52c5603.png)
+
+Wait for 3 mins, launch another session, run the command
+```sh
+Kill <process id>
+```
+![image](https://user-images.githubusercontent.com/96930989/227417784-92655e51-dffb-4dcc-9ce1-0b16d8f3a0a8.png)
+
+Then the previous session will show
+
+![image](https://user-images.githubusercontent.com/96930989/227417818-12cc630f-f87c-4200-bc29-578d363428e4.png)
+
+#### 8. Enable debug logging in rsyslog
+Add a file at `/etc/rsyslog.d/1-debug.conf` with the following contents:
+```sh
+sudo systemctl restart rsyslog
+```
+After this, rsyslog will be outputting internal debug logs to `/var/log/rsyslog.debug.log`
+
+
+#### Other Reference links
+* [Redhat:Why the logs are not getting updated in /var/log/messages ?](https://access.redhat.com/solutions/3094721)
