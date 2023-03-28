@@ -1,4 +1,4 @@
-## Manualy connect AWS to sentinel and send cloudtrail log
+## Export cloudtrail logs to S3 bucket (manual deployment)
 
 ## Reference doc
 * [Manual setup](https://learn.microsoft.com/en-us/azure/sentinel/connect-aws?tabs=s3#manual-setup)
