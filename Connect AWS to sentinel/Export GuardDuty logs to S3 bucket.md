@@ -3,7 +3,7 @@
 ## Reference doc
 * [Manual setup](https://learn.microsoft.com/en-us/azure/sentinel/connect-aws?tabs=s3#manual-setup)
 * [Common SQS policy and S3 bucket policy](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#sqs-policy)
-* [Permission set on S3 bucket for cloudtrail logs](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#cloudtrail)
+* [Permission set on S3 bucket for GuardDuty logs](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#guardduty-policies)
 
 ## Known issues
 
@@ -51,6 +51,7 @@ Create the S3 bucket
 
 
 ### 3. [Create an AWS assumed role and grant access to the AWS Sentinel account](https://learn.microsoft.com/en-us/azure/sentinel/connect-aws?tabs=s3#create-an-aws-assumed-role-and-grant-access-to-the-aws-sentinel-account)
+
 
 ### 4. Apply required IAM permissions to the custom role
 * AmazonSQSReadOnlyAccess
@@ -120,6 +121,7 @@ The steps to Create the KMS key in AWS console are listed here
 
 ![image](https://user-images.githubusercontent.com/96930989/228262729-d3ea5f51-a99e-44fc-8c5b-73a7a2434651.png)
 
+![image](https://user-images.githubusercontent.com/96930989/228263559-e144a2b3-35e2-4610-abaf-45003ed28755.png)
 
 
 ### 6. [Apply required policies at SQS](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#common-policies)
