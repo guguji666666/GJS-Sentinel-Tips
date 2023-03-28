@@ -5,6 +5,15 @@
 * [Common SQS policy and S3 bucket policy](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#sqs-policy)
 * [Permission set on S3 bucket for cloudtrail logs](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#cloudtrail)
 
+
+## Known issues
+
+Different types of logs can be stored in the same S3 bucket, but should not be stored in the same path.
+
+Each SQS queue should point to one type of message, so if you want to ingest GuardDuty findings and VPC flow logs, you should set up separate queues for each type.
+
+Similarly, a single SQS queue can serve only one path in an S3 bucket, so if for any reason you are storing logs in multiple paths, each path requires its own dedicated SQS queue.
+
 ## Deployment steps
 
 ### 1. [Create a Simple Queue Service (SQS) in AWS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/step-create-queue.html)
