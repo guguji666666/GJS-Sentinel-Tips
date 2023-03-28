@@ -133,13 +133,75 @@ Assign key administrators and manage key deletion
 
 ![image](https://user-images.githubusercontent.com/96930989/228265749-07287d2d-7d13-4b68-a14e-eb9d76a92310.png)
 
-Review the configuration of KMS key before creation
+Review the configuration of KMS key before creation, then click Finish
 
 ![image](https://user-images.githubusercontent.com/96930989/228266081-4a005681-541e-46dc-811d-65e8584e2bda.png)
 
+![image](https://user-images.githubusercontent.com/96930989/228266465-d2616747-3300-42a8-b4c1-7f579b072bcd.png)
+
+### 6. [Granting GuardDuty permission to the KMS key](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html)
+
+The steps are listed here
+
+![image](https://user-images.githubusercontent.com/96930989/228267328-edc75518-ba0c-4074-a4ca-8b495292ff80.png)
+
+#### a. [Assign policy to KMS key > Allows GuardDuty to decrypt the logs it sends to S3 bucket](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#kms-policy)
 
 
-### 6. [Apply required policies at SQS](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#common-policies)
+Open the [AWS KMS console](https://console.aws.amazon.com/kms)
+
+To change the AWS Region, use the Region selector in the upper-right corner of the page.
+
+Navigate to `Customer managed keys`
+
+Create a new key or choose an existing key that you plan to use for encrypting exported findings. The key must be in the same Region as the bucket, however, you can use this same bucket and key pair for each Region from where you want to export findings.
+
+Choose your key. Under General configuration panel, copy the key ARN.
+
+![image](https://user-images.githubusercontent.com/96930989/228271067-c163d8db-ef2f-4e3d-ba63-7a5711696276.png)
+
+In the Key policy section, choose `Switch to policy view` > `Edit`.
+
+![image](https://user-images.githubusercontent.com/96930989/228271299-d01ec73f-4839-4d07-92a4-f837873a00e4.png)
+
+![image](https://user-images.githubusercontent.com/96930989/228271500-9e27a2b1-cba7-400b-bb1a-d20c47977d53.png)
+
+
+Add the following key policy to your KMS key, granting GuardDuty access to your key.
+
+```json
+{
+  "Statement": [
+    {
+      "Sid": "Allow GuardDuty to use the key",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "guardduty.amazonaws.com"
+      },
+      "Action": "kms:GenerateDataKey",
+      "Resource": "*"
+    },
+    {
+      "Sid": "Allow use of the key",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "${The ARN of the assumed role you have created for the AWS Sentinel account}"
+        ]
+      },
+      "Action": [
+        "kms:Decrypt"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+Choose Save once done
+
+
+### 7. [Apply required policies at SQS](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#common-policies)
 
 Navigate to the SQS you just created, go to Access policy > Edit
 
@@ -153,7 +215,7 @@ Replace the SQS policy with the context here, fill in the parameters in your exa
 
 
 
-### 7. [Apply required policies at S3 bucket](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#cloudtrail)
+### 8. [Apply required policies at S3 bucket](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#cloudtrail)
 
 Navigate to S3 bucket you created before, check the bucket policy here
 
@@ -162,7 +224,7 @@ Navigate to S3 bucket you created before, check the bucket policy here
 
 
 
-### 8. [Enable notification to SQS at S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-event-notifications.html)
+### 9. [Enable notification to SQS at S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-event-notifications.html)
 
 Please notice the FIFO SQS is not supported here
 
@@ -173,7 +235,7 @@ We must use a standard SQS
 ![image](https://user-images.githubusercontent.com/96930989/222451874-677366a7-2eed-411c-934a-8127b4bd6629.png)
 
 
-### 9. Complete configuration in Microsft Sentinel
+### 10. Complete configuration in Microsft Sentinel
 
 
 ### 10. Wait for 2 hours and check incoming logs in sentinel
