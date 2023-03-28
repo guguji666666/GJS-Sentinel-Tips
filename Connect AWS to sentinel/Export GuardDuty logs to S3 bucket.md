@@ -60,39 +60,60 @@ Double check the IAM permissions once the role is created
 
 ### 5. Configure an AWS service to export logs to an S3 bucket
 
-In this article we use GuardDuty as the source [Exporting findings](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html)
+In this article we use GuardDuty as the source [Exporting GuardDuty findings](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html)
 
-![image](https://user-images.githubusercontent.com/96930989/222441761-ea2f17ae-75bc-45dc-bfe3-aa072fd43c0b.png)
+![image](https://user-images.githubusercontent.com/96930989/228248470-2bb1106d-b559-4d8e-af25-aac2bb0b24d4.png)
 
+#### [Create the GuardDuty source](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html)
 
-Create the cloudtrail source
+GuardDuty supports exporting active findings to CloudWatch Events and, optionally, to an `Amazon S3 bucket`. 
+
+New Active findings that GuardDuty generates are automatically exported within about `5 minutes` after the finding is generated.
+
+#### Note the following about export settings for findings:
+
+Export settings are regional, which means you need to configure export options for each Region in which you're using GuardDuty. However, you can use the same bucket in a single Region as the export destination for each Region you use GuardDuty in.
+
+`Archived findings`, including new instances of `suppressed findings`, `aren't exported`. If you unarchive a finding, its status is updated to Active, and it will be exported at the next interval.
+
+If you enable findings export in a GuardDuty administrator account all findings from associated member accounts that are generated in the current Region are also exported to the same location that you configured for the administrator account.
+
+To configure settings for exporting Active findings to an Amazon S3 bucket you will need :
+* A `KMS key` that GuardDuty can use to encrypt findings
+* An S3 bucket with permissions that allows GuardDuty to upload objects
 
 ![image](https://user-images.githubusercontent.com/96930989/222444572-a02be7b1-4dcf-4378-973a-639b19e2291b.png)
 
-We can also use existing S3 bucket to store cloudtrail logs
+We can also use existing S3 bucket to store GuardDuty logs
 
 ![image](https://user-images.githubusercontent.com/96930989/222442908-c12e66d0-b81b-4d94-b42a-e9d5cf1ec6b8.png)
 
 
 ### 6. [Apply required policies at SQS](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#common-policies)
+
 Navigate to the SQS you just created, go to Access policy > Edit
+
 ![image](https://user-images.githubusercontent.com/96930989/222447122-42a4a893-a86e-4ccc-abe7-8a8c7b4f7b67.png)
 
 
 Replace the SQS policy with the context here, fill in the parameters in your exact environment and save
+
 ![image](https://user-images.githubusercontent.com/96930989/222446720-7d3cc516-5cc4-4fd5-b24b-692c5336473b.png)
 
 ### 7. [Apply required policies at S3 bucket](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#cloudtrail)
 
 Navigate to S3 bucket you created before, check the bucket policy here
+
 ![image](https://user-images.githubusercontent.com/96930989/222449009-105e78f2-7110-43f7-8dd6-b3ddd45b95e2.png)
 
 Find the Cloudtrail section in [AWS S3 connector permissions policies
+
 ](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#cloudtrail)
 
 ![image](https://user-images.githubusercontent.com/96930989/222449604-8a2b8d62-0fee-449e-bf9d-c4f700bd2044.png)
 
 The S3 bucket must have the polices below
+
 ![image](https://user-images.githubusercontent.com/96930989/222449934-37c07d42-7288-4422-8a32-cf22e791cdfa.png)
 
 and 
@@ -107,9 +128,11 @@ or
 ### 8. [Enable notification to SQS at S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-event-notifications.html)
 
 Please notice the FIFO SQS is not supported here
+
 ![image](https://user-images.githubusercontent.com/96930989/222451588-b92724f3-41c7-4bc6-99d4-a95f9da12b0a.png)
 
 We must use a standard SQS
+
 ![image](https://user-images.githubusercontent.com/96930989/222451874-677366a7-2eed-411c-934a-8127b4bd6629.png)
 
 
