@@ -69,12 +69,21 @@ Double check the IAM permissions once the role is created
 
 
 ### 5. Configure an AWS service to export logs to an S3 bucket
+#### First, [Enable GuardDuty source in AWS](https://aws.amazon.com/guardduty/getting-started/)
+![image](https://user-images.githubusercontent.com/96930989/228255018-70dfed1c-be04-4707-b1a2-3142207eba1c.png)
+
+![image](https://user-images.githubusercontent.com/96930989/228255728-06b655ed-aeb8-4bb1-973e-0995083c2fa8.png)
+
+![image](https://user-images.githubusercontent.com/96930989/228255858-b0b9136f-52af-4c54-b2d5-08bfb33d6378.png)
+
+
+
+
+
 
 In this article we use GuardDuty as the source [Exporting GuardDuty findings](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html)
 
 ![image](https://user-images.githubusercontent.com/96930989/228248470-2bb1106d-b559-4d8e-af25-aac2bb0b24d4.png)
-
-#### [Create the GuardDuty source](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html)
 
 GuardDuty supports exporting active findings to CloudWatch Events and, optionally, to an `Amazon S3 bucket`. 
 
