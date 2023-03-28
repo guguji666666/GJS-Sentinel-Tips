@@ -20,16 +20,18 @@ SQS > S3 bucket > S3 bucket paths
 
 ### 1. [Create a Simple Queue Service (SQS) in AWS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/step-create-queue.html)
 The type should be `standard`
-<img width="1121" alt="image" src="https://user-images.githubusercontent.com/96930989/222417208-8a8ffb46-5381-4b47-8258-4c99a96eea40.png">
+![image](https://user-images.githubusercontent.com/96930989/228193846-c73ad77e-b0cf-43a9-afcc-431d163ff197.png)
+
 
 For `Redrive allow policy`, choose `Enabled`. Select one of the following: Allow all, By queue, or Deny all. 
 <img width="1117" alt="image" src="https://user-images.githubusercontent.com/96930989/222417607-e500eb4c-b19c-4603-9817-465ccd4a8f81.png">
 
 Create the SQS
-<img width="1519" alt="image" src="https://user-images.githubusercontent.com/96930989/222417859-d4500195-ef9f-48f4-a964-00ea87f72fef.png">
+![image](https://user-images.githubusercontent.com/96930989/228194088-b0d6492a-2014-4055-a5e6-d87a0253596e.png)
+
 
 ### 2. [Create a S3 bucket in AWS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
-We followed the steps here
+We followed the steps here if you want to create new S3 bucket
 ![image](https://user-images.githubusercontent.com/96930989/222437966-558e3637-ce38-4aea-8022-89cb5f70b9bf.png)
 
 Uncheck the box
@@ -39,6 +41,8 @@ Uncheck the box
 
 Create the S3 bucket
 ![image](https://user-images.githubusercontent.com/96930989/222438834-76e2c6c9-527e-462a-9e1f-215ec5f7e63e.png)
+
+If you 
 
 ### 3. [Create an AWS assumed role and grant access to the AWS Sentinel account](https://learn.microsoft.com/en-us/azure/sentinel/connect-aws?tabs=s3#create-an-aws-assumed-role-and-grant-access-to-the-aws-sentinel-account)
 
