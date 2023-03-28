@@ -69,21 +69,19 @@ Double check the IAM permissions once the role is created
 
 
 ### 5. Configure an AWS service to export logs to an S3 bucket
-#### First, [Enable GuardDuty source in AWS](https://aws.amazon.com/guardduty/getting-started/)
+
+#### a. First, [Enable GuardDuty source in AWS](https://aws.amazon.com/guardduty/getting-started/)
 ![image](https://user-images.githubusercontent.com/96930989/228255018-70dfed1c-be04-4707-b1a2-3142207eba1c.png)
 
 ![image](https://user-images.githubusercontent.com/96930989/228255728-06b655ed-aeb8-4bb1-973e-0995083c2fa8.png)
 
 ![image](https://user-images.githubusercontent.com/96930989/228255858-b0b9136f-52af-4c54-b2d5-08bfb33d6378.png)
 
+![image](https://user-images.githubusercontent.com/96930989/228257589-2a4e9a76-52e4-42f1-b095-8c2f6a26fb7b.png)
 
+#### b. Now that the source is enabled, we need to configure [Exporting GuardDuty findings to S3 bucket](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html)
 
-
-
-
-In this article we use GuardDuty as the source [Exporting GuardDuty findings](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html)
-
-![image](https://user-images.githubusercontent.com/96930989/228248470-2bb1106d-b559-4d8e-af25-aac2bb0b24d4.png)
+![image](https://user-images.githubusercontent.com/96930989/228258940-af8df578-c55e-4f75-9fcc-7fb60c3dc61a.png)
 
 GuardDuty supports exporting active findings to CloudWatch Events and, optionally, to an `Amazon S3 bucket`. 
 
@@ -101,11 +99,18 @@ To configure settings for exporting Active findings to an Amazon S3 bucket you w
 * A `KMS key` that GuardDuty can use to encrypt findings
 * An S3 bucket with permissions that allows GuardDuty to upload objects
 
-![image](https://user-images.githubusercontent.com/96930989/222444572-a02be7b1-4dcf-4378-973a-639b19e2291b.png)
+#### Permissions required to configure findings export
 
-We can also use existing S3 bucket to store GuardDuty logs
+In addition to permissions to `GuardDuty actions`, you must also have permissions to the `following actions` to successfully configure options for exporting findings.
+* kms:ListAliases
+* s3:CreateBucket
+* s3:GetBucketLocation
+* s3:ListAllMyBuckets
+* s3:PutBucketAcl
+* s3:PutBucketPublicAccessBlock
+* s3:PutBucketPolicy
+* s3:PutObject
 
-![image](https://user-images.githubusercontent.com/96930989/222442908-c12e66d0-b81b-4d94-b42a-e9d5cf1ec6b8.png)
 
 
 ### 6. [Apply required policies at SQS](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#common-policies)
