@@ -19,27 +19,35 @@ SQS > S3 bucket > S3 bucket paths
 ## Deployment steps
 
 ### 1. [Create a Simple Queue Service (SQS) in AWS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/step-create-queue.html)
+
 The type should be `standard`
+
 ![image](https://user-images.githubusercontent.com/96930989/228193846-c73ad77e-b0cf-43a9-afcc-431d163ff197.png)
 
 
-For `Redrive allow policy`, choose `Enabled`. Select one of the following: Allow all, By queue, or Deny all. 
+For `Redrive allow policy`, choose `Enabled`. Select one of the following: Allow all, By queue, or Deny all.
+
 <img width="1117" alt="image" src="https://user-images.githubusercontent.com/96930989/222417607-e500eb4c-b19c-4603-9817-465ccd4a8f81.png">
 
 Create the SQS
+
 ![image](https://user-images.githubusercontent.com/96930989/228194088-b0d6492a-2014-4055-a5e6-d87a0253596e.png)
 
 
 ### 2. [Create a S3 bucket in AWS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
+
 We followed the steps here if you want to create new S3 bucket
+
 ![image](https://user-images.githubusercontent.com/96930989/222437966-558e3637-ce38-4aea-8022-89cb5f70b9bf.png)
 
 Uncheck the box
+
 ![image](https://user-images.githubusercontent.com/96930989/222438402-6dbeaae3-65c7-4759-990b-61ecf64e0d09.png)
 
 ![image](https://user-images.githubusercontent.com/96930989/222438580-e8454639-589a-47d6-872c-ba538784c7cb.png)
 
 Create the S3 bucket
+
 ![image](https://user-images.githubusercontent.com/96930989/228222919-11e59408-76c8-476d-9c74-3e198f2b22be.png)
 
 
@@ -52,9 +60,11 @@ Create the S3 bucket
 * KMS access (optional)
 
 Create the custom role
+
 ![image](https://user-images.githubusercontent.com/96930989/222441344-d9b584ed-b27d-470c-b125-feb32fa07324.png)
 
 Double check the IAM permissions once the role is created
+
 ![image](https://user-images.githubusercontent.com/96930989/222441545-9cf3802c-e5a0-4205-9168-fcfa1bbd2382.png)
 
 
@@ -70,7 +80,7 @@ GuardDuty supports exporting active findings to CloudWatch Events and, optionall
 
 New Active findings that GuardDuty generates are automatically exported within about `5 minutes` after the finding is generated.
 
-#### Note the following about export settings for findings:
+#### Note !
 
 Export settings are regional, which means you need to configure export options for each Region in which you're using GuardDuty. However, you can use the same bucket in a single Region as the export destination for each Region you use GuardDuty in.
 
