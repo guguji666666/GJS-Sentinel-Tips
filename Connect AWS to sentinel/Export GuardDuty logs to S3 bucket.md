@@ -40,9 +40,8 @@ Uncheck the box
 ![image](https://user-images.githubusercontent.com/96930989/222438580-e8454639-589a-47d6-872c-ba538784c7cb.png)
 
 Create the S3 bucket
-![image](https://user-images.githubusercontent.com/96930989/222438834-76e2c6c9-527e-462a-9e1f-215ec5f7e63e.png)
+![image](https://user-images.githubusercontent.com/96930989/228222919-11e59408-76c8-476d-9c74-3e198f2b22be.png)
 
-If you 
 
 ### 3. [Create an AWS assumed role and grant access to the AWS Sentinel account](https://learn.microsoft.com/en-us/azure/sentinel/connect-aws?tabs=s3#create-an-aws-assumed-role-and-grant-access-to-the-aws-sentinel-account)
 
@@ -61,7 +60,7 @@ Double check the IAM permissions once the role is created
 
 ### 5. Configure an AWS service to export logs to an S3 bucket
 
-In this article we use cloudtrail as the source [Creating a trail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-a-trail-using-the-console-first-time.html)
+In this article we use GuardDuty as the source [Exporting findings](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html)
 
 ![image](https://user-images.githubusercontent.com/96930989/222441761-ea2f17ae-75bc-45dc-bfe3-aa072fd43c0b.png)
 
