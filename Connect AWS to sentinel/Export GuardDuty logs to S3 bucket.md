@@ -123,6 +123,21 @@ The steps to Create the KMS key in AWS console are listed here
 
 ![image](https://user-images.githubusercontent.com/96930989/228263559-e144a2b3-35e2-4610-abaf-45003ed28755.png)
 
+![image](https://user-images.githubusercontent.com/96930989/228264518-0c8410f2-59ef-4483-a381-80afe9747c6e.png)
+
+![image](https://user-images.githubusercontent.com/96930989/228264720-d1b8926f-409f-43b1-ba15-64614c8239c7.png)
+
+Assign key administrators and manage key deletion
+
+![image](https://user-images.githubusercontent.com/96930989/228264907-58d1e73e-ebf3-4e7b-bcdd-4ef6129755e6.png)
+
+![image](https://user-images.githubusercontent.com/96930989/228265749-07287d2d-7d13-4b68-a14e-eb9d76a92310.png)
+
+Review the configuration of KMS key before creation
+
+![image](https://user-images.githubusercontent.com/96930989/228266081-4a005681-541e-46dc-811d-65e8584e2bda.png)
+
+
 
 ### 6. [Apply required policies at SQS](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#common-policies)
 
