@@ -64,11 +64,15 @@ In this article we use GuardDuty as the source [Exporting findings](https://docs
 
 ![image](https://user-images.githubusercontent.com/96930989/222441761-ea2f17ae-75bc-45dc-bfe3-aa072fd43c0b.png)
 
-We can use existing S3 bucket to store cloudtrail logs
+
+Create the cloudtrail source
+
+![image](https://user-images.githubusercontent.com/96930989/222444572-a02be7b1-4dcf-4378-973a-639b19e2291b.png)
+
+We can also use existing S3 bucket to store cloudtrail logs
+
 ![image](https://user-images.githubusercontent.com/96930989/222442908-c12e66d0-b81b-4d94-b42a-e9d5cf1ec6b8.png)
 
-Create the cloudtrail
-![image](https://user-images.githubusercontent.com/96930989/222444572-a02be7b1-4dcf-4378-973a-639b19e2291b.png)
 
 ### 6. [Apply required policies at SQS](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#common-policies)
 Navigate to the SQS you just created, go to Access policy > Edit
