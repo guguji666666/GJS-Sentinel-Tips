@@ -1,4 +1,4 @@
-## Export GuardDuty logs to S3 bucket (manual deployment)
+## Export GuardDuty logs to S3 bucket (manual deployment) > Updating
 
 ## Reference doc
 * [Manual setup](https://learn.microsoft.com/en-us/azure/sentinel/connect-aws?tabs=s3#manual-setup)
