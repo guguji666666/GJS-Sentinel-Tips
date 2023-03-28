@@ -242,6 +242,12 @@ In my lab, after adding the required part, the policy looks like
 Choose Save once done
 
 
+#### b. [Granting GuardDuty permissions to a bucket > Additional policies to allow GuardDuty to send logs to S3 and read the data using KMS ](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#s3-policies)
+
+
+
+
+
 ### 7. [Apply required policies at SQS](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#common-policies)
 
 Navigate to the SQS you just created, go to Access policy > Edit
