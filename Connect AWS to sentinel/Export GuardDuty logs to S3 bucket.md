@@ -147,7 +147,6 @@ The steps are listed here
 
 #### a. [Assign policy to KMS key > Allows GuardDuty to decrypt the logs it sends to S3 bucket](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#kms-policy)
 
-
 Open the [AWS KMS console](https://console.aws.amazon.com/kms)
 
 To change the AWS Region, use the Region selector in the upper-right corner of the page.
@@ -168,6 +167,7 @@ In the Key policy section, choose `Switch to policy view` > `Edit`.
 
 
 Add the following key policy to your KMS key, granting GuardDuty access to your key.
+When editing the key policy, make sure your JSON syntax is valid, if you add the statement before the final statement, you must add a comma after the closing bracket.
 
 ```json
 {
@@ -195,6 +195,47 @@ Add the following key policy to your KMS key, granting GuardDuty access to your 
       "Resource": "*"
     }
   ]
+}
+```
+
+In my lab, after adding the required part, the policy looks like
+```json
+{
+    "Id": "key-consolepolicy-3",
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Enable IAM User Permissions",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::03xxxxxxxx93:root"
+            },
+            "Action": "kms:*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "Allow GuardDuty to use the key",
+            "Effect": "Allow",
+            "Principal": {
+              "Service": "guardduty.amazonaws.com"
+            },
+            "Action": "kms:GenerateDataKey",
+            "Resource": "*"
+          },
+          {
+            "Sid": "Allow use of the key",
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": [
+                "${The ARN of the assumed role you have created for the AWS Sentinel account}"
+              ]
+            },
+            "Action": [
+              "kms:Decrypt"
+            ],
+            "Resource": "*"
+          }
+    ]
 }
 ```
 
