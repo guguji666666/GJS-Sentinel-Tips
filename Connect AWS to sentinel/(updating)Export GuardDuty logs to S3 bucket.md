@@ -360,10 +360,9 @@ Please notice the FIFO SQS is not supported here
 
 ![image](https://user-images.githubusercontent.com/96930989/228481600-b432af48-edfe-43e2-b118-51c3ba3d9d89.png)
 
-We must use a standard SQS
+We must use a standard SQS and then the configuration could be saved successfully
 
-![image](https://user-images.githubusercontent.com/96930989/222451874-677366a7-2eed-411c-934a-8127b4bd6629.png)
-
+![image](https://user-images.githubusercontent.com/96930989/228488200-aff3ba42-9bcc-4c76-a6e4-aca4aec0aee7.png)
 
 ### 11. Complete configuration in Microsft Sentinel
 
