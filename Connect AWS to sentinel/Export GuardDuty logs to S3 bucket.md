@@ -63,9 +63,9 @@ Create the custom role
 
 ![image](https://user-images.githubusercontent.com/96930989/222441344-d9b584ed-b27d-470c-b125-feb32fa07324.png)
 
-Double check the IAM permissions once the role is created
+Double check the IAM permissions and confirm creation
 
-![image](https://user-images.githubusercontent.com/96930989/222441545-9cf3802c-e5a0-4205-9168-fcfa1bbd2382.png)
+![image](https://user-images.githubusercontent.com/96930989/228408859-8aee4b45-348d-46a5-b8e6-7cce4b6baf97.png)
 
 
 ### 5. Configure an AWS service to export logs to an S3 bucket
