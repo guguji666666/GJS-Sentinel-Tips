@@ -425,7 +425,7 @@ We must use a standard SQS and then the configuration could be saved successfull
 
 ![image](https://user-images.githubusercontent.com/96930989/228527810-9cab37bf-21d1-4b6c-95a5-43680eb7570b.png)
 
-### 12. Wait for 1 hour and check incoming logs in sentinel
+### 12. Wait for 1 hour and check incoming guardduty logs in sentinel
 
 ![image](https://user-images.githubusercontent.com/96930989/228513539-b61d9331-380e-4c06-9aa5-8cbe04ac9ed5.png)
 
