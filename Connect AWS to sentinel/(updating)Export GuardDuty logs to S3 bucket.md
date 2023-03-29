@@ -166,6 +166,8 @@ In the Key policy section, choose `Switch to policy view` > `Edit`.
 
 ![image](https://user-images.githubusercontent.com/96930989/228271500-9e27a2b1-cba7-400b-bb1a-d20c47977d53.png)
 
+![image](https://user-images.githubusercontent.com/96930989/228485277-f04d46cf-06d7-47a3-9f5a-c6d7489ee42e.png)
+
 
 Add the following key policy to your KMS key, granting GuardDuty access to your key.
 When editing the key policy, make sure your JSON syntax is valid, if you add the statement before the final statement, you must add a comma after the closing bracket.
