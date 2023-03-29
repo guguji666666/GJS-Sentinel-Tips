@@ -139,6 +139,7 @@ Review the configuration of KMS key before creation, then click Finish
 
 ![image](https://user-images.githubusercontent.com/96930989/228266465-d2616747-3300-42a8-b4c1-7f579b072bcd.png)
 
+
 ### 6. [Granting GuardDuty permission to the KMS key](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html)
 
 The steps are listed here
@@ -239,7 +240,7 @@ In my lab, the KMS policy looks like
 }
 ```
 
-Choose Save once done
+Click Save
 
 
 #### b. [Granting GuardDuty permissions to a bucket > Additional policies to allow GuardDuty to send logs to S3 and read the data using KMS ](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#s3-policies)
@@ -381,12 +382,27 @@ In my lab, the S3 policy looks like
   }
 ```
 
+Click save changes
+
+![image](https://user-images.githubusercontent.com/96930989/228473968-9e0fbb73-8323-4b39-bb44-b447571e033e.png)
 
 
+### 7. [Exporting GuardDuty findings to a bucket with the Console](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html)
+
+The steps to configure exporting GuardDuty findings to a S3 bucket are listed here
+
+Please notice that The KMS key and S3 bucket must be in the same Region.
+
+![image](https://user-images.githubusercontent.com/96930989/228474840-cf122f8b-727a-41b9-8deb-aded1cd774d2.png)
+
+Navigate to [GuardDuty console](https://console.aws.amazon.com/guardduty)
+
+![image](https://user-images.githubusercontent.com/96930989/228476241-50c2d6c1-85ad-4cca-a769-69c980369e3a.png)
+
+![image](https://user-images.githubusercontent.com/96930989/228476715-ee81f680-979c-4c9c-943a-d4c35e1e8074.png)
 
 
-
-### 7. [Apply required policies at SQS](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#common-policies)
+### 8. [Apply required policies at SQS](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#common-policies)
 
 Navigate to the SQS you just created, go to Access policy > Edit
 
@@ -396,16 +412,6 @@ Navigate to the SQS you just created, go to Access policy > Edit
 Replace the SQS policy with the context here, fill in the parameters in your exact environment and save
 
 ![image](https://user-images.githubusercontent.com/96930989/222446720-7d3cc516-5cc4-4fd5-b24b-692c5336473b.png)
-
-
-
-
-### 8. [Apply required policies at S3 bucket](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#cloudtrail)
-
-Navigate to S3 bucket you created before, check the bucket policy here
-
-![image](https://user-images.githubusercontent.com/96930989/222449009-105e78f2-7110-43f7-8dd6-b3ddd45b95e2.png)
-
 
 
 
