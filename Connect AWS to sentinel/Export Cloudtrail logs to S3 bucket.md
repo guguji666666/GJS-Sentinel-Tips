@@ -127,16 +127,15 @@ Replace the SQS policy with the context here, fill in the parameters in your exa
 
 ### 7. [Apply required policies at S3 bucket](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#cloudtrail)
 
-Navigate to S3 bucket you created before, check the bucket policy here
+Navigate to S3 bucket you created before, check the bucket policy here, click Edit
 
 ![image](https://user-images.githubusercontent.com/96930989/222449009-105e78f2-7110-43f7-8dd6-b3ddd45b95e2.png)
 
 Find the Cloudtrail section in [AWS S3 connector permissions policies](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#cloudtrail)
 
-![image](https://user-images.githubusercontent.com/96930989/222449604-8a2b8d62-0fee-449e-bf9d-c4f700bd2044.png)
+The S3 bucket must have the polices below, you need to add them togethe(if missing) in a json file
 
-The S3 bucket must have the polices below
-
+Policy 1
 ```json
 {
   "Statement": [
@@ -154,6 +153,8 @@ The S3 bucket must have the polices below
 ```
 
 and 
+
+Policy 2
 
 ```json
 {
@@ -202,6 +203,8 @@ or
 ```
 
 ### 8. [Enable notification to SQS at S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-event-notifications.html)
+
+Navigate to [S3 bucket console](https://console.aws.amazon.com/s3)
 
 Please notice the FIFO SQS is not supported here
 
