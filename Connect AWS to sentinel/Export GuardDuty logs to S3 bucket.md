@@ -132,12 +132,9 @@ Assign key administrators and manage key deletion
 
 ![image](https://user-images.githubusercontent.com/96930989/228264907-58d1e73e-ebf3-4e7b-bcdd-4ef6129755e6.png)
 
-![image](https://user-images.githubusercontent.com/96930989/228491750-d9be381e-deb0-465c-a9eb-62473a99cc42.png)
+Review the configuration of KMS key before creation, then click Finish, new KMS key will show here
 
-Review the configuration of KMS key before creation, then click Finish
-
-![image](https://user-images.githubusercontent.com/96930989/228491972-6a3251df-2e03-4b28-b372-f7c77249c5e2.png)
-
+![image](https://user-images.githubusercontent.com/96930989/228522207-4f812fcd-00cd-474f-a924-652c6fbb13ab.png)
 
 ### 6. [Granting GuardDuty permission to the KMS key](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html)
 
@@ -157,16 +154,15 @@ Create a new key or choose an existing key that you plan to use for encrypting e
 
 Choose your key. Under General configuration panel, copy the key ARN.
 
-![image](https://user-images.githubusercontent.com/96930989/228271067-c163d8db-ef2f-4e3d-ba63-7a5711696276.png)
+![image](https://user-images.githubusercontent.com/96930989/228523367-27777636-d15c-45ee-a205-97fa7f26e2a1.png)
 
 In the Key policy section, choose `Switch to policy view` > `Edit`.
 
 ![image](https://user-images.githubusercontent.com/96930989/228271299-d01ec73f-4839-4d07-92a4-f837873a00e4.png)
 
-![image](https://user-images.githubusercontent.com/96930989/228271500-9e27a2b1-cba7-400b-bb1a-d20c47977d53.png)
+The orginal KMS policy looks like this
 
-![image](https://user-images.githubusercontent.com/96930989/228485277-f04d46cf-06d7-47a3-9f5a-c6d7489ee42e.png)
-
+![image](https://user-images.githubusercontent.com/96930989/228523582-ded4a8a2-a937-4218-ba07-811788540643.png)
 
 Add the following key policy to your KMS key, granting GuardDuty access to your key.
 When editing the key policy, make sure your JSON syntax is valid, if you add the statement before the final statement, you must add a comma after the closing bracket.
@@ -202,6 +198,47 @@ When editing the key policy, make sure your JSON syntax is valid, if you add the
 
 Once the policy is added, click Save
 
+In my lab, the KMS policy looks like
+
+```json
+{
+  "Id": "key-consolepolicy-3",
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Sid": "Enable IAM User Permissions",
+          "Effect": "Allow",
+          "Principal": {
+              "AWS": "arn:aws:iam::03xxxxxx:root"
+          },
+          "Action": "kms:*",
+          "Resource": "*"
+      },
+      {
+        "Sid": "Allow GuardDuty to use the key",
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "guardduty.amazonaws.com"
+        },
+        "Action": "kms:GenerateDataKey",
+        "Resource": "*"
+      },
+      {
+        "Sid": "Allow use of the key",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": [
+            "arn:aws:iam::03xxxxxxx:role/demo-customrole1-guardduty-manual"
+          ]
+        },
+        "Action": [
+          "kms:Decrypt"
+        ],
+        "Resource": "*"
+      }
+  ]
+}
+```
 
 #### b. [Granting GuardDuty permissions to a S3 bucket > Additional policies to allow GuardDuty to send logs to S3 and read the data using KMS ](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#s3-policies)
 
