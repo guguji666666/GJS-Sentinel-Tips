@@ -1,8 +1,8 @@
-## Export GuardDuty logs to S3 bucket (manual deployment) > Updating
+## Export GuardDuty logs to S3 bucket (manual deployment)
 
 ## Reference doc
 * [Manual setup](https://learn.microsoft.com/en-us/azure/sentinel/connect-aws?tabs=s3#manual-setup)
-* [Common SQS policy and S3 bucket policy](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#sqs-policy)
+* [Common SQS policy and S3 bucket policy](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#common-policies)
 * [Permission set on S3 bucket for GuardDuty logs](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#guardduty-policies)
 
 ## Known issues
