@@ -71,6 +71,7 @@ Double check the IAM permissions and confirm creation
 ### 5. Configure an AWS service to export logs to an S3 bucket
 
 #### a. First, [Enable GuardDuty source in AWS](https://aws.amazon.com/guardduty/getting-started/)
+
 ![image](https://user-images.githubusercontent.com/96930989/228255018-70dfed1c-be04-4707-b1a2-3142207eba1c.png)
 
 ![image](https://user-images.githubusercontent.com/96930989/228255728-06b655ed-aeb8-4bb1-973e-0995083c2fa8.png)
@@ -131,13 +132,11 @@ Assign key administrators and manage key deletion
 
 ![image](https://user-images.githubusercontent.com/96930989/228264907-58d1e73e-ebf3-4e7b-bcdd-4ef6129755e6.png)
 
-![image](https://user-images.githubusercontent.com/96930989/228265749-07287d2d-7d13-4b68-a14e-eb9d76a92310.png)
+![image](https://user-images.githubusercontent.com/96930989/228491750-d9be381e-deb0-465c-a9eb-62473a99cc42.png)
 
 Review the configuration of KMS key before creation, then click Finish
 
-![image](https://user-images.githubusercontent.com/96930989/228266081-4a005681-541e-46dc-811d-65e8584e2bda.png)
-
-![image](https://user-images.githubusercontent.com/96930989/228266465-d2616747-3300-42a8-b4c1-7f579b072bcd.png)
+![image](https://user-images.githubusercontent.com/96930989/228491972-6a3251df-2e03-4b28-b372-f7c77249c5e2.png)
 
 
 ### 6. [Granting GuardDuty permission to the KMS key](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html)
