@@ -409,7 +409,9 @@ We must use a standard SQS and then the configuration could be saved successfull
 
 ### 11. Complete configuration in Microsft Sentinel
 
-![image](https://user-images.githubusercontent.com/96930989/228513719-2ab03b5e-2a50-4fc2-9aac-eef6258a4211.png)
+![image](https://user-images.githubusercontent.com/96930989/228527641-0a7bb359-19b0-4d43-ae3f-1440158859c1.png)
+
+![image](https://user-images.githubusercontent.com/96930989/228527810-9cab37bf-21d1-4b6c-95a5-43680eb7570b.png)
 
 ### 12. Wait for 2 hours and check incoming logs in sentinel
 
