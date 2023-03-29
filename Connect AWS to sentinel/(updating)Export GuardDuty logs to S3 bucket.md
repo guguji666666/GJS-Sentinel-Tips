@@ -198,7 +198,7 @@ When editing the key policy, make sure your JSON syntax is valid, if you add the
 }
 ```
 
-In my lab, after adding the required part, the policy looks like
+In my lab, the KMS policy looks like
 ```json
 {
     "Id": "key-consolepolicy-3",
@@ -243,6 +243,144 @@ Choose Save once done
 
 
 #### b. [Granting GuardDuty permissions to a bucket > Additional policies to allow GuardDuty to send logs to S3 and read the data using KMS ](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#s3-policies)
+
+![image](https://user-images.githubusercontent.com/96930989/228470717-509312af-70c7-4cd9-99fd-a3d183e2d394.png)
+
+![image](https://user-images.githubusercontent.com/96930989/228470873-9dc0a427-37cb-4297-8403-1b2d7ef3c5fb.png)
+
+Add the policy below
+
+```json
+{
+  "Statement": [
+    {
+      "Sid": "Allow GuardDuty to use the getBucketLocation operation",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "guardduty.amazonaws.com"
+      },
+      "Action": "s3:GetBucketLocation",
+      "Resource": "arn:aws:s3:::${bucketName}"
+    },
+    {
+      "Sid": "Allow GuardDuty to upload objects to the bucket",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "guardduty.amazonaws.com"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::${bucketName}/*"
+    },
+    {
+      "Sid": "Deny unencrypted object uploads. This is optional",
+      "Effect": "Deny",
+      "Principal": {
+        "Service": "guardduty.amazonaws.com"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::${bucketName}/*",
+      "Condition": {
+        "StringNotEquals": {
+          "s3:x-amz-server-side-encryption": "aws:kms"
+        }
+      }
+    },
+    {
+      "Sid": "Deny incorrect encryption header. This is optional",
+      "Effect": "Deny",
+      "Principal": {
+        "Service": "guardduty.amazonaws.com"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::${bucketName}/*",
+      "Condition": {
+        "StringNotEquals": {
+          "s3:x-amz-server-side-encryption-aws-kms-key-id": "${kmsArn}"
+        }
+      }
+    },
+    {
+      "Sid": "Deny non-HTTPS access",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::${bucketName}/*",
+      "Condition": {
+        "Bool": {
+          "aws:SecureTransport": "false"
+        }
+      }
+    }
+  ]
+}
+```
+
+In my lab, the S3 policy looks like
+```json
+{
+    "Statement": [
+      {
+        "Sid": "Allow GuardDuty to use the getBucketLocation operation",
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "guardduty.amazonaws.com"
+        },
+        "Action": "s3:GetBucketLocation",
+        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual"
+      },
+      {
+        "Sid": "Allow GuardDuty to upload objects to the bucket",
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "guardduty.amazonaws.com"
+        },
+        "Action": "s3:PutObject",
+        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*"
+      },
+      {
+        "Sid": "Deny unencrypted object uploads. This is optional",
+        "Effect": "Deny",
+        "Principal": {
+          "Service": "guardduty.amazonaws.com"
+        },
+        "Action": "s3:PutObject",
+        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*",
+        "Condition": {
+          "StringNotEquals": {
+            "s3:x-amz-server-side-encryption": "aws:kms"
+          }
+        }
+      },
+      {
+        "Sid": "Deny incorrect encryption header. This is optional",
+        "Effect": "Deny",
+        "Principal": {
+          "Service": "guardduty.amazonaws.com"
+        },
+        "Action": "s3:PutObject",
+        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*",
+        "Condition": {
+          "StringNotEquals": {
+            "s3:x-amz-server-side-encryption-aws-kms-key-id": "arn:aws:kms:us-east-1:03xxxxxxx:key/xxxxxx5-xxx2-4xxx6-9xxb-xxxxxdaxx9"
+          }
+        }
+      },
+      {
+        "Sid": "Deny non-HTTPS access",
+        "Effect": "Deny",
+        "Principal": "*",
+        "Action": "s3:*",
+        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*",
+        "Condition": {
+          "Bool": {
+            "aws:SecureTransport": "false"
+          }
+        }
+      }
+    ]
+  }
+```
+
 
 
 
