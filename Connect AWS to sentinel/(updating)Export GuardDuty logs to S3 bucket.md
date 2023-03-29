@@ -220,12 +220,12 @@ Replace with the policy below
         "Sid": "Allow Arn read access S3 bucket",
         "Effect": "Allow",
         "Principal": {
-          "AWS": "${roleArn}"
+          "AWS": "arn:aws:iam::036637775293:role/demo-customrole1-guardduty-manual"
         },
         "Action": [
           "s3:GetObject"
         ],
-        "Resource": "arn:aws:s3:::${bucketName}/*"
+        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*"
       },
       {
         "Sid": "Allow GuardDuty to use the getBucketLocation operation",
@@ -234,7 +234,7 @@ Replace with the policy below
           "Service": "guardduty.amazonaws.com"
         },
         "Action": "s3:GetBucketLocation",
-        "Resource": "arn:aws:s3:::${bucketName}"
+        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual"
       },
       {
         "Sid": "Allow GuardDuty to upload objects to the bucket",
@@ -243,7 +243,7 @@ Replace with the policy below
           "Service": "guardduty.amazonaws.com"
         },
         "Action": "s3:PutObject",
-        "Resource": "arn:aws:s3:::${bucketName}/*"
+        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*"
       },
       {
         "Sid": "Deny unencrypted object uploads. This is optional",
@@ -252,7 +252,7 @@ Replace with the policy below
           "Service": "guardduty.amazonaws.com"
         },
         "Action": "s3:PutObject",
-        "Resource": "arn:aws:s3:::${bucketName}/*",
+        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*",
         "Condition": {
           "StringNotEquals": {
             "s3:x-amz-server-side-encryption": "aws:kms"
@@ -266,10 +266,10 @@ Replace with the policy below
           "Service": "guardduty.amazonaws.com"
         },
         "Action": "s3:PutObject",
-        "Resource": "arn:aws:s3:::${bucketName}/*",
+        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*",
         "Condition": {
           "StringNotEquals": {
-            "s3:x-amz-server-side-encryption-aws-kms-key-id": "${kmsArn}"
+            "s3:x-amz-server-side-encryption-aws-kms-key-id": "arn:aws:kms:us-east-1:036637775293:key/b0a53bb5-3882-45b6-9ecb-51dce4dac5f9"
           }
         }
       },
@@ -278,7 +278,7 @@ Replace with the policy below
         "Effect": "Deny",
         "Principal": "*",
         "Action": "s3:*",
-        "Resource": "arn:aws:s3:::${bucketName}/*",
+        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*",
         "Condition": {
           "Bool": {
             "aws:SecureTransport": "false"
