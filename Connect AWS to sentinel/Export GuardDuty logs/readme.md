@@ -55,7 +55,7 @@ Create the S3 bucket
 * AmazonSQSReadOnlyAccess
 * AWSLambdaSQSQueueExecutionRole
 * AmazonS3ReadOnlyAccess
-* KMS access (optional)
+* KMS access (will configured manually in the policy)
 
 Create the custom role
 
