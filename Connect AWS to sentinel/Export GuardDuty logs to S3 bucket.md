@@ -373,3 +373,5 @@ We must use a standard SQS and then the configuration could be saved successfull
 
 ### 12. Wait for 2 hours and check incoming logs in sentinel
 
+![image](https://user-images.githubusercontent.com/96930989/228513539-b61d9331-380e-4c06-9aa5-8cbe04ac9ed5.png)
+
