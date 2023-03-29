@@ -208,71 +208,83 @@ Once the policy is added, click Save
 
 ![image](https://user-images.githubusercontent.com/96930989/228470873-9dc0a427-37cb-4297-8403-1b2d7ef3c5fb.png)
 
-Add the policy below
+Replace with the policy below
 
 ```json
 {
-  "Statement": [
-    {
-      "Sid": "Allow GuardDuty to use the getBucketLocation operation",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "guardduty.amazonaws.com"
+    "Version": "2008-10-17",
+    "Statement": [
+      {
+        "Sid": "Allow Arn read access S3 bucket",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "${roleArn}"
+        },
+        "Action": [
+          "s3:GetObject"
+        ],
+        "Resource": "arn:aws:s3:::${bucketName}/*"
       },
-      "Action": "s3:GetBucketLocation",
-      "Resource": "arn:aws:s3:::${bucketName}"
-    },
-    {
-      "Sid": "Allow GuardDuty to upload objects to the bucket",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "guardduty.amazonaws.com"
+      {
+        "Sid": "Allow GuardDuty to use the getBucketLocation operation",
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "guardduty.amazonaws.com"
+        },
+        "Action": "s3:GetBucketLocation",
+        "Resource": "arn:aws:s3:::${bucketName}"
       },
-      "Action": "s3:PutObject",
-      "Resource": "arn:aws:s3:::${bucketName}/*"
-    },
-    {
-      "Sid": "Deny unencrypted object uploads. This is optional",
-      "Effect": "Deny",
-      "Principal": {
-        "Service": "guardduty.amazonaws.com"
+      {
+        "Sid": "Allow GuardDuty to upload objects to the bucket",
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "guardduty.amazonaws.com"
+        },
+        "Action": "s3:PutObject",
+        "Resource": "arn:aws:s3:::${bucketName}/*"
       },
-      "Action": "s3:PutObject",
-      "Resource": "arn:aws:s3:::${bucketName}/*",
-      "Condition": {
-        "StringNotEquals": {
-          "s3:x-amz-server-side-encryption": "aws:kms"
+      {
+        "Sid": "Deny unencrypted object uploads. This is optional",
+        "Effect": "Deny",
+        "Principal": {
+          "Service": "guardduty.amazonaws.com"
+        },
+        "Action": "s3:PutObject",
+        "Resource": "arn:aws:s3:::${bucketName}/*",
+        "Condition": {
+          "StringNotEquals": {
+            "s3:x-amz-server-side-encryption": "aws:kms"
+          }
+        }
+      },
+      {
+        "Sid": "Deny incorrect encryption header. This is optional",
+        "Effect": "Deny",
+        "Principal": {
+          "Service": "guardduty.amazonaws.com"
+        },
+        "Action": "s3:PutObject",
+        "Resource": "arn:aws:s3:::${bucketName}/*",
+        "Condition": {
+          "StringNotEquals": {
+            "s3:x-amz-server-side-encryption-aws-kms-key-id": "${kmsArn}"
+          }
+        }
+      },
+      {
+        "Sid": "Deny non-HTTPS access",
+        "Effect": "Deny",
+        "Principal": "*",
+        "Action": "s3:*",
+        "Resource": "arn:aws:s3:::${bucketName}/*",
+        "Condition": {
+          "Bool": {
+            "aws:SecureTransport": "false"
+          }
         }
       }
-    },
-    {
-      "Sid": "Deny incorrect encryption header. This is optional",
-      "Effect": "Deny",
-      "Principal": {
-        "Service": "guardduty.amazonaws.com"
-      },
-      "Action": "s3:PutObject",
-      "Resource": "arn:aws:s3:::${bucketName}/*",
-      "Condition": {
-        "StringNotEquals": {
-          "s3:x-amz-server-side-encryption-aws-kms-key-id": "${kmsArn}"
-        }
-      }
-    },
-    {
-      "Sid": "Deny non-HTTPS access",
-      "Effect": "Deny",
-      "Principal": "*",
-      "Action": "s3:*",
-      "Resource": "arn:aws:s3:::${bucketName}/*",
-      "Condition": {
-        "Bool": {
-          "aws:SecureTransport": "false"
-        }
-      }
-    }
-  ]
-}
+    ]
+  }
 ```
 
 Once the policy is added, click save changes
@@ -340,19 +352,18 @@ Replace the SQS policy mentioned [here](https://github.com/Azure/Azure-Sentinel/
 }
 ```
 
-### 9. [Enable notification to SQS at S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-event-notifications.html)
+### 10. [Enable notification to SQS at S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-event-notifications.html)
 
 Please notice the FIFO SQS is not supported here
 
-![image](https://user-images.githubusercontent.com/96930989/222451588-b92724f3-41c7-4bc6-99d4-a95f9da12b0a.png)
+![image](https://user-images.githubusercontent.com/96930989/228481600-b432af48-edfe-43e2-b118-51c3ba3d9d89.png)
 
 We must use a standard SQS
 
 ![image](https://user-images.githubusercontent.com/96930989/222451874-677366a7-2eed-411c-934a-8127b4bd6629.png)
 
 
-### 10. Complete configuration in Microsft Sentinel
+### 11. Complete configuration in Microsft Sentinel
 
-
-### 10. Wait for 2 hours and check incoming logs in sentinel
+### 12. Wait for 2 hours and check incoming logs in sentinel
 
