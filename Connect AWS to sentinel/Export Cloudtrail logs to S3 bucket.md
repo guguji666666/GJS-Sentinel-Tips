@@ -84,10 +84,46 @@ Navigate to the SQS you just created, go to Access policy > Edit
 
 ![image](https://user-images.githubusercontent.com/96930989/222447122-42a4a893-a86e-4ccc-abe7-8a8c7b4f7b67.png)
 
-
 Replace the SQS policy with the context here, fill in the parameters in your exact environment and save
 
 ![image](https://user-images.githubusercontent.com/96930989/222446720-7d3cc516-5cc4-4fd5-b24b-692c5336473b.png)
+
+```json
+{
+  "Version": "2008-10-17",
+  "Id": "__default_policy_ID",
+  "Statement": [
+    {
+      "Sid": "allow s3 to send notification messages to SQS queue",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "s3.amazonaws.com"
+      },
+      "Action": "SQS:SendMessage",
+      "Resource": "${sqsArn}",
+      "Condition": {
+        "ArnLike": {
+          "aws:SourceArn": "arn:aws:s3:*:*:${bucketName}"
+        }
+      }
+    },
+    {
+      "Sid": "allow specific role to read/delete/change visibility of SQS messages and get queue url",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "${roleArn}"
+      },
+      "Action": [
+        "SQS:ChangeMessageVisibility",
+        "SQS:DeleteMessage",
+        "SQS:ReceiveMessage",
+        "SQS:GetQueueUrl"
+      ],
+      "Resource": "${sqsArn}"
+    }
+  ]
+}
+```
 
 ### 7. [Apply required policies at S3 bucket](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#cloudtrail)
 
