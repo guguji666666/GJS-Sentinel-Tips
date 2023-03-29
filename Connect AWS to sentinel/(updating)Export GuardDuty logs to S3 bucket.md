@@ -204,7 +204,7 @@ When editing the key policy, make sure your JSON syntax is valid, if you add the
 Once the policy is added, click Save
 
 
-#### b. [Granting GuardDuty permissions to a bucket > Additional policies to allow GuardDuty to send logs to S3 and read the data using KMS ](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#s3-policies)
+#### b. [Granting GuardDuty permissions to a S3 bucket > Additional policies to allow GuardDuty to send logs to S3 and read the data using KMS ](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#s3-policies)
 
 ![image](https://user-images.githubusercontent.com/96930989/228470717-509312af-70c7-4cd9-99fd-a3d183e2d394.png)
 
@@ -220,12 +220,12 @@ Replace with the policy below
         "Sid": "Allow Arn read access S3 bucket",
         "Effect": "Allow",
         "Principal": {
-          "AWS": "arn:aws:iam::036637775293:role/demo-customrole1-guardduty-manual"
+          "AWS": "${roleArn}"
         },
         "Action": [
           "s3:GetObject"
         ],
-        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*"
+        "Resource": "arn:aws:s3:::${bucketName}/*"
       },
       {
         "Sid": "Allow GuardDuty to use the getBucketLocation operation",
@@ -234,7 +234,7 @@ Replace with the policy below
           "Service": "guardduty.amazonaws.com"
         },
         "Action": "s3:GetBucketLocation",
-        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual"
+        "Resource": "arn:aws:s3:::${bucketName}"
       },
       {
         "Sid": "Allow GuardDuty to upload objects to the bucket",
@@ -243,7 +243,7 @@ Replace with the policy below
           "Service": "guardduty.amazonaws.com"
         },
         "Action": "s3:PutObject",
-        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*"
+        "Resource": "arn:aws:s3:::${bucketName}/*"
       },
       {
         "Sid": "Deny unencrypted object uploads. This is optional",
@@ -252,7 +252,7 @@ Replace with the policy below
           "Service": "guardduty.amazonaws.com"
         },
         "Action": "s3:PutObject",
-        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*",
+        "Resource": "arn:aws:s3:::${bucketName}/*",
         "Condition": {
           "StringNotEquals": {
             "s3:x-amz-server-side-encryption": "aws:kms"
@@ -266,10 +266,10 @@ Replace with the policy below
           "Service": "guardduty.amazonaws.com"
         },
         "Action": "s3:PutObject",
-        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*",
+        "Resource": "arn:aws:s3:::${bucketName}/*",
         "Condition": {
           "StringNotEquals": {
-            "s3:x-amz-server-side-encryption-aws-kms-key-id": "arn:aws:kms:us-east-1:036637775293:key/b0a53bb5-3882-45b6-9ecb-51dce4dac5f9"
+            "s3:x-amz-server-side-encryption-aws-kms-key-id": "${kmsArn}"
           }
         }
       },
@@ -278,7 +278,7 @@ Replace with the policy below
         "Effect": "Deny",
         "Principal": "*",
         "Action": "s3:*",
-        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*",
+        "Resource": "arn:aws:s3:::${bucketName}/*",
         "Condition": {
           "Bool": {
             "aws:SecureTransport": "false"
@@ -287,6 +287,10 @@ Replace with the policy below
       }
     ]
   }
+
+
+
+
 ```
 
 Once the policy is added, click save changes
