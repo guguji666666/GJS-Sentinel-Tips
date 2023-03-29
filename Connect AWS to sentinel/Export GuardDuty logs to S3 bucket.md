@@ -240,6 +240,8 @@ In my lab, the KMS policy looks like
 }
 ```
 
+![image](https://user-images.githubusercontent.com/96930989/228524624-d46c0475-cadf-4c79-b69e-7ee173c31427.png)
+
 #### b. [Granting GuardDuty permissions to a S3 bucket > Additional policies to allow GuardDuty to send logs to S3 and read the data using KMS ](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#s3-policies)
 
 ![image](https://user-images.githubusercontent.com/96930989/228470717-509312af-70c7-4cd9-99fd-a3d183e2d394.png)
@@ -346,8 +348,7 @@ Navigate to [GuardDuty console](https://console.aws.amazon.com/guardduty)
 
 ![image](https://user-images.githubusercontent.com/96930989/228476241-50c2d6c1-85ad-4cca-a769-69c980369e3a.png)
 
-![image](https://user-images.githubusercontent.com/96930989/228476715-ee81f680-979c-4c9c-943a-d4c35e1e8074.png)
-
+![image](https://user-images.githubusercontent.com/96930989/228526058-941bf357-5817-4762-b6a6-418b83897253.png)
 
 ### 8. [Apply required policies at SQS](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#common-policies)
 
@@ -396,9 +397,11 @@ Replace the SQS policy mentioned [here](https://github.com/Azure/Azure-Sentinel/
 
 ### 10. [Enable notification to SQS at S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-event-notifications.html)
 
-Please notice the FIFO SQS is not supported here
+Navigate to [S3 bucket console](https://console.aws.amazon.com/s3)
 
-![image](https://user-images.githubusercontent.com/96930989/228481600-b432af48-edfe-43e2-b118-51c3ba3d9d89.png)
+Please notice the FIFO SQS is `not supported` here
+
+![image](https://user-images.githubusercontent.com/96930989/228526946-148c08c2-98aa-4b3a-88ba-16b17a9b01fd.png)
 
 We must use a standard SQS and then the configuration could be saved successfully
 
