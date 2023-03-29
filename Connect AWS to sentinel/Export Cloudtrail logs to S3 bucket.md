@@ -137,16 +137,69 @@ Find the Cloudtrail section in [AWS S3 connector permissions policies](https://g
 
 The S3 bucket must have the polices below
 
-![image](https://user-images.githubusercontent.com/96930989/222449934-37c07d42-7288-4422-8a32-cf22e791cdfa.png)
+```json
+{
+  "Statement": [
+    {
+      "Sid": "AWSCloudTrailAclCheck20150319",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "cloudtrail.amazonaws.com"
+      },
+      "Action": "s3:GetBucketAcl",
+      "Resource": "arn:aws:s3:::${bucketName}"
+    }
+  ]
+}
+```
 
 and 
 
-![image](https://user-images.githubusercontent.com/96930989/222449974-20b7fead-5088-4f3f-ba27-127a9b96505c.png)
+```json
+{
+  "Statement": [
+    {
+      "Sid": "AWSCloudTrailWrite20150319",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "cloudtrail.amazonaws.com"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::${bucketName}/AWSLogs/${callerAccount}/*",
+      "Condition": {
+        "StringEquals": {
+          "s3:x-amz-acl": "bucket-owner-full-control"
+        }
+      }
+    }
+  ]
+}
+```
 
 or
 
-![image](https://user-images.githubusercontent.com/96930989/222450051-0dfed638-5068-4901-b6a4-64e85d711e6a.png)
-
+```json
+{
+  "Statement": [
+    {
+      "Sid": "AWSCloudTrailWrite20150319",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": [
+          "cloudtrail.amazonaws.com"
+        ]
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::${bucketName}/AWSLogs/${organizationId}/*",
+      "Condition": {
+        "StringEquals": {
+          "s3:x-amz-acl": "bucket-owner-full-control"
+        }
+      }
+    }
+  ]
+}
+```
 
 ### 8. [Enable notification to SQS at S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-event-notifications.html)
 
