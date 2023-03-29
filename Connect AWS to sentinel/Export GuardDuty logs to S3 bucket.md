@@ -167,6 +167,8 @@ The orginal KMS policy looks like this
 Add the following key policy to your KMS key, granting GuardDuty access to your key.
 When editing the key policy, make sure your JSON syntax is valid, if you add the statement before the final statement, you must add a comma after the closing bracket.
 
+{roleArn}	The ARN of the assumed role you have created for the AWS Sentinel account
+
 ```json
 {
   "Statement": [
@@ -249,6 +251,12 @@ In my lab, the KMS policy looks like
 ![image](https://user-images.githubusercontent.com/96930989/228470873-9dc0a427-37cb-4297-8403-1b2d7ef3c5fb.png)
 
 Replace with the policy below
+
+* {roleArn}	The ARN of the assumed role you have created for the AWS Sentinel account
+
+* {bucketName}	The name of your S3 bucket
+
+* {kmsArn}	The ARN of the key you created to encrypt/decrypt log files
 
 ```json
 {
@@ -358,6 +366,10 @@ Navigate to the SQS you just created, go to Access policy > Edit
 
 
 Replace the SQS policy mentioned [here](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#sqs-policy) and save
+* {roleArn}	The ARN of the assumed role you have created for the AWS Sentinel account
+* {sqsArn}	The ARN of the SQS queue you created, to which this policy will apply
+* {bucketName}	The name of the S3 bucket you are giving send permissions to
+
 ```json
 {
   "Version": "2008-10-17",
