@@ -66,7 +66,7 @@ Double check the IAM permissions and confirm creation
 ![image](https://user-images.githubusercontent.com/96930989/228408859-8aee4b45-348d-46a5-b8e6-7cce4b6baf97.png)
 
 
-### 5. Configure an AWS service to export logs to an S3 bucket
+### 5. Configure an AWS service to export GuardDuty logs to an S3 bucket
 
 #### a. First, [Enable GuardDuty source in AWS](https://aws.amazon.com/guardduty/getting-started/)
 
