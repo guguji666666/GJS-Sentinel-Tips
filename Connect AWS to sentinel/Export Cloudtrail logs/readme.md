@@ -13,8 +13,6 @@ Each SQS queue should point to one type of message, so if you want to ingest `Gu
 
 Similarly, a single SQS queue can serve only one path in an S3 bucket, so if for any reason you are storing logs in multiple paths, each path requires its own dedicated SQS queue.
 
-SQS > S3 bucket > S3 bucket paths 
-
 ## Deployment steps
 
 ### 1. [Create a Simple Queue Service (SQS) in AWS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/step-create-queue.html)
