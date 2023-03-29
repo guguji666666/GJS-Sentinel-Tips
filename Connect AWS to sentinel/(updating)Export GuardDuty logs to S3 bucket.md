@@ -199,48 +199,7 @@ When editing the key policy, make sure your JSON syntax is valid, if you add the
 }
 ```
 
-In my lab, the KMS policy looks like
-```json
-{
-    "Id": "key-consolepolicy-3",
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "Enable IAM User Permissions",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::03xxxxxxxx93:root"
-            },
-            "Action": "kms:*",
-            "Resource": "*"
-        },
-        {
-            "Sid": "Allow GuardDuty to use the key",
-            "Effect": "Allow",
-            "Principal": {
-              "Service": "guardduty.amazonaws.com"
-            },
-            "Action": "kms:GenerateDataKey",
-            "Resource": "*"
-          },
-          {
-            "Sid": "Allow use of the key",
-            "Effect": "Allow",
-            "Principal": {
-              "AWS": [
-                "${The ARN of the assumed role you have created for the AWS Sentinel account}"
-              ]
-            },
-            "Action": [
-              "kms:Decrypt"
-            ],
-            "Resource": "*"
-          }
-    ]
-}
-```
-
-Click Save
+Once the policy is added, click Save
 
 
 #### b. [Granting GuardDuty permissions to a bucket > Additional policies to allow GuardDuty to send logs to S3 and read the data using KMS ](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#s3-policies)
@@ -316,73 +275,7 @@ Add the policy below
 }
 ```
 
-In my lab, the S3 policy looks like
-```json
-{
-    "Statement": [
-      {
-        "Sid": "Allow GuardDuty to use the getBucketLocation operation",
-        "Effect": "Allow",
-        "Principal": {
-          "Service": "guardduty.amazonaws.com"
-        },
-        "Action": "s3:GetBucketLocation",
-        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual"
-      },
-      {
-        "Sid": "Allow GuardDuty to upload objects to the bucket",
-        "Effect": "Allow",
-        "Principal": {
-          "Service": "guardduty.amazonaws.com"
-        },
-        "Action": "s3:PutObject",
-        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*"
-      },
-      {
-        "Sid": "Deny unencrypted object uploads. This is optional",
-        "Effect": "Deny",
-        "Principal": {
-          "Service": "guardduty.amazonaws.com"
-        },
-        "Action": "s3:PutObject",
-        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*",
-        "Condition": {
-          "StringNotEquals": {
-            "s3:x-amz-server-side-encryption": "aws:kms"
-          }
-        }
-      },
-      {
-        "Sid": "Deny incorrect encryption header. This is optional",
-        "Effect": "Deny",
-        "Principal": {
-          "Service": "guardduty.amazonaws.com"
-        },
-        "Action": "s3:PutObject",
-        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*",
-        "Condition": {
-          "StringNotEquals": {
-            "s3:x-amz-server-side-encryption-aws-kms-key-id": "arn:aws:kms:us-east-1:03xxxxxxx:key/xxxxxx5-xxx2-4xxx6-9xxb-xxxxxdaxx9"
-          }
-        }
-      },
-      {
-        "Sid": "Deny non-HTTPS access",
-        "Effect": "Deny",
-        "Principal": "*",
-        "Action": "s3:*",
-        "Resource": "arn:aws:s3:::demo-s3-guardduty-sentinel-manual/*",
-        "Condition": {
-          "Bool": {
-            "aws:SecureTransport": "false"
-          }
-        }
-      }
-    ]
-  }
-```
-
-Click save changes
+Once the policy is added, click save changes
 
 ![image](https://user-images.githubusercontent.com/96930989/228473968-9e0fbb73-8323-4b39-bb44-b447571e033e.png)
 
@@ -406,14 +299,46 @@ Navigate to [GuardDuty console](https://console.aws.amazon.com/guardduty)
 
 Navigate to the SQS you just created, go to Access policy > Edit
 
-![image](https://user-images.githubusercontent.com/96930989/222447122-42a4a893-a86e-4ccc-abe7-8a8c7b4f7b67.png)
+![image](https://user-images.githubusercontent.com/96930989/228479334-0fe4d692-9942-47ee-862b-4e5b91e80a2f.png)
 
 
-Replace the SQS policy with the context here, fill in the parameters in your exact environment and save
-
-![image](https://user-images.githubusercontent.com/96930989/222446720-7d3cc516-5cc4-4fd5-b24b-692c5336473b.png)
-
-
+Replace the SQS policy mentioned [here](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AWS-S3/AwsRequiredPolicies.md#sqs-policy) and save
+```json
+{
+  "Version": "2008-10-17",
+  "Id": "__default_policy_ID",
+  "Statement": [
+    {
+      "Sid": "allow s3 to send notification messages to SQS queue",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "s3.amazonaws.com"
+      },
+      "Action": "SQS:SendMessage",
+      "Resource": "${sqsArn}",
+      "Condition": {
+        "ArnLike": {
+          "aws:SourceArn": "arn:aws:s3:*:*:${bucketName}"
+        }
+      }
+    },
+    {
+      "Sid": "allow specific role to read/delete/change visibility of SQS messages and get queue url",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "${roleArn}"
+      },
+      "Action": [
+        "SQS:ChangeMessageVisibility",
+        "SQS:DeleteMessage",
+        "SQS:ReceiveMessage",
+        "SQS:GetQueueUrl"
+      ],
+      "Resource": "${sqsArn}"
+    }
+  ]
+}
+```
 
 ### 9. [Enable notification to SQS at S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-event-notifications.html)
 
