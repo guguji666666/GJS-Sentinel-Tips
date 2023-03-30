@@ -134,7 +134,7 @@ List the all existing automation rules with details, type name of resourcegroup 
 I define several actions in the test automation rule so that i could get more details from the sample
 ![image](https://user-images.githubusercontent.com/96930989/212612370-7da240c4-fdaa-4762-bc36-40f083d53a2a.png)
 
-With the reference from the existing automation rules, the format of ARM template used in github/devops repository pipeline should follow:
+With the reference from the existing automation rules, the format of ARM template used in github/devops repository pipeline should follow the sample below:
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
