@@ -44,3 +44,19 @@ Defines how Microsoft Sentinel collects data from your data source. For more inf
 
 
 #### 3. [Configure your connector's polling settings](https://learn.microsoft.com/en-us/azure/sentinel/create-codeless-connector?tabs=deploy-via-arm-template%2Cconnect-via-the-azure-portal#configure-your-connectors-polling-settings)
+
+Syntax of `pollingConfig`
+
+```json
+"pollingConfig": {
+    auth": {
+        "authType": <string>,
+    },
+    "request": {…
+    },
+    "response": {…
+    },
+    "paging": {…
+    }
+ }
+ ```
