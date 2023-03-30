@@ -18,12 +18,18 @@
 * [Best practices for designing a Microsoft Sentinel or Azure Defender for Cloud workspace](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/best-practices-for-designing-a-microsoft-sentinel-or-azure/ba-p/832574)
 * [What’s New: 250+ Solutions in Microsoft Sentinel Content hub!](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/what-s-new-250-solutions-in-microsoft-sentinel-content-hub/ba-p/3692881)
 
-
 #### 1. When uninstalling the solution from content hub, will the contents be removed as well?
 NO, only the solution is removed, the contents deployed by it will not be removed
 
 Sample for `CrowdStrike Falcon Endpoint Protection`
 ![image](https://user-images.githubusercontent.com/96930989/212284641-77218147-2ecb-4067-a08d-2c944895bfad.png)
+
+#### 2. [Service limits you might encounter as you use Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits#microsoft-sentinel-limits)
+
+![image](https://user-images.githubusercontent.com/96930989/228762240-eb61c1af-c136-49d0-8397-0fd2fcadccdf.png)
+
+![image](https://user-images.githubusercontent.com/96930989/228762265-28e9fce4-eceb-446f-bef8-a2d11a88a9db.png)
+
 
 ## API reference:
 * [List workspaces under subscription](https://learn.microsoft.com/en-us/rest/api/loganalytics/workspaces/list?tabs=HTTP)
