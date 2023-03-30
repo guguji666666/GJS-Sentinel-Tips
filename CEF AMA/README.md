@@ -69,7 +69,7 @@ cat /etc/rsyslog.conf
 
 In this file we can check the protocol and port set on the rsyslog daemon
 
-![image](https://user-images.githubusercontent.com/96930989/211134060-7ddf3240-b896-4ff0-98d9-f75268f005ff
+![image](https://user-images.githubusercontent.com/96930989/211134060-7ddf3240-b896-4ff0-98d9-f75268f005ff.png)
 
 #### 4. Check if rsyslog daemon is listening to port 514
 ```sh
