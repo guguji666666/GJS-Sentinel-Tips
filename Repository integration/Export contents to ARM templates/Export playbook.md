@@ -37,7 +37,7 @@ We will have security issue if we share the code view which contains sensitive i
 
 #### Lab 
 
-Download the generateor(powershell script)[here](https://github.com/Azure/Azure-Sentinel/tree/master/Tools/Playbook-ARM-Template-Generator)
+Download the **generator** (powershell script) [here](https://github.com/Azure/Azure-Sentinel/tree/master/Tools/Playbook-ARM-Template-Generator)
 
 Run the powershell script
 
