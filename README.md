@@ -1,5 +1,7 @@
 ## 1. [Find your Microsoft Sentinel data connector and tables](https://learn.microsoft.com/en-us/azure/sentinel/data-connectors-reference#how-to-use-this-guide)
 ## 2. Connect different data sources to Microsoft Sentinel
+We need to export the logs to the workspace first
+
 * [Configure big data analytics settings for Azure Synapse Analytics](https://learn.microsoft.com/en-us/azure/sentinel/notebooks-with-synapse)
 * [Send Azure Databricks application logs to Azure Monitor](https://learn.microsoft.com/en-us/azure/architecture/databricks-monitoring/application-logs)
 * [Azure Storage Account connector for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/azure-storage-account)
