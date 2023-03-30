@@ -59,13 +59,25 @@ cat /etc/rsyslog.d/10-azuremonitoragent.conf
 ```
 ![image](https://user-images.githubusercontent.com/96930989/226533023-869953b6-c9d7-49e9-89bd-415a8fa179af.png)
 
-#### 3. Check if rsyslog daemon is listening to port 514
+#### 3.Check configuration betwween CEF data sources and rsyslog daemon
+
+Path : /etc/rsyslog.conf 
+
+```sh
+cat /etc/rsyslog.conf
+```
+
+In this file we can check the protocol and port set on the rsyslog daemon
+
+![image](https://user-images.githubusercontent.com/96930989/211134060-7ddf3240-b896-4ff0-98d9-f75268f005ff
+
+#### 4. Check if rsyslog daemon is listening to port 514
 ```sh
 netstat -an | grep 514
 ```
 ![image](https://user-images.githubusercontent.com/96930989/226531248-7aeabe91-8666-4781-84c7-f0dffd32b326.png)
 
-#### 4. Make sure that you can see logs being written to the local log file, either `/var/log/messages` or `/var/log/syslog`
+#### 5. Make sure that you can see logs being written to the local log file, either `/var/log/messages` or `/var/log/syslog`
 ![image](https://user-images.githubusercontent.com/96930989/211135011-7d447f4a-c0d0-4874-ba87-e0795fadcc8c.png)
 
 For Centos/Redhat
@@ -80,9 +92,9 @@ sudo tac /var/log/syslog | grep CEF -m 10
 ```
 ![image](https://user-images.githubusercontent.com/96930989/213848193-af1d4e9d-46c7-4f98-9143-a46680fbb34e.png)
 
-#### 5. [Configure syslog rotation](https://www.systutorials.com/docs/linux/man/5-logrotate.conf/)
+#### 6. [Configure syslog rotation](https://www.systutorials.com/docs/linux/man/5-logrotate.conf/)
 
-#### 6. Sample CEF logs with logger command
+#### 7. Sample CEF logs with logger command
 ```cmd
 logger -p local4.warn -P 514 -n 127.0.0.1 -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c113d028ca1ec1250ca0491"
 ```
@@ -103,7 +115,7 @@ logger -p local4.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|EncryptionDowngradeSus
 logger -p user.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|LdapBruteForceSuspiciousActivity|Brute force attack using LDAP simple bind|5|start=2018-12-12T17:52:10.2350665Z app=Ldap msg=10000 password guess attempts were made on 100 accounts from W2012R2-000000-Server. One account password was successfully guessed. externalId=2004 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c114acb8ca1ec1250cacdcb"
 ```
 
-#### 7. Capture TCP dump logs
+#### 8. Capture TCP dump logs
 ```sh
 sudo tcpdump -w '/tmp/capture.pcap' &
 ```
@@ -120,7 +132,7 @@ Then the previous session will show
 
 ![image](https://user-images.githubusercontent.com/96930989/227417818-12cc630f-f87c-4200-bc29-578d363428e4.png)
 
-#### 8. Enable debug logging in rsyslog
+#### 9. Enable debug logging in rsyslog
 Add a file at `/etc/rsyslog.d/1-debug.conf` with the following contents:
 ```sh
 sudo systemctl restart rsyslog
