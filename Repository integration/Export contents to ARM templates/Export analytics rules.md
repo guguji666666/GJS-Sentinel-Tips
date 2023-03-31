@@ -124,4 +124,15 @@ We need to import the template to resource group, you will be required to offer 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
 ```
-Please notice we may
+
+Please notice we need avoid the `^[-\w\._\(\)]+$` in TemplateFile, or we will meet the error
+
+![image](https://user-images.githubusercontent.com/96930989/229139485-6455f0f9-3198-4411-856e-4993517e7a55.png)
+
+Once the deployment succeeds, you will see the result
+
+![image](https://user-images.githubusercontent.com/96930989/229139654-f764733c-0849-4b3f-b0fc-0ac012bd5b1e.png)
+
+![image](https://user-images.githubusercontent.com/96930989/229139909-0f32f008-80d7-4320-b94a-caf5cb764e03.png)
+
+
