@@ -8,7 +8,7 @@
 
 ### [Add CEF logs faclities and log level in DCR](https://learn.microsoft.com/en-us/azure/sentinel/connect-cef-ama#select-the-data-source-type-and-create-the-dcr)
 
-### MS TSG guidance
+### TSG guidance
 
 #### 1. Check AMA service status on the VM
 Run command
