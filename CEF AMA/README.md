@@ -139,6 +139,7 @@ Go to the troubleshooter's installed location
 ```sh
 cd /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-<version>/ama_tst
 ```
+![image](https://user-images.githubusercontent.com/96930989/229040535-e219f521-dc65-4681-bbaa-517a4b14f208.png)
 
 Run the troubleshooter
 ```sh
@@ -157,13 +158,19 @@ Unpack the bundle
 tar -xzvf ama_tst.tgz
 ```
 
-Run the troubleshooter: 
+Once the script is ready, run the troubleshooter: 
 ```sh
 sudo sh ama_troubleshooter.sh
 ```
 
 Select option "L"
-  
+
+![image](https://user-images.githubusercontent.com/96930989/229040740-6a8f4e1c-86cf-4b93-872d-96d446813d22.png)
+
+Define the path for output results
+
+![image](https://user-images.githubusercontent.com/96930989/229040781-e0309d1a-5489-4f39-ac0f-88fba47815ac.png)
+
 
 #### [Troubleshooting guidance for the Azure Monitor agent on Linux virtual machines and scale sets](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot-linux-vm?context=%2Fazure%2Fvirtual-machines%2Fcontext%2Fcontext#basic-troubleshooting-steps)
 
@@ -215,6 +222,10 @@ cat /etc/rsyslog.d/10-azuremonitoragent.conf
 ```
 ![image](https://user-images.githubusercontent.com/96930989/226533023-869953b6-c9d7-49e9-89bd-415a8fa179af.png)
 
+
+Wait until the results are generated
+
+![image](https://user-images.githubusercontent.com/96930989/229041503-56cd25d3-edf0-406b-9225-089cf7ef6e27.png)
 
 
 #### Other Reference links
