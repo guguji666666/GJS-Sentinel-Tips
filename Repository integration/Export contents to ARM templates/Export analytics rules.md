@@ -133,6 +133,115 @@ Once the deployment succeeds, you will see the result
 
 ![image](https://user-images.githubusercontent.com/96930989/229139654-f764733c-0849-4b3f-b0fc-0ac012bd5b1e.png)
 
-![image](https://user-images.githubusercontent.com/96930989/229139909-0f32f008-80d7-4320-b94a-caf5cb764e03.png)
+In my Lab, i export the existing analytics rule that contains entity mapping, custom details, alert details
 
+![image](https://user-images.githubusercontent.com/96930989/229141669-1b2b6899-6144-4ab9-83ae-bcbd5d930c2b.png)
 
+The exported json file looks like
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspace": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/78ed052f-5779-4422-b34a-b568c3d7ed65')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/78ed052f-5779-4422-b34a-b568c3d7ed65')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2022-09-01-preview",
+            "properties": {
+                "displayName": "heartbeatAR1",
+                "description": "",
+                "severity": "Medium",
+                "enabled": true,
+                "query": "Heartbeat\r\n| take 30",
+                "queryFrequency": "PT5M",
+                "queryPeriod": "PT5H",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "startTimeUtc": null,
+                "tactics": [],
+                "techniques": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "SingleAlert"
+                },
+                "alertDetailsOverride": {
+                    "alertDisplayNameFormat": "TestHeartbeatTitle",
+                    "alertDescriptionFormat": "TestHeartbeatDescription",
+                    "alertDynamicProperties": [
+                        {
+                            "alertProperty": "ConfidenceLevel",
+                            "value": "Version"
+                        },
+                        {
+                            "alertProperty": "ProductName",
+                            "value": "Computer"
+                        },
+                        {
+                            "alertProperty": "ProviderName",
+                            "value": "OSName"
+                        }
+                    ]
+                },
+                "customDetails": {
+                    "customdetails1": "Resource",
+                    "customdetails2": "OSName",
+                    "customdetails3": "OSType"
+                },
+                "entityMappings": [
+                    {
+                        "entityType": "Host",
+                        "fieldMappings": [
+                            {
+                                "identifier": "HostName",
+                                "columnName": "Computer"
+                            }
+                        ]
+                    },
+                    {
+                        "entityType": "IP",
+                        "fieldMappings": [
+                            {
+                                "identifier": "Address",
+                                "columnName": "ComputerIP"
+                            }
+                        ]
+                    },
+                    {
+                        "entityType": "Process",
+                        "fieldMappings": [
+                            {
+                                "identifier": "CommandLine",
+                                "columnName": "ResourceId"
+                            }
+                        ]
+                    }
+                ],
+                "sentinelEntitiesMappings": null,
+                "templateVersion": null
+            }
+        }
+    ]
+}
+```
