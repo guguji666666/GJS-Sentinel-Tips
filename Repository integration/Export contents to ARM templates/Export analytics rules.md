@@ -8,7 +8,8 @@
 
 * GUID behind `alertRules`
 > You can generate your own guid by powershell command new-guid and then fill it in the parts below accordingly
-* displayName
+
+* DisplayName
 > Modify the name displayed in sentinel portal
 
 * Query
