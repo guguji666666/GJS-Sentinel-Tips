@@ -124,3 +124,4 @@ We need to import the template to resource group, you will be required to offer 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
 ```
+Please notice we may
