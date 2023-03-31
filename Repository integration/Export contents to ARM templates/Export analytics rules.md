@@ -120,10 +120,22 @@ Sample ARM template in my lab
 
 The commands are listed [here](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-powershell#deployment-scope)
 
-We need to import the template to resource group, you will be required to offer workspace when running the command
+```powershell
+Set-PSRepository PSGallery -InstallationPolicy Trusted
+Set-ExecutionPolicy RemoteSigned
+Install-Module Az
+```
+
+```powershell
+Connect-AzAccount -TenantId <your tenant id>
+Set-AzContext -Subscription <subscription id>
+```
+
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
 ```
+
+We need to import the template to resource group, you will be required to offer workspace when running the command
 
 Please notice we need avoid the `^[-\w\._\(\)]+$` in TemplateFile, or we will meet the error
 
@@ -363,3 +375,36 @@ New json file looks like
 }
 ```
 
+Then we run the powershell commands below
+```powershell
+Set-PSRepository PSGallery -InstallationPolicy Trusted
+Set-ExecutionPolicy RemoteSigned
+Install-Module Az
+```
+
+```powershell
+Connect-AzAccount -TenantId <your tenant id>
+Set-AzContext -Subscription <subscription id>
+```
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+```
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName TestARM -TemplateFile 'C:\temp\CustomhearbeatARwithAllDetailsFromARM.json'
+```
+
+The output shows the deployment is succeeded
+
+![image](https://user-images.githubusercontent.com/96930989/229148532-924525fe-c712-4899-ad02-0b590a58555a.png)
+
+Then we check the new analytics rule in the portal
+
+![image](https://user-images.githubusercontent.com/96930989/229148822-cadff4c5-fe28-4568-9050-abea4450113b.png)
+
+![image](https://user-images.githubusercontent.com/96930989/229148958-7cc64ded-137a-42a0-81c2-fcf13c173839.png)
+
+It seems the alert details aren't modified
+
+![image](https://user-images.githubusercontent.com/96930989/229150257-e2c80a6a-4ecd-4e77-9c72-f2f4187cc1c8.png)
