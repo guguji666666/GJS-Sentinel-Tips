@@ -171,5 +171,6 @@ cat /etc/rsyslog.d/10-azuremonitoragent.conf
 ![image](https://user-images.githubusercontent.com/96930989/226533023-869953b6-c9d7-49e9-89bd-415a8fa179af.png)
 
 
+
 #### Other Reference links
 * [Redhat:Why the logs are not getting updated in /var/log/messages ?](https://access.redhat.com/solutions/3094721)
