@@ -9,57 +9,25 @@
 ### [Add CEF logs faclities and log level in DCR](https://learn.microsoft.com/en-us/azure/sentinel/connect-cef-ama#select-the-data-source-type-and-create-the-dcr)
 
 ### MS TSG guidance
-#### 1. [Troubleshooting guidance for the Azure Monitor agent on Linux virtual machines and scale sets](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot-linux-vm?context=%2Fazure%2Fvirtual-machines%2Fcontext%2Fcontext#basic-troubleshooting-steps)
 
-#### 2. [Rsyslog data not uploaded due to Full Disk space issue on AMA Linux Agent](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot-linux-vm-rsyslog?context=%2Fazure%2Fvirtual-machines%2Fcontext%2Fcontext)
-
-The df command shows almost no space available on /dev/sda1, as shown below
+#### 1. Check AMA service status on the VM
+Run command
 ```sh
-df -h
-```
-![image](https://user-images.githubusercontent.com/96930989/226531417-bf1ba739-e30b-460b-8cae-1988c1046e43.png)
-
-The du command can be used to inspect the disk to determine which files are causing the disk to be full. As shown below (machine is running Ubuntu/Debian)
-```sh
-cd /var/log
-```
-```sh
-du -h syslog*
-```
-![image](https://user-images.githubusercontent.com/96930989/226531751-e74e25d5-2e24-4806-9d5f-336845c13c84.png)
-
-On some popular distros (for example Ubuntu 18.04 LTS), rsyslog ships with a default configuration file (`/etc/rsyslog.d/50-default.conf`) which will log events from nearly all facilities to disk at /var/log/syslog.
-
-AMA `doesn't rely on` syslog events being logged to /var/log/syslog. Instead, it configures rsyslog to forward events over a socket directly to the azuremonitoragent service process (mdsd).
-
-If you're sending a `high log volume` through rsyslog, consider modifying the default rsyslog config to `avoid logging these events` to this location /var/log/syslog. The events for this facility would still be forwarded to AMA because of the config in `/etc/rsyslog.d/10-azuremonitoragent.conf`
-
-Check `/etc/rsyslog.d/50-default.conf`
-```sh
-cat /etc/rsyslog.d/50-default.conf
-```
-![image](https://user-images.githubusercontent.com/96930989/226532794-a7b6ed65-ab9f-40e5-9e74-e5f4f4e1ac26.png)
-
-For example, to remove local4 events from being logged at /var/log/syslog, change this line in /etc/rsyslog.d/50-default.conf from this:
-```
-*.*;auth,authpriv.none          -/var/log/syslog
-```
-To this
-```
-*.*;local4.none;auth,authpriv.none          -/var/log/syslog
-```
-Then
-```sh
-sudo systemctl restart rsyslog
+systemctl status azuremonitoragent
 ```
 
-Check `/etc/rsyslog.d/10-azuremonitoragent.conf`
-```sh
-cat /etc/rsyslog.d/10-azuremonitoragent.conf
-```
-![image](https://user-images.githubusercontent.com/96930989/226533023-869953b6-c9d7-49e9-89bd-415a8fa179af.png)
+![image](https://user-images.githubusercontent.com/96930989/229035992-94fa71b1-4474-474d-b0d1-164c02c90f37.png)
 
-#### 3.Check configuration betwween CEF data sources and rsyslog daemon
+#### 2. Check hearbeart in the workspace, check if the VM is in the list
+```kusto
+Heartbeat
+| order by TimeGenerated desc
+| project TimeGenerated, Computer, Category
+```
+![image](https://user-images.githubusercontent.com/96930989/229036309-11182c17-7557-4f4c-b378-bb36cde198e7.png)
+
+
+#### 3. Check configuration betwween CEF data sources and rsyslog daemon
 
 Path : /etc/rsyslog.conf 
 
@@ -128,8 +96,6 @@ logger -p local4.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|EncryptionDowngradeSus
 logger -p user.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|LdapBruteForceSuspiciousActivity|Brute force attack using LDAP simple bind|5|start=2018-12-12T17:52:10.2350665Z app=Ldap msg=10000 password guess attempts were made on 100 accounts from W2012R2-000000-Server. One account password was successfully guessed. externalId=2004 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c114acb8ca1ec1250cacdcb"
 ```
 
-
-
 #### 8. Capture TCP dump logs
 ```sh
 sudo tcpdump -w '/tmp/capture.pcap' &
@@ -153,6 +119,56 @@ Add a file at `/etc/rsyslog.d/1-debug.conf` with the following contents:
 sudo systemctl restart rsyslog
 ```
 After this, rsyslog will be outputting internal debug logs to `/var/log/rsyslog.debug.log`
+
+#### [Troubleshooting guidance for the Azure Monitor agent on Linux virtual machines and scale sets](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot-linux-vm?context=%2Fazure%2Fvirtual-machines%2Fcontext%2Fcontext#basic-troubleshooting-steps)
+
+#### [Rsyslog data not uploaded due to Full Disk space issue on AMA Linux Agent](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot-linux-vm-rsyslog?context=%2Fazure%2Fvirtual-machines%2Fcontext%2Fcontext)
+
+The df command shows almost no space available on /dev/sda1, as shown below
+```sh
+df -h
+```
+![image](https://user-images.githubusercontent.com/96930989/226531417-bf1ba739-e30b-460b-8cae-1988c1046e43.png)
+
+The du command can be used to inspect the disk to determine which files are causing the disk to be full. As shown below (machine is running Ubuntu/Debian)
+```sh
+cd /var/log
+```
+```sh
+du -h syslog*
+```
+![image](https://user-images.githubusercontent.com/96930989/226531751-e74e25d5-2e24-4806-9d5f-336845c13c84.png)
+
+On some popular distros (for example Ubuntu 18.04 LTS), rsyslog ships with a default configuration file (`/etc/rsyslog.d/50-default.conf`) which will log events from nearly all facilities to disk at /var/log/syslog.
+
+AMA `doesn't rely on` syslog events being logged to /var/log/syslog. Instead, it configures rsyslog to forward events over a socket directly to the azuremonitoragent service process (mdsd).
+
+If you're sending a `high log volume` through rsyslog, consider modifying the default rsyslog config to `avoid logging these events` to this location /var/log/syslog. The events for this facility would still be forwarded to AMA because of the config in `/etc/rsyslog.d/10-azuremonitoragent.conf`
+
+Check `/etc/rsyslog.d/50-default.conf`
+```sh
+cat /etc/rsyslog.d/50-default.conf
+```
+![image](https://user-images.githubusercontent.com/96930989/226532794-a7b6ed65-ab9f-40e5-9e74-e5f4f4e1ac26.png)
+
+For example, to remove local4 events from being logged at /var/log/syslog, change this line in /etc/rsyslog.d/50-default.conf from this:
+```
+*.*;auth,authpriv.none          -/var/log/syslog
+```
+To this
+```
+*.*;local4.none;auth,authpriv.none          -/var/log/syslog
+```
+Then
+```sh
+sudo systemctl restart rsyslog
+```
+
+Check `/etc/rsyslog.d/10-azuremonitoragent.conf`
+```sh
+cat /etc/rsyslog.d/10-azuremonitoragent.conf
+```
+![image](https://user-images.githubusercontent.com/96930989/226533023-869953b6-c9d7-49e9-89bd-415a8fa179af.png)
 
 
 #### Other Reference links
