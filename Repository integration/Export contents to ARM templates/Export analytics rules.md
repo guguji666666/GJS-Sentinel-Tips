@@ -405,6 +405,9 @@ Then we check the new analytics rule in the portal
 
 ![image](https://user-images.githubusercontent.com/96930989/229148958-7cc64ded-137a-42a0-81c2-fcf13c173839.png)
 
-It seems the alert details aren't modified
+It seems under alert details
+
+* Alert Name Format is not modified
+* Dynamic parameters are lost
 
 ![image](https://user-images.githubusercontent.com/96930989/229150257-e2c80a6a-4ecd-4e77-9c72-f2f4187cc1c8.png)
