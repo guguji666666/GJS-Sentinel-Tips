@@ -34,7 +34,8 @@ let DisabledParsers=materialize(_GetWatchlist('ASimDisabledParsers') | where Sea
 
 Then paste it into query part
 
-* For parameters "queryFrequency", "queryPeriod", "triggerOperator", "triggerThreshold", we can refer to
+For parameters "queryFrequency", "queryPeriod", "triggerOperator", "triggerThreshold", we can refer to
+
 ![image](https://user-images.githubusercontent.com/96930989/217118810-fbdd609e-3dc1-468e-b317-d6902d76409d.png)
 
 Sample ARM template in my lab
