@@ -96,7 +96,20 @@ logger -p local4.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|EncryptionDowngradeSus
 logger -p user.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|LdapBruteForceSuspiciousActivity|Brute force attack using LDAP simple bind|5|start=2018-12-12T17:52:10.2350665Z app=Ldap msg=10000 password guess attempts were made on 100 accounts from W2012R2-000000-Server. One account password was successfully guessed. externalId=2004 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c114acb8ca1ec1250cacdcb"
 ```
 
-#### 8. Capture TCP dump logs
+### 8. Check if the CEF log received matches the CEF format
+
+1. Navigate to [CEF debug regex](https://regex101.com/)
+
+2. Input CEF format
+```
+/(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
+```
+
+3. Input the CEF logs you received
+![image](https://user-images.githubusercontent.com/96930989/213848436-8e31cc32-609f-4fb6-9fb6-7fc7309c1f8e.png)
+
+
+#### 9. Capture TCP dump logs
 ```sh
 sudo tcpdump -w '/tmp/capture.pcap' &
 ```
@@ -113,12 +126,44 @@ Then the previous session will show
 
 ![image](https://user-images.githubusercontent.com/96930989/227417818-12cc630f-f87c-4200-bc29-578d363428e4.png)
 
-#### 9. Enable debug logging in rsyslog
+#### 10. Enable debug logging in rsyslog
 Add a file at `/etc/rsyslog.d/1-debug.conf` with the following contents:
 ```sh
 sudo systemctl restart rsyslog
 ```
 After this, rsyslog will be outputting internal debug logs to `/var/log/rsyslog.debug.log`
+
+#### 11. Capture logs for further troubleshooting
+
+Go to the troubleshooter's installed location
+```sh
+cd /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-<version>/ama_tst
+```
+
+Run the troubleshooter
+```sh
+sudo sh ama_troubleshooter.sh
+```
+
+If the troubleshooter isn't properly installed, or needs to be updated, the newest version can be downloaded and run by following the steps below.
+ 
+Copy the troubleshooter bundle onto your machine
+```sh
+wget https://github.com/Azure/azure-linux-extensions/raw/master/AzureMonitorAgent/ama_tst/ama_tst.tgz
+```
+
+Unpack the bundle
+```sh
+tar -xzvf ama_tst.tgz
+```
+
+Run the troubleshooter: 
+```sh
+sudo sh ama_troubleshooter.sh
+```
+
+Select option "L"
+  
 
 #### [Troubleshooting guidance for the Azure Monitor agent on Linux virtual machines and scale sets](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot-linux-vm?context=%2Fazure%2Fvirtual-machines%2Fcontext%2Fcontext#basic-troubleshooting-steps)
 
