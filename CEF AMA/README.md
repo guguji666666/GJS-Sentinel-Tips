@@ -146,6 +146,14 @@ Run the troubleshooter
 sudo sh ama_troubleshooter.sh
 ```
 
+Select option "L"
+
+![image](https://user-images.githubusercontent.com/96930989/229040740-6a8f4e1c-86cf-4b93-872d-96d446813d22.png)
+
+Define the path for output results
+
+![image](https://user-images.githubusercontent.com/96930989/229040781-e0309d1a-5489-4f39-ac0f-88fba47815ac.png)
+
 If the troubleshooter isn't properly installed, or needs to be updated, the newest version can be downloaded and run by following the steps below.
  
 Copy the troubleshooter bundle onto your machine
