@@ -115,3 +115,12 @@ Sample ARM template in my lab
     ]
 }
 ```
+
+## (Optional) Use powershell to import ARM template
+
+The commands are listed [here](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-powershell#deployment-scope)
+
+We need to import the template to resource group, you will be required to offer workspace when running the command
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+```
