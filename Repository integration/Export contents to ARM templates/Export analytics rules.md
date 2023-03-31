@@ -277,7 +277,7 @@ New json file looks like
                 "description": "",
                 "severity": "Medium",
                 "enabled": true,
-                "query": "Heartbeat\r\n| take 30",
+                "query": "Heartbeat\r\n| take 10",
                 "queryFrequency": "PT5M",
                 "queryPeriod": "PT5H",
                 "triggerOperator": "GreaterThan",
