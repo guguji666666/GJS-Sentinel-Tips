@@ -1,8 +1,12 @@
 ## Deploy Analytics rule to Microsoft Sentinel
 
-
-
-
+#### 1. [Deploy Analytics rule in the portal UI](https://learn.microsoft.com/en-us/azure/sentinel/import-export-analytics-rules)
+#### 2. Deploy Analytics rule using powershell and ARM template
+Reference doc
+* [Export existing Analytics rule to ARM template](https://learn.microsoft.com/en-us/azure/sentinel/import-export-analytics-rules#export-rules)
+* [Using powershell command to import ARM template to specified scope](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-powershell#deployment-scope)
+* [Demo](https://github.com/guguji666666/GJS-Sentinel-Tips/blob/main/Repository%20integration/Export%20contents%20to%20ARM%20templates/Export%20analytics%20rules.md#optional-use-powershell-to-import-arm-template)
+#### 3. Deploy Analytics rule using [API](https://learn.microsoft.com/en-us/rest/api/securityinsights/stable/alert-rules)
 
 
 ## Useful Analytics rules
