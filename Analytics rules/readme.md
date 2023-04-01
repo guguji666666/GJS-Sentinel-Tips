@@ -21,7 +21,7 @@ SigninLogs
 | where RepeatTimesWhenBadPassWordInSameIp > 5
 ```
 
-Test before roll out to the anyatics rule (remove the scanning time range)
+Test before deployment in production environment (remove the scanning time range)
 ```kusto
 SigninLogs
 | where Status contains "Failure" and Status contains "50126"
