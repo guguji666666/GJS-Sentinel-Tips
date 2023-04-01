@@ -1,3 +1,12 @@
+## Deploy Analytics rule to Microsoft Sentinel
+
+
+
+
+
+
+## Useful Analytics rules
+
 #### 1. Generate alerts when the times of same password from same IP exceeds thereshold
 
 Due to ingestion delay we can only use scheduled analytics rule
