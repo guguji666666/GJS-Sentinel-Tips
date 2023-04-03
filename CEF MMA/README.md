@@ -105,7 +105,7 @@ Checks that the necessary connections are established:
 * tcp 25226 for internal communication between the rsyslog daemon and the Log Analytics agent
 ```sh
 netstat -an | grep 514
-netstat -an | grep 25226![image](https://user-images.githubusercontent.com/96930989/211134834-c02ebf86-c7a8-4701-a8fe-0d2683765acc.png)
+netstat -an | grep 25226
 ```
 ![image](https://user-images.githubusercontent.com/96930989/211134831-a47385d9-835d-4447-b950-ba553cacd3c3.png)
 
