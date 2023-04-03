@@ -34,3 +34,10 @@ or
 ```powershell
 sfdx org display --target-org <username>
 ```
+
+Sample 
+
+![image](https://user-images.githubusercontent.com/96930989/229423007-37284060-b4d8-4895-826c-4403e3823c79.png)
+
+Note this access token, we'll need it later. 
+
