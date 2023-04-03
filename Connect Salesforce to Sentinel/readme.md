@@ -18,9 +18,3 @@ Run powershell command
 ```powershell
 sfdx auth:web:login
 ```
-
-or
-
-```powershell
-sfdx org:login web
-```
