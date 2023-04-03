@@ -27,17 +27,21 @@ Input the credentials of administrator, then you will see the page, allow it
 
 Get the access token running the powershell command below
 ```powershell
-sfdx force:org:display --targetusername <username>
+sfdx force:org:display --targetusername <username> | clip
 ```
 
 or
 ```powershell
-sfdx org display --target-org <username>
+sfdx org display --target-org <username> clip
 ```
 
-Sample 
+Sample > the results will be saved to your clipboard
 
-![image](https://user-images.githubusercontent.com/96930989/229423007-37284060-b4d8-4895-826c-4403e3823c79.png)
+![image](https://user-images.githubusercontent.com/96930989/229423439-43b7e4cf-f2e8-47af-8ec6-34c7acff40d2.png)
 
-Note this access token, we'll need it later. 
+Open your notepad and paste the results. Note this access token, we'll need it later. 
+
+![image](https://user-images.githubusercontent.com/96930989/229423735-c8f700e3-8b79-4478-936e-52133bc28b06.png)
+
+
 
