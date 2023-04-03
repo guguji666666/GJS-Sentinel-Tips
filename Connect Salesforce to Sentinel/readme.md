@@ -39,9 +39,9 @@ Sample > the results will be saved to your clipboard
 
 ![image](https://user-images.githubusercontent.com/96930989/229423439-43b7e4cf-f2e8-47af-8ec6-34c7acff40d2.png)
 
-Open your notepad and paste the results. Note this access token, we'll need it later. 
+Open your notepad and paste the results. Note the `access token` and `instance Uri`, we'll need them later. 
 
-![image](https://user-images.githubusercontent.com/96930989/229423735-c8f700e3-8b79-4478-936e-52133bc28b06.png)
+![image](https://user-images.githubusercontent.com/96930989/229423933-e8025ec3-e1f2-4575-9abf-a9bca79b95ab.png)
 
 
 
