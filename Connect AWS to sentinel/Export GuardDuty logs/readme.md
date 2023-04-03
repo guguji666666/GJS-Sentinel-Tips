@@ -417,13 +417,13 @@ We must use a standard SQS and then the configuration could be saved successfull
 
 ![image](https://user-images.githubusercontent.com/96930989/228488200-aff3ba42-9bcc-4c76-a6e4-aca4aec0aee7.png)
 
-### 11. Complete configuration in Microsft Sentinel
+### 11. Complete configuration in Microsoft Sentinel
 
 ![image](https://user-images.githubusercontent.com/96930989/228527641-0a7bb359-19b0-4d43-ae3f-1440158859c1.png)
 
 ![image](https://user-images.githubusercontent.com/96930989/228527810-9cab37bf-21d1-4b6c-95a5-43680eb7570b.png)
 
-### 12. Wait for 1 hour and check incoming guardduty logs in sentinel
+### 12. Wait for 1 hour and check incoming GuardDuty logs in sentinel
 
 ![image](https://user-images.githubusercontent.com/96930989/228513539-b61d9331-380e-4c06-9aa5-8cbe04ac9ed5.png)
 
