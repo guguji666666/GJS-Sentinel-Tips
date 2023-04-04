@@ -14,12 +14,28 @@
 7. MMA sends the CEF logs to the workspace
 
 ## [Basic troubleshooting steps](https://learn.microsoft.com/en-us/azure/sentinel/troubleshooting-cef-syslog?tabs=cef)
-### Check services
 
+### Check the stauts of services
+
+auoms
 ```sh
 systemctl status auoms
 ```
 ![image](https://user-images.githubusercontent.com/96930989/229679984-e02ec129-800c-410e-b998-567b37f3add1.png)
+
+OMSAgent service
+```sh
+sudo /opt/microsoft/omsagent/bin/omsadmin.sh -l
+```
+![image](https://user-images.githubusercontent.com/96930989/229681739-3fafde47-73f2-4ed1-a5c7-ec2648500c3e.png)
+
+Check if current heartbeats in omsagent.log
+```sh
+sudo su root
+tail -f /var/opt/microsoft/omsagent/log/omsagent.log
+```
+![image](https://user-images.githubusercontent.com/96930989/229681843-e65f1e2b-a357-4819-991b-386cbc72a325.png)
+
 
 If the daemon is rsyslog
 ```sh
