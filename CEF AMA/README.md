@@ -10,13 +10,25 @@
 
 ### TSG guidance
 
-#### 1. Check AMA service status on the VM
-Run command
+#### 1. Check the status of services on the VM
+
+AMA service
 ```sh
 systemctl status azuremonitoragent
 ```
-
 ![image](https://user-images.githubusercontent.com/96930989/229035992-94fa71b1-4474-474d-b0d1-164c02c90f37.png)
+
+If the daemon is rsyslog
+```sh
+systemctl status rsyslog
+```
+![image](https://user-images.githubusercontent.com/96930989/229680887-f3a0b4e6-b598-414e-870c-228deb2e9bf2.png)
+
+
+If the daemon is syslog-ng
+```sh
+systemctl status syslog-ng
+```
 
 #### 2. Check hearbeart in the workspace, check if the VM is in the list
 ```kusto
