@@ -23,7 +23,7 @@ Input the credentials of administrator, then you will see the page, allow it
 
 ![image](https://user-images.githubusercontent.com/96930989/229422269-ed5898a3-314e-4fea-9067-91f5501d3dbb.png)
 
-![image](https://user-images.githubusercontent.com/96930989/229422381-f71fffb1-2f01-4204-9d92-45ff041fa622.png)
+![image](https://user-images.githubusercontent.com/96930989/229749621-71e43006-ae7a-4756-be85-52fd0f5edf86.png)
 
 Get the access token running the powershell command below
 ```powershell
@@ -37,7 +37,7 @@ sfdx org display --target-org <username> | clip
 
 Sample > the results will be saved to your clipboard
 
-![image](https://user-images.githubusercontent.com/96930989/229423439-43b7e4cf-f2e8-47af-8ec6-34c7acff40d2.png)
+![image](https://user-images.githubusercontent.com/96930989/229749919-5273fd3a-30e6-45b5-8e86-252a4b774ac1.png)
 
 Open your notepad and paste the results. Note the `access token` and `instance Uri`, we'll need them later. 
 
