@@ -32,7 +32,7 @@ sfdx force:org:display --targetusername <username> | clip
 
 or
 ```powershell
-sfdx org display --target-org <username> clip
+sfdx org display --target-org <username> | clip
 ```
 
 Sample > the results will be saved to your clipboard
