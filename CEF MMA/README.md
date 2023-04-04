@@ -14,6 +14,24 @@
 7. MMA sends the CEF logs to the workspace
 
 ## [Basic troubleshooting steps](https://learn.microsoft.com/en-us/azure/sentinel/troubleshooting-cef-syslog?tabs=cef)
+### Check services
+
+```sh
+systemctl status auoms
+```
+![image](https://user-images.githubusercontent.com/96930989/229679984-e02ec129-800c-410e-b998-567b37f3add1.png)
+
+If the daemon is rsyslog
+```sh
+systemctl status rsyslog
+```
+![image](https://user-images.githubusercontent.com/96930989/229680037-9daf01d2-74e3-43a9-9327-95d32fe28e21.png)
+
+If the daemon is syslog-ng
+```sh
+systemctl status syslog-ng
+```
+
 ### 1. Check Firewall rules and forwarding rules between rsyslog daemon and MMA
 ### Path : /etc/rsyslog.d 
 ```sh
