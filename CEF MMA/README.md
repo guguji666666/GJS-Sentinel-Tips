@@ -17,6 +17,8 @@
 
 ### Check the stauts of services
 
+[Troubleshoot issues with the Log Analytics agent for Linux](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/agent-linux-troubleshoot)
+
 auoms
 ```sh
 systemctl status auoms
