@@ -223,6 +223,6 @@ logger -p local4.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|EncryptionDowngradeSus
 logger -p user.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|LdapBruteForceSuspiciousActivity|Brute force attack using LDAP simple bind|5|start=2018-12-12T17:52:10.2350665Z app=Ldap msg=10000 password guess attempts were made on 100 accounts from W2012R2-000000-Server. One account password was successfully guessed. externalId=2004 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c114acb8ca1ec1250cacdcb"
 ```
 
-CEF-MMA TSG script > Modify the extension to `py`
+### 10. CEF-MMA TSG script > Modify the extension to `py`
 
 [CEF-MMA-TSG.txt](https://github.com/guguji666666/GJS-Sentinel-Tips/files/11169699/CEF-MMA-TSG.txt)
