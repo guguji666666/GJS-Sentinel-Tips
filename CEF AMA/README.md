@@ -55,26 +55,40 @@ By default, the listening port is 514, however, if the customer wants to use a d
 
 Original configuration
 
+![image](https://user-images.githubusercontent.com/96930989/230566919-72223585-d9d0-42c8-8669-6ef16ea1d36a.png)
 
 Modify the port to 6514 here, then save the file
 
+![image](https://user-images.githubusercontent.com/96930989/230569120-edd145e3-f105-4a4a-b9bb-3e58bcd26559.png)
 
 Restart rsyslog service
 ```sh
-sudo service rsyslog restart
+service rsyslog restart
 ```
+
+Check the state of rsyslog daemon service, make sure it is running
+```sh
+systemctl status rsyslog
+```
+
+![image](https://user-images.githubusercontent.com/96930989/230569222-2e728400-1aa6-40e2-b258-5714c847ce7c.png)
 
 Check if rsyslog daemon is listening to port 6514
 ```sh
 netstat -an | grep 6514
 ```
 
+![image](https://user-images.githubusercontent.com/96930989/230569376-6fe4e33d-da84-4f7b-81a3-4564b303dd34.png)
+
+
 Send CEF log to port 6514
 ```sh
-logger -p local4.warn -P 6514 -n 127.0.0.1 -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c113d028ca1ec1250ca0491"
+logger -p local4.warn -P 6514 -n 127.0.0.1 -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1= https://192.168.0.220/suspiciousGJSActivity/5c113d028ca1ec1250ca0491"
 ```
 
-Check the log in workspace
+Check the CEF log in workspace
+
+![image](https://user-images.githubusercontent.com/96930989/230570626-686df9e5-e8ce-49ce-ac3d-1f8e9ee4c302.png)
 
 
 #### 4. Check if rsyslog daemon is listening to port 514
