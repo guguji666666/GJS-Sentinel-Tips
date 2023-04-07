@@ -51,6 +51,32 @@ In this file we can check the protocol and port set on the rsyslog daemon
 
 ![image](https://user-images.githubusercontent.com/96930989/211134060-7ddf3240-b896-4ff0-98d9-f75268f005ff.png)
 
+By default, the listening port is 514, however, if the customer wants to use a differnent port, take 6514 for example, we can foloow the steps below
+
+Original configuration
+
+
+Modify the port to 6514 here, then save the file
+
+
+Restart rsyslog service
+```sh
+sudo service rsyslog restart
+```
+
+Check if rsyslog daemon is listening to port 6514
+```sh
+netstat -an | grep 6514
+```
+
+Send CEF log to port 6514
+```sh
+logger -p local4.warn -P 6514 -n 127.0.0.1 -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c113d028ca1ec1250ca0491"
+```
+
+Check the log in workspace
+
+
 #### 4. Check if rsyslog daemon is listening to port 514
 ```sh
 netstat -an | grep 514
