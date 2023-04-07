@@ -39,7 +39,7 @@ Heartbeat
 ![image](https://user-images.githubusercontent.com/96930989/229036309-11182c17-7557-4f4c-b378-bb36cde198e7.png)
 
 
-#### 3. Check configuration betwween CEF data sources and rsyslog daemon
+#### 3. Check configuration between CEF data sources and rsyslog daemon
 
 Path : /etc/rsyslog.conf 
 
