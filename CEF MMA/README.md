@@ -71,7 +71,7 @@ sudo systemctl status rsyslog
 ```
 
 
-If the daemon is syslog-ng
+If the daemon is syslog-ng, we can check the status
 ```sh
 systemctl status syslog-ng
 ```
