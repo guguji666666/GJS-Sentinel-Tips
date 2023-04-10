@@ -60,8 +60,7 @@ Modify the rsyslog config file, uncomment the content below
 ```sh
 nano /etc/rsyslog.conf
 ```
-![image](https://user-images.githubusercontent.com/96930989/230888277-9960a821-b1a1-45dc-b450-051d273d39ea.png)
-
+![image](https://user-images.githubusercontent.com/96930989/230888513-54b16790-ce11-4ea9-adc8-2fc833e30b29.png)
 
 ```sh
 sudo systemctl restart rsyslog
