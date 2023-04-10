@@ -22,10 +22,34 @@ If the daemon is rsyslog
 ```sh
 systemctl status rsyslog
 ```
-![image](https://user-images.githubusercontent.com/96930989/229680887-f3a0b4e6-b598-414e-870c-228deb2e9bf2.png)
+![image](https://user-images.githubusercontent.com/96930989/229680037-9daf01d2-74e3-43a9-9327-95d32fe28e21.png)
 
+If you want to install rsyslog daemon
 
-If the daemon is syslog-ng
+```sh
+apt install rsyslog -y
+```
+
+```sh
+systemctl start rsyslog
+systemctl enable rsyslog
+```
+
+Modify the rsyslog config file, uncomment the content below
+```sh
+nano /etc/rsyslog.conf
+```
+![image](https://user-images.githubusercontent.com/96930989/230888513-54b16790-ce11-4ea9-adc8-2fc833e30b29.png)
+
+```sh
+sudo systemctl restart rsyslog
+```
+
+```sh
+sudo systemctl status rsyslog
+```
+
+If the daemon is syslog-ng, we can check the status
 ```sh
 systemctl status syslog-ng
 ```
