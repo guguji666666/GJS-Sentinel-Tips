@@ -267,6 +267,10 @@ cat /etc/opt/microsoft/omsagent/<your workspace ID>/conf/omsagent.d/security_eve
 3. Input the CEF logs you received
 ![image](https://user-images.githubusercontent.com/96930989/213848436-8e31cc32-609f-4fb6-9fb6-7fc7309c1f8e.png)
 
+Sample CEF logs in right format
+```
+Apr 11 00:15:00 cef-ama-01 CEF CEF:0|Microsoft|ATA|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c113d028ca1ec1250ca0491
+```
 
 ### 9. Sample CEF logs with logger command
 ```cmd
