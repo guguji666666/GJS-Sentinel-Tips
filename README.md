@@ -15,10 +15,27 @@ We need to export the logs to the workspace first
 * [Analytics rules templates in github](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions)
 
 ## 3. Microsoft Sentinel FAQ
+
 #### Must read before you enable sentinel
 * [Best practices for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/best-practices)
 * [Best practices for designing a Microsoft Sentinel or Azure Defender for Cloud workspace](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/best-practices-for-designing-a-microsoft-sentinel-or-azure/ba-p/832574)
 * [What’s New: 250+ Solutions in Microsoft Sentinel Content hub!](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/what-s-new-250-solutions-in-microsoft-sentinel-content-hub/ba-p/3692881)
+
+#### Check the size of incoming logs to specified table
+
+CEF log 
+```kusto
+CommonSecurityLog
+| where _IsBillable == true
+| where TimeGenerated >= 30d   //set the timerange
+| where DeviceVendor == "Microsoft" // set the filter for devicevendor
+| summarize Size = sum(_BilledSize) by bin(TimeGenerated, 1d), DeviceVendor, _IsBillable 
+| extend MB = format_bytes(toint(Size), 2)
+| project TimeGenerated, DeviceVendor, MB
+| sort by TimeGenerated asc 
+```
+![image](https://user-images.githubusercontent.com/96930989/231068311-46c8b774-24b2-44ae-8ec8-4ab66db735bc.png)
+
 
 #### 1. When uninstalling the solution from content hub, will the contents be removed as well?
 NO, only the solution is removed, the contents deployed by it will not be removed
