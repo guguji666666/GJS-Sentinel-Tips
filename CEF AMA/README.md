@@ -1,6 +1,6 @@
 ## [Deploy CEF forwarder with AMA](https://learn.microsoft.com/en-us/azure/sentinel/connect-cef-ama)
 
-### Workflow
+## Workflow
 #### 1. CEF source and forwarder set on a single server
 ![image](https://user-images.githubusercontent.com/96930989/225633906-299fca10-2f80-49f6-b366-205a25c07824.png)
 #### 2. CEF source and forwarder set on different servers
@@ -8,9 +8,9 @@
 
 ### [Add CEF logs faclities and log level in DCR](https://learn.microsoft.com/en-us/azure/sentinel/connect-cef-ama#select-the-data-source-type-and-create-the-dcr)
 
-### TSG guidance
+## TSG guidance
 
-#### 1. Check the status of services on the VM
+### 1. Check the status of services on the VM
 
 AMA service
 ```sh
@@ -54,7 +54,7 @@ If the daemon is syslog-ng, we can check the status
 systemctl status syslog-ng
 ```
 
-#### 2. Check hearbeart in the workspace, check if the VM is in the list
+### 2. Check hearbeart in the workspace, check if the VM is in the list
 ```kusto
 Heartbeat
 | order by TimeGenerated desc
@@ -63,7 +63,7 @@ Heartbeat
 ![image](https://user-images.githubusercontent.com/96930989/229036309-11182c17-7557-4f4c-b378-bb36cde198e7.png)
 
 
-#### 3. Check configuration between CEF data sources and rsyslog daemon
+### 3. Check configuration between CEF data sources and rsyslog daemon
 
 Path : /etc/rsyslog.conf 
 
@@ -115,13 +115,13 @@ Check the CEF log in workspace
 ![image](https://user-images.githubusercontent.com/96930989/230570626-686df9e5-e8ce-49ce-ac3d-1f8e9ee4c302.png)
 
 
-#### 4. Check if rsyslog daemon is listening to port 514
+### 4. Check if rsyslog daemon is listening to port 514
 ```sh
 netstat -an | grep 514
 ```
 ![image](https://user-images.githubusercontent.com/96930989/226531248-7aeabe91-8666-4781-84c7-f0dffd32b326.png)
 
-#### 5. Make sure that you can see logs being written to the local log file, either `/var/log/messages` or `/var/log/syslog`
+### 5. Make sure that you can see logs being written to the local log file, either `/var/log/messages` or `/var/log/syslog`
 ![image](https://user-images.githubusercontent.com/96930989/211135011-7d447f4a-c0d0-4874-ba87-e0795fadcc8c.png)
 
 For Centos/Redhat
@@ -136,9 +136,9 @@ sudo tac /var/log/syslog | grep CEF -m 10
 ```
 ![image](https://user-images.githubusercontent.com/96930989/213848193-af1d4e9d-46c7-4f98-9143-a46680fbb34e.png)
 
-#### 6. [Configure syslog rotation](https://www.systutorials.com/docs/linux/man/5-logrotate.conf/)
+### 6. [Configure syslog rotation](https://www.systutorials.com/docs/linux/man/5-logrotate.conf/)
 
-#### 7. Sample CEF logs with logger command
+### 7. Sample CEF logs with logger command
 ```cmd
 logger -p local4.warn -P 514 -n 127.0.0.1 -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c113d028ca1ec1250ca0491"
 ```
@@ -172,7 +172,7 @@ logger -p local4.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|EncryptionDowngradeSus
 logger -p user.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|LdapBruteForceSuspiciousActivity|Brute force attack using LDAP simple bind|5|start=2018-12-12T17:52:10.2350665Z app=Ldap msg=10000 password guess attempts were made on 100 accounts from W2012R2-000000-Server. One account password was successfully guessed. externalId=2004 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c114acb8ca1ec1250cacdcb"
 ```
 
-#### 8. Check if the CEF log received matches the CEF format
+### 8. Check if the CEF log received matches the CEF format
 
 1. Navigate to [CEF debug regex](https://regex101.com/)
 
@@ -185,12 +185,11 @@ logger -p user.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|LdapBruteForceSuspicious
 ![image](https://user-images.githubusercontent.com/96930989/213848436-8e31cc32-609f-4fb6-9fb6-7fc7309c1f8e.png)
 
 Sample CEF logs in right format
-
 ```
 Apr 11 00:15:00 cef-ama-01 CEF CEF:0|Microsoft|ATA|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c113d028ca1ec1250ca0491
 ```
 
-#### 9. Capture TCP dump logs
+### 9. Capture TCP dump logs
 ```sh
 sudo tcpdump -w '/tmp/capture.pcap' &
 ```
@@ -207,14 +206,14 @@ Then the previous session will show
 
 ![image](https://user-images.githubusercontent.com/96930989/227417818-12cc630f-f87c-4200-bc29-578d363428e4.png)
 
-#### 10. Enable debug logging in rsyslog
+### 10. Enable debug logging in rsyslog
 Add a file at `/etc/rsyslog.d/1-debug.conf` with the following contents:
 ```sh
 sudo systemctl restart rsyslog
 ```
 After this, rsyslog will be outputting internal debug logs to `/var/log/rsyslog.debug.log`
 
-#### 11. Capture logs for further troubleshooting
+### 11. Capture logs for further troubleshooting
 
 Go to the troubleshooter's installed location
 ```sh
