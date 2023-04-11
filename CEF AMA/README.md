@@ -24,7 +24,7 @@ systemctl status rsyslog
 ```
 ![image](https://user-images.githubusercontent.com/96930989/229680037-9daf01d2-74e3-43a9-9327-95d32fe28e21.png)
 
-If you want to install rsyslog daemon
+If you want to [install rsyslog daemon](https://www.linkedin.com/pulse/how-install-set-up-rsyslog-server-linux-ubuntu-20041-akshay-sharma)
 
 ```sh
 apt install rsyslog -y
