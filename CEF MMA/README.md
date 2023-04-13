@@ -302,3 +302,15 @@ Install MMA using the script downloaded from sentinel connector page
 ### 11. CEF-MMA TSG script > Modify the extension to `py`
 
 [CEF-MMA-TSG.txt](https://github.com/guguji666666/GJS-Sentinel-Tips/files/11169699/CEF-MMA-TSG.txt)
+
+### Commands to restart services
+
+Restart rsyslog
+```sh
+systemctl restart rsyslog
+```
+
+Restart omsagent
+```sh
+sudo /opt/microsoft/omsagent/bin/service_control restart
+```
