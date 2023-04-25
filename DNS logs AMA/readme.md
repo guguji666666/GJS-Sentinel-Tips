@@ -51,4 +51,17 @@ We can also modify the refresh interval here on the master DNS server (DC)
 * Client machine running win 10 	192.168.50.176
 * Secondary DNS server	192.168.50.169
 * DC	192.168.50.103
+3. I set the secondary DNS server as the DNS server used by the client machine running win 10, then I access several DNS on the client machine
+4. In the workspace, I ran the KQL query below and it seems the DNS related logs contains the source that generates the DNS query request.
+
+```kusto
+ASimDnsActivityLogs
+| where SrcIpAddr != "192.168.50.169"  // IP of secondary DNS server
+| where SrcIpAddr != "192.168.50.103"  // IP of Master DNS server (DC)
+| where EventSubType == "request"      // We focus on the DNS query request from the client machine
+| where DnsQuery contains "telerik.com" // The DNS you want to filter
+| project TimeGenerated, EventSubType, SrcIpAddr, DnsQuery
+| order by TimeGenerated desc 
+```
+
 
