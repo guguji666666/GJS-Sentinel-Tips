@@ -64,5 +64,8 @@ ASimDnsActivityLogs
 | order by TimeGenerated desc 
 ```
 
-Outpout <br>
+Output <br>
 ![image](https://user-images.githubusercontent.com/96930989/234183170-2eb0d0f6-b36a-46d4-9484-3fd25a902b7d.png)
+
+If the flow is Client > AD (DNS server)> 3rd party forwarder > Forward to Azure VM DNS, it is expected that the source that generates DNS query request may be missing since there are multiple components involved in the workflow to transfer the request and the incident itself is supposed to focus on the fact the specified DNS is being touched.
+
