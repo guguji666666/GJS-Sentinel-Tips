@@ -46,4 +46,9 @@ We can also modify the refresh interval here on the master DNS server (DC)
 
 ## Lab for reference
 
+1. I built the lab following the flow: Client (domain joined) > Secondary DNS server > DC (Master DNS server)
+2. IP table of the machines
+* Client machine running win 10 	192.168.50.176
+* Secondary DNS server	192.168.50.169
+* DC	192.168.50.103
 
