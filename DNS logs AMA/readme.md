@@ -64,4 +64,5 @@ ASimDnsActivityLogs
 | order by TimeGenerated desc 
 ```
 
-
+Outpout <br>
+![image](https://user-images.githubusercontent.com/96930989/234183170-2eb0d0f6-b36a-46d4-9484-3fd25a902b7d.png)
