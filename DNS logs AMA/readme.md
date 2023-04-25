@@ -42,3 +42,8 @@ Then refresh on the secondary DNS server
 We can also modify the refresh interval here on the master DNS server (DC)
 
 ![image](https://user-images.githubusercontent.com/96930989/226570742-0ebc10d6-9741-4b3b-a06c-44094f4a1abf.png)
+
+
+## Lab for reference
+
+
