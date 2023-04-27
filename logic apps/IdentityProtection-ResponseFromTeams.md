@@ -1,8 +1,11 @@
 ## IdentityProtection-ResponseFromTeams
 
+Select the teamplate from porta <br>
+![image](https://user-images.githubusercontent.com/96930989/234742444-f31f708c-eea3-4186-95cf-7f3ce6e07451.png)
+
 ![image](https://user-images.githubusercontent.com/96930989/223096206-6dbec184-c6f3-4861-aea5-819764fe4362.png)
 
-### Compose-Adaptive card body
+### Modify Compose-Adaptive card body
 ```json
 {
   "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
