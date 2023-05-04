@@ -19,4 +19,5 @@ Then Press [apply] then [Done Editing]
 ![image](https://user-images.githubusercontent.com/96930989/236176750-85ae5a43-9ca5-46f8-ba93-5e7e0ec0decb.png)
 
 The workbook looks like <br>
+![image](https://user-images.githubusercontent.com/96930989/236177336-e8643180-78cf-42c0-9fa2-3b14abac5b72.png) <br>
 ![image](https://user-images.githubusercontent.com/96930989/236177218-dc429353-de44-43f6-ba31-7d0bcb619b87.png)
