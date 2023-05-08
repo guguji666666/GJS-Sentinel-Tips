@@ -51,4 +51,5 @@ Heartbeat
 | summarize LastCall = max(TimeGenerated) by Computer, ResourceId, ComputerIP
 | where LastCall < ago(5m)
 ```
+![image](https://user-images.githubusercontent.com/96930989/236809463-f67b6708-b21a-45a7-aa29-197546f5891c.png)
 
