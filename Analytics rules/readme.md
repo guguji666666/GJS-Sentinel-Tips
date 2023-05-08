@@ -34,3 +34,10 @@ SigninLogs
 | summarize RepeatTimesWhenBadPassWordInSameIp = count() by AlternateSignInName, IPAddress
 | where RepeatTimesWhenBadPassWordInSameIp > 5
 ```
+
+#### 2. Generate incident when AD account is locked
+```kusto
+SecurityEvent
+| where EventID == "4740"
+| summarize count() by Account, EventID
+```
