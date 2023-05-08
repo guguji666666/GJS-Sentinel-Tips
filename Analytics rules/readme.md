@@ -1,6 +1,6 @@
-## Deploy Analytics rule to Microsoft Sentinel
+# Deploy Analytics rule to Microsoft Sentinel
 
-### Methods to deploy ayalytics rules
+## Methods to deploy ayalytics rules
 #### 1. [Deploy Analytics rule in the portal UI](https://learn.microsoft.com/en-us/azure/sentinel/import-export-analytics-rules)
 #### 2. Deploy Analytics rule using powershell and ARM template
 
@@ -12,7 +12,7 @@ Please refer to the [Demo](https://github.com/guguji666666/GJS-Sentinel-Tips/blo
 
 #### 3. Deploy Analytics rule using [API](https://learn.microsoft.com/en-us/rest/api/securityinsights/stable/alert-rules)
 
-### Useful Analytics rules
+## Useful Analytics rules
 
 #### 1. Generate alerts when the times of same password from same IP exceeds thereshold
 
