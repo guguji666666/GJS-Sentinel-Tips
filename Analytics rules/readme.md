@@ -47,7 +47,6 @@ SecurityEvent
 Heartbeat
 | where ResourceProvider contains "Microsoft.HybridCompute"
 | where ComputerEnvironment contains "Non-Azure"
-| where TimeGenerated > ago(24h)
 | summarize LastCall = max(TimeGenerated) by Computer, ResourceId, ComputerIP
 | where LastCall < ago(5m)
 ```
