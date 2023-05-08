@@ -42,7 +42,15 @@ SecurityEvent
 | summarize count() by Account, EventID
 ```
 
-#### 3. Monitor if the Arc machine is offline
+#### 3. Monitor if the Azure machine is offline
+```kusto
+Heartbeat
+| where ResourceProvider contains "Microsoft.Compute"
+| summarize LastCall = max(TimeGenerated) by Computer, ResourceId, ComputerIP
+| where LastCall < ago(5m)
+```
+
+#### 4. Monitor if the Arc machine is offline
 ```kusto
 Heartbeat
 | where ResourceProvider contains "Microsoft.HybridCompute"
@@ -50,5 +58,4 @@ Heartbeat
 | summarize LastCall = max(TimeGenerated) by Computer, ResourceId, ComputerIP
 | where LastCall < ago(5m)
 ```
-![image](https://user-images.githubusercontent.com/96930989/236809463-f67b6708-b21a-45a7-aa29-197546f5891c.png)
 
