@@ -43,6 +43,8 @@ SecurityEvent
 ```
 
 #### 3. Monitor if the Azure machine is offline
+Look back range > 10 mins <br>
+Frequency > Every 5 mins
 ```kusto
 Heartbeat
 | where ResourceProvider contains "Microsoft.Compute"
@@ -51,6 +53,8 @@ Heartbeat
 ```
 
 #### 4. Monitor if the Arc machine is offline
+Look back range > 10 mins <br>
+Frequency > Every 5 mins
 ```kusto
 Heartbeat
 | where ResourceProvider contains "Microsoft.HybridCompute"
