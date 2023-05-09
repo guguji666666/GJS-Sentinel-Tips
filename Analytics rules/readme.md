@@ -1,7 +1,7 @@
 # Deploy Analytics rule to Microsoft Sentinel
 
 ## Methods to deploy ayalytics rules
-#### 1. [Deploy Analytics rule in the portal UI](https://learn.microsoft.com/en-us/azure/sentinel/import-export-analytics-rules)
+#### 1. [Deploy Analytics rule in the portal](https://learn.microsoft.com/en-us/azure/sentinel/import-export-analytics-rules)
 #### 2. Deploy Analytics rule using powershell and ARM template
 
 First, we need to [Export existing Analytics rule to ARM template](https://learn.microsoft.com/en-us/azure/sentinel/import-export-analytics-rules#export-rules)
