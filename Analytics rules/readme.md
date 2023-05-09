@@ -43,7 +43,7 @@ SecurityEvent
 | summarize count() by Account, EventID
 ```
 
-#### 3. Monitor if the Azure machine is offline
+#### 3. Monitor if the Azure VM is offline
 Look back range > 10 mins <br>
 Frequency > Every 5 mins
 ```kusto
@@ -52,6 +52,7 @@ Heartbeat
 | summarize LastCall = max(TimeGenerated) by Computer, ResourceId, ComputerIP
 | where LastCall < ago(5m)
 ```
+Once the incident is generated, we can check the VM in the events <br>
 ![image](https://user-images.githubusercontent.com/96930989/236965945-220d3c6c-7911-4ddc-83a2-e18828384909.png)
 
 #### 4. Monitor if the Arc machine is offline
