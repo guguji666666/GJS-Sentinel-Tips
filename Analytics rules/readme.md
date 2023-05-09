@@ -52,6 +52,7 @@ Heartbeat
 | summarize LastCall = max(TimeGenerated) by Computer, ResourceId, ComputerIP
 | where LastCall < ago(5m)
 ```
+![image](https://user-images.githubusercontent.com/96930989/236965945-220d3c6c-7911-4ddc-83a2-e18828384909.png)
 
 #### 4. Monitor if the Arc machine is offline
 Look back range > 10 mins <br>
