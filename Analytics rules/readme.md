@@ -1,4 +1,4 @@
-# Deploy Analytics rule to Microsoft Sentinel
+# Deploy Analytics rule in Microsoft Sentinel
 
 ## Methods to deploy ayalytics rules
 #### 1. [Deploy Analytics rule in the portal](https://learn.microsoft.com/en-us/azure/sentinel/import-export-analytics-rules)
