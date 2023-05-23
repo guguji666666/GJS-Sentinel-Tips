@@ -4,7 +4,7 @@
 
 ## Start Deployment
 #### 1. Deploy Splunk Enterprise
-We can choose to [Install on Linux](https://docs.splunk.com/Documentation/Splunk/9.0.4/Installation/InstallonLinux) or [Deploy and run Splunk Enterprise inside a Docker container](https://docs.splunk.com/Documentation/Splunk/8.0.5/Installation/DeployandrunSplunkEnterpriseinsideDockercontainers)
+We can choose to [Install on Linux](https://docs.splunk.com/Documentation/Splunk/9.0.4/Installation/InstallonLinux) or [Deploy and run Splunk Enterprise inside a Docker container](https://docs.splunk.com/Documentation/Splunk/8.0.5/Installation/DeployandrunSplunkEnterpriseinsideDockercontainers), in this article i run splunk in docker.
 
 #### 2. If you run Splunk in the docker, we can verify it by running command `docker ps`
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/40873131-6552-4f40-aa8e-cd0ed3ed5218)
