@@ -29,6 +29,7 @@ Specify the following values for the fields in the Save As Alert dialog box.
 * Alert type: Scheduled
 * Time Range: Run every hour (you can also customized the frequency)
 * Trigger condition: Number of Results is greater than 0
+
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/fd27c067-14d9-46d6-a725-35e62cdcc376)
 
 Select the Send to Microsoft Sentinel alert action <br>
