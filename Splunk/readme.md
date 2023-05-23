@@ -1,6 +1,6 @@
 ## Connect Splunk to Sentinel
 
-### Reference doc [How to export data from Splunk to Azure Sentinel](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/how-to-export-data-from-splunk-to-azure-sentinel/ba-p/1891237)
+### Reference [How to export data from Splunk to Azure Sentinel](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/how-to-export-data-from-splunk-to-azure-sentinel/ba-p/1891237)
 
 ### Start Deployment
 #### 1. Deploy Splunk Enterprise
