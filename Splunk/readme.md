@@ -20,7 +20,6 @@ We can choose to [Install on Linux](https://docs.splunk.com/Documentation/Splunk
 Input `index="_audit"`here, this query to to check the audit logs in Splunk
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e6772e32-1bec-4d0c-b22f-13fafad440c7)
 
-
 Save as Alerts <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1c9f1785-c7fd-49fa-bb8b-575c8d3673a5)
 
@@ -39,5 +38,13 @@ Fill in the required parameters as shown in the diagram below
 * Shared_key: Azure Sentinel Log Analytics Primary Key
 * Log_Type: Azure Sentinel custom log name : `Splunk_Audit_Events`
 
-Wait for 3 hours, then verify the log s in table `Splunk_Audit_Events_CL`
+Wait for 3 hours, then verify the logs are received in the workspace table `Splunk_Audit_Events_CL`
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/883e056e-0fc6-4bec-bdc5-51f0b98c3b3c)
+
+#### 6. Then you can create scheduled analytics rule to trigger incidents in Sentinel
+For example, KQL query used in the analytics rule <br>
+```kusto
+Splunk_Audit_Events_CL
+| where action_s contains "PASSWORD"
+```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a727e113-cb12-404a-8aa6-b81c88ffc58e)
