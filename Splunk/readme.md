@@ -12,6 +12,8 @@ We can choose to [Install on Linux](https://docs.splunk.com/Documentation/Splunk
 #### 3. Enter the splunk server by typing [IP of your splunk server]:(Expose port you set in docker container)
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/6b1db5fd-8711-4f6a-88f9-5cf74872b120)
 
+(Optional) You can also follow the steps in [Deploy Nginx proxy manager](https://github.com/guguji666666/Docker) so that you can access your splunk server using DNS
+
 #### 4. Install Sentinel Add-On
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/999a3550-4ca9-4eee-9db0-f8ff25bc4c73)
 
