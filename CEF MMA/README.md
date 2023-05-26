@@ -15,7 +15,7 @@
 
 ## [Basic troubleshooting steps](https://learn.microsoft.com/en-us/azure/sentinel/troubleshooting-cef-syslog?tabs=cef)
 
-### Check the stauts of services
+### Check the status of services
 
 [Troubleshoot issues with the Log Analytics agent for Linux](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/agent-linux-troubleshoot)
 
