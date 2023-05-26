@@ -12,6 +12,7 @@ We need to export the logs to the workspace first
 * [Monitoring Azure Service Bus data reference](https://learn.microsoft.com/en-us/azure/service-bus-messaging/monitor-service-bus-reference)
 * [Monitoring Azure Event Hubs data reference](https://learn.microsoft.com/en-us/azure/event-hubs/monitor-event-hubs-reference)
 * [Network Security Groups connector for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/network-security-groups)
+* [Dynamics 365 connector for Microsoft Sentine](https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/dynamics-365)
 * [Analytics rules templates in github](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions)
 
 ## 3. Microsoft Sentinel FAQ
