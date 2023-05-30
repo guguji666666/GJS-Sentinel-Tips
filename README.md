@@ -13,7 +13,9 @@ We need to export the logs to the workspace first
 * [Monitoring Azure Event Hubs data reference](https://learn.microsoft.com/en-us/azure/event-hubs/monitor-event-hubs-reference)
 * [Network Security Groups connector for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/network-security-groups)
 * [Dynamics 365 connector for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/dynamics-365)
+* [Monitor Azure SQL Managed Instance with Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/monitoring-sql-managed-instance-azure-monitor?view=azuresql)
 * [Analytics rules templates in github](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions)
+
 
 ## 3. Microsoft Sentinel FAQ
 
