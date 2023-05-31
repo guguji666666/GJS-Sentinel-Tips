@@ -110,6 +110,24 @@ cat security-config-omsagent.conf
 ```
 ![image](https://user-images.githubusercontent.com/96930989/220628825-e7cb6a95-e74e-4f9a-860c-8318bbd80fb8.png)
 
+```
+<source>
+  type syslog
+  port 25226
+  bind 127.0.0.1
+  protocol_type tcp
+  tag oms.security
+  format /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
+  <parse>
+     message_format auto
+  </parse>
+</source>
+
+
+<filter oms.security.**>
+  type filter_syslog_security
+</filter>
+```
 
 ### 2. Check configuration between CEF data sources and rsyslog daemon
 ### Path : /etc/rsyslog.conf 
