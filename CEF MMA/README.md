@@ -332,7 +332,7 @@ Restart omsagent
 sudo /opt/microsoft/omsagent/bin/service_control restart
 ```
 
-### Capture omsagent(MMA) logs for troubleshooting
+### Capture OMSagent (MMA) logs for troubleshooting
 #### 1.Download log collector tool and copy it to the directory of your choice:
 ```sh
 sudo -i
