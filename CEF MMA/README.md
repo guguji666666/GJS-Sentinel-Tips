@@ -350,6 +350,12 @@ cd omslogs
 wget https://github.com/Microsoft/OMS-Agent-for-Linux/raw/master/tools/LogCollector/download/v6/omslinux_agentlog.tgz
 ```
 
+verify the package has been downloaded
+```sh
+ls -al
+```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/dd0c5772-7b06-42ba-98fc-3487772ae918)
+
 #### 2. Extract the archive file to extract OMS Log Collector source files:
 ```sh
 tar -xvf omslinux_agentlog.tgz
