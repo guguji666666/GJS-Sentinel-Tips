@@ -367,16 +367,13 @@ tar -xvf omslinux_agentlog.tgz
 ```
 
 #### 3. Execute Log collector to collect OMS agent logs:
-
-```sh
-cd <directory in which you extracted omslinux_agentlog.tgz>
-```
+Run the collector script
 ```sh
 sudo sh omslinux_agentlog.sh
 ```
  
 Then Log Collector tool will help us to capture agent related logs and archive in file. <br>
-The log is archived in the path `/tmp/omslinuxagentlog—xxxx-xx-xxxxxx.tgz`
+The logs will be saved under path `/tmp/omslinuxagentlog—xxxx-xx-xxxxxx.tgz`
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/9364469e-dc5f-4816-b96d-4a593fb74605)
 ```sh
 cd
@@ -384,13 +381,13 @@ cd
 ```sh
 cd /tmp
 ```
+
 You can find the logs collected, export it to your local machine
 ```sh
 ls -al
 ```
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/6a89ed6a-2cdf-44a7-ac1d-46c2283a5a41)
 
-
-Ref: OMS-Agent-for-Linux/OMS_Linux_Agent_Log_Collector.md at master · microsoft/OMS-Agent-for-Linux · GitHub
-
-In case log collector tool didn’t work well, please try the troubleshooter tool instead: https://docs.microsoft.com/en-us/azure/azure-monitor/agents/agent-linux-troubleshoot#log-analytics-troubleshooting-tool
+Reference:
+* [OMS Linux Agent Log Collector](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)
+* In case log collector tool didn’t work well, please try the [troubleshooter tool](https://docs.microsoft.com/en-us/azure/azure-monitor/agents/agent-linux-troubleshoot#log-analytics-troubleshooting-tool)
