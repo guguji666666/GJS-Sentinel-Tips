@@ -340,17 +340,22 @@ sudo -i
 ```sh
 cd
 ```
+Create directory to save log collector script
 ```sh
 mkdir omslogs
 ```
+
+Navigate to the folder we created
 ```sh
 cd omslogs
 ```
+
+Download the script
 ```sh
 wget https://github.com/Microsoft/OMS-Agent-for-Linux/raw/master/tools/LogCollector/download/v6/omslinux_agentlog.tgz
 ```
 
-verify the package has been downloaded
+Verify the package has been downloaded
 ```sh
 ls -al
 ```
@@ -371,7 +376,20 @@ sudo sh omslinux_agentlog.sh
 ```
  
 Then Log Collector tool will help us to capture agent related logs and archive in file. <br>
-For example, the following screenshot shows that the log is archived in file: /tmp/omslinuxagentlog—2021-02-22T04:03:53.342307.tgz.
+The log is archived in the path `/tmp/omslinuxagentlog—xxxx-xx-xxxxxx.tgz`
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/9364469e-dc5f-4816-b96d-4a593fb74605)
+```sh
+cd
+```
+```sh
+cd /tmp
+```
+You can find the logs collected, export it to your local machine
+```sh
+ls -al
+```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/6a89ed6a-2cdf-44a7-ac1d-46c2283a5a41)
+
 
 Ref: OMS-Agent-for-Linux/OMS_Linux_Agent_Log_Collector.md at master · microsoft/OMS-Agent-for-Linux · GitHub
 
