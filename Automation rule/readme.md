@@ -1,6 +1,6 @@
 # Get automation rule id
 
-#### 1. Go to automation tab and press `F12` and launch developer tool
+#### 1. Go to automation tab and press `F12` and launch developer tool （Edge or Chrome browser）
 #### 2. In the inspect window go to network and press clear.
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/66609bc4-1f86-49a0-9796-e3abbe16688c)
 
