@@ -322,7 +322,6 @@ Install MMA using the script downloaded from sentinel connector page
 [CEF-MMA-TSG.txt](https://github.com/guguji666666/GJS-Sentinel-Tips/files/11169699/CEF-MMA-TSG.txt)
 
 ### Commands to restart services
-
 Restart rsyslog
 ```sh
 systemctl restart rsyslog
@@ -332,3 +331,42 @@ Restart omsagent
 ```sh
 sudo /opt/microsoft/omsagent/bin/service_control restart
 ```
+
+### Capture omsagent(MMA) logs for troubleshooting
+#### 1.Download log collector tool and copy it to the directory of your choice:
+```sh
+sudo -i
+```
+```sh
+cd
+```
+```sh
+mkdir omslogs
+```
+```sh
+cd omslogs
+```
+```sh
+wget https://github.com/Microsoft/OMS-Agent-for-Linux/raw/master/tools/LogCollector/download/v6/omslinux_agentlog.tgz
+```
+
+#### 2. Extract the archive file to extract OMS Log Collector source files:
+```sh
+tar -xvf omslinux_agentlog.tgz
+```
+
+#### 3. Execute Log collector to collect OMS agent logs:
+
+```sh
+cd <directory in which you extracted omslinux_agentlog.tgz>
+```
+```sh
+sudo sh omslinux_agentlog.sh
+```
+ 
+Then Log Collector tool will help us to capture agent related logs and archive in file. <br>
+For example, the following screenshot shows that the log is archived in file: /tmp/omslinuxagentlog—2021-02-22T04:03:53.342307.tgz.
+
+Ref: OMS-Agent-for-Linux/OMS_Linux_Agent_Log_Collector.md at master · microsoft/OMS-Agent-for-Linux · GitHub
+
+In case log collector tool didn’t work well, please try the troubleshooter tool instead: https://docs.microsoft.com/en-us/azure/azure-monitor/agents/agent-linux-troubleshoot#log-analytics-troubleshooting-tool
