@@ -13,5 +13,5 @@ This will turn the button red and replace the filled inner circle with a `filled
 
 #### 5. Choose the network call which has “automationRules” as its prefix. 
 
-#### 6. Each value represents a rule. The `name` of the rule is the ID we are looking for. 
+#### 6. Each value represents a rule. The `name` of the rule is the `Rule ID` we are looking for. 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/6d72e114-0e28-4d9b-80f8-689ef9d9795c)
