@@ -388,6 +388,6 @@ ls -al
 ```
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/6a89ed6a-2cdf-44a7-ac1d-46c2283a5a41)
 
-Reference:
+##### Reference:
 * [OMS Linux Agent Log Collector](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)
 * In case log collector tool didn’t work well, please try the [troubleshooter tool](https://docs.microsoft.com/en-us/azure/azure-monitor/agents/agent-linux-troubleshoot#log-analytics-troubleshooting-tool)
