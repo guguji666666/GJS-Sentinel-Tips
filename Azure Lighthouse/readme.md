@@ -18,10 +18,10 @@ Your account is invited to tenant B and has the `contributor role` on the subscr
 ### 1. Get the `tenant id` of tenant A 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d8c65642-3d3a-4fbc-8f2f-9a0982b02940)
 
-### 2. Get the `object id` of the account in tenant A
+### 2. Get the `object id` of the account in tenant A (the user could be assigned with permissions to manage cx's subscription)
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/0409b2a0-1fd7-45de-9d96-4fd987439dc2)
 
-### 3. Get the role id of RBAC role that you want to assign to onboard cx's tenant
+### 3. Get the role id of RBAC role that you want to assign to the user in step 2
 We can refer to the doc [Azure built-in roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) <br>
 In this sample, we chose contributor, so the role id would be `Azure built-in roles` <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e093901d-5cbf-4f0a-a8e3-142aa173ec45)
@@ -29,7 +29,7 @@ In this sample, we chose contributor, so the role id would be `Azure built-in ro
 ### 4. Make sure that the resource providers below are registered in the subscription in tenant B
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2679dff8-08dd-464e-8893-53b640cf8d45)
 
-### 5. Use your account and switch to the directory (cx's tenant) 
+### 5. Cx should sign in their own teanant using non-guest user with owner role on the subscription
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/aca02f5b-1fa3-42f1-bb16-13f8ce444a23) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/732b982f-d26d-4846-99d4-ce1aace4c60c) <br>
 
