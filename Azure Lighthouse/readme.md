@@ -10,7 +10,7 @@ Now you want to add the cx's tenant `tenant B` <br>
 Your account has the `contributor role` on the subscription where sentinel is enabled in tenant A <br>
 Your account is invited to tenant B and has the `contributor role` on the subscription you want to mananged in tenant B <br>
 
-### 1. Get the `tenant id` of tenant B
+### 1. Get the `tenant id` of tenant A and tenant B
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d8c65642-3d3a-4fbc-8f2f-9a0982b02940)
 
 ### 2. Get the `object id` of the account in tenant B
