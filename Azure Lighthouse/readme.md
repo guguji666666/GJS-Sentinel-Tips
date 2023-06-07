@@ -48,7 +48,7 @@ Edit parameters <br>
       "value":[
 		{
 			"principalId": "7exxxxxxxxxxxxxxxxxxxxxxxxxxxx1",
-			"roleDefinitionID": "b24988ac-6180-42a0-ab88-20f7382dd24c"
+			"roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c"
 	  }
 	  ]
     }
