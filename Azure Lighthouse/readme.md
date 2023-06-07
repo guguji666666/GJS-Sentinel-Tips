@@ -15,10 +15,10 @@ Suppose the Service Provider is `tenant A` (where you want to manage the Sentine
 Now you want to add the cx's tenant `tenant B` (Server provider) <br>
 Your account is invited to tenant B and has the `contributor role` on the subscription in tenant B <br>
 
-### 1. Get the `tenant id` of tenant A and tenant B
+### 1. Get the `tenant id` of tenant B (Server provider)
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d8c65642-3d3a-4fbc-8f2f-9a0982b02940)
 
-### 2. Get the `object id` of the account in tenant B
+### 2. Get the `object id` of the account in tenant B (Server provider)
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/0409b2a0-1fd7-45de-9d96-4fd987439dc2)
 
 ### 3. Get the role id of RBAC role assigned to your account in subscription in tenant B
