@@ -21,11 +21,14 @@ We can refer to the doc [Azure built-in roles](https://learn.microsoft.com/en-us
 In this sample, the RBAC role assigned is contributor, so the role id would be `Azure built-in roles` <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e093901d-5cbf-4f0a-a8e3-142aa173ec45)
 
-### 4. Use your account and switch to the directory (cx's tenant) 
+### 4. Make sure that the resource provides below are registered in the subscription in tenant B
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2679dff8-08dd-464e-8893-53b640cf8d45)
+
+### 5. Use your account and switch to the directory (cx's tenant) 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/aca02f5b-1fa3-42f1-bb16-13f8ce444a23) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/732b982f-d26d-4846-99d4-ce1aace4c60c) <br>
 
-### 5. Select the ARM template for deployment [Onboard Microsoft Azure Lighthouse](https://github.com/Azure/Azure-Lighthouse-samples#deploy-to-azure-buttons)
+### 6. Select the ARM template for deployment [Onboard Microsoft Azure Lighthouse](https://github.com/Azure/Azure-Lighthouse-samples#deploy-to-azure-buttons)
 
 Edit parameters <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c24d3dd0-9468-4c0d-9d5e-41da6e74ffc1) <br>
