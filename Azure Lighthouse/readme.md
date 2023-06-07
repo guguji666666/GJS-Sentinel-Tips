@@ -21,3 +21,7 @@ We can refer to the doc [Azure built-in roles](https://learn.microsoft.com/en-us
 In this sample, the RBAC role assigned is contributor, so the role id would be `Azure built-in roles` <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e093901d-5cbf-4f0a-a8e3-142aa173ec45)
 
+### 4. Use your account and switch to the directory (cx's tenant) 
+
+
+###.Select the ARM template for deployment[Onboard Microsoft Azure Lighthouse](https://github.com/Azure/Azure-Lighthouse-samples#deploy-to-azure-buttons)
