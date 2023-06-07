@@ -13,8 +13,7 @@
 ## Start deployment
 Suppose the Service Provider is `tenant A` (where you want to manage the Sentinel contents) <br>
 Now you want to add the cx's tenant `tenant B` (Server provider) <br>
-Your account has the `contributor role` on the subscription where sentinel is enabled in tenant A <br>
-Your account is invited to tenant B and has the `contributor role` on the subscription you want to mananged in tenant B <br>
+Your account is invited to tenant B and has the `contributor role` on the subscription in tenant B <br>
 
 ### 1. Get the `tenant id` of tenant A and tenant B
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d8c65642-3d3a-4fbc-8f2f-9a0982b02940)
