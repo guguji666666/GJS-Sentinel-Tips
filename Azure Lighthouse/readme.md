@@ -25,4 +25,8 @@ In this sample, the RBAC role assigned is contributor, so the role id would be `
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/aca02f5b-1fa3-42f1-bb16-13f8ce444a23) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/732b982f-d26d-4846-99d4-ce1aace4c60c) <br>
 
-### 5. Select the ARM template for deployment[Onboard Microsoft Azure Lighthouse](https://github.com/Azure/Azure-Lighthouse-samples#deploy-to-azure-buttons)
+### 5. Select the ARM template for deployment [Onboard Microsoft Azure Lighthouse](https://github.com/Azure/Azure-Lighthouse-samples#deploy-to-azure-buttons)
+
+Edit parameters <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c24d3dd0-9468-4c0d-9d5e-41da6e74ffc1)
+
