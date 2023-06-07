@@ -8,25 +8,25 @@
 
 * Service Provider: the one to manage delegated resources. (the tenant where you want to manage the sentinel overview panel)
 
-* Customer (Server provider): the delegated resources (subscription and/or resources group) can be accessed and managed through service provider’s Azure Active Directory tenant. ( the tenants mananged by your tenant where the sentinel overview panel locates)
+* Customer : the delegated resources (subscription and/or resources group) can be accessed and managed through service provider’s Azure Active Directory tenant. ( the tenants mananged by your tenant where the sentinel overview panel locates)
 
 ## Start deployment
 Suppose the Service Provider is `tenant A` (where you want to manage the Sentinel contents) <br>
-Now you want to add the cx's tenant `tenant B` (Server provider) <br>
+Now you want to add the cx's tenant `tenant B` <br>
 Your account is invited to tenant B and has the `contributor role` on the subscription in tenant B <br>
 
-### 1. Get the `tenant id` of tenant B (Server provider)
+### 1. Get the `tenant id` of tenant A 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d8c65642-3d3a-4fbc-8f2f-9a0982b02940)
 
-### 2. Get the `object id` of the account in tenant B (Server provider)
+### 2. Get the `object id` of the account in tenant A
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/0409b2a0-1fd7-45de-9d96-4fd987439dc2)
 
-### 3. Get the role id of RBAC role assigned to your account in subscription in tenant B
+### 3. Get the role id of RBAC role that you want to assign to onboard cx's tenant
 We can refer to the doc [Azure built-in roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) <br>
-In this sample, the RBAC role assigned is contributor, so the role id would be `Azure built-in roles` <br>
+In this sample, we chose contributor, so the role id would be `Azure built-in roles` <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e093901d-5cbf-4f0a-a8e3-142aa173ec45)
 
-### 4. Make sure that the resource provides below are registered in the subscription in tenant B
+### 4. Make sure that the resource providers below are registered in the subscription in tenant B
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2679dff8-08dd-464e-8893-53b640cf8d45)
 
 ### 5. Use your account and switch to the directory (cx's tenant) 
