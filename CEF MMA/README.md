@@ -311,17 +311,19 @@ logger -p local4.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|EncryptionDowngradeSus
 logger -p user.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|LdapBruteForceSuspiciousActivity|Brute force attack using LDAP simple bind|5|start=2018-12-12T17:52:10.2350665Z app=Ldap msg=10000 password guess attempts were made on 100 accounts from W2012R2-000000-Server. One account password was successfully guessed. externalId=2004 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c114acb8ca1ec1250cacdcb"
 ```
 
-### 10. Reinstall MMA
+
+## Others
+### 1. Reinstall MMA
 
 [Remvove Linux OMS agent](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/agent-manage?tabs=PowerShellLinux#linux-agent-2)
 
 Install MMA using the script downloaded from sentinel connector page
 
-### 11. CEF-MMA TSG script > Modify the extension to `py`
+### 2. CEF-MMA TSG script > Modify the extension to `py`
 
 [CEF-MMA-TSG.txt](https://github.com/guguji666666/GJS-Sentinel-Tips/files/11169699/CEF-MMA-TSG.txt)
 
-### Commands to restart services
+### 3. Commands to restart services
 Restart rsyslog
 ```sh
 systemctl restart rsyslog
@@ -332,8 +334,8 @@ Restart omsagent
 sudo /opt/microsoft/omsagent/bin/service_control restart
 ```
 
-### Capture OMSagent (MMA) logs for troubleshooting
-#### 1.Download log collector tool and copy it to the directory of your choice:
+### 4. Capture OMSagent (MMA) logs for troubleshooting
+#### 1. Download log collector tool and copy it to the directory of your choice:
 ```sh
 sudo -i
 ```
@@ -388,6 +390,10 @@ ls -al
 ```
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/6a89ed6a-2cdf-44a7-ac1d-46c2283a5a41)
 
-##### Reference:
+Reference:
 * [OMS Linux Agent Log Collector](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)
 * In case log collector tool didn’t work well, please try the [troubleshooter tool](https://docs.microsoft.com/en-us/azure/azure-monitor/agents/agent-linux-troubleshoot#log-analytics-troubleshooting-tool)
+
+### 5. Avoid duplicated CEF logs ingested in syslog table
+[Configure Syslog in the Azure portal](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/data-sources-syslog#configure-syslog-in-the-azure-portal) <br>
+[Using the same machine to forward both plain Syslog and CEF messages](https://learn.microsoft.com/en-us/azure/sentinel/connect-syslog#using-the-same-machine-to-forward-both-plain-syslog-and-cef-messages)
