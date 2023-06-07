@@ -28,5 +28,31 @@ In this sample, the RBAC role assigned is contributor, so the role id would be `
 ### 5. Select the ARM template for deployment [Onboard Microsoft Azure Lighthouse](https://github.com/Azure/Azure-Lighthouse-samples#deploy-to-azure-buttons)
 
 Edit parameters <br>
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c24d3dd0-9468-4c0d-9d5e-41da6e74ffc1)
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c24d3dd0-9468-4c0d-9d5e-41da6e74ffc1) <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/bd0b0b6f-737a-44b4-8fe5-c99db7e166a0) <br>
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "mspOfferName": {
+      "value": "Ultraman-VS150"
+    },
+    "mspOfferDescription": {
+      "value": "Manage VS 150 sub in ultraman tenant"
+    },
+    "managedByTenantId": {
+      "value": "72xxxxxxxxxxxxxxxxxxxxxxxx7"
+    },
+    "authorizations": {
+      "value":[
+		{
+			"principalId": "7exxxxxxxxxxxxxxxxxxxxxxxxxxxx1",
+			"roleDefinitionID": "b24988ac-6180-42a0-ab88-20f7382dd24c"
+	  }
+	  ]
+    }
+  }
+}
+```
 
