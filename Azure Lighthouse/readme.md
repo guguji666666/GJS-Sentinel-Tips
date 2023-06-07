@@ -1,4 +1,4 @@
-## Sentinel with Azure lighthouse
+## Use Sentinel with Azure lighthouse
 
 ### [Manage Microsoft Sentinel workspaces at scale](https://learn.microsoft.com/en-us/azure/lighthouse/how-to/manage-sentinel-workspaces)
 ### [Manage multiple tenants in Microsoft Sentinel as an MSSP](https://learn.microsoft.com/en-us/azure/sentinel/multiple-tenants-service-providers)
