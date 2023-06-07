@@ -56,3 +56,7 @@ Edit parameters <br>
 }
 ```
 
+Review the information and confirm deployment <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b0c74757-c822-42b7-b228-f227d89160d2)
+
+
