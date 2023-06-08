@@ -111,9 +111,13 @@ ARM template used to onboard customer's `subscription`
 ```
 
 
-Edit parameters <br>
+Edit parameters following the format below <br>
+* managedByTenantId : the service provider tenant
+* principalId : the object id of your user account in service provider tenant
+* roleDefinitionId : role id of the RBAC role you defined
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c24d3dd0-9468-4c0d-9d5e-41da6e74ffc1) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/19e06097-769d-47c8-b3ae-ad40e4bc010b) <br>
+
 
 ```json
 {
