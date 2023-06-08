@@ -25,7 +25,7 @@ Now you want to onboard the customer's tenant `tenant B` <br>
 
 ### 3. As a service provider, you may want to perform multiple tasks for a single customer, requiring different access for different scopes. You can define as many authorizations as you need in order to assign the appropriate role-based access control (RBAC) built-in roles to users in your tenant. 
 We can refer to the doc [Azure built-in roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) and [Role support for Azure Lighthouse](https://learn.microsoft.com/en-us/azure/lighthouse/concepts/tenants-users-roles#role-support-for-azure-lighthouse) <br>
-In this sample, since the owner role is not supported for lighthouse, we chose contributor, so the role id would be `Azure built-in roles` <br>
+In this sample, since the owner role is not supported for lighthouse, we chose contributor, so the role id would be `b24988ac-6180-42a0-ab88-20f7382dd24c` <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2b84dd67-4280-455b-8972-ec9a5a26f566) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e093901d-5cbf-4f0a-a8e3-142aa173ec45)
 
