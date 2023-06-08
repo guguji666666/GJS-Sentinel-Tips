@@ -23,7 +23,7 @@ Now you want to onboard the customer's tenant `tenant B` <br>
 ### 2. Get the `object id` of the user account in tenant A (Service provider)
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/0409b2a0-1fd7-45de-9d96-4fd987439dc2)
 
-### 3. Get the role id of RBAC role that you want to assign to the user mentioned in step 2 to manage customer's subscription
+### 3. As a service provider, you may want to perform multiple tasks for a single customer, requiring different access for different scopes. You can define as many authorizations as you need in order to assign the appropriate role-based access control (RBAC) built-in roles to users in your tenant. 
 We can refer to the doc [Azure built-in roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) <br>
 In this sample, we chose contributor, so the role id would be `Azure built-in roles` <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e093901d-5cbf-4f0a-a8e3-142aa173ec45)
