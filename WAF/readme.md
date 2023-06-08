@@ -23,3 +23,6 @@ WAF log analytics are broken down into the following categories: <br>
 * Tracking ID messages
 * Top 10 attacking IP addresses
 * Attack messages of IP addresses
+
+### WAF connector in Sentinel
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/407afa8b-0117-4781-ae89-50699e59f532)
