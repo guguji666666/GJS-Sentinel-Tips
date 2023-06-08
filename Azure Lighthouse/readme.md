@@ -30,7 +30,7 @@ In this sample, we chose contributor, so the role id would be `Azure built-in ro
 ### 4. Make sure that the resource providers below are registered in the subscription in tenant B
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2679dff8-08dd-464e-8893-53b640cf8d45)
 
-### 5. Cx should sign in their own teanant using non-guest user with owner role on the subscription
+### 5. Cx should sign in their own teanant using `non-guest` user with owner role on the subscription
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/aca02f5b-1fa3-42f1-bb16-13f8ce444a23) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/732b982f-d26d-4846-99d4-ce1aace4c60c) <br>
 
