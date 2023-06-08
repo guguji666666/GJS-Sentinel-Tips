@@ -118,7 +118,7 @@ Edit parameters following the format below <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c24d3dd0-9468-4c0d-9d5e-41da6e74ffc1) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/19e06097-769d-47c8-b3ae-ad40e4bc010b) <br>
 
-
+Sample in my lab
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
@@ -131,12 +131,12 @@ Edit parameters following the format below <br>
       "value": "Manage VS 150 sub in ultraman tenant"
     },
     "managedByTenantId": {
-      "value": "72xxxxxxxxxxxxxxxxxxxxxxxx7"
+      "value": "72f988bf-xxx1-xxxf-xxxx-xxxxxxxxdb47"
     },
     "authorizations": {
       "value":[
 		{
-			"principalId": "7exxxxxxxxxxxxxxxxxxxxxxxxxxxx1",
+			"principalId": "63eb6675-6666-4666-a888-24c53rdf1f1",
 			"roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
 			"principalIdDisplayName" : "gjs-contributor"
 	  }
