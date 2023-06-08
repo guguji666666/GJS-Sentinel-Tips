@@ -30,7 +30,7 @@ In this sample, we chose contributor, so the role id would be `Azure built-in ro
 ### 4. Make sure that the resource providers below are registered in the subscription in tenant B
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2679dff8-08dd-464e-8893-53b640cf8d45)
 
-### 5. Cx should sign in their own teanant using `non-guest` user with owner role on the subscription
+### 5. Cx should sign in their own teanant using `non-guest` user with `owner` role on the subscription to be onboarded
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/aca02f5b-1fa3-42f1-bb16-13f8ce444a23) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/732b982f-d26d-4846-99d4-ce1aace4c60c) <br>
 
@@ -141,5 +141,9 @@ Edit parameters <br>
 
 Review the information and confirm deployment <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b0c74757-c822-42b7-b228-f227d89160d2)
+
+Wait until the deployment succeeds <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/9207fc87-6e64-445a-9483-8ffa124d7783)
+
 
 
