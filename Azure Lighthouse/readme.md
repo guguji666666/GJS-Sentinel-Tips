@@ -156,5 +156,8 @@ If we click it, then we can see more details <br>
 Then we go to the tenant where you want to manage the sentinel contents, search `My customers` on the top <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a2b5e9e0-ceb3-4ae5-98d3-39dbf1d8d655)
 
+You can find the entry showing that the customer's subscription is onboarded <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e41d79b5-ef29-4707-be29-f01d43601e2a)
+
 
 
