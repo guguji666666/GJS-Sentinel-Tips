@@ -4,6 +4,7 @@
 * [Using Microsoft Sentinel with Azure Web Application Firewall](https://learn.microsoft.com/en-us/azure/web-application-firewall/waf-sentinel)
 * [Using Application Gateway WAF to protect your application](https://learn.microsoft.com/en-us/azure/active-directory/app-proxy/application-proxy-application-gateway-waf)
 * [What is Azure Web Application Firewall on Azure Application Gateway?](https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/ag-overview)
+* [Integrating Azure Web Application Firewall with Azure Sentinel (2020 doc)](https://techcommunity.microsoft.com/t5/azure-network-security-blog/integrating-azure-web-application-firewall-with-azure-sentinel/ba-p/1720306)
 
 ### [WAF modes](https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/ag-overview#waf-modes)
 The Application Gateway WAF can be configured to run in the following two modes: <br>
