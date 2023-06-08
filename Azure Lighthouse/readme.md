@@ -14,30 +14,31 @@
 
 ## Start deployment
 Suppose the Service Provider is `tenant A` (where you want to manage the Sentinel contents) <br>
-Now you want to add the cx's tenant `tenant B` <br>
-Your account is invited to tenant B and has the `contributor role` on the subscription in tenant B <br>
+Now you want to onboard the customer's tenant `tenant B` <br>
 
-### 1. Get the `tenant id` of tenant A 
+### 1. Get the `tenant id` of tenant A (Service provider)
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d8c65642-3d3a-4fbc-8f2f-9a0982b02940)
 
-### 2. Get the `object id` of the account in tenant A (the user could be assigned with permissions to manage cx's subscription)
+### 2. Get the `object id` of the user account in tenant A (Service provider)
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/0409b2a0-1fd7-45de-9d96-4fd987439dc2)
 
-### 3. Get the role id of RBAC role that you want to assign to the user in step 2
+### 3. Get the role id of RBAC role that you want to assign to the user mentioned in step 2 to manage customer's subscription
 We can refer to the doc [Azure built-in roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) <br>
 In this sample, we chose contributor, so the role id would be `Azure built-in roles` <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e093901d-5cbf-4f0a-a8e3-142aa173ec45)
 
-### 4. Make sure that the resource providers below are registered in the subscription in tenant B
+### 4. Make sure that the resource providers below are registered in the subscription in tenant B (customer)
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2679dff8-08dd-464e-8893-53b640cf8d45)
 
-### 5. Cx should sign in their own teanant using `non-guest` user with `owner` role on the subscription to be onboarded
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/aca02f5b-1fa3-42f1-bb16-13f8ce444a23) <br>
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/732b982f-d26d-4846-99d4-ce1aace4c60c) <br>
-
+### 5. Customer should log in their own tenant using `non-guest` user with `owner` role on the subscription to be onboarded
 ### 6. Select the ARM template for deployment [Onboard Microsoft Azure Lighthouse](https://github.com/Azure/Azure-Lighthouse-samples#deploy-to-azure-buttons)
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/21b3a2f1-8ac5-426f-bfb7-537ec04ec4a0) <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1e20684d-df98-4c6a-ba31-98e4080cd900)
 
-ARM template to onboard subscription
+Replace the json file here with the template below <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/7f3ddd9b-1aa3-4b40-9782-115a97d4ef98)
+
+ARM template used to onboard customer's `subscription`
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
@@ -112,7 +113,8 @@ ARM template to onboard subscription
 
 Edit parameters <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c24d3dd0-9468-4c0d-9d5e-41da6e74ffc1) <br>
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/bd0b0b6f-737a-44b4-8fe5-c99db7e166a0) <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/19e06097-769d-47c8-b3ae-ad40e4bc010b) <br>
+
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
