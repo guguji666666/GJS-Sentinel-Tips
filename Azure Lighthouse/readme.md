@@ -8,9 +8,9 @@
 
 ## Concepts
 
-* Service Provider: the one to manage delegated resources. (the tenant where you want to manage the sentinel overview panel)
+* Service Provider: the one to manage delegated resources. (the tenant where you want to manage the sentinel contents across tenants)
 
-* Customer : the delegated resources (subscription and/or resources group) can be accessed and managed through service provider’s Azure Active Directory tenant. ( the tenants mananged by your tenant where the sentinel overview panel locates)
+* Customer : the delegated resources (subscription and/or resources group) can be accessed and managed through service provider’s Azure Active Directory tenant. ( the tenants mananged by yourown tenant)
 
 ## Start deployment
 Suppose the Service Provider is `tenant A` (where you want to manage the Sentinel contents) <br>
