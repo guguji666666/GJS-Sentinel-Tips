@@ -146,5 +146,15 @@ Review the information and confirm deployment <br>
 Wait until the deployment succeeds <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/9207fc87-6e64-445a-9483-8ffa124d7783)
 
+To verify, go to customer's tenant, search `service provider` on the top <br>
+Click the `service provider offers` on the left, we can see the lastest one we just deployed <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a183edb1-a739-47fc-b19f-f671cab8a31c)
+
+If we click it, then we can see more details <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2d195243-cd74-4f07-acd0-e3c59029b321)
+
+Then we go to the tenant where you want to manage the sentinel contents, search `My customers` on the top <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a2b5e9e0-ceb3-4ae5-98d3-39dbf1d8d655)
+
 
 
