@@ -1,4 +1,4 @@
-# TSG for CEF log forwarder with MMA (OMS agent)
+# CEF log forwarder with MMA (OMS agent)
 ## [Workflow](https://learn.microsoft.com/en-us/azure/sentinel/connect-common-event-format) 
 ### CEF forwarder server is Azure VM
 ![image](https://user-images.githubusercontent.com/96930989/220794512-eba62a76-b297-4bb9-aacb-041861621341.png)
