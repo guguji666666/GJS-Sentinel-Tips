@@ -27,3 +27,6 @@ WAF log analytics are broken down into the following categories: <br>
 
 ### WAF connector in Sentinel
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/407afa8b-0117-4781-ae89-50699e59f532)
+
+### Built-in 
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d26abfb7-42f5-487c-8308-6a2da83b4328)
