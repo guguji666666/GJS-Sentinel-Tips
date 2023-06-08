@@ -24,14 +24,16 @@ Now you want to onboard the customer's tenant `tenant B` <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/0409b2a0-1fd7-45de-9d96-4fd987439dc2)
 
 ### 3. As a service provider, you may want to perform multiple tasks for a single customer, requiring different access for different scopes. You can define as many authorizations as you need in order to assign the appropriate role-based access control (RBAC) built-in roles to users in your tenant. 
-We can refer to the doc [Azure built-in roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) <br>
-In this sample, we chose contributor, so the role id would be `Azure built-in roles` <br>
+We can refer to the doc [Azure built-in roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) and [Role support for Azure Lighthouse](https://learn.microsoft.com/en-us/azure/lighthouse/concepts/tenants-users-roles#role-support-for-azure-lighthouse) <br>
+In this sample, since the owner role is not supported for lighthouse, we chose contributor, so the role id would be `Azure built-in roles` <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2b84dd67-4280-455b-8972-ec9a5a26f566) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e093901d-5cbf-4f0a-a8e3-142aa173ec45)
 
 ### 4. Make sure that the resource providers below are registered in the subscription in tenant B (customer)
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2679dff8-08dd-464e-8893-53b640cf8d45)
 
 ### 5. Customer should log in their own tenant using `non-guest` user with `owner` role on the subscription to be onboarded
+
 ### 6. Select the ARM template for deployment [Onboard Microsoft Azure Lighthouse](https://github.com/Azure/Azure-Lighthouse-samples#deploy-to-azure-buttons)
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/21b3a2f1-8ac5-426f-bfb7-537ec04ec4a0) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1e20684d-df98-4c6a-ba31-98e4080cd900)
