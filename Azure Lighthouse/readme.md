@@ -171,4 +171,6 @@ You can find the entry showing that the customer's subscription is onboarded <br
 Then go to sentinel in service provider's tenant, now you can see the workspaces with sentinel enabled from customer's tenants <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/717b021d-9122-4990-aff5-4e0bb9a80c45)
 
+We can also verify the role we assigned to the user in service provider's tenant to manange customer's subscription <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/ecc75280-3f21-42e9-a492-74ed358ffc1b)
 
