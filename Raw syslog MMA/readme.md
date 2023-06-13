@@ -127,7 +127,7 @@ The server is sending raw syslog and and CEF logs to the workspace <br>
 After change <br>
 ```sh
 mv security-config-omsagent.conf 1-security-config-omsagent.conf
-···
+```
 
 
 
