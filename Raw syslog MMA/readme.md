@@ -108,4 +108,21 @@ cat /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/syslog.conf
 ```
 ![image](https://user-images.githubusercontent.com/96930989/223363381-96ef9c72-187d-480c-8242-19d19f2ab771.png)
 
+## Avoid duplicated CEF logs in syslog table
+
+#### 1. Disable syslog facilities configuration from portal
+You must run the following command on those machines to disable the synchronization of the agent with the Syslog configuration in Microsoft Sentinel. This ensures that the configuration change you made in the previous step does not get overwritten.
+```sh
+sudo -u omsagent python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable
+```
+
+Then to filter CEF and ASA before Syslog (95.omsagent.conf) , change the `security-omsagent-config.conf` to `1-security-omsagent-config.conf` and add a new line `& stop` <br>
+Before we make the change <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1be0cb71-0eec-4d6c-b025-9d8374208f45)
+
+The server is sending raw syslog and and CEF logs to the workspace <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/ccc9f9a2-cd76-4099-aaec-739339a51fb1) <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/59747832-a425-4530-8ef5-b745228073a8) <br>
+
+
 
