@@ -80,12 +80,16 @@ More details could be found in [Configure Syslog in the Azure portal](https://le
 
 ```sh
 sudo su root
+```
+```sh
 ls /etc/rsyslog.d
 ```
 ![image](https://user-images.githubusercontent.com/96930989/213731063-6f9b8ea2-7e35-4230-8f9f-0e17d1f0a855.png)
 
 ```sh
 cd /etc/rsyslog.d
+```
+```sh
 cat 95-omsagent.conf
 ```
 rsyslog daemon is configured to forward the syslogs to port 252256
