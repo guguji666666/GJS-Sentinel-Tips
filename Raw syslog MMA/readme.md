@@ -124,5 +124,5 @@ The server is sending raw syslog and and CEF logs to the workspace <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/ccc9f9a2-cd76-4099-aaec-739339a51fb1) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/59747832-a425-4530-8ef5-b745228073a8) <br>
 
-
+After change <br>
 
