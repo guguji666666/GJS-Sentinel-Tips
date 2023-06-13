@@ -125,4 +125,10 @@ The server is sending raw syslog and and CEF logs to the workspace <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/59747832-a425-4530-8ef5-b745228073a8) <br>
 
 After change <br>
+```sh
+mv security-config-omsagent.conf 1-security-config-omsagent.conf
+···
+
+
+
 
