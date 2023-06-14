@@ -53,6 +53,8 @@ apt install rsyslog -y
 
 ```sh
 systemctl start rsyslog
+```
+```sh
 systemctl enable rsyslog
 ```
 
@@ -129,12 +131,30 @@ cat security-config-omsagent.conf
 </filter>
 ```
 
-If Firewall policy exists <br>
+#### If Firewall policy exists <br>
+
+Check the status of firewalld service
+```sh
+firewall-cmd --state
+```
+```sh
+systemctl status firewalld
+```
+![image](https://github.com/guguji666666/Linux-lab/assets/96930989/5172fcf8-439b-4c5a-bd99-25986e23fafd)
+
+Install the Firewall Policy editor
+```sh
+yum install policycoreutils-python
+```
 
 Add the firewall rules to the firewall policy
 ```sh
 sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -p tcp --dport 25226  -j ACCEPT
+```
+```sh
 sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -p udp --dport 25224  -j ACCEPT
+```
+```sh
 sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -p tcp --dport 25224  -j ACCEPT
 ```
 
