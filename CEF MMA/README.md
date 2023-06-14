@@ -129,6 +129,30 @@ cat security-config-omsagent.conf
 </filter>
 ```
 
+If Firewall policy exists <br>
+
+Add the firewall rules to the firewall policy
+```sh
+sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -p tcp --dport 25226  -j ACCEPT
+sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -p udp --dport 25224  -j ACCEPT
+sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -p tcp --dport 25224  -j ACCEPT
+```
+
+Validate the exception was added in the configuration:
+```sh
+sudo firewall-cmd --direct --get-rules ipv4 filter INPUT
+```
+
+Reload the firewall:
+```sh
+sudo firewall-cmd --reload
+```
+
+You can also disable your firewall by using this command
+```sh
+sudo systemctl stop firewalld
+```
+
 ### 2. Check configuration between CEF data sources and rsyslog daemon
 ### Path : /etc/rsyslog.conf 
 ```sh
