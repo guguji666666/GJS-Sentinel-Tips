@@ -157,11 +157,13 @@ sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -p udp --dport 25224  
 ```sh
 sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -p tcp --dport 25224  -j ACCEPT
 ```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/44c6432d-a190-4286-a686-e9cd7f4bd9c9)
 
 Validate the exception was added in the configuration:
 ```sh
 sudo firewall-cmd --direct --get-rules ipv4 filter INPUT
 ```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/5b0ae43c-ad56-4812-a196-dc506f9845ac)
 
 Reload the firewall:
 ```sh
