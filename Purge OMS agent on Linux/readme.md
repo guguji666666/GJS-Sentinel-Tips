@@ -48,3 +48,24 @@ dpkg -l | grep lad
 dpkg -l | grep mdsd
 ```
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/31096c10-b549-436d-aa4b-f2631f32fff5)
+
+If you see any, then we can `remove` them using the commands
+
+Redhat based distro (RedHat, CentOS, Oracle, Fedora + SUSE*):
+```sh
+rpm -e package_name
+```
+
+##### Remove mdsd
+
+Redhat based distro (RedHat, CentOS, Oracle, Fedora + SUSE*):
+```sh
+rpm -e | grep mdsd
+```
+
+Debian based distro (Debian, Ubuntu)
+```
+dpkg -r | grep mdsd
+```
+
+Then double check if the OMS extension in portal to see if it goes away.
