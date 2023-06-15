@@ -67,5 +67,16 @@ Debian based distro (Debian, Ubuntu)
 ```
 dpkg -r | grep mdsd
 ```
-
 Then double check if the OMS extension in portal to see if it goes away.
+
+
+### 3. Run the commands below to get the agent file and purge the agent:
+```sh
+_wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh_ 
+```
+```sh
+chmod +x ./onboard_agent.sh
+```
+```sh
+sudo ./onboard_agent.sh --purge
+```
