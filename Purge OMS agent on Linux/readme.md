@@ -47,3 +47,4 @@ dpkg -l | grep lad
 ```sh
 dpkg -l | grep mdsd
 ```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/31096c10-b549-436d-aa4b-f2631f32fff5)
