@@ -1,6 +1,6 @@
 ## Connect SQL managed instance to sentinel
 
-For SQL managed instance, we could follow the doc [Configure streaming export of Azure SQL Database and SQL Managed Instance diagnostic telemetry](https://learn.microsoft.com/en-us/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure?view=azuresql&tabs=azure-portal)to export the logs to workspace via diagnostic settings. 
+For SQL managed instance, we could follow the doc [Configure streaming export of Azure SQL Database and SQL Managed Instance diagnostic telemetry](https://learn.microsoft.com/en-us/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure?view=azuresql&tabs=azure-portal) to export the logs to workspace via diagnostic settings. 
 Once the logs are ingested to the workspace, we can then test on the analytics rule.
 
 Similarly, we also have built-in templates in analytics rule. <br>
