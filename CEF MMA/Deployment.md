@@ -105,5 +105,5 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 ```sh
 sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python3 cef_installer.py [WorkspaceID] [Workspace Primary Key]
 ```
-Deal with the error if exists in the output
+Check if there is any error in the output
 ![image](https://user-images.githubusercontent.com/96930989/211133003-01c01f1c-cb55-4e62-b6b9-564589b3cdad.png)
