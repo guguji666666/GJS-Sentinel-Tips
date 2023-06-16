@@ -96,6 +96,7 @@ sudo dnf install python3
 ```
 
 3. [Install OMS agent](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/agent-linux?tabs=wrapper-script#install-the-agent)
+
 Run the command
 ```sh
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
