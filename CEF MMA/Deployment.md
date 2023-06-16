@@ -70,25 +70,38 @@ To search for CEF events in Log Analytics, query the `CommonSecurityLog` table i
 
 1. Check the current python version installed
 ```sh
-sudo su root
+sudo -i
+```
+```sh
 python3 --version
 ```
 ![image](https://user-images.githubusercontent.com/96930989/211135113-c54ab63b-8e67-4d55-ba37-0eac83dd9c6b.png)
 
 
-2. Manually install pyhton3 if not exisits on the local machine
+2. Manually install pyhton3 if not exists on the local machine
 ```sh
-sudo su root
+sudo -i
+```
+```sh
 apt-get update
+```
+```sh
 apt-get install python3.6
 ```
+
 or
 
 ```sh
 sudo dnf install python3
 ```
 
-3. Run deployment script (replace the `python` with `python3` in the command)
+3. [Install OMS agent](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/agent-linux?tabs=wrapper-script#install-the-agent)
+Run the command
+```sh
+wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
+```
+
+4. Run CEF installer script (replace the `python` with `python3` in the command)
 ```sh
 sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python3 cef_installer.py [WorkspaceID] [Workspace Primary Key]
 ```
