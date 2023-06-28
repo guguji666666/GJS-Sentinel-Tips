@@ -82,9 +82,11 @@ python3 --version
 ```sh
 sudo -i
 ```
+
 ```sh
 apt-get update
 ```
+
 ```sh
 apt-get install python3.6
 ```
