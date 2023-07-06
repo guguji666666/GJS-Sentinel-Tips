@@ -20,4 +20,10 @@ Then Press [apply] then [Done Editing]
 
 The workbook looks like <br>
 ![image](https://user-images.githubusercontent.com/96930989/236177336-e8643180-78cf-42c0-9fa2-3b14abac5b72.png) <br>
-![image](https://user-images.githubusercontent.com/96930989/236177218-dc429353-de44-43f6-ba31-7d0bcb619b87.png)
+![image](https://user-images.githubusercontent.com/96930989/236177218-dc429353-de44-43f6-ba31-7d0bcb619b87.png) <br>
+
+## 2. Workpsace usage
+#### 1. Find the template here
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b699aba0-2ba8-4dcc-871d-23e89682ade8)
+#### 2. Once the workbook is created, you can find the usage of each connector here
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/224cfdb6-fbe1-48d0-99b2-906e96f0aafc)
