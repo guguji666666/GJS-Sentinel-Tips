@@ -192,6 +192,16 @@ If you want to assign mutiple roles to mutiple users (below is the sample to ass
               "roleDefinitionId": "f4c81013-99ee-4d62-a7ee-b3f1f648599a",
               "principalIdDisplayName" : "Sentinel-Automation-Contributor"
         },
+          {
+              "principalId": "<object id of user3>",
+              "roleDefinitionId": "ab8e14d6-4a74-4a29-9ba8-549422addade",
+              "principalIdDisplayName" : "Sentinel-Contributor"
+        },
+  {
+              "principalId": "<object id of user3>",
+              "roleDefinitionId": "f4c81013-99ee-4d62-a7ee-b3f1f648599a",
+              "principalIdDisplayName" : "Sentinel-Automation-Contributor"
+        }
         ]
       }
     }
