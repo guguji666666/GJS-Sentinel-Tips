@@ -197,6 +197,7 @@ If you want to assign mutiple roles to mutiple users (below is the sample to ass
     }
   }
 ```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e0371349-eea6-4cf8-b828-afa6aa0d331e)
 
 Review the information and confirm deployment <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b0c74757-c822-42b7-b228-f227d89160d2)
