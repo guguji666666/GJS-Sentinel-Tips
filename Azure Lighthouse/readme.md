@@ -149,7 +149,7 @@ Sample in my lab (single role assigned to single user)
 }
 ```
 
-If you want to assign mutiple roles to mutiple users
+If you want to assign mutiple roles to mutiple users (below is the sample to assign contributor, sentinel contributor, sentinel automation contrbutor)
 
 ```json
 {
