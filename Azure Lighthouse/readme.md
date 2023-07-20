@@ -121,7 +121,7 @@ Edit parameters following the format below <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c24d3dd0-9468-4c0d-9d5e-41da6e74ffc1) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/19e06097-769d-47c8-b3ae-ad40e4bc010b) <br>
 
-Sample in my lab (single role assigned to single user)
+##### Single role assigned to single user
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
@@ -149,7 +149,7 @@ Sample in my lab (single role assigned to single user)
 }
 ```
 
-If you want to assign mutiple roles to mutiple users (below is the sample to assign contributor, sentinel contributor, sentinel automation contrbutor)
+##### Assign multiple roles to multiple users (below is the sample to assign sentinel contributor and sentinel automation contrbutor)
 
 ```json
 {
