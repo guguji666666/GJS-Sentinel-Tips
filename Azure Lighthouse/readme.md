@@ -121,7 +121,7 @@ Edit parameters following the format below <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c24d3dd0-9468-4c0d-9d5e-41da6e74ffc1) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/19e06097-769d-47c8-b3ae-ad40e4bc010b) <br>
 
-Sample in my lab
+Sample in my lab (single role assigned to single user)
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
@@ -147,6 +147,55 @@ Sample in my lab
     }
   }
 }
+```
+
+If you want to assign mutiple roles to mutiple users
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "mspOfferName": {
+        "value": "ManageVS150"
+      },
+      "mspOfferDescription": {
+        "value": "ManageVS150"
+      },
+      "managedByTenantId": {
+        "value": "72f988bf-xxx1-xxxf-xxxx-xxxxxxxxdb47"
+      },
+      "authorizations": {
+        "value":[
+            {
+                "principalId": "<object id of user1>",
+                "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "principalIdDisplayName" : "Contributor"
+          },
+          {
+              "principalId": "<object id of user1>",
+              "roleDefinitionId": "ab8e14d6-4a74-4a29-9ba8-549422addade",
+              "principalIdDisplayName" : "Sentinel-Contributor"
+        },
+  {
+              "principalId": "<object id of user1>",
+              "roleDefinitionId": "f4c81013-99ee-4d62-a7ee-b3f1f648599a",
+              "principalIdDisplayName" : "Sentinel-Automation-Contributor"
+        },
+          {
+              "principalId": "<object id of user2>",
+              "roleDefinitionId": "ab8e14d6-4a74-4a29-9ba8-549422addade",
+              "principalIdDisplayName" : "Sentinel-Contributor"
+        },
+  {
+              "principalId": "<object id of user2>",
+              "roleDefinitionId": "f4c81013-99ee-4d62-a7ee-b3f1f648599a",
+              "principalIdDisplayName" : "Sentinel-Automation-Contributor"
+        },
+        ]
+      }
+    }
+  }
 ```
 
 Review the information and confirm deployment <br>
