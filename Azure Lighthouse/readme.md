@@ -167,11 +167,6 @@ If you want to assign mutiple roles to mutiple users (below is the sample to ass
       },
       "authorizations": {
         "value":[
-            {
-                "principalId": "<object id of user1>",
-                "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
-                "principalIdDisplayName" : "Contributor"
-          },
           {
               "principalId": "<object id of user1>",
               "roleDefinitionId": "ab8e14d6-4a74-4a29-9ba8-549422addade",
