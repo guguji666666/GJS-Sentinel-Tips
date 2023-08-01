@@ -6,11 +6,15 @@
 <img width="643" alt="image" src="https://user-images.githubusercontent.com/96930989/222393886-ccc024e3-990c-4c37-97d8-3bc4906fcb94.png">
 
 ### 3. Create two actions with `Initialize variables`
-For action 1, 
+For action 1, name the operation, let's say `test1`
 
 <img width="613" alt="image" src="https://user-images.githubusercontent.com/96930989/222394377-ba1a7bac-f3cb-42e0-95fa-df29a06b9170.png">
 
 For action 2, in the value, input
+```
+replace(replace(string(variables('<name of the operation we defined before>')), '\', '\\'), '"', '\"')
+```
+
 ```
 replace(replace(string(variables('test1')), '\', '\\'), '"', '\"')
 ```
