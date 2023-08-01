@@ -49,6 +49,9 @@ Create remediation task here so that existing VMs will also be associated to thi
 Review the configuration and confirm creation <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/6efa72f9-2bff-425c-88e7-7432dd2b0b28)
 
-Then you can monitor to see if the VMs are associated to the DCR you want.
+Then you can monitor to see if the VMs are associated to the DCR you want <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/84f4786c-f206-4d4d-9c79-e1412d124035)
+
+
                                                                                                                    
                                                                                                
