@@ -45,7 +45,8 @@ Assign the initiative to the subscription level <br>
 Uncheck the box here and paste the resource id of the DCR found in the previous steps <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/65eb9b3c-8ec2-4d45-bd9d-9118cc6c6596) <br>
 Create remediation task here so that existing VMs will also be associated to this DCR <br>
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/7e96384b-72bb-4020-82f0-29f7c11aae56)
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/48ec6d21-c641-450b-9fc4-0cb2abe43c9c)
+
 Review the configuration and confirm creation <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/6efa72f9-2bff-425c-88e7-7432dd2b0b28)
 
