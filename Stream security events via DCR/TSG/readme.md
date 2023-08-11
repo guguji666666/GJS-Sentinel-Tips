@@ -23,4 +23,18 @@ cd “C:\Packages\Plugins\Microsoft.Azure.Monitor.AzureMonitorWindowsAgent\<AMA_
 #### 2. Check the position of log file from the last row in the output. Normally, it will collect logs/files into `AMAFiles.zip` and save on your desktop as below.
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/451d5159-166f-4d77-81da-33f3ee465395)
 
-#### 3. Please also zip the folder `C:\WindowsAzure\Resources` and share with us (on Azure VM)
+#### 3. Please also share the log below with us
+
+Azure VM 
+```
+C:\WindowsAzure\Resources
+```
+Sample <br>
+<img width="777" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e6823fe5-9116-4a16-be81-b767f7e57b96">
+
+Arc VM
+```
+C:\Resources\Directory\AMADataStore.****
+```
+Sample <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/3c52c2f3-01a3-45bc-95c8-325da99e31ba)
