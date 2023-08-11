@@ -24,6 +24,6 @@ tar -xzvf ama_tst.tgz
 ```sh
 sudo sh ama_troubleshooter.sh
 ```
-<img width="545" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/465c918a-b5e0-466c-8984-797ad4f9839a">
+<img width="545" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/465c918a-b5e0-466c-8984-797ad4f9839a"> <br>
 
 <img width="412" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/02375707-c7b1-420f-afa6-5890cf75febb">
