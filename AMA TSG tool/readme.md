@@ -24,6 +24,11 @@ tar -xzvf ama_tst.tgz
 ```sh
 sudo sh ama_troubleshooter.sh
 ```
+If the issue is related to syslog, we can press `5`, check the output <br>
+<img width="849" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/211c1e01-2a0e-4a12-8137-b6e500584cba">
+
+If the output doesn't tell useful information, we can then run the script again to capture the logs.
+
 <img width="545" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/465c918a-b5e0-466c-8984-797ad4f9839a"> <br>
 
 <img width="412" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/02375707-c7b1-420f-afa6-5890cf75febb">
