@@ -25,3 +25,11 @@
 
 ### Wait until the remediation task completes, you can check the status here
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d59fc41c-a0c6-46f2-b577-9ebeba416e90)
+
+## 5. Verify the data connector
+Run the query to check the incoming activity logs
+```kusto
+AzureActivity
+| order by TimeGenerated desc
+```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/5384a03f-327f-4bc4-a969-e66aaeeeb809)
