@@ -33,3 +33,5 @@ AzureActivity
 | order by TimeGenerated desc
 ```
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/5384a03f-327f-4bc4-a969-e66aaeeeb809)
+
+More details of the table `AzureActivity` could be found here [AzureActivity](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/azureactivity)
