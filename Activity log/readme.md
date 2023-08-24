@@ -9,7 +9,7 @@
 ## 3. Enter connector page
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/da44cd23-3ea7-4192-ab3e-2344db867ed6)
 
-## 4. Assign azure policy to subscription(s)
+## 4. Assign azure policy
 
 ### Define the assignment scope
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/f8e3b54b-4977-4b4f-9cc7-2af876b955e2)
