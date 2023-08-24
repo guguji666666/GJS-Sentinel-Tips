@@ -17,7 +17,7 @@
 ### Uncheck the box here and define the destination workspace
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/87bdd1e4-c820-4fc9-ab9b-e61db9db69a6)
 
-### Create remediation task so that the existing subscription would be applied as well (The reason is mentioned)
+### Create remediation task so that existing subscription(s) would be applied as well (The reason is mentioned)
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2b24e1a5-fbe1-4555-977f-eb824f2998b5)
 
 ### Review the configuration and confirm assignment
