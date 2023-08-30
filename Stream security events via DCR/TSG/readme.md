@@ -20,9 +20,12 @@ cd “C:\Packages\Plugins\Microsoft.Azure.Monitor.AzureMonitorWindowsAgent\<AMA_
 ```powershell
 . \CollectAMALogs.ps1
 ```
+
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a3e3030d-a3d8-400c-ad90-6e338548821b)
 
-#### 2. Check the position of log file from the last row in the output. Normally, it will collect logs/files into `AMAFiles.zip` and save on your desktop as below.
+#### 2. Check the position of log file from the last row in the output. 
+
+Normally, it will collect logs/files into `AMAFiles.zip` and save on your desktop as below. <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/451d5159-166f-4d77-81da-33f3ee465395)
 
 #### 3. Please also share the log below with us
