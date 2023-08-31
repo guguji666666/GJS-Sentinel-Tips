@@ -1,6 +1,6 @@
 ## [Stream and filter data from Windows DNS servers with the AMA connector](https://learn.microsoft.com/en-us/azure/sentinel/connect-dns-ama)
 
-### Deployment steps
+### 1. Deploy DNS server
 DC would be the master DNS server in the domain by default
 
 [Deploy a secondary DNS server](https://www.youtube.com/watch?v=g9w8apZnbg0) in the domain if you want to test on a separated DNS server
@@ -43,6 +43,24 @@ We can also modify the refresh interval here on the master DNS server (DC)
 
 ![image](https://user-images.githubusercontent.com/96930989/226570742-0ebc10d6-9741-4b3b-a06c-44094f4a1abf.png)
 
+### 2. Install the Azure monitor agent on Azure VM or Arc-enabled VM running DNS server.
+#### Reference doc
+[]()
+
+
+
+### 3. Configure data connector in Sentinel
+
+Install the solution from Sentinel content hub <br>
+<img width="1939" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/66deacbb-3012-4cbf-ac57-4e336202f5a9">
+
+Once installed, wait for 5 minutes and navigate to `data connectors`, find this connector and open it<br>
+<img width="1949" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/f51c8c7d-2e14-4897-8568-de93202a41de">
+
+Edit DCR here, assign it to Azure VM or Arc-enabled VM <br>
+<img width="2255" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/f0bc71fb-574f-41c3-b484-49e427d78547">
+
+Restart the DNS server to get update on DCR assignment
 
 ## Lab for reference
 
