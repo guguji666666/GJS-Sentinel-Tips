@@ -66,3 +66,12 @@ Heartbeat
 | where LastCall < ago(5m)
 ```
 
+#### 5. Get alert when device is isolated in defender for endpoint
+```kusto
+DeviceRegistryEvents
+| where * contains "Windows Advanced Threat Protection"
+| where RegistryValueName contains "DisableEnterpriseAuthProxyValueToRestoreAfterIsolation"
+| where RegistryValueData == "0"
+```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2ffee352-f97b-4e69-83cd-68f61b8c7943)
+
