@@ -43,11 +43,7 @@ We can also modify the refresh interval here on the master DNS server (DC)
 
 ![image](https://user-images.githubusercontent.com/96930989/226570742-0ebc10d6-9741-4b3b-a06c-44094f4a1abf.png)
 
-### 2. Install the Azure monitor agent on Azure VM or Arc-enabled VM running DNS server.
-#### Reference doc
-[]()
-
-
+### 2. [Install AMA](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-manage?tabs=azure-powershell#install)
 
 ### 3. Configure data connector in Sentinel
 
