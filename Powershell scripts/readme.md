@@ -2,6 +2,10 @@
 
 ## 1. Get sentinel incidents created in specified time range
 ```powershell
+Connect-AzAccount -TenantId <your tenant id>
+
+Set-AzContext -Subscription <your subscription id>
+
 # Define the start date (January 1, 2023)
 $startDate = Get-Date -Year 2023 -Month 1 -Day 1
 # Define the end date (May 1, 2023)
@@ -18,6 +22,10 @@ $incidents | ForEach-Object {
 
 ## 2. Count sentinel incidents created in specified time range
 ```powershell
+Connect-AzAccount -TenantId <your tenant id>
+
+Set-AzContext -Subscription <your subscription id>
+
 # Define the start date (January 1, 2023)
 $startDate = Get-Date -Year 2023 -Month 1 -Day 1
 
@@ -38,6 +46,10 @@ Write-Host "Number of incidents between $($startDate.ToString('yyyy-MM-dd')) and
 
 ## 3. Bulk close sentinel incidents created in specified time range
 ```powershell
+Connect-AzAccount -TenantId <your tenant id>
+
+Set-AzContext -Subscription <your subscription id>
+
 # Define the start date (January 1, 2023)
 $startDate = Get-Date -Year 2023 -Month 1 -Day 1
 
