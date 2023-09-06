@@ -22,3 +22,13 @@ SELINUXTYPE=targeted
 ```
 
 Save the configuration file and reboot the server
+
+Run the command below to verify the status of Selinux
+```sh
+sestatus
+```
+```
+SELinux status:                 disabled - Good
+SELinux status:                 permissive - Good
+SELinux status:                 enforced - bad, need to disable or set to permissive
+```
