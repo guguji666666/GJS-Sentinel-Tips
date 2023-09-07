@@ -8,11 +8,14 @@
 The user should have the write permission on the workspace level
 
 ### 1. Get postman and user token
-##### 1. Download postman from [Download Postman](https://www.postman.com/downloads/) and launch it.
-##### 2. [Get user token](https://github.com/guguji666666/GJS-MDC-Tips/tree/main/API%20Basic)
-##### 3. Insert the user token here in postman
+#### 1. Download postman from [Download Postman](https://www.postman.com/downloads/) and launch it.
+#### 2. [Get user token](https://github.com/guguji666666/GJS-MDC-Tips/tree/main/API%20Basic)
+#### You can also get the user token in F12 developer tool
+<img width="2255" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e8dfc15b-a771-4013-9d03-eb9744a8e29d">
+
+#### 3. Insert the user token here in postman
 ![image](https://user-images.githubusercontent.com/96930989/210289242-15003c92-1406-4289-9cfd-a08e5cd7260f.png)
-##### 4. Set the `request URL`, `Body` (below is sample)
+#### 4. Set the `request URL`, `Body` (below is sample)
 ![image](https://user-images.githubusercontent.com/96930989/210707768-4979d7d8-4a3e-4b8d-821e-3234f2704be5.png)
 
 ### Binding : PUT
