@@ -44,3 +44,8 @@ Meanwile, launch another ssh seesion and run the command:
 ```
 sudo tcpdump -A -ni any port 22033 -vv
 ```
+
+## 4. Check the logs in the workspace
+
+<img width="1906" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/6bf6524b-0594-4147-bc06-81231caeaaa1">
+
