@@ -34,3 +34,8 @@ https://management.azure.com:443/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/
   }
 }
 ```
+
+Before we install the solution <br>
+<img width="838" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/76fdf870-7a8d-46e2-b0dc-c915eb215c0f">
+
+After we manually install the solution <br>
