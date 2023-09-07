@@ -22,7 +22,7 @@ https://management.azure.com:443/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/
 ```
 ### Body
 ```
-{"location": "uksouth",
+{"location": "<location of your sentinel workspace>",
 "properties": {
 "workspaceResourceId": "/subscriptions/{SUBSCRIPTION}/resourceGroups/{RESOURCE_GROUP}/providers/microsoft.operationalinsights/workspaces/{WORKSPACE_NAME}"
   },
@@ -34,8 +34,12 @@ https://management.azure.com:443/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/
   }
 }
 ```
+Sample <br>
+<img width="1829" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e2b649b0-d11f-4214-aca4-f6b110b6ea94">
+
 
 Before we install the solution <br>
 <img width="838" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/76fdf870-7a8d-46e2-b0dc-c915eb215c0f">
 
 After we manually install the solution <br>
+<img width="1939" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c41af147-2771-4050-be3d-2273158fc20f">
