@@ -5,6 +5,8 @@
 
 ## Manually install the solution if it is missing
 
+The user should have the write permission on the workspace level
+
 ### Binding : PUT
 ### URL
 ```
