@@ -114,7 +114,7 @@ ARM template used to onboard customer's `subscription`
 ```
 
 
-Edit parameters following the format below <br>
+## `Edit parameters` following the format below
 * managedByTenantId : the service provider tenant
 * principalId : the object id of your user account in service provider tenant
 * roleDefinitionId : role id of the RBAC role you defined
