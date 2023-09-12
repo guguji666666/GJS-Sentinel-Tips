@@ -96,5 +96,41 @@ foreach ($incident in $incidents) {
 Copy the `application id` and `tenant id`, we need them later <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/404e0248-b311-4fb0-85c9-926d4a99d631)
 
+### 8. Create new self-signed cert
+```powershell
+$Certificate=New-SelfSignedCertificate –Subject sentinel-incident-closure.com
+```
+```powershell
+Export-Certificate -Cert $Certificate -FilePath "C:\temp\sentinel.cer" 
+```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/23053ea9-3e88-4a57-87ae-cba37717b0d9)
 
+### 9. Assign permission to automation account's managed identity
+```powershell
+# Use the Run As Account for authentication and subscription context
+# Authenticate using the Managed Identity of the Automation Account
+$automationAccountName = "<Your Automation Account Name>"
+$resourceId = "/subscriptions/<Your Subscription ID>/resourceGroups/<Your Resource Group>/providers/Microsoft.Automation/automationAccounts/$automationAccountName"
+$msiAuthToken = Invoke-RestMethod -Method GET -Headers @{"Metadata"="true"} -Uri "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=$resourceId&client_secret=SECRET" | Select-Object -ExpandProperty access_token
 
+# Set the context with the Managed Identity's token
+$context = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext
+$context.TokenCache = New-Object Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureTokenCache
+$context.TokenCache.Deserialize($msiAuthToken)
+
+# Define the start date (January 1, 2023)
+$startDate = Get-Date -Year 2023 -Month 1 -Day 1
+
+# Define the end date (February 15, 2023)
+$endDate = Get-Date -Year 2023 -Month 2 -Day 28
+
+# Rest of your script remains unchanged
+$incidents = Get-AzSentinelIncident | Where-Object {
+    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
+}
+
+foreach ($incident in $incidents) {
+    $incident | Update-AzSentinelIncident -Classification Undetermined -Status Closed -Severity 'Informational' -Title "Closed by Script"
+    Write-Host "Closed incident $($incident.Name) created on $($incident.CreatedTimeUtc)"
+}
+```
