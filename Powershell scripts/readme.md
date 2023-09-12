@@ -69,3 +69,7 @@ foreach ($incident in $incidents) {
 ```
 
 # Playbook to trigger playbook running powershell scripts
+### 1. Search for `http` and select `request`
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1d3e279c-793e-486d-a11b-6312ad44cf58) 
+### 2. Select `When a HTTP request is received`
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/dac93013-67a8-4cbb-84b8-8538f96a12ea)
