@@ -67,3 +67,5 @@ foreach ($incident in $incidents) {
     Write-Host "Closed incident $($incident.Name) created on $($incident.CreatedTimeUtc)"
 }
 ```
+
+# Playbook to trigger playbook running powershell scripts
