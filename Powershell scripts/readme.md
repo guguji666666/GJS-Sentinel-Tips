@@ -106,6 +106,16 @@ Export-Certificate -Cert $Certificate -FilePath "C:\temp\sentinel.cer"
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/23053ea9-3e88-4a57-87ae-cba37717b0d9)
 
 ### 9. Assign permission to automation account's managed identity
+We can refer to the doc here [Microsoft Sentinel roles, permissions, and allowed actions](https://learn.microsoft.com/en-us/azure/sentinel/roles#microsoft-sentinel-roles-permissions-and-allowed-actions)
+
+Navigate to subscription > IAM <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/331b1746-4f01-464c-a0c1-bf287517f159) <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/4c041545-9ddd-427b-9e39-f9b404261574) <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/3039e92a-260e-4e5a-a90d-13294e779ffd) <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/773c1b37-2eee-4884-af08-c700333141bf) <br>
+
+
+### 10. Configure runbook in automation account
 ```powershell
 # Use the Run As Account for authentication and subscription context
 # Authenticate using the Managed Identity of the Automation Account
@@ -118,11 +128,11 @@ $context = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmP
 $context.TokenCache = New-Object Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureTokenCache
 $context.TokenCache.Deserialize($msiAuthToken)
 
-# Define the start date (January 1, 2023)
+# Define the start date (for example January 1, 2023)
 $startDate = Get-Date -Year 2023 -Month 1 -Day 1
 
-# Define the end date (February 15, 2023)
-$endDate = Get-Date -Year 2023 -Month 2 -Day 28
+# Define the end date (for example May 15, 2023)
+$endDate = Get-Date -Year 2023 -Month 5 -Day 15
 
 # Rest of your script remains unchanged
 $incidents = Get-AzSentinelIncident | Where-Object {
