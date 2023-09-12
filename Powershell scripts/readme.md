@@ -83,4 +83,12 @@ foreach ($incident in $incidents) {
 
 ### 5. Create an automation account following the doc [Quickstart: Create an Automation account using the Azure portal](https://learn.microsoft.com/en-us/azure/automation/quickstarts/create-azure-automation-account-portal)
 
-###
+### 6. Assign role to `logic app` to access this automation account
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/5a926cff-0613-4fe8-86a3-755fb04c543b) <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/4067c5e8-4b19-41e5-8354-5ef1c74c0437) <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c176caad-96fb-4ca1-b3e0-16cd0e07c858) <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/bd34734c-c028-4b71-9825-96b143bd5bf7) <br>
+
+
+
+
