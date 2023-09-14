@@ -78,6 +78,11 @@ If the daemon is syslog-ng, we can check the status
 systemctl status syslog-ng
 ```
 
+### Check the version of the oms agent installed
+```sh
+sudo sh ./omsagent-*.universal.x64.sh --version
+```
+
 ### 1. Check Firewall rules and forwarding rules between rsyslog daemon and MMA
 ### Path : /etc/rsyslog.d 
 ```sh
