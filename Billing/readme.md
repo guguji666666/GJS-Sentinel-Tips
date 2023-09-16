@@ -45,8 +45,8 @@ CommonSecurityLog
 | where DeviceVendor == "Microsoft"
 | summarize Size = sum(_BilledSize) by bin(TimeGenerated, 1d), DeviceVendor, _IsBillable 
 | extend Format_Size = format_bytes(toint(Size), 2)
-| project TimeGenerated, DeviceVendor, MB
-| sort by TimeGenerated asc
+| project TimeGenerated, DeviceVendor, Format_Size
+| sort by TimeGenerated desc
 ```
 
 Sample 2 : OKta_CL
@@ -57,7 +57,7 @@ Okta_CL
 | where actor_displayName_s == "Okta System"
 | summarize Size = sum(_BilledSize) by bin(TimeGenerated, 1d), actor_displayName_s, _IsBillable 
 | extend Format_Size = format_bytes(toint(Size), 2)
-| project TimeGenerated, actor_displayName_s, MB
+| project TimeGenerated, actor_displayName_s, Format_Size
 | sort by TimeGenerated asc
 ```
 
