@@ -97,4 +97,5 @@ union withsource=TableName1 *
           ['Size per Entry'] = 1.0 * Size / Entries, ['IsBillable'] = _IsBillable, ['Last Record Received'] =  last_log , ['Estimated Table Price'] =  (estimate/(1024*1024*1024)) * 7.13
  | order by ['Table Size']  desc
 ```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/13569b25-d437-4855-adbc-f3ec52e4d6a3)
 
