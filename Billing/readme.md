@@ -65,6 +65,9 @@ Okta_CL
 
 ## 2. Calculation of Sentinel cost
 ### Reference doc
+* [Plan costs and understand Microsoft Sentinel pricing and billing](https://learn.microsoft.com/en-us/azure/sentinel/billing?tabs=simplified%2Ccommitment-tiers)
+* [Manage and monitor costs for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/billing-monitor-costs)
+* [Reduce costs for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/billing-reduce-costs)
 * [Microsoft Sentinel pricing](https://azure.microsoft.com/en-us/pricing/details/microsoft-sentinel/)
 * [Azure Monitor pricing](https://azure.microsoft.com/en-us/pricing/details/monitor/)
 * [Switch to the simplified pricing tiers for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/enroll-simplified-pricing-tier?tabs=microsoft-sentinel)
