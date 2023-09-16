@@ -44,11 +44,10 @@ CommonSecurityLog
 | where TimeGenerated >= 30d
 | where DeviceVendor == "Microsoft"
 | summarize Size = sum(_BilledSize) by bin(TimeGenerated, 1d), DeviceVendor, _IsBillable 
-| extend MB = format_bytes(toint(Size), 2)
+| extend Format_Size = format_bytes(toint(Size), 2)
 | project TimeGenerated, DeviceVendor, MB
 | sort by TimeGenerated asc
 ```
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b0d79dd1-0fd9-436c-a35f-1f8838264766)
 
 Sample 2 : OKta_CL
 ```kusto
@@ -57,12 +56,10 @@ Okta_CL
 | where TimeGenerated >= 30d
 | where actor_displayName_s == "Okta System"
 | summarize Size = sum(_BilledSize) by bin(TimeGenerated, 1d), actor_displayName_s, _IsBillable 
-| extend MB = format_bytes(toint(Size), 2)
+| extend Format_Size = format_bytes(toint(Size), 2)
 | project TimeGenerated, actor_displayName_s, MB
 | sort by TimeGenerated asc
 ```
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/ef304968-bcba-4cc5-9378-4127dadf7afd)
-
 
 ## 2. Calculation of Sentinel cost
 ### Reference doc
