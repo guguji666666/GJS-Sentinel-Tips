@@ -71,3 +71,18 @@ Okta_CL
 * [Microsoft Sentinel pricing](https://azure.microsoft.com/en-us/pricing/details/microsoft-sentinel/)
 * [Azure Monitor pricing](https://azure.microsoft.com/en-us/pricing/details/monitor/)
 * [Switch to the simplified pricing tiers for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/enroll-simplified-pricing-tier?tabs=microsoft-sentinel)
+* [SentinelKQL/TableUsageandCost.txt](https://github.com/rod-trent/SentinelKQL/blob/master/TableUsageandCost.txt)
+```kusto
+//Shows Tables by Table size and how much it costs
+//For the 0.0 - Enter your price (tip. Use the Azure Pricing Calculator, enter a value of 1GB and divide by 30days)
+union withsource=TableName1 *
+| where TimeGenerated > ago(30d)
+| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff("second",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true)  by TableName1, _IsBillable
+| project ['Table Name'] = TableName1, ['Table Entries'] = Entries, ['Table Size'] = Size,
+          ['Size per Entry'] = 1.0 * Size / Entries, ['IsBillable'] = _IsBillable, ['Last Record Received'] =  last_log , ['Estimated Table Price'] =  (estimate/(1024*1024*1024)) * 0.0
+ | order by ['Table Size']  desc
+```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/12558001-9c88-438f-a8d3-40462dbeab83)
+
+
+
