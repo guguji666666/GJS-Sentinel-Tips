@@ -39,8 +39,7 @@ union withsource= table *
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/702bc6d7-f2ca-4916-8926-09264d23148f)
 
 ### We can also check the volume for specifed table
-
-CEF
+Sample 1 : CommonSecurityLog
 ```kusto
 CommonSecurityLog
 | where _IsBillable == true
@@ -53,7 +52,7 @@ CommonSecurityLog
 ```
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b0d79dd1-0fd9-436c-a35f-1f8838264766)
 
-OKta
+Sample 2 : OKta_CL
 ```kusto
 Okta_CL
 | where _IsBillable == true
