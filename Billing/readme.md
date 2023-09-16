@@ -4,16 +4,15 @@
 ### Azure monitor doc: [Standard columns in Azure Monitor Logs](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-standard-columns#_billedsize)
 ### Check volume per table
 ```kusto
-// Sort billed table in MB
+// Sort billed table in KB/MB/GB
 union withsource= table *
 | where TimeGenerated >= 30d
 | where _IsBillable == true
 | summarize Size = sum(_BilledSize) by table, _IsBillable 
 | sort by Size desc 
-| extend MB = format_bytes(toint(Size), 2)
+| extend Format_Size = format_bytes(toint(Size), 2)
 ```
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/fbc642bc-cfcd-4488-864d-ade7f5057d1f)
-
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/60e89eb8-6355-4666-bdfd-8269d138d317)
 
 ### Check the volume in the specifed timerange
 ```kusto
@@ -27,16 +26,15 @@ union withsource= table *
 
 ### Check total volume
 ```kusto
-// Sort billed table in MB
+// Sort billed table in KB/MB/GB
 union withsource= table *
 | where TimeGenerated >= 30d
 | where _IsBillable == true
 | summarize Size = sum(_BilledSize) by table, _IsBillable 
 | sort by Size desc 
-| extend MB = format_bytes(toint(Size), 2)
 | summarize totalsize = format_bytes(toint(sum(Size)), 2)
 ```
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/702bc6d7-f2ca-4916-8926-09264d23148f)
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/57d5a31a-a5cb-4226-96ce-3640466a5038)
 
 ### We can also check the volume for specifed table
 Sample 1 : CommonSecurityLog
