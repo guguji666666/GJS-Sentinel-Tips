@@ -82,7 +82,19 @@ union withsource=TableName1 *
           ['Size per Entry'] = 1.0 * Size / Entries, ['IsBillable'] = _IsBillable, ['Last Record Received'] =  last_log , ['Estimated Table Price'] =  (estimate/(1024*1024*1024)) * 0.0
  | order by ['Table Size']  desc
 ```
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/12558001-9c88-438f-a8d3-40462dbeab83)
 
-
+Sample
+#### 1. The region of my sentinel workspace is `East Asia`
+#### 2. The price tier i am using is `Pay-As-You-Go`
+#### 3. The cost shown here covers sentinel data analysis and data ingestion to workspace
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/bd38d4c3-da2a-4bd2-a22d-ae9c8e7fc63d)
+#### 4. Then i will use the query below
+```kusto
+union withsource=TableName1 *
+| where TimeGenerated > ago(30d)
+| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff("second",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true)  by TableName1, _IsBillable
+| project ['Table Name'] = TableName1, ['Table Entries'] = Entries, ['Table Size'] = Size,
+          ['Size per Entry'] = 1.0 * Size / Entries, ['IsBillable'] = _IsBillable, ['Last Record Received'] =  last_log , ['Estimated Table Price'] =  (estimate/(1024*1024*1024)) * 7.13
+ | order by ['Table Size']  desc
+```
 
