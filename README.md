@@ -24,7 +24,7 @@ We need to export the logs to the workspace first
 * [Best practices for designing a Microsoft Sentinel or Azure Defender for Cloud workspace](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/best-practices-for-designing-a-microsoft-sentinel-or-azure/ba-p/832574)
 * [What’s New: 250+ Solutions in Microsoft Sentinel Content hub!](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/what-s-new-250-solutions-in-microsoft-sentinel-content-hub/ba-p/3692881)
 
-#### Check the size of incoming logs to specified table
+## 4. Check the voluming of incoming logs to specified table and calculate sentinel cost
 
 CEF log 
 ```kusto
