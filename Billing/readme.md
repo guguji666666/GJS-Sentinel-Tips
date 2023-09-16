@@ -68,3 +68,7 @@ Okta_CL
 
 
 ## 2. Calculation of Sentinel cost
+### Reference doc
+* [Microsoft Sentinel pricing](https://azure.microsoft.com/en-us/pricing/details/microsoft-sentinel/)
+* [Azure Monitor pricing](https://azure.microsoft.com/en-us/pricing/details/monitor/)
+* [Switch to the simplified pricing tiers for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/enroll-simplified-pricing-tier?tabs=microsoft-sentinel)
