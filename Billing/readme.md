@@ -58,7 +58,7 @@ Okta_CL
 | summarize Size = sum(_BilledSize) by bin(TimeGenerated, 1d), actor_displayName_s, _IsBillable 
 | extend Format_Size = format_bytes(toint(Size), 2)
 | project TimeGenerated, actor_displayName_s, Format_Size
-| sort by TimeGenerated asc
+| sort by TimeGenerated desc
 ```
 
 ## 2. Calculation of Sentinel cost
