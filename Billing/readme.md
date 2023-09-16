@@ -48,6 +48,7 @@ CommonSecurityLog
 | project TimeGenerated, DeviceVendor, Format_Size
 | sort by TimeGenerated desc
 ```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/9c4248db-3eaa-4d4f-a442-a4c451caf149)
 
 Sample 2 : OKta_CL
 ```kusto
@@ -60,6 +61,7 @@ Okta_CL
 | project TimeGenerated, actor_displayName_s, Format_Size
 | sort by TimeGenerated desc
 ```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/81bce13d-aba7-48c1-b97f-7bf6ea8aec8e)
 
 ## 2. Calculation of Sentinel cost
 ### Reference doc
