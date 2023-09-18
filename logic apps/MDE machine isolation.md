@@ -34,8 +34,13 @@
 Copy the obejctid of this servicepricipal to notepad, we need it later
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/059a354f-7cd6-4ec5-a148-3ae28f0fe41a)
 
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/23947b28-1d0b-47fb-ab5f-c05bc61ba546)
+
 ## 7. Add app role to this MDE app
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/f6d1661e-c117-40ed-8b87-9e700a6ab06e)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/f0929288-0d7c-43a9-9ba9-f320ab127c95)
+
 
 ## 8. Run the powershell script in Azure CLI
 
