@@ -66,6 +66,50 @@ $AppRole | Format-List *
 New-AzureAdServiceAppRoleAssignment -ObjectId $MDEServicePrincipal.ObjectId -PrincipalId $MI.ObjectId ` -ResourceId $MDEServicePrincipal.ObjectId -Id $AppRole.Id
 ```
 
+```powershell
+$TenantId = '<Your tenand id>'
+
+$MIGuid = '<Enter your managed identity of logic app guid here>' 
+
+Connect-AzureAD  -TenantId $TenantId
+    
+$MI = Get-AzureADServicePrincipal -ObjectId $MIGuid 
+    
+$MDESPObjectId = '<MDE app serviceprincipal object id>' 
+    
+$PermissionName = 'Machine.Read.All'
+    
+$MDEServicePrincipal = Get-AzureADServicePrincipal -ObjectId $MDESPObjectId
+    
+$AppRole = $MDEServicePrincipal.AppRoles | Where-Object {$_.Value -eq $PermissionName -and $_.AllowedMemberTypes -contains 'Application'}
+
+$AppRole | Format-List *
+
+New-AzureAdServiceAppRoleAssignment -ObjectId $MDEServicePrincipal.ObjectId -PrincipalId $MI.ObjectId ` -ResourceId $MDEServicePrincipal.ObjectId -Id $AppRole.Id
+```
+
+```powershell
+$TenantId = '<Your tenand id>'
+
+$MIGuid = '<Enter your managed identity of logic app guid here>' 
+
+Connect-AzureAD  -TenantId $TenantId
+    
+$MI = Get-AzureADServicePrincipal -ObjectId $MIGuid 
+    
+$MDESPObjectId = '<MDE app serviceprincipal object id>' 
+    
+$PermissionName = 'Machine.ReadWrite.All'
+    
+$MDEServicePrincipal = Get-AzureADServicePrincipal -ObjectId $MDESPObjectId
+    
+$AppRole = $MDEServicePrincipal.AppRoles | Where-Object {$_.Value -eq $PermissionName -and $_.AllowedMemberTypes -contains 'Application'}
+
+$AppRole | Format-List *
+
+New-AzureAdServiceAppRoleAssignment -ObjectId $MDEServicePrincipal.ObjectId -PrincipalId $MI.ObjectId ` -ResourceId $MDEServicePrincipal.ObjectId -Id $AppRole.Id
+```
+
 ### Sample
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a73c30ed-dbce-4581-9f50-abea10d9988c) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d633bc15-c5a7-4dfa-8b98-fa62383d6c66) <br>
