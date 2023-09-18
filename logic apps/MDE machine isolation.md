@@ -1,4 +1,4 @@
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/66d63491-6e1d-4ec9-905e-570664a6c31f)# MDE device isolation
+# MDE device isolation
 
 ## 1. Install solution in sentinel content hub
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/bd4e7927-b1cf-4868-af31-10501d46424a)
