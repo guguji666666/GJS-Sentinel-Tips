@@ -99,9 +99,14 @@ Navigate to subscription > IAM <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/773c1b37-2eee-4884-af08-c700333141bf) <br>
 
 
-### 8. Configure runbook in automation account
+### 8. Configure powershell script, runbook in automation account
 
-Define the time range
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/261ee288-7c25-4811-af59-cfc4d2817f87)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1f0ce7a4-b0ef-4a19-b517-e731befd76af)
+
+### Then paste the powershell script below:
+#### Define the time range
 ```powershell
 Connect-AzAccount -Identity 
 
@@ -124,7 +129,7 @@ foreach ($incident in $incidents) {
 }
 ```
 
-Or you can delete the incidents generated xxx days ago
+#### Or you can delete the incidents generated xxx days ago
 ```powershell
 Connect-AzAccount -Identity 
 
@@ -172,3 +177,7 @@ foreach ($incident in $incidents) {
     Write-Host "Closed incident $($incident.Name) created on $($incident.CreatedTimeUtc)"
 }
 ```
+
+### 9. Configure logic app
+
+
