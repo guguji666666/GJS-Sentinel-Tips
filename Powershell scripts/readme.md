@@ -147,3 +147,28 @@ foreach ($incident in $incidents) {
     Write-Host "Deleted incident $($incident.Name) created on $($incident.CreatedTimeUtc)"
 }
 ```
+
+### Sample 
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1c906781-74ba-4485-9569-b1ce8843c5a9)
+
+```powershell
+Connect-AzAccount -Identity 
+
+Set-AzContext -Subscription 74axxxxxxxxxxxxxxxxxxx
+
+# Define the start date (for example January 1, 2023)
+$startDate = Get-Date -Year 2023 -Month 3 -Day 1
+
+# Define the end date (for example May 15, 2023)
+$endDate = Get-Date -Year 2023 -Month 3 -Day 15
+
+# Rest of your script remains unchanged
+$incidents = Get-AzSentinelIncident | Where-Object {
+    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
+}
+
+foreach ($incident in $incidents) {
+    $incident | Update-AzSentinelIncident -Classification Undetermined -Status Closed -Severity 'Informational' -Title "Closed by Script"
+    Write-Host "Closed incident $($incident.Name) created on $($incident.CreatedTimeUtc)"
+}
+```
