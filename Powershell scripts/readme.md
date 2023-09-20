@@ -77,7 +77,7 @@ foreach ($incident in $incidents) {
 ### 3. Select `When a HTTP request is received`
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/dac93013-67a8-4cbb-84b8-8538f96a12ea)
 
-### 4. Click save and this url would be generated automatically
+### 4. Click save and this url would be generated automatically, save the logic app
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/59d71480-0f7b-4eab-a025-a488b481c541) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e095cbb0-ad1c-40f2-a87b-2e68c8f4fbeb) <br>
 
@@ -103,7 +103,7 @@ Navigate to subscription > IAM <br>
 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/261ee288-7c25-4811-af59-cfc4d2817f87)
 
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1f0ce7a4-b0ef-4a19-b517-e731befd76af)
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/4cd3097f-3638-4626-9b9e-1e8d19e7e634)
 
 ### Then paste the powershell script below:
 #### Define the time range
@@ -179,5 +179,9 @@ foreach ($incident in $incidents) {
 ```
 
 ### 9. Configure logic app
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/12a9efeb-7d5a-41e9-9423-62c48e120611)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1531b4d0-2af1-4fac-a2a8-c5d271d9121f)
 
 
