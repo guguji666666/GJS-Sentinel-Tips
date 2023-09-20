@@ -8,15 +8,28 @@ Set-AzContext -Subscription <your subscription id>
 
 # Define the start date (January 1, 2023)
 $startDate = Get-Date -Year 2023 -Month 1 -Day 1
+
 # Define the end date (May 1, 2023)
-$endDate = Get-Date -Year 2023 -Month 2 -Day 15
+$endDate = Get-Date -Year 2023 -Month 5 -Day 1
+
+# Define the Azure resource group and workspace name
+$resourceGroupName = "<Your ResourceGroup Name>"
+$workspaceName = "<Your Workspace Name>"
+
 # Get incidents within the specified date range
 $incidents = Get-AzSentinelIncident | Where-Object {
     $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
 }
-# Expand all columns for the selected incidents
-$incidents | ForEach-Object {
-    $_ | Select-Object -Property *
+
+# Close incidents with specific classification, status, and title
+foreach ($incident in $incidents) {
+    $incidentID = $incident.Name
+    $title = "Your Title Here"  # Replace with the desired title
+    
+    # Close the incident with specific classification, status, and title
+    Update-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID -Classification Undetermined -Status 'Closed' -Title $title
+
+    Write-Host "Executed command to close incident $incidentID with Classification 'Undetermined', Status 'Closed', and Title '$title'"
 }
 ```
 
