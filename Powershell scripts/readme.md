@@ -186,3 +186,5 @@ foreach ($incident in $incidents) {
 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/3ac174a4-bfda-4193-84cc-c5c4f27a3792)
 
+You can also set Recurrence in logic app so that you can close the old incidents regularly <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/35984e39-99ee-43c8-812a-fd2a37f1cf4c)
