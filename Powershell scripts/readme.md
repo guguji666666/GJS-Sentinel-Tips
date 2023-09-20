@@ -100,6 +100,8 @@ Navigate to subscription > IAM <br>
 
 
 ### 8. Configure runbook in automation account
+
+Define the time range
 ```powershell
 Connect-AzAccount -Identity 
 
@@ -122,6 +124,7 @@ foreach ($incident in $incidents) {
 }
 ```
 
+Or you can delete the incidents generated xxx days ago
 ```powershell
 Connect-AzAccount -Identity 
 
