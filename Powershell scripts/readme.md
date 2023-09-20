@@ -1,6 +1,11 @@
 # Useful powershell scripts
 
 ## 1. Get sentinel incidents created in specified time range
+
+## 2. Count sentinel incidents created in specified time range
+
+
+## 3. Bulk close sentinel incidents created in specified time range
 ```powershell
 Connect-AzAccount -TenantId <your tenant id>
 
@@ -33,53 +38,6 @@ foreach ($incident in $incidents) {
 }
 ```
 
-## 2. Count sentinel incidents created in specified time range
-```powershell
-Connect-AzAccount -TenantId <your tenant id>
-
-Set-AzContext -Subscription <your subscription id>
-
-# Define the start date (January 1, 2023)
-$startDate = Get-Date -Year 2023 -Month 1 -Day 1
-
-# Define the end date (February 15, 2023)
-$endDate = Get-Date -Year 2023 -Month 2 -Day 15
-
-# Get incidents within the specified date range
-$incidents = Get-AzSentinelIncident | Where-Object {
-    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
-}
-
-# Count the number of incidents
-$incidentCount = $incidents.Count
-
-# Display the count
-Write-Host "Number of incidents between $($startDate.ToString('yyyy-MM-dd')) and $($endDate.ToString('yyyy-MM-dd')): $incidentCount"
-```
-
-## 3. Bulk close sentinel incidents created in specified time range
-```powershell
-Connect-AzAccount -TenantId <your tenant id>
-
-Set-AzContext -Subscription <your subscription id>
-
-# Define the start date (January 1, 2023)
-$startDate = Get-Date -Year 2023 -Month 1 -Day 1
-
-# Define the end date (February 15, 2023)
-$endDate = Get-Date -Year 2023 -Month 2 -Day 28
-
-# Get incidents within the specified date range
-$incidents = Get-AzSentinelIncident | Where-Object {
-    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
-}
-
-# Bulk close the selected incidents
-foreach ($incident in $incidents) {
-    $incident | Update-AzSentinelIncident -Classification Undetermined -Status Closed -Severity 'Informational' -Title "Closed by Script"
-    Write-Host "Closed incident $($incident.Name) created on $($incident.CreatedTimeUtc)"
-}
-```
 
 # Playbook to trigger playbook running powershell scripts
 ### 1. Create a logic app (playbook) and enable managed identity following the doc [Enable system-assigned identity in Azure portal](https://learn.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity?tabs=consumption#enable-system-assigned-identity-in-azure-portal) according to the type of the logic app
