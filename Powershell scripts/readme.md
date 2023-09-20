@@ -184,4 +184,5 @@ foreach ($incident in $incidents) {
 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1531b4d0-2af1-4fac-a2a8-c5d271d9121f)
 
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/3ac174a4-bfda-4193-84cc-c5c4f27a3792)
 
