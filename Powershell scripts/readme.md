@@ -178,7 +178,7 @@ foreach ($incident in $incidents) {
 }
 ```
 
-### 9. Configure logic app
+### 9. Configure workflow in logic app
 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/12a9efeb-7d5a-41e9-9423-62c48e120611)
 
