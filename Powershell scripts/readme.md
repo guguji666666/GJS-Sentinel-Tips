@@ -99,7 +99,7 @@ Navigate to subscription > IAM <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/773c1b37-2eee-4884-af08-c700333141bf) <br>
 
 
-### 10. Configure runbook in automation account
+### 8. Configure runbook in automation account
 ```powershell
 Connect-AzAccount -Identity 
 
