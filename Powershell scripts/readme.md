@@ -117,16 +117,9 @@ Navigate to subscription > IAM <br>
 
 ### 10. Configure runbook in automation account
 ```powershell
-# Use the Run As Account for authentication and subscription context
-# Authenticate using the Managed Identity of the Automation Account
-$automationAccountName = "<Your Automation Account Name>"
-$resourceId = "/subscriptions/<Your Subscription ID>/resourceGroups/<Your Resource Group>/providers/Microsoft.Automation/automationAccounts/$automationAccountName"
-$msiAuthToken = Invoke-RestMethod -Method GET -Headers @{"Metadata"="true"} -Uri "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=$resourceId&client_secret=SECRET" | Select-Object -ExpandProperty access_token
+Connect-AzAccount -Identity 
 
-# Set the context with the Managed Identity's token
-$context = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext
-$context.TokenCache = New-Object Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureTokenCache
-$context.TokenCache.Deserialize($msiAuthToken)
+Set-AzContext -Subscription <your Subscription id>
 
 # Define the start date (for example January 1, 2023)
 $startDate = Get-Date -Year 2023 -Month 1 -Day 1
@@ -142,5 +135,28 @@ $incidents = Get-AzSentinelIncident | Where-Object {
 foreach ($incident in $incidents) {
     $incident | Update-AzSentinelIncident -Classification Undetermined -Status Closed -Severity 'Informational' -Title "Closed by Script"
     Write-Host "Closed incident $($incident.Name) created on $($incident.CreatedTimeUtc)"
+}
+```
+
+```powershell
+Connect-AzAccount -Identity 
+
+Set-AzContext -Subscription <your Subscription id>
+
+# Define the end date (for example, today's date)
+$endDate = Get-Date
+
+# Define the start date by subtracting 10 days from the end date
+$startDate = $endDate.AddDays(-10)
+
+# Retrieve incidents that were created within the last 10 days
+$incidents = Get-AzSentinelIncident | Where-Object {
+    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
+}
+
+foreach ($incident in $incidents) {
+    # Delete the incident
+    Remove-AzSentinelIncident -Id $incident.Id
+    Write-Host "Deleted incident $($incident.Name) created on $($incident.CreatedTimeUtc)"
 }
 ```
