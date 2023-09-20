@@ -38,6 +38,36 @@ foreach ($incident in $incidents) {
 }
 ```
 
+or
+
+```powershell
+Connect-AzAccount -TenantId <your tenant id>
+
+Set-AzContext -Subscription <your subscription id>
+
+# Calculate the date 10 days ago
+$endDate = Get-Date
+$startDate = $endDate.AddDays(-10)
+
+# Define the Azure resource group and workspace name
+$resourceGroupName = "<Your ResourceGroup Name>"
+$workspaceName = "<Your Workspace Name>"
+
+# Get incidents within the specified date range
+$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
+    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
+}
+
+# Close the selected incidents
+foreach ($incident in $incidents) {
+    $incidentID = $incident.Name
+
+    # Close the incident with specific classification, status, and title
+    Update-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID -Classification Undetermined -Status 'Closed' -Title "Closed by Script"
+
+    Write-Host "Closed incident $incidentID created on $($incident.CreatedTimeUtc)"
+}
+```
 
 # Playbook to trigger playbook running powershell scripts
 ### 1. Create a logic app (playbook) and enable managed identity following the doc [Enable system-assigned identity in Azure portal](https://learn.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity?tabs=consumption#enable-system-assigned-identity-in-azure-portal) according to the type of the logic app
@@ -83,20 +113,30 @@ Connect-AzAccount -Identity
 
 Set-AzContext -Subscription <your Subscription id>
 
-# Define the start date (for example January 1, 2023)
+# Define the start date (January 1, 2023)
 $startDate = Get-Date -Year 2023 -Month 1 -Day 1
 
-# Define the end date (for example May 15, 2023)
-$endDate = Get-Date -Year 2023 -Month 5 -Day 15
+# Define the end date (May 1, 2023)
+$endDate = Get-Date -Year 2023 -Month 5 -Day 1
 
-# Rest of your script remains unchanged
+# Define the Azure resource group and workspace name
+$resourceGroupName = "<Your ResourceGroup Name>"
+$workspaceName = "<Your Workspace Name>"
+
+# Get incidents within the specified date range
 $incidents = Get-AzSentinelIncident | Where-Object {
     $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
 }
 
+# Close incidents with specific classification, status, and title
 foreach ($incident in $incidents) {
-    $incident | Update-AzSentinelIncident -Classification Undetermined -Status Closed -Severity 'Informational' -Title "Closed by Script"
-    Write-Host "Closed incident $($incident.Name) created on $($incident.CreatedTimeUtc)"
+    $incidentID = $incident.Name
+    $title = "Your Title Here"  # Replace with the desired title
+    
+    # Close the incident with specific classification, status, and title
+    Update-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID -Classification Undetermined -Status 'Closed' -Title $title
+
+    Write-Host "Executed command to close incident $incidentID with Classification 'Undetermined', Status 'Closed', and Title '$title'"
 }
 ```
 
@@ -106,21 +146,27 @@ Connect-AzAccount -Identity
 
 Set-AzContext -Subscription <your Subscription id>
 
-# Define the end date (for example, today's date)
+# Calculate the date 10 days ago
 $endDate = Get-Date
-
-# Define the start date by subtracting 10 days from the end date
 $startDate = $endDate.AddDays(-10)
 
-# Retrieve incidents that were created within the last 10 days
-$incidents = Get-AzSentinelIncident | Where-Object {
+# Define the Azure resource group and workspace name
+$resourceGroupName = "<Your ResourceGroup Name>"
+$workspaceName = "<Your Workspace Name>"
+
+# Get incidents within the specified date range
+$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
     $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
 }
 
+# Close the selected incidents
 foreach ($incident in $incidents) {
-    # Delete the incident
-    Remove-AzSentinelIncident -Id $incident.Id
-    Write-Host "Deleted incident $($incident.Name) created on $($incident.CreatedTimeUtc)"
+    $incidentID = $incident.Name
+
+    # Close the incident with specific classification, status, and title
+    Update-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID -Classification Undetermined -Status 'Closed' -Title "Closed by Script"
+
+    Write-Host "Closed incident $incidentID created on $($incident.CreatedTimeUtc)"
 }
 ```
 
