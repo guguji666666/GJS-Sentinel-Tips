@@ -89,23 +89,7 @@ foreach ($incident in $incidents) {
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c176caad-96fb-4ca1-b3e0-16cd0e07c858) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/bd34734c-c028-4b71-9825-96b143bd5bf7) <br>
 
-### 7. Create an application in Azure AD
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e7a6c2de-f486-42a7-aea0-fefbedbe76e8) <br>
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/0eee826c-39f0-447d-9574-44c9497e468d) <br>
-
-Copy the `application id` and `tenant id`, we need them later <br>
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/404e0248-b311-4fb0-85c9-926d4a99d631)
-
-### 8. Create new self-signed cert
-```powershell
-$Certificate=New-SelfSignedCertificate –Subject sentinel-incident-closure.com
-```
-```powershell
-Export-Certificate -Cert $Certificate -FilePath "C:\temp\sentinel.cer" 
-```
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/23053ea9-3e88-4a57-87ae-cba37717b0d9)
-
-### 9. Assign permission to automation account's managed identity
+### 7. Assign permission to automation account's managed identity
 We can refer to the doc here [Microsoft Sentinel roles, permissions, and allowed actions](https://learn.microsoft.com/en-us/azure/sentinel/roles#microsoft-sentinel-roles-permissions-and-allowed-actions)
 
 Navigate to subscription > IAM <br>
