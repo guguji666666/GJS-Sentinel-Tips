@@ -1,9 +1,50 @@
 # Useful powershell scripts
 
 ## 1. Get sentinel incidents created in specified time range
+```powershell
+# Define your Azure resource group, workspace, subscription, and tenant names or IDs
+$resourceGroupName = "YourResourceGroupName"
+$workspaceName = "YourWorkspaceName"
+$subscriptionId = "YourSubscriptionId"
+$tenantId = "YourTenantId"
+
+# Define the start and end dates for the time range
+$startDate = Get-Date "2023-03-01"
+$endDate = Get-Date "2023-03-15"
+
+# Authenticate to Azure using the specified tenant, subscription, and account
+Connect-AzAccount -Tenant $tenantId -Subscription $subscriptionId -Credential (Get-Credential)
+
+# Get Azure Sentinel incidents for the specified workspace and time range
+$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName |
+    Where-Object { $_.TimeGenerated -ge $startDate -and $_.TimeGenerated -le $endDate }
+
+# Display the retrieved incidents
+$incidents
+```
 
 ## 2. Count sentinel incidents created in specified time range
+```powershell
+# Define your Azure resource group, workspace, subscription, and tenant names or IDs
+$resourceGroupName = "YourResourceGroupName"
+$workspaceName = "YourWorkspaceName"
+$subscriptionId = "YourSubscriptionId"
+$tenantId = "YourTenantId"
 
+# Define the start and end dates for the time range
+$startDate = Get-Date "2023-03-01"
+$endDate = Get-Date "2023-03-15"
+
+# Authenticate to Azure using the specified tenant, subscription, and account
+Connect-AzAccount -Tenant $tenantId -Subscription $subscriptionId -Credential (Get-Credential)
+
+# Get Azure Sentinel incidents for the specified workspace and time range
+$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName |
+    Where-Object { $_.TimeGenerated -ge $startDate -and $_.TimeGenerated -le $endDate }
+
+# Display the retrieved incidents
+$incidents
+```
 
 ## 3. Bulk close sentinel incidents created in specified time range
 ```powershell
