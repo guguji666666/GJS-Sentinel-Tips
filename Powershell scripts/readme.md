@@ -166,8 +166,40 @@ foreach ($incident in $incidents) {
 ```
 
 #### Or you can delete the incidents generated xxx days ago
+```powershell
+# Define your Azure resource group, workspace, subscription, and tenant names or IDs
+$resourceGroupName = "YourResourceGroupName"
+$workspaceName = "YourWorkspaceName"
+$subscriptionId = "YourSubscriptionId"
+$tenantId = "YourTenantId"
 
+# Authenticate to Azure using the specified tenant, subscription, and account
+Connect-AzAccount -Identity 
+Set-AzContext -Subscription $subscriptionId
 
+# Calculate the start date (10 days ago)
+$startDate = (Get-Date).AddDays(-10)
+
+# Calculate the end date (current date)
+$endDate = Get-Date
+
+# Get incidents within the specified date range
+$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
+    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
+}
+
+# Close incidents with specific classification, status, and title
+foreach ($incident in $incidents) {
+    $incidentID = $incident.Name
+    $title = "<Your Title Here>"  # Replace with the desired title
+    $severity = "Informational"  # Set the desired severity level
+    
+    # Close the incident with specific classification, status, severity, and title
+    Update-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID -Classification Undetermined -Status 'Closed' -Severity $severity -Title $title
+
+    Write-Host "Executed command to close incident $incidentID with Classification 'Undetermined', Status 'Closed', Severity '$severity', and Title '$title'"
+}
+```
 
 ### 9. Configure workflow in logic app
 
