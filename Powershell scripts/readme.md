@@ -8,19 +8,21 @@ $workspaceName = "YourWorkspaceName"
 $subscriptionId = "YourSubscriptionId"
 $tenantId = "YourTenantId"
 
-# Define the start and end dates for the time range
-$startDate = Get-Date "2023-03-01" ##define start date
-$endDate = Get-Date "2023-03-15" ##define end date
+# Define the start date (you can custom it)
+$startDate = Get-Date -Year 2023 -Month 3 -Day 1
+# Define the end date (you can custom it)
+$endDate = Get-Date -Year 2023 -Month 3 -Day 15
 
 # Authenticate to Azure using the specified tenant, subscription, and account
-Connect-AzAccount -Tenant $tenantId -Subscription $subscriptionId -Credential (Get-Credential)
+Connect-AzAccount -Tenant $tenantId -Subscription $subscriptionId
 
-# Get Azure Sentinel incidents for the specified workspace and time range
-$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName |
-    Where-Object { $_.TimeGenerated -ge $startDate -and $_.TimeGenerated -le $endDate }
+# Get incidents within the specified date range
+$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
+    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
+}
 
-# Display the retrieved incidents
-$incidents
+# Print incidents
+$incidents | fl
 ```
 
 ## 2. Count sentinel incidents created in specified time range
@@ -31,16 +33,18 @@ $workspaceName = "YourWorkspaceName"
 $subscriptionId = "YourSubscriptionId"
 $tenantId = "YourTenantId"
 
-# Define the start and end dates for the time range
-$startDate = Get-Date "2023-03-01" ##define start date
-$endDate = Get-Date "2023-03-15" ##define end date
+# Define the start date (you can custom it)
+$startDate = Get-Date -Year 2023 -Month 3 -Day 1
+# Define the end date (you can custom it)
+$endDate = Get-Date -Year 2023 -Month 3 -Day 15
 
 # Authenticate to Azure using the specified tenant, subscription, and account
-Connect-AzAccount -Tenant $tenantId -Subscription $subscriptionId -Credential (Get-Credential)
+Connect-AzAccount -Tenant $tenantId -Subscription $subscriptionId
 
-# Get Azure Sentinel incidents for the specified workspace and time range
-$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName |
-    Where-Object { $_.TimeGenerated -ge $startDate -and $_.TimeGenerated -le $endDate }
+# Get incidents within the specified date range
+$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
+    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
+}
 
 # Count the number of incidents
 $incidentCount = $incidents.Count
