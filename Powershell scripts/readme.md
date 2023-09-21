@@ -88,36 +88,6 @@ foreach ($incident in $incidents) {
 }
 ```
 
-or
-
-```powershell
-Connect-AzAccount -TenantId <your tenant id>
-
-Set-AzContext -Subscription <your subscription id>
-
-# Calculate the date 10 days ago
-$endDate = Get-Date
-$startDate = $endDate.AddDays(-10)
-
-# Define the Azure resource group and workspace name
-$resourceGroupName = "<Your ResourceGroup Name>"
-$workspaceName = "<Your Workspace Name>"
-
-# Get incidents within the specified date range
-$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
-    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
-}
-
-# Close the selected incidents
-foreach ($incident in $incidents) {
-    $incidentID = $incident.Name
-
-    # Close the incident with specific classification, status, and title
-    Update-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID -Classification Undetermined -Status 'Closed' -Title "Closed by Script"
-
-    Write-Host "Closed incident $incidentID created on $($incident.CreatedTimeUtc)"
-}
-```
 
 # Playbook to trigger playbook running powershell scripts
 ### 1. Create a logic app (playbook) and enable managed identity following the doc [Enable system-assigned identity in Azure portal](https://learn.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity?tabs=consumption#enable-system-assigned-identity-in-azure-portal) according to the type of the logic app
@@ -159,19 +129,23 @@ Navigate to subscription > IAM <br>
 ### Then paste the powershell script below:
 #### Define the time range
 ```powershell
+
+# Define your Azure resource group, workspace, subscription, and tenant names or IDs
+$resourceGroupName = "YourResourceGroupName"
+$workspaceName = "YourWorkspaceName"
+$subscriptionId = "YourSubscriptionId"
+$tenantId = "YourTenantId"
+
+# Authenticate to Azure using the specified tenant, subscription, and account
 Connect-AzAccount -Identity 
+Set-AzContext -Subscription $subscriptionId
 
-Set-AzContext -Subscription <sub id>
 
-# Define the start date (January 1, 2023)
+# Define the start date (you can custom it)
 $startDate = Get-Date -Year 2023 -Month 3 -Day 1
-
-# Define the end date (May 1, 2023)
+# Define the end date (you can custom it)
 $endDate = Get-Date -Year 2023 -Month 3 -Day 15
 
-# Define the Azure resource group and workspace name
-$resourceGroupName = "<resource group name>"
-$workspaceName = "<workspace name>"
 
 # Get incidents within the specified date range
 $incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
@@ -192,37 +166,7 @@ foreach ($incident in $incidents) {
 ```
 
 #### Or you can delete the incidents generated xxx days ago
-```powershell
-Connect-AzAccount -Identity 
 
-Set-AzContext -Subscription <your Subscription id>
-
-# Calculate the date 10 days ago
-$endDate = Get-Date
-$startDate = $endDate.AddDays(-10)
-
-# Define the Azure resource group and workspace name
-$resourceGroupName = "<Your ResourceGroup Name>"
-$workspaceName = "<Your Workspace Name>"
-
-# Get incidents within the specified date range
-$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
-    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
-}
-
-# Close the selected incidents
-foreach ($incident in $incidents) {
-    $incidentID = $incident.Name
-
-    # Close the incident with specific classification, status, and title
-    Update-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID -Classification Undetermined -Status 'Closed' -Title "Closed by Script"
-
-    Write-Host "Closed incident $incidentID created on $($incident.CreatedTimeUtc)"
-}
-```
-
-### Sample 
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1c906781-74ba-4485-9569-b1ce8843c5a9)
 
 
 ### 9. Configure workflow in logic app
