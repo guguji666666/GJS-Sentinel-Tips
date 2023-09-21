@@ -111,20 +111,20 @@ Navigate to subscription > IAM <br>
 ```powershell
 Connect-AzAccount -Identity 
 
-Set-AzContext -Subscription <your Subscription id>
+Set-AzContext -Subscription 74a72629-ac6d-44db-a66a-abc69f3bfb7e
 
 # Define the start date (January 1, 2023)
-$startDate = Get-Date -Year 2023 -Month 1 -Day 1
+$startDate = Get-Date -Year 2023 -Month 3 -Day 1
 
 # Define the end date (May 1, 2023)
-$endDate = Get-Date -Year 2023 -Month 5 -Day 1
+$endDate = Get-Date -Year 2023 -Month 3 -Day 15
 
 # Define the Azure resource group and workspace name
-$resourceGroupName = "<Your ResourceGroup Name>"
-$workspaceName = "<Your Workspace Name>"
+$resourceGroupName = "gjs-sentinel"
+$workspaceName = "gjs-sentinel-workspace1"
 
 # Get incidents within the specified date range
-$incidents = Get-AzSentinelIncident | Where-Object {
+$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
     $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
 }
 
@@ -173,27 +173,6 @@ foreach ($incident in $incidents) {
 ### Sample 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1c906781-74ba-4485-9569-b1ce8843c5a9)
 
-```powershell
-Connect-AzAccount -Identity 
-
-Set-AzContext -Subscription 74axxxxxxxxxxxxxxxxxxx
-
-# Define the start date (for example January 1, 2023)
-$startDate = Get-Date -Year 2023 -Month 3 -Day 1
-
-# Define the end date (for example May 15, 2023)
-$endDate = Get-Date -Year 2023 -Month 3 -Day 15
-
-# Rest of your script remains unchanged
-$incidents = Get-AzSentinelIncident | Where-Object {
-    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
-}
-
-foreach ($incident in $incidents) {
-    $incident | Update-AzSentinelIncident -Classification Undetermined -Status Closed -Severity 'Informational' -Title "Closed by Script"
-    Write-Host "Closed incident $($incident.Name) created on $($incident.CreatedTimeUtc)"
-}
-```
 
 ### 9. Configure workflow in logic app
 
