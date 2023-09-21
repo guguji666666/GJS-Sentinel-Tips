@@ -9,8 +9,8 @@ $subscriptionId = "YourSubscriptionId"
 $tenantId = "YourTenantId"
 
 # Define the start and end dates for the time range
-$startDate = Get-Date "2023-03-01" //define start date
-$endDate = Get-Date "2023-03-15" //define end date
+$startDate = Get-Date "2023-03-01" ##define start date
+$endDate = Get-Date "2023-03-15" ##define end date
 
 # Authenticate to Azure using the specified tenant, subscription, and account
 Connect-AzAccount -Tenant $tenantId -Subscription $subscriptionId -Credential (Get-Credential)
@@ -32,8 +32,8 @@ $subscriptionId = "YourSubscriptionId"
 $tenantId = "YourTenantId"
 
 # Define the start and end dates for the time range
-$startDate = Get-Date "2023-03-01" //define start date
-$endDate = Get-Date "2023-03-15" //define end date
+$startDate = Get-Date "2023-03-01" ##define start date
+$endDate = Get-Date "2023-03-15" ##define end date
 
 # Authenticate to Azure using the specified tenant, subscription, and account
 Connect-AzAccount -Tenant $tenantId -Subscription $subscriptionId -Credential (Get-Credential)
