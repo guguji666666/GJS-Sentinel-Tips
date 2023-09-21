@@ -9,8 +9,8 @@ $subscriptionId = "YourSubscriptionId"
 $tenantId = "YourTenantId"
 
 # Define the start and end dates for the time range
-$startDate = Get-Date "2023-03-01"
-$endDate = Get-Date "2023-03-15"
+$startDate = Get-Date "2023-03-01" //define start date
+$endDate = Get-Date "2023-03-15" //define end date
 
 # Authenticate to Azure using the specified tenant, subscription, and account
 Connect-AzAccount -Tenant $tenantId -Subscription $subscriptionId -Credential (Get-Credential)
@@ -32,8 +32,8 @@ $subscriptionId = "YourSubscriptionId"
 $tenantId = "YourTenantId"
 
 # Define the start and end dates for the time range
-$startDate = Get-Date "2023-03-01"
-$endDate = Get-Date "2023-03-15"
+$startDate = Get-Date "2023-03-01" //define start date
+$endDate = Get-Date "2023-03-15" //define end date
 
 # Authenticate to Azure using the specified tenant, subscription, and account
 Connect-AzAccount -Tenant $tenantId -Subscription $subscriptionId -Credential (Get-Credential)
@@ -42,8 +42,12 @@ Connect-AzAccount -Tenant $tenantId -Subscription $subscriptionId -Credential (G
 $incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName |
     Where-Object { $_.TimeGenerated -ge $startDate -and $_.TimeGenerated -le $endDate }
 
-# Display the retrieved incidents
-$incidents
+# Count the number of incidents
+$incidentCount = $incidents.Count
+
+# Display the count of retrieved incidents
+Write-Host "Total incidents within the specified time range: $incidentCount"
+
 ```
 
 ## 3. Bulk close sentinel incidents created in specified time range
