@@ -56,19 +56,19 @@ Write-Host "Total incidents within the specified time range: $incidentCount"
 
 ## 3. Bulk close sentinel incidents created in specified time range
 ```powershell
-Connect-AzAccount -TenantId <your tenant id>
+# Define your Azure resource group, workspace, subscription, and tenant names or IDs
+$resourceGroupName = "YourResourceGroupName"
+$workspaceName = "YourWorkspaceName"
+$subscriptionId = "YourSubscriptionId"
+$tenantId = "YourTenantId"
 
-Set-AzContext -Subscription <your subscription id>
-
-# Define the start date (January 1, 2023)
+# Define the start date (you can custom it)
 $startDate = Get-Date -Year 2023 -Month 3 -Day 1
-
-# Define the end date (May 1, 2023)
+# Define the end date (you can custom it)
 $endDate = Get-Date -Year 2023 -Month 3 -Day 15
 
-# Define the Azure resource group and workspace name
-$resourceGroupName = "<resource group name>"
-$workspaceName = "<workspace name>"
+# Authenticate to Azure using the specified tenant, subscription, and account
+Connect-AzAccount -Tenant $tenantId -Subscription $subscriptionId
 
 # Get incidents within the specified date range
 $incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
