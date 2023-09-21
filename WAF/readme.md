@@ -30,3 +30,7 @@ WAF log analytics are broken down into the following categories: <br>
 
 ### Built-in analytics rules related to WAF
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d26abfb7-42f5-487c-8308-6a2da83b4328)
+
+We need to install the solution from Sentinel content hub first to get built-in analytics rule <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/9941f4ad-ba1f-496b-af4d-eaae7d993c4f)
+
