@@ -132,11 +132,12 @@ $incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -Works
 foreach ($incident in $incidents) {
     $incidentID = $incident.Name
     $title = "<Your Title Here>"  # Replace with the desired title
+    $severity = "Informational"  # Set the desired severity level
     
-    # Close the incident with specific classification, status, and title
-    Update-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID -Classification Undetermined -Status 'Closed' -Title $title
+    # Close the incident with specific classification, status, severity, and title
+    Update-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID -Classification Undetermined -Status 'Closed' -Severity $severity -Title $title
 
-    Write-Host "Executed command to close incident $incidentID with Classification 'Undetermined', Status 'Closed', and Title '$title'"
+    Write-Host "Executed command to close incident $incidentID with Classification 'Undetermined', Status 'Closed', Severity '$severity', and Title '$title'"
 }
 ```
 
