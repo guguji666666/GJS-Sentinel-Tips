@@ -111,7 +111,7 @@ Navigate to subscription > IAM <br>
 ```powershell
 Connect-AzAccount -Identity 
 
-Set-AzContext -Subscription 74a72629-ac6d-44db-a66a-abc69f3bfb7e
+Set-AzContext -Subscription <sub id>
 
 # Define the start date (January 1, 2023)
 $startDate = Get-Date -Year 2023 -Month 3 -Day 1
@@ -120,8 +120,8 @@ $startDate = Get-Date -Year 2023 -Month 3 -Day 1
 $endDate = Get-Date -Year 2023 -Month 3 -Day 15
 
 # Define the Azure resource group and workspace name
-$resourceGroupName = "gjs-sentinel"
-$workspaceName = "gjs-sentinel-workspace1"
+$resourceGroupName = "<resource group name>"
+$workspaceName = "<workspace name>"
 
 # Get incidents within the specified date range
 $incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
@@ -131,7 +131,7 @@ $incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -Works
 # Close incidents with specific classification, status, and title
 foreach ($incident in $incidents) {
     $incidentID = $incident.Name
-    $title = "Your Title Here"  # Replace with the desired title
+    $title = "<Your Title Here>"  # Replace with the desired title
     
     # Close the incident with specific classification, status, and title
     Update-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID -Classification Undetermined -Status 'Closed' -Title $title
