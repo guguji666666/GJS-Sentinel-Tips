@@ -34,3 +34,74 @@ WAF log analytics are broken down into the following categories: <br>
 We need to install the solution from Sentinel content hub first to get built-in analytics rule <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/9941f4ad-ba1f-496b-af4d-eaae7d993c4f)
 
+### Customed WAF KQL queries
+
+To monitor Web Application Firewall (WAF) events from the AzureDiagnostics table using Kusto Query Language (KQL) in Azure Monitor or Azure Log Analytics, you can start with the following sample queries. These queries assume that you have already configured Azure Diagnostics for your WAF resources.
+
+1. **View WAF Allowed Traffic:**
+
+   This query helps you view WAF allowed traffic events:
+
+   ```kql
+   AzureDiagnostics
+   | where ResourceType == "APPLICATIONGATEWAYS" and Category == "ApplicationGatewayFirewallLog"
+   | where action_s == "Allowed" 
+   | project timestamp_t, clientIP_s, url_s, ruleSetType_s, message_s
+   ```
+
+   This query filters logs related to Application Gateway Firewall and displays details like the timestamp, client IP, URL, rule set type, and message for allowed traffic.
+
+2. **View WAF Blocked Traffic:**
+
+   This query helps you view WAF blocked traffic events:
+
+   ```kql
+   AzureDiagnostics
+   | where ResourceType == "APPLICATIONGATEWAYS" and Category == "ApplicationGatewayFirewallLog"
+   | where action_s == "Blocked" 
+   | project timestamp_t, clientIP_s, url_s, ruleSetType_s, message_s
+   ```
+
+   This query filters logs related to Application Gateway Firewall and displays details like the timestamp, client IP, URL, rule set type, and message for blocked traffic.
+
+3. **View WAF False Positives:**
+
+   To identify potential false positives, you can query for WAF events with specific status codes that might indicate a false positive:
+
+   ```kql
+   AzureDiagnostics
+   | where ResourceType == "APPLICATIONGATEWAYS" and Category == "ApplicationGatewayFirewallLog"
+   | where action_s == "Blocked" 
+   | where tostring(status_d) in ("403", "406", "407")
+   | project timestamp_t, clientIP_s, url_s, ruleSetType_s, message_s, status_d
+   ```
+
+   In this query, we're looking for blocked requests with status codes 403, 406, or 407, which could be potential false positives. You can adjust the status codes as needed.
+
+4. **View WAF Anomalies:**
+
+   To monitor for anomalies in WAF traffic, you can use the following query to detect unusual patterns or spikes:
+
+   ```kql
+   AzureDiagnostics
+   | where ResourceType == "APPLICATIONGATEWAYS" and Category == "ApplicationGatewayFirewallLog"
+   | summarize Count=count() by bin(timestamp_t, 1h)
+   | order by Count desc
+   ```
+
+   This query counts the number of WAF events per hour and orders them by count in descending order. You can adjust the time interval (`1h`) and add additional aggregation or filtering as needed.
+
+5. **View WAF Top Rules Triggered:**
+
+   To identify the top WAF rules triggered by events, you can use the following query:
+
+   ```kql
+   AzureDiagnostics
+   | where ResourceType == "APPLICATIONGATEWAYS" and Category == "ApplicationGatewayFirewallLog"
+   | summarize Count=count() by ruleId_s
+   | top 10 by Count desc
+   ```
+
+   This query counts the occurrences of each rule being triggered and lists the top 10 rules with the highest counts. You can adjust the number of rules displayed (`top 10`) as needed.
+
+These sample KQL queries should help you get started with monitoring WAF events in Azure Diagnostics. You can further customize and refine these queries based on your specific requirements and the data available in your Azure Monitor logs.
