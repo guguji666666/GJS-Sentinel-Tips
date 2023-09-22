@@ -75,3 +75,71 @@ DeviceRegistryEvents
 ```
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2ffee352-f97b-4e69-83cd-68f61b8c7943)
 
+#### 6. Whitelist watchlist IPs
+```kql
+let watchlist = (_GetWatchlist('WHITELISTIP') | project IPAddress);
+
+let IPRegex = '[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}';
+
+let dt_lookBack = 1h; // Look back 1 hour for CommonSecurityLog events
+
+let ioc_lookBack = 14d; // Look back 14 days for threat intelligence indicators
+
+// Fetch threat intelligence indicators related to IP addresses
+
+let IP_Indicators = ThreatIntelligenceIndicator
+
+  | where TimeGenerated >= ago(ioc_lookBack)
+
+  | summarize LatestIndicatorTime = arg_max(TimeGenerated, *) by IndicatorId
+
+  | where Active == true and ExpirationDateTime > now()
+
+  | where isnotempty(NetworkIP) or isnotempty(EmailSourceIpAddress) or isnotempty(NetworkDestinationIP) or isnotempty(NetworkSourceIP)
+
+  | extend TI_ipEntity = iff(isnotempty(NetworkIP), NetworkIP, NetworkDestinationIP)
+
+  | extend TI_ipEntity = iff(isempty(TI_ipEntity) and isnotempty(NetworkSourceIP), NetworkSourceIP, TI_ipEntity)
+
+  | extend TI_ipEntity = iff(isempty(TI_ipEntity) and isnotempty(EmailSourceIpAddress), EmailSourceIpAddress, TI_ipEntity)
+
+  | where ipv4_is_private(TI_ipEntity) == false and  TI_ipEntity !startswith "fe80" and TI_ipEntity !startswith "::" and TI_ipEntity !startswith "127.";
+
+// Perform a join between IP indicators and CommonSecurityLog events
+
+IP_Indicators
+
+  // Use innerunique to keep performance fast and result set low, as we only need one match to indicate potential malicious activity that needs investigation
+
+  | join kind=innerunique (
+
+      CommonSecurityLog
+
+      | where TimeGenerated >= ago(dt_lookBack)
+
+      | extend MessageIP = extract(IPRegex, 0, Message)
+
+      | extend CS_ipEntity = iff(isnotempty(SourceIP), SourceIP, DestinationIP)
+
+      | extend CS_ipEntity = iff(isempty(CS_ipEntity) and isnotempty(MessageIP), MessageIP, CS_ipEntity)
+
+      | extend CommonSecurityLog_TimeGenerated = TimeGenerated
+
+  )
+
+  on $left.TI_ipEntity == $right.CS_ipEntity
+
+  // Filter out logs that occurred after the expiration of the corresponding indicator
+
+  | where CommonSecurityLog_TimeGenerated < ExpirationDateTime
+
+  // Group the results by IndicatorId and CS_ipEntity, and keep the log entry with the latest timestamp
+
+  | summarize CommonSecurityLog_TimeGenerated = arg_max(CommonSecurityLog_TimeGenerated, *) by IndicatorId, CS_ipEntity
+
+  // Select the desired output fields
+
+  | project timestamp = CommonSecurityLog_TimeGenerated, SourceIP, DestinationIP, MessageIP, Message, DeviceVendor, DeviceProduct, IndicatorId, ThreatType, ExpirationDateTime, ConfidenceScore, TI_ipEntity, CS_ipEntity, LogSeverity, DeviceAction, Type
+
+  | where SourceIP !in (watchlist)
+```
