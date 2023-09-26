@@ -165,6 +165,44 @@ foreach ($incident in $incidents) {
 }
 ```
 
+
+```powershell
+
+# Define your Azure resource group, workspace, subscription, and tenant names or IDs
+$resourceGroupName = "YourResourceGroupName"
+$workspaceName = "YourWorkspaceName"
+$subscriptionId = "YourSubscriptionId"
+$tenantId = "YourTenantId"
+
+# Authenticate to Azure using the specified tenant, subscription, and account
+Connect-AzAccount -Identity 
+Set-AzContext -Subscription $subscriptionId
+
+
+# Define the start date (you can custom it)
+$startDate = Get-Date -Date "2023-03-01T00:00:00"
+# Define the end date (you can custom it)
+$endDate = Get-Date -Date "2023-03-15T00:00:00"
+
+
+# Get incidents within the specified date range
+$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
+    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
+}
+
+# Close incidents with specific classification, status, and title
+foreach ($incident in $incidents) {
+    $incidentID = $incident.Name
+    $title = "<Your Title Here>"  # Replace with the desired title
+    $severity = "Informational"  # Set the desired severity level
+    
+    # Close the incident with specific classification, status, severity, and title
+    Update-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID -Classification Undetermined -Status 'Closed' -Severity $severity -Title $title
+
+    Write-Host "Executed command to close incident $incidentID with Classification 'Undetermined', Status 'Closed', Severity '$severity', and Title '$title'"
+}
+```
+
 #### Or you can delete the incidents generated xxx days ago
 ```powershell
 # Define your Azure resource group, workspace, subscription, and tenant names or IDs
