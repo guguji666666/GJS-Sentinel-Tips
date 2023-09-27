@@ -215,15 +215,17 @@ $tenantId = "YourTenantId"
 Connect-AzAccount -Identity 
 Set-AzContext -Subscription $subscriptionId
 
-# Calculate the start date (10 days ago)
-$startDate = (Get-Date).AddDays(-10)
-
-# Calculate the end date (current date)
+# Calculate the start date (10 days ago) and end date (current time)
 $endDate = Get-Date
+$startDate = $endDate.AddDays(-10)
+
+# Format the dates in the desired format
+$startDateFormatted = $startDate.ToString("yyyy-MM-ddTHH:mm:ss")
+$endDateFormatted = $endDate.ToString("yyyy-MM-ddTHH:mm:ss")
 
 # Get incidents within the specified date range
 $incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
-    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
+    $_.CreatedTimeUtc -ge $startDateFormatted -and $_.CreatedTimeUtc -lt $endDateFormatted
 }
 
 # Close incidents with specific classification, status, and title
