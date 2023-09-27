@@ -170,7 +170,7 @@ $incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -Works
 # Close incidents with specific classification, status, and title
 foreach ($incident in $incidents) {
     $incidentID = $incident.Name
-    $title = "<Your Title Here>"  # Replace with the desired title
+    $title = "Close-By-Automation"  # Replace with the desired title
     $severity = "Informational"  # Set the desired severity level
     
     # Close the incident with specific classification, status, severity, and title
@@ -208,7 +208,7 @@ $incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -Works
 # Close incidents with specific classification, status, and title
 foreach ($incident in $incidents) {
     $incidentID = $incident.Name
-    $title = "<Your Title Here>"  # Replace with the desired title
+    $title = "Close-By-Automation"  # Replace with the desired title
     $severity = "Informational"  # Set the desired severity level
     
     # Close the incident with specific classification, status, severity, and title
