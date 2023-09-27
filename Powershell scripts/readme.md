@@ -180,10 +180,6 @@ foreach ($incident in $incidents) {
 }
 ```
 
-#### Once the powershell script is set, click `save` and `publish`
-<img width="1768" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/0447ab10-d40c-426f-a286-e942601dc195">
-
-
 #### Or you can delete the incidents generated xxx days ago
 ```powershell
 # Define your Azure resource group, workspace, subscription, and tenant names or IDs
@@ -221,6 +217,10 @@ foreach ($incident in $incidents) {
     Write-Host "Executed command to close incident $incidentID with Classification 'Undetermined', Status 'Closed', Severity '$severity', and Title '$title'"
 }
 ```
+
+#### Once the powershell script is set, click `save` and `publish`
+<img width="1768" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/0447ab10-d40c-426f-a286-e942601dc195">
+
 
 ### 9. Configure workflow in logic app
 
