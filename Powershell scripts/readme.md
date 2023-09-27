@@ -88,8 +88,7 @@ foreach ($incident in $incidents) {
 }
 ```
 
-
-# Playbook to trigger playbook running powershell scripts
+# Playbook to trigger runbook(Automation account) running powershell scripts
 ### 1. Create a logic app (playbook) and enable managed identity following the doc [Enable system-assigned identity in Azure portal](https://learn.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity?tabs=consumption#enable-system-assigned-identity-in-azure-portal) according to the type of the logic app
 
 ### 2. Search for `http` and select `request`
