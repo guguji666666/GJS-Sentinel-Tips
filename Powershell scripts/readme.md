@@ -104,6 +104,22 @@ foreach ($incident in $incidents) {
 
 ### 5. Create an automation account following the doc [Quickstart: Create an Automation account using the Azure portal](https://learn.microsoft.com/en-us/azure/automation/quickstarts/create-azure-automation-account-portal)
 
+#### Update modules `Az.Accounts` and `Az.SecurityInsights` 
+
+<img width="1787" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/5db854ca-0656-4b25-b5c1-cf5add5a6f04">
+
+<img width="756" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/4233d73b-8a3b-4e2b-a712-f83cdd0ba370">
+
+<img width="1543" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/29a9ee86-38f4-490a-8b56-3d36c20a5431">
+
+<img width="1785" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2202c9c3-1ade-4c6a-8996-4783c20120af">
+
+<img width="753" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e52ccb22-828b-443e-bcd1-90dadb338258">
+
+<img width="782" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/67397ae9-4190-4788-bdc2-4d3926417668">
+
+It may take some time to complete the updates.
+
 ### 6. Assign role to `logic app` to access this automation account
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/5a926cff-0613-4fe8-86a3-755fb04c543b) <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/4067c5e8-4b19-41e5-8354-5ef1c74c0437) <br>
@@ -128,43 +144,6 @@ Navigate to subscription > IAM <br>
 
 ### Then paste the powershell script below:
 #### Define the time range
-```powershell
-
-# Define your Azure resource group, workspace, subscription, and tenant names or IDs
-$resourceGroupName = "YourResourceGroupName"
-$workspaceName = "YourWorkspaceName"
-$subscriptionId = "YourSubscriptionId"
-$tenantId = "YourTenantId"
-
-# Authenticate to Azure using the specified tenant, subscription, and account
-Connect-AzAccount -Identity 
-Set-AzContext -Subscription $subscriptionId
-
-
-# Define the start date (you can custom it)
-$startDate = Get-Date -Year 2023 -Month 3 -Day 1
-# Define the end date (you can custom it)
-$endDate = Get-Date -Year 2023 -Month 3 -Day 15
-
-
-# Get incidents within the specified date range
-$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
-    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
-}
-
-# Close incidents with specific classification, status, and title
-foreach ($incident in $incidents) {
-    $incidentID = $incident.Name
-    $title = "<Your Title Here>"  # Replace with the desired title
-    $severity = "Informational"  # Set the desired severity level
-    
-    # Close the incident with specific classification, status, severity, and title
-    Update-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID -Classification Undetermined -Status 'Closed' -Severity $severity -Title $title
-
-    Write-Host "Executed command to close incident $incidentID with Classification 'Undetermined', Status 'Closed', Severity '$severity', and Title '$title'"
-}
-```
-
 
 ```powershell
 
