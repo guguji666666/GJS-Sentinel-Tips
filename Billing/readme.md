@@ -1,7 +1,7 @@
 ## Sentinel Cost
 
 ## 1. Log volume (ingestion)
-### Azure monitor doc: [Standard columns in Azure Monitor Logs](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-standard-columns#_billedsize)
+### Azure monitor doc: [Analyze usage in a Log Analytics workspace](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/analyze-usage#data-volume-by-solution)
 ### Check volume per table
 ```kusto
 // Sort billed table in KB/MB/GB
