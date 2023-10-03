@@ -40,16 +40,15 @@ Assign `Microsoft Sentinel Contributor` role to MI of logic app <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/781afb2a-adae-4ebd-803e-7bb4ca9cd27c)
 
 
-Set the request URL <br>
+#### Set the binding,request URL and request body <br>
 
-URL
 ```
 https://management.azure.com/@{items('For_each')?['IncidentArmld']}?api-version=2023-02-01
 ```
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/309ae268-7d67-4bfc-b9f1-7bdbcb2a8420)
 
 
-Set the request body <br>
+Request body <br>
 ```json
 {
   "properties": {
