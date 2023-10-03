@@ -1,4 +1,4 @@
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/56ade6c2-c949-4011-b4b3-072727c260f6)# Bulk close sentinel incidents generated xxx days ago
+# Bulk close sentinel incidents generated xxx days ago
 
 ### [Logic app pricing](https://azure.microsoft.com/en-us/pricing/details/logic-apps/)
 
@@ -25,44 +25,46 @@ SecurityIncident
 // | distinct IncidentArmld
 | project TimeGenerated, IncidentArmld, Title, Status, IncidentName, IncidentNumber
 | order by TimeGenerated desc
-| take 10 //For testing purpose we can take 10 to check if the logic app is working
+| take 10
 ```
+We take 10 just to test if the logic app is working or not.
+
 
 ### 3. API action - HTTP (Authenticate with managed identity)
 Enable Managed identity of the logic app <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/40293346-d98e-404e-8e06-0c44ab6160c2)
 
 Assign `Microsoft Sentinel Contributor` role to MI of logic app <br>
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/84095bb2-78ed-4668-8d19-027a4d44374f) <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/84095bb2-78ed-4668-8d19-027a4d44374f)
+
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/781afb2a-adae-4ebd-803e-7bb4ca9cd27c)
 
 
 Set the request URL <br>
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/14b68648-9510-4f0b-a1f8-d68aa76239ea)
-
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c1bab4f1-1794-4456-b38c-42ade861f85b)
-
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e36ef82c-2023-44fa-8b8e-417b70257e2f)
 
 URL
 ```
 https://management.azure.com/@{items('For_each')?['IncidentArmld']}?api-version=2023-02-01
 ```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/309ae268-7d67-4bfc-b9f1-7bdbcb2a8420)
+
 
 Set the request body <br>
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1dbd5bff-a410-40f6-b919-e6665fa7a6fc)
-
 ```json
 {
   "properties": {
     "severity": "Informational",
     "classification": "Undetermined",
-    "Title": "Close by API",
+    "Title": "Close by logic app",
     "status": "Closed"
   }
 }
 ```
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/5340f61d-9e36-4333-aedf-48d579729b58)
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/277ee825-bb26-4d3f-9a05-f420259e91a6)
+
+Configure authentication with MI <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/7905ff53-9f03-4aba-a4c7-9c0986bba12c)
+
 
 ### 4. Save the logic app and run it manually
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2f3f0d35-90d3-4539-b56a-bbe93f8cde04)
