@@ -63,6 +63,17 @@ Okta_CL
 ```
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/81bce13d-aba7-48c1-b97f-7bf6ea8aec8e)
 
+Sample 3 : List ingestion of security events with source VM
+```kusto
+SecurityEvent
+| where _IsBillable == true
+| where TimeGenerated >= 30d
+| summarize Size = sum(_BilledSize) by bin(TimeGenerated, 1d), Computer, _IsBillable 
+| extend Format_Size = format_bytes(toint(Size), 2)
+| project TimeGenerated, Computer, Format_Size
+| sort by TimeGenerated desc
+```
+
 ## 2. Calculation of Sentinel cost
 ### Reference doc
 * [Plan costs and understand Microsoft Sentinel pricing and billing](https://learn.microsoft.com/en-us/azure/sentinel/billing?tabs=simplified%2Ccommitment-tiers)
