@@ -28,7 +28,7 @@ SecurityIncident
 | take 10 //For testing purpose we can take 10 to check if the logic app is working
 ```
 
-### 3. API action - HTTP with Azure AD
+### 3. API action - HTTP with Azure AD Authentication
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d6593d0f-54a0-4a05-b7e9-ff1bc3c3c314)
 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b7736d23-9aa6-4336-8b8f-2d21ed9a28c0)
