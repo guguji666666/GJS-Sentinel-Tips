@@ -67,7 +67,6 @@ Configure authentication with MI <br>
 
 
 ### 4. Save the logic app and run it manually
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2f3f0d35-90d3-4539-b56a-bbe93f8cde04)
 
 Verify the results in the running history
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d5aaeabc-d07a-4a58-8978-ffef6d05a09a)
