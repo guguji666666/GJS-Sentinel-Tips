@@ -54,7 +54,7 @@ Write-Host "Total incidents within the specified time range: $incidentCount"
 
 ```
 
-## 3. Bulk close sentinel incidents created in specified time range
+## 3. Bulk `close` sentinel incidents created in specified time range
 ```powershell
 # Define your Azure resource group, workspace, subscription, and tenant names or IDs
 $resourceGroupName = "YourResourceGroupName"
@@ -85,6 +85,37 @@ foreach ($incident in $incidents) {
     Update-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID -Classification Undetermined -Status 'Closed' -Severity $severity -Title $title
 
     Write-Host "Executed command to close incident $incidentID with Classification 'Undetermined', Status 'Closed', Severity '$severity', and Title '$title'"
+}
+```
+
+## 4. Bulk delete sentinel incidents created in specified time range
+```powershell
+# Define your Azure resource group, workspace, subscription, and tenant names or IDs
+$resourceGroupName = "YourResourceGroupName"
+$workspaceName = "YourWorkspaceName"
+$subscriptionId = "YourSubscriptionId"
+$tenantId = "YourTenantId"
+
+# Define the start date (you can custom it)
+$startDate = Get-Date -Year 2023 -Month 3 -Day 1
+# Define the end date (you can custom it)
+$endDate = Get-Date -Year 2023 -Month 3 -Day 15
+
+# Authenticate to Azure using the specified tenant, subscription, and account
+Connect-AzAccount -Tenant $tenantId -Subscription $subscriptionId
+
+# Get incidents within the specified date range
+$incidents = Get-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {
+    $_.CreatedTimeUtc -ge $startDate -and $_.CreatedTimeUtc -lt $endDate
+}
+
+# Delete incidents
+foreach ($incident in $incidents) {
+    $incidentID = $incident.Name
+
+    Remove-AzSentinelIncident -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -IncidentID $incidentID
+
+    Write-Host "Executed command to remove incident $incidentID"
 }
 ```
 
