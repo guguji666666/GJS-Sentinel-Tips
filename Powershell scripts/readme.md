@@ -118,6 +118,7 @@ foreach ($incident in $incidents) {
     Write-Host "Executed command to remove incident $incidentID"
 }
 ```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/71727ee3-8657-45cd-b7cd-78a40925ec6f)
 
 # Playbook to trigger runbook(Automation account) running powershell scripts
 ### 1. Create a logic app (playbook) and enable managed identity following the doc [Enable system-assigned identity in Azure portal](https://learn.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity?tabs=consumption#enable-system-assigned-identity-in-azure-portal) according to the type of the logic app
