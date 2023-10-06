@@ -88,7 +88,7 @@ foreach ($incident in $incidents) {
 }
 ```
 
-## 4. Bulk delete sentinel incidents created in specified time range
+## 4. Bulk `delete` sentinel incidents created in specified time range
 ```powershell
 # Define your Azure resource group, workspace, subscription, and tenant names or IDs
 $resourceGroupName = "YourResourceGroupName"
