@@ -1,4 +1,7 @@
 # Useful powershell scripts
+## [Sentinel API](https://learn.microsoft.com/en-us/rest/api/securityinsights/)
+## [Az.SecurityInsights powershell module](https://learn.microsoft.com/en-us/powershell/module/az.securityinsights/?view=azps-10.4.1&viewFallbackFrom=azps-6.0.0#security)
+## [az sentinel](https://learn.microsoft.com/en-us/cli/azure/sentinel?view=azure-cli-latest)
 
 ## 1. Get sentinel incidents created in specified time range
 ```powershell
