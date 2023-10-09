@@ -4,3 +4,5 @@
 
 * [Cloudflare (Preview) (using Azure Functions) connector for Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/cloudflare-using-azure-functions)
 
+## Deployment
+### 1. [Setup Cloudflare Logpush to Microsoft Azure](https://developers.cloudflare.com/logs/get-started/enable-destinations/)
