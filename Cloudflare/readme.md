@@ -7,5 +7,5 @@
 ## Deployment
 ### 1. [Setup Cloudflare Logpush to Microsoft Azure](https://developers.cloudflare.com/logs/get-started/enable-destinations/)
 
-Sample : stream to Azure <br>
+Sample : stream to Azure storage account <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/ade729af-0654-4f3a-aa04-e54d88509746)
