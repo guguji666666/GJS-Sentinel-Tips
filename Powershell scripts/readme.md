@@ -270,10 +270,10 @@ You can also set Recurrence in logic app so that you can close the old incidents
 # Bulk delete IOC (Authenticate with service principal)
 
 ```powershell
-$applicationid = "app id"
-$key = ConvertTo-SecureString -String "client secret" -AsPlainText -Force
+$applicationid = "<your client id>"
+$key = ConvertTo-SecureString -String "<client secret>" -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential($applicationid, $key)
-Connect-AzAccount -Credential $Credential -Tenant "tenant id" -ServicePrincipal
+Connect-AzAccount -Credential $Credential -Tenant "<tenant id>" -ServicePrincipal
 do {
     # set request headers
     $requestheader = @{
@@ -282,9 +282,9 @@ do {
     }
  
     # set resource group and workspace name
-    $subscription = "subscription id"
-    $resourcegroup = "resource group name"
-    $workspacename = “workspace name"
+    $subscription = "<subscription id>"
+    $resourcegroup = "<resource group name>"
+    $workspacename = “<workspace name>"
  
     # set query api endpoint and get list of indicators
     $uri = "https://management.azure.com/subscriptions/$subscription/resourcegroups/$resourcegroup/providers/microsoft.operationalinsights/workspaces/$workspacename/providers/microsoft.securityinsights/threatintelligence/main/queryindicators?api-version=2023-02-01"
