@@ -270,22 +270,44 @@ You can also set Recurrence in logic app so that you can close the old incidents
 # Bulk delete IOC (Authenticate with service principal)
 
 ```powershell
-$applicationid = "<your client id>"
-$key = ConvertTo-SecureString -String "<client secret>" -AsPlainText -Force
-$Credential = New-Object System.Management.Automation.PSCredential($applicationid, $key)
-Connect-AzAccount -Credential $Credential -Tenant "<tenant id>" -ServicePrincipal
+$applicationid = "<client id>"
+$clientSecret = "<client secret>"
+$tenantId = "<tenant id>"
+$subscription = "<subscription id>"
+$resourcegroup = "<resource group name>"
+$workspacename = "<workspace name>"
+
+# Function to get a valid access token
+function Get-AzureAccessToken($clientId, $clientSecret, $tenantId) {
+    $tokenUrl = "https://login.microsoftonline.com/$tenantId/oauth2/token"
+    $tokenParams = @{
+        "grant_type"    = "client_credentials"
+        "client_id"     = $clientId
+        "client_secret" = $clientSecret
+        "resource"      = "https://management.azure.com/"
+    }
+
+    $tokenResponse = Invoke-RestMethod -Uri $tokenUrl -Method Post -ContentType "application/x-www-form-urlencoded" -Body $tokenParams
+
+    return $tokenResponse.access_token
+}
+
 do {
+    # Get a valid access token
+    $rawtoken = Get-AzureAccessToken -clientId $applicationid -clientSecret $clientSecret -tenantId $tenantId
+
+    # Check if the access token is empty or null
+    if ([string]::IsNullOrWhiteSpace($rawtoken)) {
+        Write-Host "Failed to obtain a valid access token. Script will exit."
+        break
+    }
+
     # set request headers
     $requestheader = @{
-        "authorization" = "bearer " + $rawtoken
-        "content-type" = "application/json"
+        "Authorization" = "Bearer $rawtoken"
+        "Content-Type" = "application/json"
     }
- 
-    # set resource group and workspace name
-    $subscription = "<subscription id>"
-    $resourcegroup = "<resource group name>"
-    $workspacename = “<workspace name>"
- 
+
     # set query api endpoint and get list of indicators
     $uri = "https://management.azure.com/subscriptions/$subscription/resourcegroups/$resourcegroup/providers/microsoft.operationalinsights/workspaces/$workspacename/providers/microsoft.securityinsights/threatintelligence/main/queryindicators?api-version=2023-02-01"
     $requestbody = @{
@@ -293,54 +315,45 @@ do {
         "minconfidence" = "0"
         "maxconfidence" = "100"
     }
- 
+
     # loop through each batch of 1000 indicators and delete them
     $skip = 0
- 
+
     do {
-        #get and refresh access token
-        Write-Host "getting azure access token..."
-        $accesstoken = get-azaccesstoken 
-        $rawtoken = $accesstoken.token
-        echo $rawtoken
-        Write-Host "querying the security api to get the list of indicators..."
+        Write-Host "Querying the security API to get the list of indicators..."
         $requestbody.skip = $skip
         $response = Invoke-RestMethod -Uri $uri -Method Post -Headers $requestheader -Body ($requestbody | ConvertTo-Json)
-        $indicator = $response.value.name
- 
-        # check if there are any indicators to delete
-        if ($indicator) {
+
+        if ($response -and $response.value -is [array]) {
+            $indicators = $response.value
+
             Write-Host "Starting to delete indicators in this batch..."
-            $totalIndicators = $indicator.Count
+            $totalIndicators = $indicators.Count
             $indicatorsDeleted = 0
- 
-            # delete each indicator in this batch
-            foreach ($name in $indicator) {
-                Write-Host "deleting indicator $name ..."
+
+            foreach ($indicator in $indicators) {
+                $name = $indicator.name
+                Write-Host "Deleting indicator $name..."
                 $deleteuri = "https://management.azure.com/subscriptions/$subscription/resourcegroups/$resourcegroup/providers/microsoft.operationalinsights/workspaces/$workspacename/providers/microsoft.securityinsights/threatintelligence/main/indicators/$name/?api-version=2023-03-01-preview"
-                Invoke-RestMethod -uri $deleteuri -method delete -headers $requestheader
- 
+                Invoke-RestMethod -Uri $deleteuri -Method Delete -Headers $requestheader
                 $indicatorsDeleted++
                 $percentage = ($indicatorsDeleted / $totalIndicators) * 100
                 Write-Progress -Activity "Deleting Indicators..." -PercentComplete $percentage
             }
- 
+
             Write-Host "Finished deleting indicators in this batch."
         }
+
         # delay for 10 seconds before running the script again
         Start-Sleep -Seconds 10
-        # refresh token
-        Disconnect-AzAccount
-       $applicationid = "app id"
-       $key = ConvertTo-SecureString -String "client secret" -AsPlainText -Force
-       $Credential = New-Object System.Management.Automation.PSCredential($applicationid, $key)
-        Connect-AzAccount -Credential $Credential -Tenant "tenant id" -ServicePrincipal
+
         # move on to the next batch of indicators
         $skip += 1000
-    } while ($indicator.length -eq $requestbody.pagesize)
- 
+    } while ($indicators.Count -eq $requestbody.pagesize)
+
     # script execution complete
-    Write-Host "script execution complete."
-    
+    Write-Host "Script execution complete."
+
 } while ($true)
+
 ```
