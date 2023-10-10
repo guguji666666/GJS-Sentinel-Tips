@@ -1,4 +1,4 @@
-# Useful powershell scripts
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/6653f86a-35a4-4542-8c79-05fa77e49ccf)# Useful powershell scripts
 * [Sentinel API](https://learn.microsoft.com/en-us/rest/api/securityinsights/)
 * [Az.SecurityInsights powershell module](https://learn.microsoft.com/en-us/powershell/module/az.securityinsights/?view=azps-10.4.1&viewFallbackFrom=azps-6.0.0#security)
 * [az sentinel](https://learn.microsoft.com/en-us/cli/azure/sentinel?view=azure-cli-latest)
@@ -268,7 +268,43 @@ You can also set Recurrence in logic app so that you can close the old incidents
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/35984e39-99ee-43c8-812a-fd2a37f1cf4c)
 
 # Bulk delete IOC (Authenticate with service principal)
+### 1. App registration
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a446cd46-dacb-41b3-a219-4cc22e32cd1e) 
 
+Fill in the required information and register the App <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/7083125f-69ff-40af-98fe-48d90ce74e07)
+
+Create the secret and copy the value to notepad, we need it later <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b086d558-595d-4766-a95a-1ffa72f6d28b)
+
+Copy the Client id and tenant id to notepad, we need it later <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/940cbae4-73df-4cf7-8517-14cf005008d6)
+
+
+### 2. Assign API permissions to this app
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/18f1594b-9845-4992-9667-ac8c98725314)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1d59d824-8f43-44c0-9625-5f5348a0f8da)
+
+Confirm the assignment <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e9cac915-3bcc-4749-af9b-4069847e9414)
+
+### 3. Assign `Sentinel contributor role` to this app
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1288be4b-9f32-44be-bbf0-4f8d81899bf1)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/dcbd6761-c9c5-4b44-af91-896f8d406080)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/7e2382f3-bcb3-4ba2-b6ff-28ed812881d4)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c42c5f7c-2ad2-4ad5-bd5a-3408c3115bf0)
+
+Confirm the assignment <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/556dbba1-f144-4c67-917b-57c893303080)
+
+Confirm that the assignment succeeds <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a8a2a384-6322-4dbd-8d1c-1af87c60f2fe)
+
+### 4. Run the script to remove existing threat indicators
 ```powershell
 $applicationid = "<client id>"
 $clientSecret = "<client secret>"
