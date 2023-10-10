@@ -1,4 +1,4 @@
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/6653f86a-35a4-4542-8c79-05fa77e49ccf)# Useful powershell scripts
+# Useful powershell scripts
 * [Sentinel API](https://learn.microsoft.com/en-us/rest/api/securityinsights/)
 * [Az.SecurityInsights powershell module](https://learn.microsoft.com/en-us/powershell/module/az.securityinsights/?view=azps-10.4.1&viewFallbackFrom=azps-6.0.0#security)
 * [az sentinel](https://learn.microsoft.com/en-us/cli/azure/sentinel?view=azure-cli-latest)
@@ -394,3 +394,53 @@ do {
 ```
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/65229779-c5e5-45bb-86ae-4d803e10020d)
 
+```powershell
+$applicationid = "<client id>"
+$clientSecret = "<client secret>"
+$tenantId = "<tenant id>"
+$subscription = "<subscription id>"
+$resourcegroup = "<resource group name>"
+$workspacename = "<workspace name>"
+
+# Function to get a valid access token
+function Get-AzureAccessToken($clientId, $clientSecret, $tenantId) {
+    $tokenUrl = "https://login.microsoftonline.com/$tenantId/oauth2/token"
+    $tokenParams = @{
+        "grant_type"    = "client_credentials"
+        "client_id"     = $clientId
+        "client_secret" = $clientSecret
+        "resource"      = "https://management.azure.com/"
+    }
+
+    $tokenResponse = Invoke-RestMethod -Uri $tokenUrl -Method Post -ContentType "application/x-www-form-urlencoded" -Body $tokenParams
+
+    return $tokenResponse
+}
+
+# Initialize the access token
+$tokenResponse = Get-AzureAccessToken -clientId $applicationid -clientSecret $clientSecret -tenantId $tenantId
+$accessToken = $tokenResponse.access_token
+$expiresIn = $tokenResponse.expires_in
+
+# Convert expiresIn to seconds and add it to the current time to calculate the expiration time
+$tokenExpiration = (Get-Date).AddSeconds([double]$expiresIn)
+
+do {
+    # Check if the access token is about to expire (e.g., within the next 5 minutes)
+    if ($tokenExpiration -lt (Get-Date).AddMinutes(5)) {
+        # Access token is about to expire or has already expired, get a new one
+        $tokenResponse = Get-AzureAccessToken -clientId $applicationid -clientSecret $clientSecret -tenantId $tenantId
+        $accessToken = $tokenResponse.access_token
+        $expiresIn = $tokenResponse.expires_in
+
+        # Calculate the new token expiration time
+        $tokenExpiration = (Get-Date).AddSeconds([double]$expiresIn)
+    }
+
+    # Rest of your script (API requests, deletion, etc.) goes here
+
+    # Delay for 10 seconds before running the script again
+    Start-Sleep -Seconds 10
+
+} while ($true)
+```
