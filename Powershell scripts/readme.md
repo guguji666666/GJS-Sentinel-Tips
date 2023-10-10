@@ -280,7 +280,6 @@ Create the secret and copy the value to notepad, we need it later <br>
 Copy the Client id and tenant id to notepad, we need it later <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/940cbae4-73df-4cf7-8517-14cf005008d6)
 
-
 ### 2. Assign API permissions to this app
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/18f1594b-9845-4992-9667-ac8c98725314)
 
@@ -304,7 +303,38 @@ Confirm the assignment <br>
 Confirm that the assignment succeeds <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a8a2a384-6322-4dbd-8d1c-1af87c60f2fe)
 
-### 4. Run the script to remove existing threat indicators
+### 4. Set token lifetime for this app
+```powershell
+# Create a policy and assign it to an app
+Install-Module Microsoft.Graph -force
+
+Connect-MgGraph -Scopes  "Policy.ReadWrite.ApplicationConfiguration","Policy.Read.All","Application.ReadWrite.All"
+
+# Create a token lifetime policy
+$params = @{
+	Definition = @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"24:00:00"}}') 
+    DisplayName = "ForRemovingIOC"
+	IsOrganizationDefault = $false
+}
+$tokenLifetimePolicyId=(New-MgPolicyTokenLifetimePolicy -BodyParameter $params).Id
+
+# Display the policy
+Get-MgPolicyTokenLifetimePolicy -TokenLifetimePolicyId $tokenLifetimePolicyId
+
+# Assign the token lifetime policy to an app
+$params = @{
+	"@odata.id" = "https://graph.microsoft.com/v1.0/policies/tokenLifetimePolicies/$tokenLifetimePolicyId"
+}
+
+$applicationObjectId="<app object id>"
+
+New-MgApplicationTokenLifetimePolicyByRef -ApplicationId $applicationObjectId -BodyParameter $params
+
+# List the token lifetime policy on the app
+Get-MgApplicationTokenLifetimePolicy -ApplicationId $applicationObjectId
+```
+
+### 5. Run the script to remove existing threat indicators
 ```powershell
 $applicationid = "<client id>"
 $clientSecret = "<client secret>"
@@ -325,29 +355,22 @@ function Get-AzureAccessToken($clientId, $clientSecret, $tenantId) {
 
     $tokenResponse = Invoke-RestMethod -Uri $tokenUrl -Method Post -ContentType "application/x-www-form-urlencoded" -Body $tokenParams
 
-    return $tokenResponse
+    return $tokenResponse.access_token
 }
 
-# Initialize the access token
-$tokenResponse = Get-AzureAccessToken -clientId $applicationid -clientSecret $clientSecret -tenantId $tenantId
-$accessToken = $tokenResponse.access_token
-$expiresOn = [DateTime]::UtcDateTime.AddSeconds($tokenResponse.expires_on) # Convert Unix timestamp to DateTime
-
 do {
-    # Check if the access token is expired or about to expire (e.g., within the next 5 minutes)
-    if ($expiresOn -lt (Get-Date).AddMinutes(5)) {
-        # Access token is expired or about to expire, get a new one
-        $tokenResponse = Get-AzureAccessToken -clientId $applicationid -clientSecret $clientSecret -tenantId $tenantId
-        $accessToken = $tokenResponse.access_token
-        $expiresOn = [DateTime]::UtcDateTime.AddSeconds($tokenResponse.expires_on) # Convert Unix timestamp to DateTime
+    # Get a valid access token
+    $rawtoken = Get-AzureAccessToken -clientId $applicationid -clientSecret $clientSecret -tenantId $tenantId
 
-        # Print a message indicating a new token was obtained
-        Write-Host "Obtained a new access token."
+    # Check if the access token is empty or null
+    if ([string]::IsNullOrWhiteSpace($rawtoken)) {
+        Write-Host "Failed to obtain a valid access token. Script will exit."
+        break
     }
 
     # set request headers
     $requestheader = @{
-        "Authorization" = "Bearer $accessToken"
+        "Authorization" = "Bearer $rawtoken"
         "Content-Type" = "application/json"
     }
 
