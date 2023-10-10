@@ -310,9 +310,9 @@ Install-Module Microsoft.Graph -force
 
 Connect-MgGraph -Scopes  "Policy.ReadWrite.ApplicationConfiguration","Policy.Read.All","Application.ReadWrite.All"
 
-# Create a token lifetime policy
+# Create a token lifetime policy (we set 23h this time)
 $params = @{
-	Definition = @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"24:00:00"}}') 
+	Definition = @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"23:00:00"}}') 
     DisplayName = "ForRemovingIOC"
 	IsOrganizationDefault = $false
 }
