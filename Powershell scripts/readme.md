@@ -271,8 +271,8 @@ You can also set Recurrence in logic app so that you can close the old incidents
 ### 1. App registration
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a446cd46-dacb-41b3-a219-4cc22e32cd1e) 
 
-Fill in the required information and register the App <br>
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/7083125f-69ff-40af-98fe-48d90ce74e07)
+Fill in the required fields and register the App <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a8b03187-0482-46e1-870c-22467ebd525e)
 
 Create the secret and copy the value to notepad, we need it later <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b086d558-595d-4766-a95a-1ffa72f6d28b)
