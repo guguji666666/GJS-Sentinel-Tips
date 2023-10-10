@@ -356,3 +356,5 @@ do {
 
 } while ($true)
 ```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/65229779-c5e5-45bb-86ae-4d803e10020d)
+
