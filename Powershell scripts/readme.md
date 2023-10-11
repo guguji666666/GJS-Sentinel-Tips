@@ -305,6 +305,8 @@ Confirm that the assignment succeeds <br>
 
 
 ### 4. Run the script to remove existing threat indicators
+
+Still under testing ....
 ```powershell
 $applicationid = "<client id>"
 $clientSecret = "<client secret>"
@@ -392,6 +394,8 @@ do {
 
 } while ($true)
 ```
+
+Working one
 ```powershell
 $applicationid = "<App id>"
 $key = ConvertTo-SecureString -String "<client secret>" -AsPlainText -Force
@@ -467,4 +471,5 @@ do {
     
 } while ($true)
 ```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b920b443-14cc-4aaa-a091-77b954a61e38)
 
