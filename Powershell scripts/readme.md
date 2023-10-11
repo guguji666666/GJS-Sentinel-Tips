@@ -416,7 +416,7 @@ do {
     # set query api endpoint and get list of indicators
     $uri = "https://management.azure.com/subscriptions/$subscription/resourcegroups/$resourcegroup/providers/microsoft.operationalinsights/workspaces/$workspacename/providers/microsoft.securityinsights/threatintelligence/main/queryindicators?api-version=2023-02-01"
     $requestbody = @{
-        "pagesize" = "1000"
+        "pagesize" = "300"
         "minconfidence" = "0"
         "maxconfidence" = "100"
     }
@@ -463,7 +463,7 @@ do {
        $Credential = New-Object System.Management.Automation.PSCredential($applicationid, $key)
         Connect-AzAccount -Credential $Credential -Tenant "<tenant id>" -ServicePrincipal
         # move on to the next batch of indicators
-        $skip += 1000
+        $skip += 300
     } while ($indicator.length -eq $requestbody.pagesize)
  
     # script execution complete
