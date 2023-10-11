@@ -303,38 +303,8 @@ Confirm the assignment <br>
 Confirm that the assignment succeeds <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a8a2a384-6322-4dbd-8d1c-1af87c60f2fe)
 
-### 4. Set token lifetime for this app
-```powershell
-# Create a policy and assign it to an app
-Install-Module Microsoft.Graph -force
 
-Connect-MgGraph -Scopes  "Policy.ReadWrite.ApplicationConfiguration","Policy.Read.All","Application.ReadWrite.All"
-
-# Create a token lifetime policy (we set 23h this time)
-$params = @{
-	Definition = @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"23:00:00"}}') 
-    DisplayName = "ForRemovingIOC"
-	IsOrganizationDefault = $false
-}
-$tokenLifetimePolicyId=(New-MgPolicyTokenLifetimePolicy -BodyParameter $params).Id
-
-# Display the policy
-Get-MgPolicyTokenLifetimePolicy -TokenLifetimePolicyId $tokenLifetimePolicyId
-
-# Assign the token lifetime policy to an app
-$params = @{
-	"@odata.id" = "https://graph.microsoft.com/v1.0/policies/tokenLifetimePolicies/$tokenLifetimePolicyId"
-}
-
-$applicationObjectId="<app object id>"
-
-New-MgApplicationTokenLifetimePolicyByRef -ApplicationId $applicationObjectId -BodyParameter $params
-
-# List the token lifetime policy on the app
-Get-MgApplicationTokenLifetimePolicy -ApplicationId $applicationObjectId
-```
-
-### 5. Run the script to remove existing threat indicators
+### 4. Run the script to remove existing threat indicators
 ```powershell
 $applicationid = "<client id>"
 $clientSecret = "<client secret>"
@@ -422,3 +392,79 @@ do {
 
 } while ($true)
 ```
+```powershell
+$applicationid = "<App id>"
+$key = ConvertTo-SecureString -String "<client secret>" -AsPlainText -Force
+$Credential = New-Object System.Management.Automation.PSCredential($applicationid, $key)
+Connect-AzAccount -Credential $Credential -Tenant "<tenant id>" -ServicePrincipal
+do {
+    # set request headers
+    $requestheader = @{
+        "authorization" = "bearer " + $rawtoken
+        "content-type" = "application/json"
+    }
+ 
+    # set resource group and workspace name
+    $subscription = "<subscription id>"
+    $resourcegroup = "<resource group name>"
+    $workspacename = "<workspace name>"
+ 
+    # set query api endpoint and get list of indicators
+    $uri = "https://management.azure.com/subscriptions/$subscription/resourcegroups/$resourcegroup/providers/microsoft.operationalinsights/workspaces/$workspacename/providers/microsoft.securityinsights/threatintelligence/main/queryindicators?api-version=2023-02-01"
+    $requestbody = @{
+        "pagesize" = "1000"
+        "minconfidence" = "0"
+        "maxconfidence" = "100"
+    }
+ 
+    # loop through each batch of 1000 indicators and delete them
+    $skip = 0
+ 
+    do {
+        #get and refresh access token
+        Write-Host "getting azure access token..."
+        $accesstoken = get-azaccesstoken 
+        $rawtoken = $accesstoken.token
+        echo $rawtoken
+        Write-Host "querying the security api to get the list of indicators..."
+        $requestbody.skip = $skip
+        $response = Invoke-RestMethod -Uri $uri -Method Post -Headers $requestheader -Body ($requestbody | ConvertTo-Json)
+        $indicator = $response.value.name
+ 
+        # check if there are any indicators to delete
+        if ($indicator) {
+            Write-Host "Starting to delete indicators in this batch..."
+            $totalIndicators = $indicator.Count
+            $indicatorsDeleted = 0
+ 
+            # delete each indicator in this batch
+            foreach ($name in $indicator) {
+                Write-Host "deleting indicator $name ..."
+                $deleteuri = "https://management.azure.com/subscriptions/$subscription/resourcegroups/$resourcegroup/providers/microsoft.operationalinsights/workspaces/$workspacename/providers/microsoft.securityinsights/threatintelligence/main/indicators/$name/?api-version=2023-03-01-preview"
+                Invoke-RestMethod -uri $deleteuri -method delete -headers $requestheader
+ 
+                $indicatorsDeleted++
+                $percentage = ($indicatorsDeleted / $totalIndicators) * 100
+                Write-Progress -Activity "Deleting Indicators..." -PercentComplete $percentage
+            }
+ 
+            Write-Host "Finished deleting indicators in this batch."
+        }
+        # delay for 10 seconds before running the script again
+        Start-Sleep -Seconds 10
+        # refresh token
+        Disconnect-AzAccount
+       $applicationid = "<App id>"
+       $key = ConvertTo-SecureString -String "<client secret>" -AsPlainText -Force
+       $Credential = New-Object System.Management.Automation.PSCredential($applicationid, $key)
+        Connect-AzAccount -Credential $Credential -Tenant "<tenant id>" -ServicePrincipal
+        # move on to the next batch of indicators
+        $skip += 1000
+    } while ($indicator.length -eq $requestbody.pagesize)
+ 
+    # script execution complete
+    Write-Host "script execution complete."
+    
+} while ($true)
+```
+
