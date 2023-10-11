@@ -254,6 +254,9 @@ If cx fails to find the incoming log in the custom table, we could then follow t
 ![image](https://user-images.githubusercontent.com/96930989/221455924-a64d3ce8-9135-4320-8a40-8184ef1f3e13.png)
 ![image](https://user-images.githubusercontent.com/96930989/221455946-88d7e80b-248f-4481-8f1d-7dd60d5ff684.png)
 
+We can also check the transfrom KQL in DCR > json view <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e1f70af5-a07b-4d28-941f-55a50cc19ccd)
+
 4. Check the state of logstash service on VM
 Run command
 ```sh
