@@ -397,78 +397,83 @@ do {
 
 Working one
 ```powershell
-$applicationid = "<App id>"
-$key = ConvertTo-SecureString -String "<client secret>" -AsPlainText -Force
-$Credential = New-Object System.Management.Automation.PSCredential($applicationid, $key)
-Connect-AzAccount -Credential $Credential -Tenant "<tenant id>" -ServicePrincipal
+$applicationid = "<your app id>"
+$key = ConvertTo-SecureString -String "<your client secret>" -AsPlainText -Force
+$credential = New-Object System.Management.Automation.PSCredential($applicationid, $key)
+Connect-AzAccount -Credential $credential -Tenant "<your tenant id>" -ServicePrincipal
+
 do {
-    # set request headers
-    $requestheader = @{
-        "authorization" = "bearer " + $rawtoken
-        "content-type" = "application/json"
-    }
- 
     # set resource group and workspace name
-    $subscription = "<subscription id>"
-    $resourcegroup = "<resource group name>"
-    $workspacename = "<workspace name>"
- 
-    # set query api endpoint and get list of indicators
+    $subscription = "<your subscription id>"
+    $resourcegroup = "<name of resource group>"
+    $workspacename = “<workspace name>"
+
+    # set query API endpoint and get list of indicators
     $uri = "https://management.azure.com/subscriptions/$subscription/resourcegroups/$resourcegroup/providers/microsoft.operationalinsights/workspaces/$workspacename/providers/microsoft.securityinsights/threatintelligence/main/queryindicators?api-version=2023-02-01"
     $requestbody = @{
         "pagesize" = "300"
         "minconfidence" = "0"
         "maxconfidence" = "100"
     }
- 
+
     # loop through each batch of 1000 indicators and delete them
     $skip = 0
- 
     do {
         #get and refresh access token
-        Write-Host "getting azure access token..."
-        $accesstoken = get-azaccesstoken 
-        $rawtoken = $accesstoken.token
+        write-host "getting azure access token..."
+        $accesstoken = Get-AzAccessToken
+        $rawtoken = $accesstoken.Token
         echo $rawtoken
+
+        # set request headers
+        $requestheader = @{
+            "authorization" = "bearer " + $rawtoken
+            "content-type" = "application/json"
+        }
+
         Write-Host "querying the security api to get the list of indicators..."
         $requestbody.skip = $skip
         $response = Invoke-RestMethod -Uri $uri -Method Post -Headers $requestheader -Body ($requestbody | ConvertTo-Json)
         $indicator = $response.value.name
- 
+
         # check if there are any indicators to delete
         if ($indicator) {
-            Write-Host "Starting to delete indicators in this batch..."
-            $totalIndicators = $indicator.Count
-            $indicatorsDeleted = 0
- 
+            Write-Host "starting to delete indicators in this batch..."
+            $totalindicators = $indicator.count
+            $indicatorsdeleted = 0
+
             # delete each indicator in this batch
             foreach ($name in $indicator) {
+                # Refresh access token
+                $accesstoken = Get-AzAccessToken
+                $rawtoken = $accesstoken.Token
+                $requestheader.authorization = "bearer " + $rawtoken
+
                 Write-Host "deleting indicator $name ..."
                 $deleteuri = "https://management.azure.com/subscriptions/$subscription/resourcegroups/$resourcegroup/providers/microsoft.operationalinsights/workspaces/$workspacename/providers/microsoft.securityinsights/threatintelligence/main/indicators/$name/?api-version=2023-03-01-preview"
-                Invoke-RestMethod -uri $deleteuri -method delete -headers $requestheader
- 
-                $indicatorsDeleted++
-                $percentage = ($indicatorsDeleted / $totalIndicators) * 100
-                Write-Progress -Activity "Deleting Indicators..." -PercentComplete $percentage
+                Invoke-RestMethod -Uri $deleteuri -Method Delete -Headers $requestheader
+                $indicatorsdeleted++
+                $percentage = ($indicatorsdeleted / $totalindicators) * 100
+                Write-Progress -Activity "deleting indicators..." -PercentComplete $percentage
             }
- 
-            Write-Host "Finished deleting indicators in this batch."
+            Write-Host "finished deleting indicators in this batch."
         }
         # delay for 10 seconds before running the script again
         Start-Sleep -Seconds 10
+
         # refresh token
         Disconnect-AzAccount
-       $applicationid = "<App id>"
-       $key = ConvertTo-SecureString -String "<client secret>" -AsPlainText -Force
-       $Credential = New-Object System.Management.Automation.PSCredential($applicationid, $key)
-        Connect-AzAccount -Credential $Credential -Tenant "<tenant id>" -ServicePrincipal
+        $credential = New-Object System.Management.Automation.PSCredential($applicationid, $key)
+
+        # clear cache
+        Clear-AzContext -Scope Process
+        Connect-AzAccount -Credential $credential -Tenant "<your tenant id>" -ServicePrincipal
+
         # move on to the next batch of indicators
         $skip += 300
     } while ($indicator.length -eq $requestbody.pagesize)
- 
     # script execution complete
     Write-Host "script execution complete."
-    
 } while ($true)
 ```
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b920b443-14cc-4aaa-a091-77b954a61e38)
