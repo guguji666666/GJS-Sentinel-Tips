@@ -1,6 +1,6 @@
 # Stream sysmong logs to workspace using DCR
 
-## Install sysmon
+## Install sysmon packages
 ## 1. Install [sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/07a32dc2-1793-4df7-bee7-6a0caf901a84)
 
