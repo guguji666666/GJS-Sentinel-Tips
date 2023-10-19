@@ -1,4 +1,4 @@
-# Stream sysmong logs to workspace using DCR
+# Stream sysmon logs to workspace using DCR
 
 ## Install sysmon packages
 ## 1. Install [sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
