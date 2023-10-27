@@ -13,7 +13,7 @@ Send the log to forwarder server 514 port
 echo -n "Oct 27 01:43:48 blog.gulaoda.com ASM TEST: 0|14.1.5|Illegal file type|Illegal file type|6|dvchost=blog.gulaoda.com dvc=10.7.90.115 s1=/Common/adfs-prod-http cslLabel-policy_name cs2=/Common/adfs-prod-http cs2Label=http_class_name deviceCustomDate1=Mar 04 2023 12:41:56 deviceCustomDatelLabel-poicy apply date externalId=3485208313932711252 act=blocked cn1=0 chiLabel=response code Src=35.216.229.155 spt=50388 dst=172.16.90.19 pt=443 requestMethod=GET pp=H IPPS Css-W/A csSLabel=%_ forwarded for_header_ value rt=Oct 25 2023 09:23:48 deviceExternalId-0 cs4-Forceful Browsing Cs4Label-attack type cs6=CH Cs6Label=geo locatio n c6a1= c6alLabel-device address ¿6a2= c6a2Label=source address c6a3= c6a3Label=destination address c6a4= c6a4Labei=ip address intelligence msg=N/A suid=0 suser=N/A cn2=3 cn2Label=violation" | nc -u -w0 localhost 514
 ```
 
-The log is not saved on the local server
+The log is not saved on the local server <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/81b233e2-50ba-4efe-aa59-20a7bcca836d)
 
 
