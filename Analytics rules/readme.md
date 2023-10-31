@@ -66,7 +66,25 @@ Heartbeat
 | where LastCall < ago(5m)
 ```
 
-#### 5. Get alert when device is isolated in defender for endpoint
+#### 5. Monitor if VM stops forwarding CEF logs
+
+Azure VM
+```kusto
+CommonSecurityLog
+| where _ResourceId contains "Microsoft.Compute"
+| summarize LastCall = max(TimeGenerated) by Computer, _ResourceId
+| where LastCall < ago(5m)
+```
+
+Arc VM
+```kusto
+CommonSecurityLog
+| where _ResourceId contains "Microsoft.HybridCompute"
+| summarize LastCall = max(TimeGenerated) by Computer, _ResourceId
+| where LastCall < ago(5m)
+```
+
+#### 6. Get alert when device is isolated in defender for endpoint
 ```kusto
 DeviceRegistryEvents
 | where * contains "Windows Advanced Threat Protection"
@@ -75,7 +93,7 @@ DeviceRegistryEvents
 ```
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2ffee352-f97b-4e69-83cd-68f61b8c7943)
 
-#### 6. Whitelist watchlist IPs
+#### 7. Whitelist watchlist IPs
 ```kql
 let watchlist = (_GetWatchlist('WHITELISTIP') | project IPAddress);
 let IPRegex = '[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}';
