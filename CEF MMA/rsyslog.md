@@ -1,3 +1,4 @@
+```
 # /etc/rsyslog.conf configuration file for rsyslog
 #
 # For more information install rsyslog-doc and see
@@ -57,3 +58,4 @@ $WorkDirectory /var/spool/rsyslog
 # Include all config files in /etc/rsyslog.d/
 #
 $IncludeConfig /etc/rsyslog.d/*.conf
+```
