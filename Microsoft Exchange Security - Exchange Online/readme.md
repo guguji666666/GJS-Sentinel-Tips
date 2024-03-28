@@ -88,7 +88,7 @@ Wait until script completes <br>
 
 To verify the permissions assigned to the automation account, we can follow the steps below <br>
 
-![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/91ed782c-f367-4ab8-8844-0d979c418352)
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c7bf6dd7-695b-4c2b-b2e6-2ae34cbba956)
 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/4cd33e7c-9749-4a34-8c9f-b6b753c1b0c6)
 
