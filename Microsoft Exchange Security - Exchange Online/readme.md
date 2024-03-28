@@ -142,6 +142,3 @@ If we run the query `ESIExchangeOnlineConfig_CL` in the workspace we should find
 
 
 
-
-
-
