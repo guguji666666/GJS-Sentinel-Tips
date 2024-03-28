@@ -38,4 +38,17 @@ The resources below would be deployed <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/9406eb9f-e0f8-492e-89ff-c71ad69471e0)
 
 
-#### 
+#### STEP 3 - Assign Microsoft Graph Permission and Exchange Online Permission to Managed Identity Account
+
+##### A. Download powershell script from [ExchangeOnlinePermSetup.ps1](https://github.com/nlepagnez/ESI-PublicContent/blob/main/Solutions/ESICollector/OnlineDeployment/ExchangeOnlinePermSetup.ps1)
+
+##### B. Retrieve the Azure Automation Managed Identity GUID and insert it in the downloaded script
+
+Go to your Automation Account, in the Identity Section. You can find the Guid of your Managed Identity. <br>
+
+
+
+
+Replace the GUID in $MI_ID = "XXXXXXXXXXX" with the GUID of your Managed Identity.
+
+
