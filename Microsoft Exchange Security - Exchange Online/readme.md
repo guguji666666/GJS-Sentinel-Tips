@@ -93,3 +93,22 @@ To verify the permissions assigned to the automation account, we can follow the 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/4cd33e7c-9749-4a34-8c9f-b6b753c1b0c6)
 
 
+##### D. Exchange Online Role Assignment (Performed by global administrator)
+1. As a Global Administrator, go to Roles and Administrators.
+2. Select Global Readers role and click to 'Add assignments'.
+3. Click on 'No member selected' and search your Managed Identity account Name beginning by the name of your automation account like 'ESI-Collector'. Select it and click on 'Select'.
+4. Click Next and validate the assignment by clicking Assign.
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d0ba9f1f-1760-4385-a83d-9d6895fa7a04)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a493e688-6702-473f-a6aa-7ea0150be3ce)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/36851cb5-eb74-4e34-9439-03ba1d0b6d26)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/aab57d7b-111e-47ea-987f-a2f4a8801293)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b95e6cc5-779b-48c6-b6d0-52e9f8a7f460)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/f30a535e-f5bb-4c31-a4d2-cdb7e954fee8)
+
+
