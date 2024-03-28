@@ -133,6 +133,8 @@ It may take several minutes to finish, check if you get any error from the logs 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/025b651b-a5a9-40e3-9d34-dc129c5bee30)
 
 
+Wait for an hour and go back to data connector, you should 
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e27a41c0-8f01-496f-adeb-9f3aeaf71905)
 
 
 
