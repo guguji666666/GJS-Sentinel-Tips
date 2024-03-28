@@ -112,3 +112,29 @@ To verify the permissions assigned to the automation account, we can follow the 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/f30a535e-f5bb-4c31-a4d2-cdb7e954fee8)
 
 
+### 3. Trigger runbook in Automation account to retrive logs and ingest into sentinel workspace
+
+Search for `automation account` on the top <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d655cf63-3b80-427d-8c21-adfff2bf43ff)
+
+You will find the new automation account we just created <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/036788a8-9f12-4749-9a68-11431f5c212a)
+
+Find the runbook and click it <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b70de20b-c912-4b99-bd0c-fcda6a6984f3)
+
+Start the job <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/0408cc8d-0477-4cd6-90a9-e3b030398e0b)
+
+It may take several minutes to finish, check if you get any error from the logs <br>
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/84b98d7d-ad1b-485a-8db3-8037c81e30d7)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/025b651b-a5a9-40e3-9d34-dc129c5bee30)
+
+
+
+
+
+
+
