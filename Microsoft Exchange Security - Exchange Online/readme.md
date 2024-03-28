@@ -8,3 +8,4 @@ In this solution we can see the data connector `Exchange Security Insights Onlin
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/6fc388d5-da9e-44f3-af98-12359ce834d9)
 
 
+### 2, Configure the data connector `Exchange Security Insights Online Collector (using Azure Functions)` 
