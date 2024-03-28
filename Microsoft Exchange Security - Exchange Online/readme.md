@@ -52,7 +52,7 @@ Go the script we just downloaded, replace the GUID in `$MI_ID = "XXXXXXXXXXX"` w
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/5df98958-7ea9-460f-ac49-1b6293d37e83)
 
 
-##### C. Launch the script with a **Global-Administrator** account
+##### C. Launch the script `ExchangeOnlinePermSetup.ps1` with a **Global-Administrator** account
 
 Attention this script requires MSGraph Modules and Admin Consent to access to your tenant with Microsoft Graph.
 
@@ -74,5 +74,22 @@ Install-Module Microsoft.Graph
 ## Connect to get token
 Connect-MgGraph -TenantId <your tenant id>
 ```
+
+Then
+```powershell
+cd <path you save ExchangeOnlinePermSetup.ps1 with managed identity id filled>
+
+.\ExchangeOnlinePermSetup.ps1
+```
+
+Wait until script completes <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/278bbcce-b3d1-491a-a713-25b0b5005ba6)
+
+
+To verify the permissions assigned to the automation account, we can follow the steps below <br>
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/91ed782c-f367-4ab8-8844-0d979c418352)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/4cd33e7c-9749-4a34-8c9f-b6b753c1b0c6)
 
 
