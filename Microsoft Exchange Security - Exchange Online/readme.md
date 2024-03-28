@@ -45,10 +45,34 @@ The resources below would be deployed <br>
 ##### B. Retrieve the Azure Automation Managed Identity GUID and insert it in the downloaded script
 
 Go to your Automation Account, in the Identity Section. You can find the Guid of your Managed Identity. <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1f362780-7a23-4c02-917f-141518a5022a)
 
 
+Go the script we just downloaded, replace the GUID in `$MI_ID = "XXXXXXXXXXX"` with the GUID of your Managed Identity. Save it. <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/5df98958-7ea9-460f-ac49-1b6293d37e83)
 
 
-Replace the GUID in $MI_ID = "XXXXXXXXXXX" with the GUID of your Managed Identity.
+##### C. Launch the script with a **Global-Administrator** account
+
+Attention this script requires MSGraph Modules and Admin Consent to access to your tenant with Microsoft Graph.
+
+The script will add 3 permissions to the Managed identity:
+* Exchange Online ManageAsApp permission
+* User.Read.All on Microsoft Graph API
+* Group.Read.All on Microsoft Graph API
+
+```powershell
+
+## Enable TLS 1.2 in powershell session
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+
+## Install powershell module required
+Install-Module Microsoft.Graph
+
+
+## Connect to get token
+Connect-MgGraph -TenantId <your tenant id>
+```
 
 
