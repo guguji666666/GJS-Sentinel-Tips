@@ -170,9 +170,18 @@ $userList = foreach ($user in $users) {
 # Display results in a table
 $userList | Format-Table -AutoSize
 ```
-
-
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/398c961a-b10a-43d6-a397-4e485540d6f3)
 
 vii. Deploy/build the Playbook.
 
+
+
+
+
 viii. Attach the Playbook to the relevant Analytics rule in Azure Sentinel.
+
+Create analytics rule in sentinel <br>
+
+
+
+
