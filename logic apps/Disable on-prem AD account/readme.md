@@ -176,13 +176,39 @@ vii. Deploy/build the Playbook.
 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/af9a4fc1-eb12-44fd-bf98-cb52da1e2c93)
 
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/3d8aae75-1c23-4b3e-ad7f-9c9ca8b64ef0)
 
+Then `Add an action`, search for `Create job` <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/4edcb7db-6914-4845-845d-2732b8edbdb6)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/298f0f22-26ff-4067-a160-9bb3b10eb5c9)
+
+Fill in the paratemeters <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/3793e944-e93a-4293-b604-e2a1868ea146)
 
 
 viii. Attach the Playbook to the relevant Analytics rule in Azure Sentinel.
 
 Create analytics rule in sentinel <br>
 
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/70e933bf-f2e3-478c-8641-6f870a8cc3d6)
 
+Sample KQL i set, this query checks for 5 failed logon attempts (EventID 4625) within 60mins <br>
+```kusto
+let timeframe = 60m;
+let threshold = 5;
+SecurityEvent
+| where TimeGenerated >= ago(timeframe)
+| where EventID == 4625
+| where AccountType =~ "User"
+| summarize min(TimeGenerated), max(TimeGenerated), FailedLogonCount = count() by EventID, Activity, Computer, Account,
+TargetAccount, TargetUserName, TargetDomainName, LogonType, LogonTypeName, LogonProcessName, Status, SubStatus
+| where FailedLogonCount >= threshold
+| project StartTimeUtc = min_TimeGenerated, EndTimeUtc = max_TimeGenerated, FailedLogonCount, EventID, Activity, Computer, Account, TargetAccount, TargetUserName, TargetDomainName, LogonType, LogonTypeName,
+LogonProcessName, Status, SubStatus
+| extend timestamp = StartTimeUtc, AccountCustomEntity = Account, HostCustomEntity = Computer
+```
 
+Configure **Entity mapping` part following the screenshot below <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/f3fcaf98-cde3-4f2a-99f6-937a5513d083)
 
