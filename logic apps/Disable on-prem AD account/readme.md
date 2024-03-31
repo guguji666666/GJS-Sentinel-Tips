@@ -229,4 +229,4 @@ Finally, create the automation rule in sentinel <br>
 * Add domain controllers (after connected to Azure Arc) to different hybrid worker groups accordingly
 * Create multiple playbooks to run job for different hybrid worker groups linked to different domains
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b6c06fe2-0200-417b-bcc5-bfe488b76c64)
-
+3. Pricing for automation account [Automation pricing](https://azure.microsoft.com/en-us/pricing/details/automation/)
