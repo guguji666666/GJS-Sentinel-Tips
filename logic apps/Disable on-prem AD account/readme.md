@@ -214,3 +214,19 @@ Configure **Entity mapping` part following the screenshot below <br>
 Configure `Query scheduling` to meet your requirement <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/57049521-acf2-46a5-b18c-fdb3030d405a)
 
+Finally, create the automation rule in sentinel <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1292345b-c5b2-4da9-86da-b441a700ae14)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/03a02ff8-980c-47e0-b0a0-c926fdfe626b)
+
+
+### Note
+1. If you have configured Entra ID connect to synchronize on-prem AD account to Entra ID, once the AD account is disabled, the Entra ID account it syncs to will be disabled as well.
+2. If you have multiple domains, then you may need to
+* Create mutiple analytics rule so that we can filter events from different domains
+* Create mutiple hybrid worker groups in automation account to separate the domains
+* Connect domain controllers to Azure Arc
+* Add domain controllers (after connected to Azure Arc) to different hybrid worker groups accordingly
+* Create multiple playbooks to run job for different hybrid worker groups linked to different domains
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/b6c06fe2-0200-417b-bcc5-bfe488b76c64)
+
