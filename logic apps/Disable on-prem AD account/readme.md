@@ -150,6 +150,27 @@ Click `Start` button <br>
 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/cac7f561-9dff-47b9-b711-34a9ba5ea9e6)
 
+Then start the job, wait for 1-2 mins.The logs will show the results <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/8ed503a1-3365-47c8-ac5c-37db93fa8854)
+
+You can also verify if the AD Account is disabled indeed on the domain controller. Just run the powershell scripts below on the domain controller.
+```powershell
+# Get user accounts in the domain whose UPN contains "<account name>"
+$users = Get-ADUser -Filter {UserPrincipalName -like "*test*"} -Properties SamAccountName, UserPrincipalName, Enabled
+
+# Create a custom object for each user with required properties
+$userList = foreach ($user in $users) {
+    [PSCustomObject]@{
+        "Account Name (SAM)" = $user.SamAccountName
+        "Account UPN" = $user.UserPrincipalName
+        "Status" = if ($user.Enabled) { "Enabled" } else { "Disabled" }
+    }
+}
+
+# Display results in a table
+$userList | Format-Table -AutoSize
+```
+
 
 
 vii. Deploy/build the Playbook.
