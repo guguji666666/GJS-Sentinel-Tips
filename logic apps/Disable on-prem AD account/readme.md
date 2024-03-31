@@ -190,7 +190,6 @@ Fill in the paratemeters <br>
 viii. Attach the Playbook to the relevant Analytics rule in Azure Sentinel.
 
 Create analytics rule in sentinel <br>
-
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/70e933bf-f2e3-478c-8641-6f870a8cc3d6)
 
 Sample KQL i set, this query checks for 5 failed logon attempts (EventID 4625) within 60mins <br>
@@ -211,4 +210,7 @@ LogonProcessName, Status, SubStatus
 
 Configure **Entity mapping` part following the screenshot below <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/f3fcaf98-cde3-4f2a-99f6-937a5513d083)
+
+Configure `Query scheduling` to meet your requirement <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/57049521-acf2-46a5-b18c-fdb3030d405a)
 
