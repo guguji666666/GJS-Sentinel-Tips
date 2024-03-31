@@ -19,3 +19,24 @@ ii. The incident has the playbook attached to kick off the actions needed to blo
 iii. The playbook includes the "create hybrid automation job" action, which executes a PowerShell script against the on-prem DC to block the user. 
 
 iv. User blocked in iii. above remains blocked even after subsequent `Azure AD connect` syncs with Azure cloud.
+
+
+## Deployment Steps 
+
+Before you begin to review the pre-requisites of deploying a Hybrid Runbook Worker here: Deploy a Windows Hybrid Runbook Worker in Azure Automation | Microsoft Docs
+
+i. Create Automation Account
+
+ii. Deploy the Automation Hybrid Worker solution from the Azure Market place
+
+iii. Create a Hybrid Worker Group
+
+iv. Create a new PowerShell Runbook.
+
+v. Register the Hybrid Worker with Azure
+
+vi. Test the Runbook.
+
+vii. Deploy/build the Playbook.
+
+viii. Attach the Playbook to the relevant Analytics rule in Azure Sentinel.
