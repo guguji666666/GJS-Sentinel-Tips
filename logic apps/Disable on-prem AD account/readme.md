@@ -52,7 +52,13 @@ iii. Create a Hybrid Worker Group
 Navigate to the automation account we just created, select `Hybrid worker groups` <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/bcc06d0d-854f-416c-bea4-00d6b46a8912)
 
+Name it with domain name so that we can recognize easily <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/fab1bc98-f8e3-4a4e-a665-949cf661f958)
 
+Leave it, we will add the worker later <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/333016c4-f688-4c0f-a21d-8bfefff687d1)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/5b2cb77e-f620-499d-aabe-fe29a7858a3d)
 
 
 iv. Create a new PowerShell Runbook.
