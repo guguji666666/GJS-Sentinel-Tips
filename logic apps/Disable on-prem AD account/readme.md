@@ -145,6 +145,11 @@ vi. Test the Runbook.
 Click `Start` button <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/06348909-1ad4-41c8-a4b0-00e7c6ba6b38)
 
+* For **SAMAccountName**, just input accountname. For example if the account is `Zero\testing`, then just input `testing` here.
+* For **Run Settings**, select the group where the domain controller locates.
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/cac7f561-9dff-47b9-b711-34a9ba5ea9e6)
+
 
 
 vii. Deploy/build the Playbook.
