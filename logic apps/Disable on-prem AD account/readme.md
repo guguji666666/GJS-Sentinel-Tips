@@ -192,9 +192,9 @@ viii. Attach the Playbook to the relevant Analytics rule in Azure Sentinel.
 Create analytics rule in sentinel <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/70e933bf-f2e3-478c-8641-6f870a8cc3d6)
 
-Sample KQL i set, this query checks for 5 failed logon attempts (EventID 4625) within 60mins <br>
+Sample KQL i set, this query checks for 5 failed logon attempts (EventID 4625) within 10mins <br>
 ```kusto
-let timeframe = 60m;
+let timeframe = 10m;
 let threshold = 5;
 SecurityEvent
 | where TimeGenerated >= ago(timeframe)
