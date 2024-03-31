@@ -63,6 +63,50 @@ Leave it, we will add the worker later <br>
 
 iv. Create a new PowerShell Runbook.
 
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/4488923e-5174-4494-94d2-3c4fbe31f198)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c8307427-74c5-4bd7-900a-279b867e6d7a)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/0ca1c073-75e4-4731-ad01-30d4fa4720a3)
+
+Edit powershell runbook, paste the script below and save <br>
+```powershell
+Param (
+
+[string] $SAMAccountName
+
+)
+
+if (Get-Module -ListAvailable -Name ActiveDirectory) {
+    Write-Output "ActiveDirectory PowerShell module already exists on host."
+} 
+else {
+    Write-Output "ActiveDirectory PowerShell module does not exist on host. Installing..."
+    try {
+        Import-Module ActiveDirectory
+    }
+    catch{
+        Write-Error "Error installing ActiveDirectory PowerShell module."
+        throw $_
+        break
+    }
+
+    Write-Output "ActiveDirectory PowerShell module installed."
+}
+
+Write-Output "Finding and disabling user $SAMAccountName"
+try {
+    Get-ADUser -Identity $SAMAccountName | Disable-ADAccount
+}
+catch {
+    Write-Error "Error disabling user account $SAMAccountName"
+    throw $_
+    break
+}
+Write-Output "Successfully disabled user account $SAMAccountName"
+```
+
+
 v. Register the Hybrid Worker with Azure
 
 vi. Test the Runbook.
