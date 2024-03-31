@@ -118,20 +118,34 @@ Connect the domain controller in your on-prem AD to Azure Arc via the steps in [
 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/920ac605-5298-44a7-962d-9be7be88d16d)
 
-Run the powershell script you get in this page on the on-prem machine
+Run the powershell script you get in this page on the on-prem machine <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/9431cea3-9023-4d0a-a951-528b3d9265dd)
 
+Wait for 15 mins, the on-prem machine should then be found in Azure Arc <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c290c842-3e86-4cf5-a713-53bc72965488)
 
 
-Click the group you just created <br>
+Then go back to automation account, click the hybrid worker group you just created <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/cc0666b5-019f-4d90-9ca5-8d74add1c6a4)
 
+Click the `Add` button <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1dbcad76-eacf-4212-8f78-e37202fd40e0)
 
+Search for the domain controller you just onboard to Azure Arc <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c20034b5-f7a9-41d0-bdc5-8a6aef8ff5d4)
 
+Wait for the process completes <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/fd4da2e0-f4cc-4e7f-aa16-2581c2c9bbc9)
 
 
 vi. Test the Runbook.
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/66fd74bc-5e93-43c5-a291-5befff25832e)
+
+Click `Start` button <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/06348909-1ad4-41c8-a4b0-00e7c6ba6b38)
+
+
 
 vii. Deploy/build the Playbook.
 
