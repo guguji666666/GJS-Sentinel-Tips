@@ -112,6 +112,16 @@ v. Register the Hybrid Worker with Azure
 
 Connect the domain controller in your on-prem AD to Azure Arc via the steps in [Connect hybrid machines to Azure using a deployment script](https://learn.microsoft.com/en-us/azure/azure-arc/servers/onboard-portal#generate-the-installation-script-from-the-azure-portal)
 
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/ab36e054-a7a3-490e-8c13-2eaf6af0b7c7)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/dfa83de8-feb7-4064-8cd8-9af494ce41e4)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/920ac605-5298-44a7-962d-9be7be88d16d)
+
+Run the powershell script you get in this page on the on-prem machine
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/9431cea3-9023-4d0a-a951-528b3d9265dd)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/c290c842-3e86-4cf5-a713-53bc72965488)
 
 
 Click the group you just created <br>
