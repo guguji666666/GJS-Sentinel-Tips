@@ -106,8 +106,20 @@ catch {
 Write-Output "Successfully disabled user account $SAMAccountName"
 ```
 
+The script takes in a **SAMAccountName** parameter which it uses to find the appropriate user and disable the account. This script can be modified to do various other tasks, such as password resets, adding/removing users to/from groups, etc.
 
 v. Register the Hybrid Worker with Azure
+
+Connect the domain controller in your on-prem AD to Azure Arc via the steps in [Connect hybrid machines to Azure using a deployment script](https://learn.microsoft.com/en-us/azure/azure-arc/servers/onboard-portal#generate-the-installation-script-from-the-azure-portal)
+
+
+
+Click the group you just created <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/cc0666b5-019f-4d90-9ca5-8d74add1c6a4)
+
+
+
+
 
 vi. Test the Runbook.
 
