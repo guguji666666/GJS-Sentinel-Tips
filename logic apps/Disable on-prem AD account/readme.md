@@ -27,9 +27,33 @@ Before you begin to review the pre-requisites of deploying a Hybrid Runbook Work
 
 i. Create Automation Account
 
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/15b62a40-fe22-48de-9386-adddb44adfa8)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/7a71ea31-11fc-47ff-9771-0dbe105cc406)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2b68cf1f-1f1e-4b4c-b3a2-9323989459a1)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/a895d981-a920-4b3e-ae08-0ecd5c3551d2)
+
+
 ii. Deploy the Automation Hybrid Worker solution from the Azure Market place
 
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/cdb8e973-b891-4dd4-a2e5-a42666d4bb78)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/0b650527-7350-4c00-94aa-7aa0a16f6e26)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/28a49c62-17be-49a8-acd6-1098494a666c)
+
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/6d81c4b5-cc6e-4cfc-842d-9944a4bfd6c1)
+
+
 iii. Create a Hybrid Worker Group
+
+Navigate to the automation account we just created, select `Hybrid worker groups` <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/bcc06d0d-854f-416c-bea4-00d6b46a8912)
+
+
+
 
 iv. Create a new PowerShell Runbook.
 
