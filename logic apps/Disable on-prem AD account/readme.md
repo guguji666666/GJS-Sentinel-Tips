@@ -174,6 +174,7 @@ $userList | Format-Table -AutoSize
 
 vii. Deploy/build the Playbook.
 
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/af9a4fc1-eb12-44fd-bf98-cb52da1e2c93)
 
 
 
