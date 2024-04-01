@@ -55,6 +55,10 @@ Navigate to the automation account we just created, select `Hybrid worker groups
 Name it with domain name so that we can recognize easily <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/fab1bc98-f8e3-4a4e-a665-949cf661f958)
 
+For **Use Hybrid Worker Credentials**,
+* If we leave it `Default`, it will use `system account` to run the script
+* If we select `Custom`, it will use the `user account` we defined.
+
 Leave it, we will add the worker later <br>
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/333016c4-f688-4c0f-a21d-8bfefff687d1)
 
