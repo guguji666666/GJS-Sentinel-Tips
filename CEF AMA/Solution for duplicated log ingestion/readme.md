@@ -6,11 +6,11 @@ You found CEF logs in the syslog table as well.
 
 ## Solution
 
-1. Export existing **DCR used to collect syslog** to ARM template. Copy the json file to your clipboard, we need it later
+### 1. Export existing **DCR used to collect syslog** to ARM template. Copy the json file to your clipboard, we need it later
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/85d927a1-3e26-470c-a64b-477352710bba)
 
 
-2. In this json file, find the section `"dataFlows"`, add the part i highlighted **"transformKql": "source \r\n| where ProcessName !contains \"CEF\""**
+### 2. In this json file, find the section `"dataFlows"`, add the part i highlighted **"transformKql": "source \r\n| where ProcessName !contains \"CEF\""**
  
 Below is my sample:
 ```json
@@ -104,9 +104,9 @@ Below is my sample:
 ```
 
 
-3. Save the json file we modified
+### 3. Save the json file we modified, we need it later.
 
-4. Deploy new DCR using the ARM template (the json file) we just configured.
+### 4. Deploy new DCR using the ARM template (the json file we just saved) we just configured.
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/dcc5f95c-9cb6-4f30-8424-3949f5ee7aa0)
 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/14d4e5c2-1efb-426b-b8bb-49a78ffbc2fe)
