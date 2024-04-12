@@ -6,7 +6,7 @@ You found CEF logs in the syslog table as well.
 
 ## Solution
 
-1. Export existing syslog DCR to ARM template. Copy the json file to your clipboard, we need it later
+1. Export existing **DCR used to collect syslog** to ARM template. Copy the json file to your clipboard, we need it later
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/85d927a1-3e26-470c-a64b-477352710bba)
 
 
@@ -15,178 +15,93 @@ You found CEF logs in the syslog table as well.
 Below is my sample:
 ```json
 {
-
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-
     "contentVersion": "1.0.0.0",
-
     "parameters": {
-
         "dataCollectionRules_syslog_AMA_name": {
-
             "defaultValue": "syslog-AMA-AvoidCEF",
-
             "type": "String"
-
         },
-
         "workspaces_gjsms400_sentinel1_externalid": {
-
             "defaultValue": "/subscriptions/dxxxxxxxxxxxxxxx/resourceGroups/gjs-sentinel/providers/Microsoft.OperationalInsights/workspaces/gjsms400-sentinel1",
-
             "type": "String"
-
         }
-
     },
-
     "variables": {},
-
     "resources": [
-
         {
-
             "type": "Microsoft.Insights/dataCollectionRules",
-
             "apiVersion": "2022-06-01",
-
             "name": "[parameters('dataCollectionRules_syslog_AMA_name')]",
-
             "location": "eastasia",
-
             "kind": "Linux",
-
             "properties": {
-
                 "dataSources": {
-
                     "syslog": [
-
                         {
-
                             "streams": [
-
                                 "Microsoft-Syslog"
-
                             ],
-
                             "facilityNames": [
-
                                 "auth",
-
                                 "authpriv",
-
                                 "cron",
-
                                 "daemon",
-
                                 "mark",
-
                                 "kern",
-
                                 "local0",
-
                                 "local1",
-
                                 "local2",
-
                                 "local3",
-
                                 "local4",
-
                                 "local5",
-
                                 "local6",
-
                                 "local7",
-
                                 "lpr",
-
                                 "mail",
-
                                 "news",
-
                                 "syslog",
-
                                 "user",
-
                                 "uucp"
-
                             ],
-
                             "logLevels": [
-
                                 "Debug",
-
                                 "Info",
-
                                 "Notice",
-
                                 "Warning",
-
                                 "Error",
-
                                 "Critical",
-
                                 "Alert",
-
                                 "Emergency"
-
                             ],
-
                             "name": "sysLogsDataSource-1688419672"
-
                         }
-
                     ]
-
                 },
-
                 "destinations": {
-
                     "logAnalytics": [
-
                         {
-
                             "workspaceResourceId": "[parameters('workspaces_gjsms400_sentinel1_externalid')]",
-
                             "name": "la-871196239"
-
                         }
-
                     ]
-
                 },
-
                 "dataFlows": [
-
                     {
-
                         "streams": [
-
                             "Microsoft-Syslog"
-
                         ],
-
                         "destinations": [
-
                             "la-871196239"
-
                         ],
-
                         "transformKql": "source \r\n| where ProcessName !contains \"CEF\""
-
                     }
-
                 ]
-
             }
-
         }
-
     ]
-
 }
+```
 
 
 3. Save the json file we modified
