@@ -105,10 +105,13 @@ Below is my sample:
 }
 ```
 
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/cfa303cf-d281-4b23-88e1-f3243543827e)
+
 
 ### 3. Save the json file we modified, we need it later.
 
 ### 4. Deploy new DCR using the ARM template (the json file we just saved) we just configured.
+
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/dcc5f95c-9cb6-4f30-8424-3949f5ee7aa0)
 
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/14d4e5c2-1efb-426b-b8bb-49a78ffbc2fe)
