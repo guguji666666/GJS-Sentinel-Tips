@@ -6,7 +6,7 @@ You found CEF logs in the syslog table as well.
 
 ## Solution
 
-### 1. Export existing **DCR used to collect syslog** to ARM template. Copy the json file to your clipboard, we need it later
+### 1. Export existing `DCR used to collect syslog` to ARM template. Copy the json file to your clipboard, we need it later
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/85d927a1-3e26-470c-a64b-477352710bba)
 
 
