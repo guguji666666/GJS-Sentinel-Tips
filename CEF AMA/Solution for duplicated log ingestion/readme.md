@@ -10,7 +10,7 @@ You found CEF logs in the syslog table as well.
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/85d927a1-3e26-470c-a64b-477352710bba)
 
 
-2. In this json file, find the section "dataFlows", add the part i highlighted "transformKql": "source \r\n| where ProcessName !contains \"CEF\""
+2. In this json file, find the section `"dataFlows"`, add the part i highlighted **"transformKql": "source \r\n| where ProcessName !contains \"CEF\""**
  
 Below is my sample:
 ```json
