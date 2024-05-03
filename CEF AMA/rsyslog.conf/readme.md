@@ -2,7 +2,7 @@
 
 ## Ubuntu/Debian
 
-```json
+```yaml
 # /etc/rsyslog.conf configuration file for rsyslog
 #
 # For more information install rsyslog-doc and see
