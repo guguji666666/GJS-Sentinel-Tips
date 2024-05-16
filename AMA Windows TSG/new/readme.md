@@ -13,3 +13,8 @@ we should be able to locate ‘AgentToubleshooterOutput-<Time>.zip’ file in th
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/30c2f1e0-7b44-4597-9f3b-f072aa3366d4)
 
 
+Also run the powershell command below to list pipelines of AMA <br>
+```pwoershell
+[System.IO.Directory]::GetFiles("\\.\\pipe\\")
+```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/d6626788-2fb0-4845-a98e-bb759ecb2639)
