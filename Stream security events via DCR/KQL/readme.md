@@ -45,3 +45,13 @@ SecurityEvent
 ```
 You can customize the date in TimeGenerated filter
 
+
+### 5. Count securityevents via Computer, SourceComputerId and list results by day
+```kusto
+SecurityEvent
+| where TimeGenerated >= datetime(2024-05-19) and TimeGenerated < datetime(2024-05-23)
+| where Computer contains "<machine name>"
+| summarize Count = count() by Day = bin(TimeGenerated, 1d), Computer, SourceComputerId
+| order by Day desc, Computer asc
+
+
