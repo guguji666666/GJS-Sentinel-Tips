@@ -2,13 +2,13 @@
 
 ## KQL query in workspace
 
-### 1. Disctinct MMA/AMA with SourceComouterId
+#### 1. Distinct MMA/AMA with SourceComouterId
 ```kusto
 Heartbeat
 | distinct Computer, Category, SourceComputerId
 ```
 
-### 2. Count securityevents and list by day
+#### 2. Count securityevents and list by day
 ```kusto
 SecurityEvent
 | where TimeGenerated > ago(14d)
@@ -17,7 +17,7 @@ SecurityEvent
 ```
 
 
-### 3.Count securityevents and list by EventID, Computer, SourceComputerId(used to recognize MMA or AMA)
+#### 3.Count securityevents and list by EventID, Computer, SourceComputerId(used to recognize MMA or AMA)
 ```kusto
 SecurityEvent
 | where TimeGenerated >= datetime(2024-05-22) and TimeGenerated < datetime(2024-05-23)
@@ -32,7 +32,7 @@ SecurityEvent
 You can customize the date in TimeGenerated filter
 
 
-### 4. Check the entry that has same Computer name, different SourceComputerId but with rest of the columns same.
+#### 4. Check the entry that has same Computer name, different SourceComputerId but with rest of the columns same.
 ```kusto
 SecurityEvent
 | where TimeGenerated >= datetime(2024-05-22) and TimeGenerated < datetime(2024-05-23)
@@ -46,7 +46,7 @@ SecurityEvent
 You can customize the date in TimeGenerated filter
 
 
-### 5. Count securityevents via Computer, SourceComputerId and list results by day
+#### 5. Count securityevents via Computer, SourceComputerId and list results by day
 ```kusto
 SecurityEvent
 | where TimeGenerated >= datetime(2024-05-19) and TimeGenerated < datetime(2024-05-23)
