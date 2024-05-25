@@ -53,5 +53,18 @@ SecurityEvent
 | where Computer contains "<machine name>"
 | summarize Count = count() by Day = bin(TimeGenerated, 1d), Computer, SourceComputerId
 | order by Day desc, Computer asc
+```
 
+## Powershell commands on machine
+
+#### 1. Count specific EventID in the past xxx days and list results via date
+
+```powershell
+Get-EventLog -LogName <Log name> -InstanceId <EventID> -After (Get-Date).AddDays(<set the time range>) | Group-Object -Property {$_.TimeGenerated.Date} | Select-Object @{Name="Date";Expression={$_.Name}}, @{Name="Count";Expression={$_.Count}} | Sort-Object Date | Format-Table -AutoSize 
+```
+
+Count event 4688 in past 14 days
+```powershell
+ Get-EventLog -LogName Security -InstanceId 4688 -After (Get-Date).AddDays(-14) | Group-Object -Property {$_.TimeGenerated.Date} | Select-Object @{Name="Date";Expression={$_.Name}}, @{Name="Count";Expression={$_.Count}} | Sort-Object Date | Format-Table -AutoSize 
+```
 
