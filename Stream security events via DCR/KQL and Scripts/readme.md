@@ -69,3 +69,15 @@ Count event 4688 in past 14 days
 ```
 ![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2ea27ced-d77c-4429-a635-97817bd63b8a)
 
+
+List specific event with time and xml view in grid view
+```powershell
+Get-WinEvent -FilterHashtable @{LogName='<log name>';ID=<EventID>} -MaxEvents <Number of event> | Select-Object TimeCreated, Id, @{n='XML';e={$_.ToXml()}} | Out-GridView```
+```
+
+List 100 event 4688 with time and XML view
+```powershell
+Get-WinEvent -FilterHashtable @{LogName='Security';ID=4688} -MaxEvents 100 | Select-Object TimeCreated, Id, @{n='XML';e={$_.ToXml()}} | Out-GridView
+```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/1787db9a-a2ea-4ecd-8a41-808cfe4833dc)
+
