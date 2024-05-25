@@ -67,4 +67,5 @@ Count event 4688 in past 14 days
 ```powershell
  Get-EventLog -LogName Security -InstanceId 4688 -After (Get-Date).AddDays(-14) | Group-Object -Property {$_.TimeGenerated.Date} | Select-Object @{Name="Date";Expression={$_.Name}}, @{Name="Count";Expression={$_.Count}} | Sort-Object Date | Format-Table -AutoSize 
 ```
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/2ea27ced-d77c-4429-a635-97817bd63b8a)
 
