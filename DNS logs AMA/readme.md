@@ -50,6 +50,8 @@ We can also modify the refresh interval here on the master DNS server (DC)
 Install the solution from Sentinel content hub <br>
 <img width="1939" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/66deacbb-3012-4cbf-ac57-4e336202f5a9">
 
+![image](https://github.com/user-attachments/assets/92483571-64ab-432a-8b05-96ecd6720e3c)
+
 Once installed, wait for 5 minutes and navigate to `data connectors`, find this connector and open it<br>
 <img width="1949" alt="image" src="https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/f51c8c7d-2e14-4897-8568-de93202a41de">
 
