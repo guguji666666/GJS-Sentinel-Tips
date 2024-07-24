@@ -65,4 +65,7 @@ kill <PID>
 Then go back to session 1, you will see the results like this <br>
 ![image](https://github.com/user-attachments/assets/4715a7e7-f7d5-48cb-9d52-b11b0891d14e)
 
+The pcap logs should be here <br>
+![image](https://github.com/user-attachments/assets/37c62055-43ba-4255-a6af-e11d6d8dfa21)
+
 
