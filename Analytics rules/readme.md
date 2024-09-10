@@ -130,3 +130,19 @@ IP_Indicators
   | project timestamp = CommonSecurityLog_TimeGenerated, SourceIP, DestinationIP, MessageIP, Message, DeviceVendor, DeviceProduct, IndicatorId, ThreatType, ExpirationDateTime, ConfidenceScore, TI_ipEntity, CS_ipEntity, LogSeverity, DeviceAction, Type
   | where SourceIP !in (watchlist)
 ```
+
+#### 8.Check status of MDC data connectors
+```kql
+resources 
+| where ['type'] =~ "microsoft.security/securityconnectors"
+| extend propertiesJson = parse_json(tostring(['properties']))
+| where propertiesJson contains "enabled"
+| project
+    subid = tostring(split(split(['id'], '/')[2], '/')[0]),
+    connectorname = split(['id'], '/')[-1],
+    environmentName = propertiesJson.environmentName, 
+    environmentType = tostring(propertiesJson.environmentData.environmentType)
+//| where environmentName == "AWS"
+| sort by subid, environmentType
+//| summarize count() by subid
+```
