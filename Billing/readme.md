@@ -6,7 +6,7 @@
 ```kusto
 // Sort billed table in KB/MB/GB
 union withsource= table *
-| where TimeGenerated >= 30d
+| where TimeGenerated >= ago(30d)
 | where _IsBillable == true
 | summarize Size = sum(_BilledSize) by table, _IsBillable 
 | sort by Size desc 
