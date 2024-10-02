@@ -146,3 +146,54 @@ resources
 | sort by subid, environmentType
 //| summarize count() by subid
 ```
+
+#### 9.Generate incidents when data source stops ingestion of logs
+
+SecurityEvent
+```kql
+// Define a subset of SecurityEvent data
+let SecurityEventData = SecurityEvent
+    // Summarize to get the latest TimeGenerated for each combination of Computer, _ResourceId, and SourceComputerId
+    | summarize TimeGenerated=max(TimeGenerated) by Computer, _ResourceId, SourceComputerId
+    // Filter to keep only those events that occurred more than 5 minutes ago, you could modify this threshold
+    | where TimeGenerated < ago(24h);
+// Define a subset of Heartbeat data
+let HeartbeatData = Heartbeat
+    // Get distinct combinations of Computer, Category, and SourceComputerId
+    | distinct Computer, Category, SourceComputerId;
+// Perform an inner join between SecurityEventData and HeartbeatData on SourceComputerId
+SecurityEventData
+// The 'kind=inner' specifies that only matching rows from both datasets will be included
+| join kind=inner (HeartbeatData) on SourceComputerId
+// Select specific columns to include in the final output
+| project Computer, _ResourceId, Category, TimeGenerated
+```
+
+Syslog
+```kql
+// Define a subset of Syslog data
+let SyslogData = Syslog
+    // Summarize to get the latest TimeGenerated for each combination of Computer and _ResourceId
+    | summarize TimeGenerated=max(TimeGenerated) by Computer, _ResourceId
+    // Filter to keep only those events that occurred more than 5 minutes ago, you could modify this threshold
+    | where TimeGenerated < ago(24h);
+// Define a subset of Heartbeat data
+let HeartbeatData = Heartbeat
+    // Get distinct combinations of Computer and Category
+    | distinct Computer, Category;
+// Perform an inner join between SyslogData and HeartbeatData on Computer
+SyslogData
+// The 'kind=inner' specifies that only matching rows from both datasets will be included
+| join kind=inner (HeartbeatData) on Computer
+// Select specific columns to include in the final output
+| project Computer, _ResourceId, Category, TimeGenerated
+```
+
+AzureDiagnostics
+```kql
+AzureDiagnostics
+    // Summarize to get the latest TimeGenerated for each _ResourceId
+    | summarize TimeGenerated=max(TimeGenerated) by _ResourceId
+    // Filter to keep only those events that occurred more than 15 minutes ago, you could modify this threshold
+    | where TimeGenerated < ago(24h)
+```
