@@ -149,7 +149,7 @@ resources
 
 #### 9.Generate incidents when data source stops ingestion of logs
 
-SecurityEvent
+### SecurityEvent
 ```kql
 // Define a subset of SecurityEvent data
 let SecurityEventData = SecurityEvent
@@ -169,7 +169,7 @@ SecurityEventData
 | project Computer, _ResourceId, Category, TimeGenerated
 ```
 
-Syslog
+### Syslog
 ```kql
 // Define a subset of Syslog data
 let SyslogData = Syslog
@@ -189,7 +189,7 @@ SyslogData
 | project Computer, _ResourceId, Category, TimeGenerated
 ```
 
-AzureDiagnostics
+### AzureDiagnostics
 ```kql
 AzureDiagnostics
     // Summarize to get the latest TimeGenerated for each _ResourceId
