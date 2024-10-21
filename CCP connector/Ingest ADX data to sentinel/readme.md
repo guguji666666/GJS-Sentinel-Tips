@@ -29,7 +29,12 @@
 ## 4.Prepare empty ARM template for CCP deployment
 ### Download the empty template [here](https://github.com/guguji666666/GJS-Sentinel-Tips/blob/main/CCP%20connector/Empty%20ARM%20template%20for%20CCP%20connector.json) and open it in vscode
 
+
 ## 5.Run query against ADX table to get sample API response
+### Doc we refer to
+* [REST API overview](https://learn.microsoft.com/en-us/kusto/api/rest/?view=microsoft-fabric)
+* [Get an access token for a service principal using the Azure CLI](https://learn.microsoft.com/en-us/kusto/api/rest/authentication?view=microsoft-fabric#get-an-access-token-for-a-service-principal-using-the-azure-cli)
+![image](https://github.com/user-attachments/assets/3c306471-f80a-49ad-ba49-53ea49c1452c)
 
 ## 6.Create custom table and DCR in UI
 
