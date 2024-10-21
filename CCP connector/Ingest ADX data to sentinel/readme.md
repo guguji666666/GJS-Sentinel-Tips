@@ -23,7 +23,7 @@
 
 
 ## 3.Create table in ADX table
-
+### Follow doc [Create a table in Azure Data Explorer](https://learn.microsoft.com/en-us/azure/data-explorer/create-table-wizard)
 
 
 ## 4.Prepare empty ARM template for CCP deployment
