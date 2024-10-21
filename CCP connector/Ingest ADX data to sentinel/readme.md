@@ -71,8 +71,17 @@ curl -X POST https://login.microsoftonline.com/<tenantId>/oauth2/token -F grant_
 
 ### 4.Save sample response as `adx_api_response.json`, we need it later.
 
-
 ## 6.Create custom table and DCR in UI
+![image](https://github.com/user-attachments/assets/1eb4a1bd-bb13-4884-9593-cc651c61caf1)
+
+Fill in custom table name, new DCR name, DCE name <br>
+![image](https://github.com/user-attachments/assets/a061d077-43d5-48a9-9d79-fc44a23fa204)
+
+Upload the `adx_api_response.json`
+![image](https://github.com/user-attachments/assets/22329e93-568e-4f08-99d4-481437e4a268)
+
+
+![image](https://github.com/user-attachments/assets/4f4f788b-e949-4a47-b23d-070bc62c6cc7)
 
 
 ## 7.Get json of DCR and custom table schema
