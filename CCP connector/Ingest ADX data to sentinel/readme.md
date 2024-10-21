@@ -18,7 +18,8 @@
 
 
 ## 2.Create ADX cluster and database
-### 1.Follow doc [https://learn.microsoft.com/en-us/azure/data-explorer/create-cluster-and-database?tabs=free](https://learn.microsoft.com/en-us/azure/data-explorer/create-cluster-and-database?tabs=free)
+### 1.Follow doc [Quickstart: Create an Azure Data Explorer cluster and database](https://learn.microsoft.com/en-us/azure/data-explorer/create-cluster-and-database?tabs=free)
+
 ### 2.
 
 
