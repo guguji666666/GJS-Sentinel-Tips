@@ -31,10 +31,37 @@
 
 
 ## 5.Run query against ADX table to get sample API response
-### Doc we refer to
+### 1.Doc we refer to
 * [REST API overview](https://learn.microsoft.com/en-us/kusto/api/rest/?view=microsoft-fabric)
 * [Get an access token for a service principal using the Azure CLI](https://learn.microsoft.com/en-us/kusto/api/rest/authentication?view=microsoft-fabric#get-an-access-token-for-a-service-principal-using-the-azure-cli)
 ![image](https://github.com/user-attachments/assets/3c306471-f80a-49ad-ba49-53ea49c1452c)
+
+### 2.Download [postman](https://www.postman.com/downloads/) or [bruno](https://www.usebruno.com/downloads)
+### 3.Run query agains ADX table via REST API
+#### Get token first
+```sh
+curl -X POST https://login.microsoftonline.com/<tenantId>/oauth2/token -F grant_type=client_credentials -F client_id=<appId> -F client_secret=<password> -F resource=https://api.kusto.windows.net
+```
+
+#### Run in Bruno
+* Methond: POST
+* API endpoint: https://<your adx cluster url>/v2/rest/query
+* Body
+```json
+{
+    "db": "<ADX database>",
+    "csl": "<table name in ADX database | <KQL query> >",
+    "properties": {
+        "Options": {
+            "servertimeout": "00:04:00",
+            "queryconsistency": "strongconsistency",
+            "query_language": "csl",
+            "request_readonly": false,
+            "request_readonly_hardline": false
+        }
+    }
+}
+```
 
 ## 6.Create custom table and DCR in UI
 
