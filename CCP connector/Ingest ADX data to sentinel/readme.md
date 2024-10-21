@@ -1,6 +1,11 @@
 # Ingest ADX data to sentinel workspace
 
 ## 1.Register Entra ID
+### 1.Follow the steps in [Quickstart: Register an application with the Microsoft identity platform](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app?tabs=certificate)
+
+### 2.Add api permission belpw
+
+
 
 
 ## 2.Create ADX cluster and database
