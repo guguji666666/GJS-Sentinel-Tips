@@ -1,6 +1,6 @@
 # Ingest ADX data to sentinel workspace
 
-## 1.Register Entra ID
+## 1.Register Entra ID application
 ### 1.Follow the steps in [Quickstart: Register an application with the Microsoft identity platform](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app?tabs=certificate)
 
 ### 2.Add api permission belpw
@@ -8,8 +8,18 @@
 
 ![image](https://github.com/user-attachments/assets/1d2d5fc1-5f3b-409b-9c53-c59fa5362fdd)
 
+### 3.[Create client secret](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#option-3-create-a-new-client-secret)
+
+### 4.Collect the information below
+* Tenant id/Directory id
+* Client id/Application id
+* Client secret
+![image](https://github.com/user-attachments/assets/296e1a19-e98c-4182-8410-d8da2cbb7390)
+
 
 ## 2.Create ADX cluster and database
+### 1.Follow doc [https://learn.microsoft.com/en-us/azure/data-explorer/create-cluster-and-database?tabs=free](https://learn.microsoft.com/en-us/azure/data-explorer/create-cluster-and-database?tabs=free)
+### 2.
 
 
 ## 3.Create table in ADX table
