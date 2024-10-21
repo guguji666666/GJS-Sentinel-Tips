@@ -1,6 +1,9 @@
 # Ingest ADX data to sentinel workspace
 
-## 1.Register Entra ID application
+## 1.Create ADX cluster and database
+### Follow doc [Quickstart: Create an Azure Data Explorer cluster and database](https://learn.microsoft.com/en-us/azure/data-explorer/create-cluster-and-database?tabs=free)
+
+## 2.Register Entra ID application
 ### 1.Follow the steps in [Quickstart: Register an application with the Microsoft identity platform](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app?tabs=certificate)
 
 ### 2.Add API permission below following doc [Create a Microsoft Entra application registration in Azure Data Explorer](https://learn.microsoft.com/en-us/azure/data-explorer/provision-entra-id-app?tabs=portal)
@@ -12,17 +15,11 @@
 
 ### 4.Grant access to ADX database using the app we just createad[Grant app access to the database](https://learn.microsoft.com/en-us/azure/data-explorer/provision-entra-id-app?tabs=portal#grant-a-service-principal-access-to-the-database)
 
-### 4.Collect the information below
+### 5.Collect the information below
 * Tenant id/Directory id
 * Client id/Application id
 * Client secret
 ![image](https://github.com/user-attachments/assets/296e1a19-e98c-4182-8410-d8da2cbb7390)
-
-
-## 2.Create ADX cluster and database
-### 1.Follow doc [Quickstart: Create an Azure Data Explorer cluster and database](https://learn.microsoft.com/en-us/azure/data-explorer/create-cluster-and-database?tabs=free)
-
-### 2.
 
 
 ## 3.Create table in ADX table
