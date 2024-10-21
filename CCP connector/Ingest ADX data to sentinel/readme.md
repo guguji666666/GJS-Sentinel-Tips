@@ -96,6 +96,7 @@ Go ahead and complete deployment of custom table and DCR
 #### 2.Save API response to `Custom_Table_Schema.json`
 
 ## 8.Fill in ARM template for CCP deployment
+#### Downdload ARM template for CCP with ADX integration [here](https://github.com/guguji666666/GJS-Sentinel-Tips/blob/main/CCP%20connector/Ingest%20ADX%20data%20to%20sentinel/ARM_ADX_Template.json), i add the comments to the parts we shoukd pay attention to.
 
 ## 9.Connect data connector in sentinel
 ![image](https://github.com/user-attachments/assets/089440f0-ec73-4e14-83c6-4420d2303dc7)
