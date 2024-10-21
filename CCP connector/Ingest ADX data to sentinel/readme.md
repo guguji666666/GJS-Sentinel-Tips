@@ -37,7 +37,9 @@
 ![image](https://github.com/user-attachments/assets/3c306471-f80a-49ad-ba49-53ea49c1452c)
 
 ### 2.Download [postman](https://www.postman.com/downloads/) or [bruno](https://www.usebruno.com/downloads)
+
 ### 3.Run query agains ADX table via REST API
+
 #### Get token first
 ```sh
 curl -X POST https://login.microsoftonline.com/<tenantId>/oauth2/token -F grant_type=client_credentials -F client_id=<appId> -F client_secret=<password> -F resource=https://api.kusto.windows.net
@@ -62,6 +64,13 @@ curl -X POST https://login.microsoftonline.com/<tenantId>/oauth2/token -F grant_
     }
 }
 ```
+
+#### Sample response
+![image](https://github.com/user-attachments/assets/0ad2c6c0-86a2-407e-99e8-888a4cab0352)
+
+
+### 4.Save sample response as `adx_api_response.json`, we need it later.
+
 
 ## 6.Create custom table and DCR in UI
 
