@@ -92,7 +92,8 @@ source | extend TimeGenerated = now()
 Go ahead and complete deployment of custom table and DCR
 
 ## 7.Get json of DCR and custom table schema
-
+#### 1.Refer to doc [Tables - Get](https://learn.microsoft.com/en-us/rest/api/loganalytics/tables/get?view=rest-loganalytics-2023-09-01&tabs=HTTP)
+#### 2.Save API response to `Custom_Table_Schema.json`
 
 ## 8.Fill in ARM template for CCP deployment
 
