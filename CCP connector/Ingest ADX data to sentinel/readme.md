@@ -98,5 +98,8 @@ Go ahead and complete deployment of custom table and DCR
 ## 8.Fill in ARM template for CCP deployment
 
 ## 9.Connect data connector in sentinel
+![image](https://github.com/user-attachments/assets/089440f0-ec73-4e14-83c6-4420d2303dc7)
 
 ## 10.Verify connection
+![image](https://github.com/user-attachments/assets/f70c38cf-65b8-4d0b-8fb0-3c5b536b0df8)
+
