@@ -46,8 +46,8 @@ curl -X POST https://login.microsoftonline.com/<tenantId>/oauth2/token -F grant_
 ```
 
 #### Run in Bruno
-* Methond: POST
-* API endpoint: https://(your adx clsuter url)/v2/rest/query
+* Methond: `POST`
+* API endpoint: `https://(your adx clsuter url)/v2/rest/query`
 * Body
 ```json
 {
