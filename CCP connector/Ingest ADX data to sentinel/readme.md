@@ -3,7 +3,7 @@
 ## 1.Register Entra ID application
 ### 1.Follow the steps in [Quickstart: Register an application with the Microsoft identity platform](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app?tabs=certificate)
 
-### 2.Add api permission below following doc [Create a Microsoft Entra application registration in Azure Data Explorer](https://learn.microsoft.com/en-us/azure/data-explorer/provision-entra-id-app?tabs=portal)
+### 2.Add API permission below following doc [Create a Microsoft Entra application registration in Azure Data Explorer](https://learn.microsoft.com/en-us/azure/data-explorer/provision-entra-id-app?tabs=portal)
 ![image](https://github.com/user-attachments/assets/24460f3a-3fee-4baa-a9b8-8c3c93456884)
 
 ![image](https://github.com/user-attachments/assets/1d2d5fc1-5f3b-409b-9c53-c59fa5362fdd)
