@@ -1,0 +1,333 @@
+
+    "samples": [
+      // Sample 1
+      {
+        "sourcesystem": "TIsource-example1",
+        "indicators": [
+          {
+            "indicatorType": "IP",
+            "indicatorValue": "192.168.1.1",
+            "description": "Malicious IP address from recent attack",
+            "severity": "High",
+            "confidence": 80,
+            "tags": ["phishing", "malware"],
+            "pattern": "[ipv4-addr:value = '192.168.1.1']",
+            "pattern_type": "stix",
+            "valid_from": "2023-01-01T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--b2707c2a-b3fa-4e6a-8e6f-12b3a3f8f430",
+            "created": "2023-01-01T00:00:00Z",
+            "modified": "2023-01-01T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 2
+      {
+        "sourcesystem": "TIsource-example2",
+        "indicators": [
+          {
+            "indicatorType": "URL",
+            "indicatorValue": "http://malicious-example.com",
+            "description": "Malicious URL hosting phishing page",
+            "severity": "Medium",
+            "confidence": 70,
+            "tags": ["phishing"],
+            "pattern": "[url:value = 'http://malicious-example.com']",
+            "pattern_type": "stix",
+            "valid_from": "2023-02-01T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--55be8e02-f2e8-4c39-98ec-bdef1ee4e9bb",
+            "created": "2023-02-01T00:00:00Z",
+            "modified": "2023-02-01T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 3
+      {
+        "sourcesystem": "TIsource-example3",
+        "indicators": [
+          {
+            "indicatorType": "Hash",
+            "indicatorValue": "d41d8cd98f00b204e9800998ecf8427e",
+            "description": "MD5 hash of known malicious file",
+            "severity": "High",
+            "confidence": 90,
+            "tags": ["malware", "trojan"],
+            "pattern": "[file:hashes.'MD5' = 'd41d8cd98f00b204e9800998ecf8427e']",
+            "pattern_type": "stix",
+            "valid_from": "2023-03-01T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--aa6e02b6-d6bc-4f6c-bb2b-bc034d289f03",
+            "created": "2023-03-01T00:00:00Z",
+            "modified": "2023-03-01T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 4
+      {
+        "sourcesystem": "TIsource-example4",
+        "indicators": [
+          {
+            "indicatorType": "Domain",
+            "indicatorValue": "malicious-domain.com",
+            "description": "Domain used for C2 communication",
+            "severity": "Critical",
+            "confidence": 95,
+            "tags": ["C2", "APT"],
+            "pattern": "[domain-name:value = 'malicious-domain.com']",
+            "pattern_type": "stix",
+            "valid_from": "2023-04-01T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--8de9f835-3be9-41b0-a6e6-0797b4c74e8d",
+            "created": "2023-04-01T00:00:00Z",
+            "modified": "2023-04-01T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 5
+      {
+        "sourcesystem": "TIsource-example5",
+        "indicators": [
+          {
+            "indicatorType": "IP",
+            "indicatorValue": "203.0.113.0",
+            "description": "Suspicious IP related to attack",
+            "severity": "Medium",
+            "confidence": 75,
+            "tags": ["suspicious-activity"],
+            "pattern": "[ipv4-addr:value = '203.0.113.0']",
+            "pattern_type": "stix",
+            "valid_from": "2023-05-01T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--63f8b6d5-266b-4e00-8d12-c897728df22d",
+            "created": "2023-05-01T00:00:00Z",
+            "modified": "2023-05-01T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 6
+      {
+        "sourcesystem": "TIsource-example6",
+        "indicators": [
+          {
+            "indicatorType": "URL",
+            "indicatorValue": "http://another-malicious-url.com",
+            "description": "Known malicious URL linked to malware distribution",
+            "severity": "High",
+            "confidence": 85,
+            "tags": ["malware", "phishing"],
+            "pattern": "[url:value = 'http://another-malicious-url.com']",
+            "pattern_type": "stix",
+            "valid_from": "2023-05-15T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--82a211e8-0eb7-470e-91ea-10b553d6e6b8",
+            "created": "2023-05-15T00:00:00Z",
+            "modified": "2023-05-15T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 7
+      {
+        "sourcesystem": "TIsource-example7",
+        "indicators": [
+          {
+            "indicatorType": "IP",
+            "indicatorValue": "198.51.100.1",
+            "description": "Backdoor IP detected",
+            "severity": "Critical",
+            "confidence": 95,
+            "tags": ["APT", "backdoor"],
+            "pattern": "[ipv4-addr:value = '198.51.100.1']",
+            "pattern_type": "stix",
+            "valid_from": "2023-06-01T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--f5a9e4be-8fb7-4a8f-86b8-f7f80793eafe",
+            "created": "2023-06-01T00:00:00Z",
+            "modified": "2023-06-01T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 8
+      {
+        "sourcesystem": "TIsource-example8",
+        "indicators": [
+          {
+            "indicatorType": "Domain",
+            "indicatorValue": "suspicious-domain.com",
+            "description": "Domain used in spear-phishing campaigns",
+            "severity": "High",
+            "confidence": 88,
+            "tags": ["phishing", "spear-phishing"],
+            "pattern": "[domain-name:value = 'suspicious-domain.com']",
+            "pattern_type": "stix",
+            "valid_from": "2023-07-01T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--451de50e-8c6b-4306-abea-72776b3624f5",
+            "created": "2023-07-01T00:00:00Z",
+            "modified": "2023-07-01T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 9
+      {
+        "sourcesystem": "TIsource-example9",
+        "indicators": [
+          {
+            "indicatorType": "Hash",
+            "indicatorValue": "e99a18c428cb38d5f260853678922e03",
+            "description": "SHA-256 hash of ransomware file",
+            "severity": "Critical",
+            "confidence": 95,
+            "tags": ["ransomware"],
+            "pattern": "[file:hashes.SHA-256 = 'e99a18c428cb38d5f260853678922e03']",
+            "pattern_type": "stix",
+            "valid_from": "2023-08-01T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--b221f81a-4e18-4f21-8808-69dba42c73a8",
+            "created": "2023-08-01T00:00:00Z",
+            "modified": "2023-08-01T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 10
+      {
+        "sourcesystem": "TIsource-example10",
+        "indicators": [
+          {
+            "indicatorType": "URL",
+            "indicatorValue": "http://another-phishing-url.com",
+            "description": "URL linked to a phishing campaign",
+            "severity": "Medium",
+            "confidence": 70,
+            "tags": ["phishing"],
+            "pattern": "[url:value = 'http://another-phishing-url.com']",
+            "pattern_type": "stix",
+            "valid_from": "2023-08-15T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--38e8c98d-fb3b-4428-9ba9-cd8d6c9e5a37",
+            "created": "2023-08-15T00:00:00Z",
+            "modified": "2023-08-15T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 11
+      {
+        "sourcesystem": "TIsource-example11",
+        "indicators": [
+          {
+            "indicatorType": "IP",
+            "indicatorValue": "203.0.113.42",
+            "description": "DDoS attack source IP",
+            "severity": "High",
+            "confidence": 85,
+            "tags": ["DDoS"],
+            "pattern": "[ipv4-addr:value = '203.0.113.42']",
+            "pattern_type": "stix",
+            "valid_from": "2023-09-01T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--4933d3d2-7182-4a47-9861-09bcdac6294f",
+            "created": "2023-09-01T00:00:00Z",
+            "modified": "2023-09-01T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 12
+      {
+        "sourcesystem": "TIsource-example12",
+        "indicators": [
+          {
+            "indicatorType": "Domain",
+            "indicatorValue": "malicious-email-domain.com",
+            "description": "Domain associated with email phishing",
+            "severity": "Medium",
+            "confidence": 75,
+            "tags": ["phishing", "email"],
+            "pattern": "[domain-name:value = 'malicious-email-domain.com']",
+            "pattern_type": "stix",
+            "valid_from": "2023-09-15T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--e548b219-6893-4e82-9373-a7431d522e34",
+            "created": "2023-09-15T00:00:00Z",
+            "modified": "2023-09-15T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 13
+      {
+        "sourcesystem": "TIsource-example13",
+        "indicators": [
+          {
+            "indicatorType": "Hash",
+            "indicatorValue": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+            "description": "SHA-256 hash of malicious executable",
+            "severity": "Critical",
+            "confidence": 95,
+            "tags": ["malware"],
+            "pattern": "[file:hashes.SHA-256 = 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb']",
+            "pattern_type": "stix",
+            "valid_from": "2023-10-01T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--ee30fbc6-df46-4e87-90a0-0c690312de42",
+            "created": "2023-10-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 14
+      {
+        "sourcesystem": "TIsource-example14",
+        "indicators": [
+          {
+            "indicatorType": "IP",
+            "indicatorValue": "198.51.100.2",
+            "description": "Malicious IP address identified",
+            "severity": "High",
+            "confidence": 85,
+            "tags": ["malware"],
+            "pattern": "[ipv4-addr:value = '198.51.100.2']",
+            "pattern_type": "stix",
+            "valid_from": "2023-10-15T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--bcf764a3-3441-47bb-8bda-771d5a52a0bb",
+            "created": "2023-10-15T00:00:00Z",
+            "modified": "2023-10-15T00:00:00Z"
+          }
+        ]
+      },
+      // Sample 15
+      {
+        "sourcesystem": "TIsource-example15",
+        "indicators": [
+          {
+            "indicatorType": "URL",
+            "indicatorValue": "http://malicious-site.com",
+            "description": "Site known for hosting malware",
+            "severity": "Critical",
+            "confidence": 95,
+            "tags": ["malware", "drive-by download"],
+            "pattern": "[url:value = 'http://malicious-site.com']",
+            "pattern_type": "stix",
+            "valid_from": "2023-11-01T00:00:00Z",
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--49d7d29c-51ad-4858-bd07-15c38fa53d44",
+            "created": "2023-11-01T00:00:00Z",
+            "modified": "2023-11-01T00:00:00Z"
+          }
+        ]
+      }
+    ]
