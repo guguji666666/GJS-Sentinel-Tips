@@ -430,7 +430,7 @@
                                 "request": {
                                     "apiEndpoint": "[[parameters('apiEndpoint')]",
                                     "rateLimitQPS": 10,
-                                    "queryWindowInMin": 5,
+                                    "queryWindowInMin": 720, //pull data every 12h
                                     "httpMethod": "POST", //input method, in ADX integration use POST
                                     "retryCount": 3,
                                     "timeoutInSeconds": 60,
