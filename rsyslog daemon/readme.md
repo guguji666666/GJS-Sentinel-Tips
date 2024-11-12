@@ -2,21 +2,15 @@
 
 ## Update rsyslog daemon on redhar
 
-## Original version
+## Original version (sample)
+![image](https://github.com/user-attachments/assets/8c061c26-caf5-4e24-b1b5-f010935702af)
 
-<img src=":/9f4bafa720a7420584f4b97b955aed0a" alt="bfc264272ee57ee5c5e60caae03d62fb.png" width="1026" height="389">
 
 ## List versions available
+![image](https://github.com/user-attachments/assets/d49344e4-7f8a-465d-b8be-2d308f38e6a6)
 
-![4db81d6ef28e1d65c2c5925eab955e40.png](:/49272a79eec14ae5bef163eb43c00b28)
-
-&nbsp;
-
-&nbsp;
 
 ## Update rsyslog daemon
-
-&nbsp;
 
 To update the `rsyslog` daemon from version 8.24 to 8.34 on Red Hat Enterprise Linux (RHEL) 7.9, you'll generally follow these steps. However, keep in mind that direct package updates depend on the package being available in the repositories your system is configured to use. As of my last update, RHEL's default repositories may not always contain the very latest versions of software like `rsyslog` due to Red Hat's focus on stability and security. If the specific version you're looking for isn't available in the default or EPEL repositories, you might need to use or configure additional repositories or compile the software from source.
 
@@ -27,6 +21,7 @@ Before making changes to critical system services like `rsyslog`, it's a good pr
 ```bash
 sudo cp /etc/rsyslog.conf /etc/rsyslog.conf.backup
 ```
+
 
 ### Step 2: Check Your Current `rsyslog` Version
 
@@ -51,8 +46,7 @@ Before attempting to upgrade, check which versions of `rsyslog` are available in
 ```bash
 sudo yum list available --showduplicates rsyslog
 ```
-
-### ![14028cddec44c0a928b4d41fc7fe544a.png](:/e26b76c5e98c4d41b260a52b34164091)
+![image](https://github.com/user-attachments/assets/6a82de9a-695a-4129-97cf-c229d8ca07d9)
 
 ### Step 5: Install a Specific Version of `rsyslog`
 
