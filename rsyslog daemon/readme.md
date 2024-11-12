@@ -1,6 +1,6 @@
 # Update rsyslog daemon
 
-## Update rsyslog daemon on redhar
+## Update rsyslog daemon on redhat
 
 ## Original version (sample)
 ![image](https://github.com/user-attachments/assets/8c061c26-caf5-4e24-b1b5-f010935702af)
