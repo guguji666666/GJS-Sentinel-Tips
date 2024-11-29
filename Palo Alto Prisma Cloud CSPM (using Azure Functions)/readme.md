@@ -1,6 +1,6 @@
 # Palo Alto Prisma Cloud CSPM (using Azure Functions)
 
-## ARM template for deployment
+## ARM template 1 for deployment
 ### Create storage account and function app with public access disabled
 ```json
 {
@@ -276,5 +276,244 @@ App Service Configuration:
 
 #### Function app
 ![image](https://github.com/user-attachments/assets/71d69b34-18da-4d41-945b-0a2a33a94db4)
+
+
+## ARM template 2 for deployment
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "FunctionName": {
+            "defaultValue": "PrismaCloud",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 11
+        },
+        "PrismaCloudAPIUrl": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "PrismaCloudAccessKeyID": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "PrismaCloudSecretKey": {
+            "type": "securestring",
+            "defaultValue": ""
+        },
+        "AzureSentinelWorkspaceId": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "AzureSentinelSharedKey": {
+            "type": "securestring",
+            "defaultValue": ""
+        },
+        "AppInsightsWorkspaceResourceID": {
+            "type": "string",
+            "metadata": {
+                "description": "Use 'Log Analytic Workspace-->Properties' blade having 'Resource ID' property value."
+            }
+        }
+    },
+    "variables": {
+        "FunctionName": "[concat(toLower(parameters('FunctionName')), uniqueString(resourceGroup().id))]",
+        "StorageSuffix": "[environment().suffixes.storage]",
+        "LogAnaltyicsUri": "[replace(environment().portal, 'https://portal', concat('https://', toLower(parameters('AzureSentinelWorkspaceId')), '.ods.opinsights'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Insights/components",
+            "apiVersion": "2020-02-02",
+            "name": "[variables('FunctionName')]",
+            "location": "[resourceGroup().location]",
+            "kind": "web",
+            "properties": {
+                "Application_Type": "web",
+                "ApplicationId": "[variables('FunctionName')]",
+                "WorkspaceResourceId": "[parameters('AppInsightsWorkspaceResourceID')]"
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2021-09-01",
+            "name": "[tolower(variables('FunctionName'))]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Deny"
+                },
+                "supportsHttpsTrafficOnly": true,
+                "encryption": {
+                    "services": {
+                        "file": {
+                            "keyType": "Account",
+                            "enabled": true
+                        },
+                        "blob": {
+                            "keyType": "Account",
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                },
+                "publicNetworkAccess": "Disabled"
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/blobServices",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(tolower(variables('FunctionName')), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', tolower(variables('FunctionName')))]"
+            ],
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "properties": {
+                "cors": {
+                    "corsRules": []
+                },
+                "deleteRetentionPolicy": {
+                    "enabled": false
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/fileServices",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(tolower(variables('FunctionName')), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', tolower(variables('FunctionName')))]"
+            ],
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "properties": {
+                "cors": {
+                    "corsRules": []
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2021-02-01",
+            "name": "[variables('FunctionName')]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', tolower(variables('FunctionName')))]",
+                "[resourceId('Microsoft.Insights/components', variables('FunctionName'))]"
+            ],
+            "kind": "functionapp,linux",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "name": "[variables('FunctionName')]",
+                "httpsOnly": true,
+                "clientAffinityEnabled": true,
+                "alwaysOn": true,
+                "reserved": true,
+                "siteConfig": {
+                    "linuxFxVersion": "python|3.11",
+                    "ipSecurityRestrictions": [
+                        {
+                            "ipAddress": "0.0.0.0/0",
+                            "action": "Deny",
+                            "tag": "Default",
+                            "priority": 100,
+                            "name": "DenyAll"
+                        },
+                        {
+                            "ipAddress": "Any",
+                            "action": "Deny",
+                            "priority": 2147483647,
+                            "name": "Deny all",
+                            "description": "Deny all access"
+                        }
+                    ],
+                    "publicNetworkAccess": "Disabled" // Disable public network access
+                }
+            },
+            "resources": [
+                {
+                    "apiVersion": "2021-02-01",
+                    "type": "config",
+                    "name": "appsettings",
+                    "dependsOn": [
+                        "[concat('Microsoft.Web/sites/', variables('FunctionName'))]"
+                    ],
+                    "properties": {
+                        "FUNCTIONS_EXTENSION_VERSION": "~4",
+                        "FUNCTIONS_WORKER_RUNTIME": "python",
+                        "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(resourceId('Microsoft.Insights/components', variables('FunctionName')), '2020-02-02').InstrumentationKey]",
+                        "APPLICATIONINSIGHTS_CONNECTION_STRING": "[reference(resourceId('Microsoft.Insights/components', variables('FunctionName')), '2020-02-02').ConnectionString]",
+                        "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', toLower(variables('FunctionName')),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', tolower(variables('FunctionName'))), '2021-09-01').keys[0].value, ';EndpointSuffix=',toLower(variables('StorageSuffix')))]",
+                        "PrismaCloudAPIUrl": "[parameters('PrismaCloudAPIUrl')]",
+                        "PrismaCloudSecretKey": "[parameters('PrismaCloudSecretKey')]",
+                        "PrismaCloudAccessKeyID": "[parameters('PrismaCloudAccessKeyID')]",
+                        "AzureSentinelWorkspaceId": "[parameters('AzureSentinelWorkspaceId')]",
+                        "AzureSentinelSharedKey": "[parameters('AzureSentinelSharedKey')]",
+                        "logAnalyticsUri": "[variables('LogAnaltyicsUri')]",
+                        "WEBSITE_RUN_FROM_PACKAGE": "https://aka.ms/sentinel-PaloAltoPrismaCloud-functionapp",
+                        "LogType": "alert, audit"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(tolower(variables('FunctionName')), '/default/azure-webjobs-hosts')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', tolower(variables('FunctionName')), 'default')]"
+            ],
+            "properties": {
+                "publicAccess": "None"
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(tolower(variables('FunctionName')), '/default/azure-webjobs-secrets')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', tolower(variables('FunctionName')), 'default')]"
+            ],
+            "properties": {
+                "publicAccess": "None"
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(tolower(variables('FunctionName')), '/default/', tolower(variables('FunctionName')))]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts/fileServices', tolower(variables('FunctionName')), 'default')]"
+            ],
+            "properties": {
+                "shareQuota": 5120
+            }
+        }
+    ]
+}
+```
+### Storage account deployed
+![image](https://github.com/user-attachments/assets/cb578bd8-337e-4618-a6f3-0cf8af9eb0b2)
+
+
+### Function app deployed
+![image](https://github.com/user-attachments/assets/d8953b33-69fc-4b1b-a48f-bcc78aae58fa)
+
 
 
