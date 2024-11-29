@@ -228,3 +228,15 @@
     ]
   }
 ```
+
+### Deployment with custom template following [Quickstart: Create and deploy ARM templates by using the Azure portal](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal)
+
+
+### Verify resources created
+#### Storage account
+![image](https://github.com/user-attachments/assets/eb13ef88-2ec6-48d3-b666-f6311966ae32)
+
+#### Function app
+![image](https://github.com/user-attachments/assets/71d69b34-18da-4d41-945b-0a2a33a94db4)
+
+
