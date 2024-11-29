@@ -1,6 +1,7 @@
 # Palo Alto Prisma Cloud CSPM (using Azure Functions)
 
-## Create storage account and function app with public access disabled
+## ARM template for deployment
+### Create storage account and function app with public access disabled
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
