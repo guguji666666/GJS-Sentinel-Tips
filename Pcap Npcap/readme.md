@@ -9,16 +9,16 @@ Step 1: Identify Installation Path
 * For Npcap, the default installation path is: `C:\Program Files\Npcap\`
 
 Step 2: Enable Auditing on the Directory
-	1.	Navigate to the installation directory of PCAP or NPCAP.
-	2.	Right-click the directory and select Properties.
-	3.	Go to the Security tab and click Advanced.
-	4.	Switch to the Auditing tab and click Add.
-	5.	In the “Principal” field, enter Everyone (or a specific user/group to monitor).
-	6.	Select Successful and Failed checkboxes for permissions like:
-	•	Modify
-	•	Write
-	•	Delete
-	7.	Click OK to apply the auditing settings.
+1. Navigate to the installation directory of PCAP or NPCAP.
+2. Right-click the directory and select Properties.
+3. Go to the Security tab and click Advanced.
+4. Switch to the Auditing tab and click Add.
+5. In the “Principal” field, enter Everyone (or a specific user/group to monitor).
+6. Select Successful and Failed checkboxes for permissions like:
+* Modify
+* Write
+* Delete
+7. Click OK to apply the auditing settings.
 
 Step 3: Review Audit Logs
 	1.	Open Event Viewer by pressing Win + R, typing eventvwr, and pressing Enter.
