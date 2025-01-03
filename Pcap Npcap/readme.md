@@ -5,10 +5,8 @@
 ### 1. Enable File System Auditing
 
 Step 1: Identify Installation Path
-	•	For WinPcap, the default installation path is:
-	•	C:\Program Files (x86)\WinPcap\
-	•	For Npcap, the default installation path is:
-	•	C:\Program Files\Npcap\
+* For WinPcap, the default installation path is: `C:\Program Files (x86)\WinPcap\`
+* For Npcap, the default installation path is: `C:\Program Files\Npcap\`
 
 Step 2: Enable Auditing on the Directory
 	1.	Navigate to the installation directory of PCAP or NPCAP.
@@ -79,3 +77,15 @@ Sysmon (System Monitor)
     </RegistryEvent>
 </EventFiltering>
 ```
+5.	Analyze Logs:
+	•	Logs are stored in the Windows Event Viewer under Applications and Services Logs > Microsoft > Windows > Sysmon.
+
+Process Monitor (ProcMon)
+	1.	Download and Run ProcMon:
+	•	Get Process Monitor from Microsoft Sysinternals.
+	2.	Set Filters:
+	•	Filter for:
+	•	Path contains "WinPcap" or "Npcap"
+	•	Operation types like WriteFile, SetValueKey.
+	3.	Monitor in Real-Time:
+	•	Analyze the captured events for any changes or modifications.
