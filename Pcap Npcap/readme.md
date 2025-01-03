@@ -1,91 +1,84 @@
 # Pcap and Npcap
 
-## Monitor change
+# 监控 PCAP 或 NPCAP 组件变更的详细步骤
 
-### 1. Enable File System Auditing
+---
 
-Step 1: Identify Installation Path
-* For WinPcap, the default installation path is: `C:\Program Files (x86)\WinPcap\`
-* For Npcap, the default installation path is: `C:\Program Files\Npcap\`
+## **1. 启用文件系统审核**
 
-Step 2: Enable Auditing on the Directory
-1. Navigate to the installation directory of PCAP or NPCAP.
-2. Right-click the directory and select Properties.
-3. Go to the Security tab and click Advanced.
-4. Switch to the Auditing tab and click Add.
-5. In the “Principal” field, enter Everyone (or a specific user/group to monitor).
-6. Select Successful and Failed checkboxes for permissions like:
-* Modify
-* Write
-* Delete
-7. Click OK to apply the auditing settings.
+### **步骤 1：确定安装路径**
+- 对于 **WinPcap**，默认路径：
+  - `C:\Program Files (x86)\WinPcap\`
+- 对于 **Npcap**，默认路径：
+  - `C:\Program Files\Npcap\`
 
-Step 3: Review Audit Logs
-	1.	Open Event Viewer by pressing Win + R, typing eventvwr, and pressing Enter.
-	2.	Navigate to Windows Logs > Security.
-	3.	Look for Event ID 4663:
-	•	This indicates an access attempt on a file or directory.
+### **步骤 2：启用目录的审核**
+1. 找到 PCAP 或 NPCAP 的安装目录。
+2. 右键单击目录，选择 **属性**。
+3. 转到 **安全** 标签并点击 **高级**。
+4. 切换到 **审核** 标签，然后点击 **添加**。
+5. 在 "主体" 字段中输入 `Everyone`（或特定的用户/组）。
+6. 勾选 **成功** 和 **失败**，启用以下权限的日志记录：
+   - 修改 (Modify)
+   - 写入 (Write)
+   - 删除 (Delete)
+7. 点击 **确定** 以保存审核设置。
 
+### **步骤 3：查看审核日志**
+1. 打开 **事件查看器**（按下 `Win + R`，输入 `eventvwr`，按下回车）。
+2. 导航到 **Windows 日志 > 安全**。
+3. 查找 **事件 ID 4663**：
+   - 表示对文件或目录的访问尝试。
 
-### 2. Monitor Registry Changes
+---
 
-Step 1: Locate Relevant Registry Keys
-	•	For Npcap, locate:
-	•	HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\npf
-	•	For WinPcap, locate:
-	•	HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinPcap
+## **2. 监控注册表变更**
 
-Step 2: Enable Registry Auditing
-	1.	Open the Windows Registry Editor by pressing Win + R, typing regedit, and pressing Enter.
-	2.	Navigate to the relevant key.
-	3.	Right-click the key and select Permissions.
-	4.	Click Advanced, then go to the Auditing tab.
-	5.	Click Add:
-	•	Enter Everyone (or a specific user/group to monitor).
-	•	Enable auditing for:
-	•	Set Value
-	•	Create Subkey
-	•	Delete Subkey
-	6.	Save the settings.
+### **步骤 1：定位相关注册表键**
+- 对于 **Npcap**，找到：
+  - `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\npf`
+- 对于 **WinPcap**，找到：
+  - `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinPcap`
 
-Step 3: Review Registry Audit Logs
-	1.	Open Event Viewer.
-	2.	Navigate to Windows Logs > Security.
-	3.	Look for Event ID 4657:
-	•	This indicates a modification to a registry key or value.
+### **步骤 2：启用注册表审核**
+1. 打开注册表编辑器（按下 `Win + R`，输入 `regedit`，按下回车）。
+2. 导航到相关注册表键。
+3. 右键单击键，选择 **权限**。
+4. 点击 **高级**，然后转到 **审核** 标签。
+5. 点击 **添加**：
+   - 输入 `Everyone`（或特定的用户/组）。
+   - 启用以下权限的日志记录：
+     - **设置值 (Set Value)**
+     - **创建子键 (Create Subkey)**
+     - **删除子键 (Delete Subkey)**
+6. 保存设置。
 
+### **步骤 3：查看注册表审核日志**
+1. 打开 **事件查看器**。
+2. 导航到 **Windows 日志 > 安全**。
+3. 查找 **事件 ID 4657**：
+   - 表示对注册表键或值的修改。
 
-### 3. Use Real-Time Monitoring Tools
+---
 
-Sysmon (System Monitor)
-	1.	Download Sysmon:
-	•	Download the Sysinternals Suite from Microsoft’s Sysinternals website.
-	2.	Install Sysmon:
-	•	Run sysmon -accepteula -i to install Sysmon with a basic configuration.
-	3.	Create a Configuration File:
-	•	Use a configuration file that includes rules to monitor the specific directories or registry keys for PCAP/NPCAP.
-	4.	Example Rule:
- ```xml
-<EventFiltering>
-    <FileCreateTime onmatch="include">
-        <TargetFilename condition="contains">WinPcap</TargetFilename>
-        <TargetFilename condition="contains">Npcap</TargetFilename>
-    </FileCreateTime>
-    <RegistryEvent onmatch="include">
-        <TargetObject condition="contains">\Services\npf</TargetObject>
-        <TargetObject condition="contains">\Services\WinPcap</TargetObject>
-    </RegistryEvent>
-</EventFiltering>
-```
-5.	Analyze Logs:
-	•	Logs are stored in the Windows Event Viewer under Applications and Services Logs > Microsoft > Windows > Sysmon.
+## **3. 使用实时监控工具**
 
-Process Monitor (ProcMon)
-	1.	Download and Run ProcMon:
-	•	Get Process Monitor from Microsoft Sysinternals.
-	2.	Set Filters:
-	•	Filter for:
-	•	Path contains "WinPcap" or "Npcap"
-	•	Operation types like WriteFile, SetValueKey.
-	3.	Monitor in Real-Time:
-	•	Analyze the captured events for any changes or modifications.
+### **Sysmon (系统监控)**
+1. **下载 Sysmon**：
+   - 从 [微软 Sysinternals 网站](https://learn.microsoft.com/en-us/sysinternals/)下载 Sysmon。
+2. **安装 Sysmon**：
+   - 运行 `sysmon -accepteula -i` 以安装 Sysmon 并使用默认配置。
+3. **创建配置文件**：
+   - 使用配置文件定义规则，监控与 PCAP/NPCAP 相关的目录和注册表键。
+4. **示例规则**：
+   ```xml
+   <EventFiltering>
+       <FileCreateTime onmatch="include">
+           <TargetFilename condition="contains">WinPcap</TargetFilename>
+           <TargetFilename condition="contains">Npcap</TargetFilename>
+       </FileCreateTime>
+       <RegistryEvent onmatch="include">
+           <TargetObject condition="contains">\Services\npf</TargetObject>
+           <TargetObject condition="contains">\Services\WinPcap</TargetObject>
+       </RegistryEvent>
+   </EventFiltering>
