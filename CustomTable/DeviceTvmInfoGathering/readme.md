@@ -57,12 +57,16 @@ Post
 ```
 https://api.securitycenter.microsoft.com/api/advancedqueries/run
 ```
-### Body
+### Body (you can customize the query inside)
 ```json
 {
     "Query":"DeviceTvmInfoGathering | where Timestamp >= ago(7d)"
 }
 ```
 
+Sample API response <br>
+![image](https://github.com/user-attachments/assets/18093f84-1747-4043-aeaf-8a6388418b1d)
 
+Find section `results` in response, copy to your notepad <br>
+![image](https://github.com/user-attachments/assets/87244455-42a1-4940-94a8-bb681aea57e4)
 
