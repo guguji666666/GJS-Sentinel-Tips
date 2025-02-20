@@ -432,6 +432,7 @@ Search for role `Monitoring Metrics Publisher` <br>
 #### 5. Manually run logic app and verify running history
 ![image](https://github.com/user-attachments/assets/dee7ec6a-1ee3-4436-8947-d23ae71e3798)
 
+![image](https://github.com/user-attachments/assets/9d87cd22-8723-48d7-9e77-2e821a939953)
 
 
 
