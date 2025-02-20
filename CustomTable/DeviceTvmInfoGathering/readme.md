@@ -170,4 +170,42 @@ Go ahead to complete creation <br>
 
 ![image](https://github.com/user-attachments/assets/5b6c07c1-12d5-43f9-95f7-c3197c7c40b1)
 
+## 5. Create logic app
+#### For test purpose we create logic app with consumption plan
+![image](https://github.com/user-attachments/assets/fa47564b-fb2c-477b-a710-9e2ba1faaa4e)
+
+#### 1. Set Recurrence to run logic app in specific frequency
+![image](https://github.com/user-attachments/assets/27843f07-ef2c-4fce-9490-95dbd96ffeb1)
+
+
+#### 2. Add http action --- Run Defender Advance Hunting query
+* Method
+```
+post
+```
+* URI
+```
+https://api.securitycenter.microsoft.com/api/advancedqueries/run
+```
+* Body
+```json
+{
+  "Query": "DeviceTvmInfoGathering | where Timestamp >= ago(7d)"
+}
+```
+* Authentication --- Authority
+```
+https://login.windows.net/
+```
+* Audience
+```
+https://api.securitycenter.microsoft.com
+```
+* Tenant,Client ID and secret could be found in application registration in step 2
+![image](https://github.com/user-attachments/assets/ad3e452a-eac9-4d3b-851e-4e1e74286adf)
+
+
+
+
+
 
