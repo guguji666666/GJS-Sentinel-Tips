@@ -67,11 +67,26 @@ https://api.securitycenter.microsoft.com/api/advancedqueries/run
 Sample API response <br>
 ![image](https://github.com/user-attachments/assets/18093f84-1747-4043-aeaf-8a6388418b1d)
 
-Find section `results` in response, copy to your notepad <br>
+Find section `results` in response, copy to your notepad, let's say `AH_results.json` <br>
 ![image](https://github.com/user-attachments/assets/87244455-42a1-4940-94a8-bb681aea57e4)
 
 ## 4. Create custom table in sentinel workspace
 
 ### Navigate to Log Analytics workspace > your workspace > table, click `+ Create`
 ![image](https://github.com/user-attachments/assets/ce319deb-d10d-4447-befe-3aa739b06245)
+
+### Basic settings
+* New Table name
+* New Data collection rule name
+* Data collection endpoint used
+![image](https://github.com/user-attachments/assets/d2d846b3-2636-4e5a-9f76-feb7524b3af1)
+
+### Define new custom table schema
+Upload sample file --- `AH_results.json` we saved before <br>
+![image](https://github.com/user-attachments/assets/214a832e-5c27-4cbe-ad52-2c8956c135fb)
+
+Enter transformation editor <br>
+![image](https://github.com/user-attachments/assets/449d50a2-ec27-4689-8617-134dfbf31d7d)
+
+
 
