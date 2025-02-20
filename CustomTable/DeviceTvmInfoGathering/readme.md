@@ -1,4 +1,4 @@
-# Stream data from defender `DeviceTvmInfoGathering` table to sentinel worksapce
+# Stream data from XDR `DeviceTvmInfoGathering` table to sentinel worksapce
 ## 1. Entra ID application registration
 ![image](https://github.com/user-attachments/assets/054bec50-1447-48cb-9186-ac2de597c82f)
 
