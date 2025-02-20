@@ -70,3 +70,8 @@ Sample API response <br>
 Find section `results` in response, copy to your notepad <br>
 ![image](https://github.com/user-attachments/assets/87244455-42a1-4940-94a8-bb681aea57e4)
 
+## 4. Create custom table in sentinel workspace
+
+### Navigate to Log Analytics workspace > your workspace > table, click `+ Create`
+![image](https://github.com/user-attachments/assets/ce319deb-d10d-4447-befe-3aa739b06245)
+
