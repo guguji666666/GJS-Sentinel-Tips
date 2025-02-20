@@ -1,4 +1,4 @@
-# Stream XDR `DeviceTvmInfoGathering` data to sentinel worksapce
+# Stream XDR `DeviceTvmInfoGathering` data to sentinel workspace
 ## Reference doc
 * [Advanced hunting API](https://learn.microsoft.com/en-us/defender-endpoint/api/run-advanced-query-api#example)
 * [Tutorial: Send data to Azure Monitor using Logs ingestion API (Resource Manager templates)](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-api?tabs=dcr#assign-permissions-to-a-dcr)
