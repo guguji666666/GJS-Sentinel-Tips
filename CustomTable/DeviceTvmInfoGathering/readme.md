@@ -1,4 +1,9 @@
-# Stream data from XDR `DeviceTvmInfoGathering` table to sentinel worksapce
+# Stream XDR `DeviceTvmInfoGathering` data to sentinel worksapce
+## Reference doc
+* [Advanced hunting API](https://learn.microsoft.com/en-us/defender-endpoint/api/run-advanced-query-api#example)
+* [Tutorial: Send data to Azure Monitor using Logs ingestion API (Resource Manager templates)](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-api?tabs=dcr#assign-permissions-to-a-dcr)
+* [Logs Ingestion API in Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/logs-ingestion-api-overview#rest-api-call)
+
 ## 1. Entra ID application registration
 ![image](https://github.com/user-attachments/assets/054bec50-1447-48cb-9186-ac2de597c82f)
 
