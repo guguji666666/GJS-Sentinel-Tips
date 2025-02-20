@@ -204,7 +204,197 @@ https://api.securitycenter.microsoft.com
 * Tenant,Client ID and secret could be found in application registration in step 2
 ![image](https://github.com/user-attachments/assets/ad3e452a-eac9-4d3b-851e-4e1e74286adf)
 
+#### 3. Add action --- parse json
+![image](https://github.com/user-attachments/assets/77df6146-1c0b-4ebe-8237-f8c14ecb91b1)
 
+Schema <br>
+```json
+{
+    "properties": {
+        "Results": {
+            "items": {
+                "properties": {
+                    "AdditionalFields": {
+                        "properties": {
+                            "AvEnginePublishTime": {},
+                            "AvEngineRing": {},
+                            "AvEngineUpdateTime": {},
+                            "AvEngineVersion": {},
+                            "AvIsEngineUptodate": {},
+                            "AvIsPlatformUptodate": {},
+                            "AvIsSignatureUptoDate": {},
+                            "AvMode": {},
+                            "AvModeDataRefreshTime": {},
+                            "AvPlatformPublishTime": {},
+                            "AvPlatformRing": {},
+                            "AvPlatformUpdateTime": {},
+                            "AvPlatformVersion": {},
+                            "AvScanResults": {},
+                            "AvSignatureDataRefreshTime": {},
+                            "AvSignaturePublishTime": {},
+                            "AvSignatureRing": {},
+                            "AvSignatureUpdateTime": {},
+                            "AvSignatureVersion": {},
+                            "Bootiful_Mind_status": {},
+                            "CVE_2022_30190_Mitigated": {},
+                            "CloudProtectionState": {},
+                            "EBPFStatus": {},
+                            "IsWindowsLtscVersionRunning": {},
+                            "LocalCveScannerExecuted": {},
+                            "Log4JEnvironmentVariableMitigation": {
+                                "type": "string"
+                            },
+                            "Log4jLocalScanVulnerable": {},
+                            "Log4j_CVE_2021_44228": {},
+                            "SchUseStrongCrypto35": {},
+                            "SchUseStrongCrypto35Wow6432": {},
+                            "SchUseStrongCrypto40": {},
+                            "SchUseStrongCrypto40Wow6432": {},
+                            "Spring4Shell_CVE_2022_22965": {},
+                            "SslClient20": {},
+                            "SslClient30": {},
+                            "SslServer20": {},
+                            "SslServer30": {},
+                            "SystemDefaultTlsVersions35": {},
+                            "SystemDefaultTlsVersions35Wow6432": {},
+                            "SystemDefaultTlsVersions40": {},
+                            "SystemDefaultTlsVersions40Wow6432": {},
+                            "TlsClient10": {},
+                            "TlsClient11": {},
+                            "TlsClient12": {},
+                            "TlsServer10": {},
+                            "TlsServer11": {},
+                            "TlsServer12": {},
+                            "WdavorHeartbeatEventType": {}
+                        },
+                        "type": "object"
+                    },
+                    "DeviceId": {
+                        "type": "string"
+                    },
+                    "DeviceName": {
+                        "type": "string"
+                    },
+                    "LastSeenTime": {
+                        "type": "string"
+                    },
+                    "MachineGroup": {
+                        "type": "string"
+                    },
+                    "OSPlatform": {
+                        "type": "string"
+                    },
+                    "SourceSystem": {
+                        "type": "string"
+                    },
+                    "TenantId": {
+                        "type": "string"
+                    },
+                    "Timestamp": {
+                        "type": "string"
+                    },
+                    "Type": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Timestamp",
+                    "LastSeenTime",
+                    "DeviceId",
+                    "DeviceName",
+                    "OSPlatform",
+                    "AdditionalFields",
+                    "TenantId",
+                    "Type",
+                    "SourceSystem",
+                    "MachineGroup"
+                ],
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "Schema": {
+            "items": {
+                "properties": {
+                    "Name": {
+                        "type": "string"
+                    },
+                    "Type": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Name",
+                    "Type"
+                ],
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "Stats": {
+            "properties": {
+                "ExecutionTime": {
+                    "type": "number"
+                },
+                "dataset_statistics": {
+                    "items": {
+                        "properties": {
+                            "table_row_count": {
+                                "type": "integer"
+                            },
+                            "table_size": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "table_row_count",
+                            "table_size"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "resource_usage": {
+                    "properties": {
+                        "cache": {
+                            "properties": {
+                                "disk": {},
+                                "memory": {}
+                            },
+                            "type": "object"
+                        },
+                        "cpu": {
+                            "properties": {
+                                "kernel": {
+                                    "type": "string"
+                                },
+                                "total cpu": {
+                                    "type": "string"
+                                },
+                                "user": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "memory": {
+                            "properties": {
+                                "peak_per_node": {
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "type": "object"
+}
+```
 
 
 
