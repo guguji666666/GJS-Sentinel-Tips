@@ -70,6 +70,75 @@ Sample API response <br>
 Find section `results` in response, copy to your notepad, let's say `AH_results.json` <br>
 ![image](https://github.com/user-attachments/assets/87244455-42a1-4940-94a8-bb681aea57e4)
 
+We pick one entry in the results section <br>
+![image](https://github.com/user-attachments/assets/cf6b6937-5dd4-41d1-9aba-24067909bcf6)
+
+Or you can use the json below directly <br>
+```json
+{
+    "Timestamp": "2025-02-19T06:09:28Z",
+    "LastSeenTime": "2025-01-20T14:55:23Z",
+    "DeviceId": "fd4977d8bef46e122a91fc57fb96c362de70c425",
+    "DeviceName": "yyds-ad2025.testing.com",
+    "OSPlatform": "Windows11",
+    "AdditionalFields": {
+        "AvMode": null,
+        "AvEngineVersion": null,
+        "AvSignatureVersion": null,
+        "AvPlatformVersion": null,
+        "AvScanResults": null,
+        "AvModeDataRefreshTime": null,
+        "CloudProtectionState": null,
+        "SslClient20": null,
+        "SslClient30": null,
+        "SslServer20": null,
+        "SslServer30": null,
+        "TlsClient10": null,
+        "TlsClient11": null,
+        "TlsClient12": null,
+        "TlsServer10": null,
+        "TlsServer11": null,
+        "TlsServer12": null,
+        "SchUseStrongCrypto35": null,
+        "SchUseStrongCrypto35Wow6432": null,
+        "SchUseStrongCrypto40": null,
+        "SchUseStrongCrypto40Wow6432": null,
+        "SystemDefaultTlsVersions35": null,
+        "SystemDefaultTlsVersions35Wow6432": null,
+        "SystemDefaultTlsVersions40": null,
+        "SystemDefaultTlsVersions40Wow6432": null,
+        "Log4j_CVE_2021_44228": null,
+        "LocalCveScannerExecuted": null,
+        "Log4jLocalScanVulnerable": null,
+        "Log4JEnvironmentVariableMitigation": "false",
+        "IsWindowsLtscVersionRunning": null,
+        "AvEngineUpdateTime": null,
+        "AvSignatureUpdateTime": null,
+        "AvPlatformUpdateTime": null,
+        "AvIsSignatureUptoDate": null,
+        "AvIsEngineUptodate": null,
+        "AvIsPlatformUptodate": null,
+        "WdavorHeartbeatEventType": null,
+        "AvSignaturePublishTime": null,
+        "AvPlatformPublishTime": null,
+        "AvEnginePublishTime": null,
+        "AvSignatureRing": null,
+        "AvPlatformRing": null,
+        "AvEngineRing": null,
+        "Spring4Shell_CVE_2022_22965": null,
+        "CVE_2022_30190_Mitigated": null,
+        "Bootiful_Mind_status": null,
+        "AvSignatureDataRefreshTime": null,
+        "EBPFStatus": null
+    },
+    "TenantId": "",
+    "Type": "DeviceTvmInfoGathering",
+    "SourceSystem": "",
+    "MachineGroup": ""
+}
+```
+
+
 ## 4. Create custom table in sentinel workspace
 
 ### Navigate to Log Analytics workspace > your workspace > table, click `+ Create`
