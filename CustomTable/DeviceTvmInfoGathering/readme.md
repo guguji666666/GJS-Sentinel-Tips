@@ -7,8 +7,8 @@
 ![image](https://github.com/user-attachments/assets/acd2911a-594c-4e21-bfd2-917251eda292)
 
 ## 2. Collect information below
-### Tenant id (Directory id)
 ### Application id (Client id)
+### Tenant id (Directory id)
 ![image](https://github.com/user-attachments/assets/2a7ebc4b-0dcf-4d44-9779-9e8434f065d9)
 ### Client secret
 ![image](https://github.com/user-attachments/assets/fe0df5d1-fb3a-4106-8cdd-0ae7f1ef51d9)
