@@ -178,7 +178,7 @@ Go ahead to complete creation <br>
 ![image](https://github.com/user-attachments/assets/27843f07-ef2c-4fce-9490-95dbd96ffeb1)
 
 
-#### 2. Add http action --- Run Defender Advance Hunting query
+#### 2. Add action --- HTTP, Run Defender Advance Hunting query
 * Method
 ```
 post
@@ -207,7 +207,7 @@ https://api.securitycenter.microsoft.com
 #### 3. Add action --- parse json
 ![image](https://github.com/user-attachments/assets/77df6146-1c0b-4ebe-8237-f8c14ecb91b1)
 
-Schema <br>
+Schema (your could use below json directly) <br>
 ```json
 {
     "properties": {
@@ -395,6 +395,44 @@ Schema <br>
     "type": "object"
 }
 ```
+
+#### 4. Add action --- HTTP, ingest data to custom table via log ingestion API
+url
+```
+{DataCollectionEndpoint}/dataCollectionRules/{DCR Immutable ID}/streams/{Stream Name}?api-version=2023-01-01
+```
+
+Find {DataCollectionEndpoint} <br>
+![image](https://github.com/user-attachments/assets/5e48d9ee-4017-434f-8d15-16c93934b57f)
+
+Find {DCR Immutable ID <br>
+![image](https://github.com/user-attachments/assets/01bfeed6-fd91-478a-8327-da3fcc25bbee)
+
+Find DCR {Stream Name} <br>
+![image](https://github.com/user-attachments/assets/668222e1-f651-4609-ad8c-805679c338cc)
+
+![image](https://github.com/user-attachments/assets/59c67a4c-5d87-4a77-a319-031639ca147e)
+
+Audience <br>
+```
+https://monitor.azure.com
+```
+
+![image](https://github.com/user-attachments/assets/c749df98-d4eb-42d7-860b-af8ac2cdff5a)
+
+
+#### 4. Assign role to logic app to use the DCR we created
+
+![image](https://github.com/user-attachments/assets/7ccf7e80-7ac6-476e-852e-7592d50990e1)
+
+Search for role `Monitoring Metrics Publisher` <br>
+![image](https://github.com/user-attachments/assets/c5633305-1a4e-4023-9ba1-d77fe7c01353)
+
+
+#### 5. Manually run logic app and verify running history
+![image](https://github.com/user-attachments/assets/dee7ec6a-1ee3-4436-8947-d23ae71e3798)
+
+
 
 
 
