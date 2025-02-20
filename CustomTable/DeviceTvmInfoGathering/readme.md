@@ -157,5 +157,12 @@ Upload sample file --- `AH_results.json` we saved before <br>
 Enter transformation editor <br>
 ![image](https://github.com/user-attachments/assets/449d50a2-ec27-4689-8617-134dfbf31d7d)
 
+Add the query below, run it and apply <br>
+```kusto
+source
+| extend TimeGenerated = Timestamp
+| project-away TenantId, Type
+```
+![image](https://github.com/user-attachments/assets/0759d57c-18da-4c55-88a7-6ca94126ec6a)
 
 
