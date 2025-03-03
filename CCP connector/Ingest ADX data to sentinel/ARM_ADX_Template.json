@@ -461,7 +461,7 @@
                                 },
                                 "response": {
                                     "eventsJsonPaths": [
-                                        "$" //keep root part of output
+                                        "$" //keep root part of output or make change according to API response, for exmaple $.data
                                     ]
                                 }
                             }
