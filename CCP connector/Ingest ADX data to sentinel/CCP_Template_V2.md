@@ -1,0 +1,541 @@
+# CCP_Template_V2
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "minLength": 1,
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Not used, but needed to pass the arm-ttk test, 'Location-Should-Not-Be-Hardcoded'. Instead the `workspace-location` derived from the log analytics workspace is used."
+            }
+        },
+        "workspace-location": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "[concat('Region to deploy solution resources -- separate from location selection',parameters('location'))]"
+            }
+        },
+        "subscription": {
+            "defaultValue": "[last(split(subscription().id, '/'))]",
+            "type": "string",
+            "metadata": {
+                "description": "subscription id where Microsoft Sentinel is configured"
+            }
+        },
+        "resourceGroupName": {
+            "defaultValue": "[resourceGroup().name]",
+            "type": "string",
+            "metadata": {
+                "description": "resource group name where Microsoft Sentinel is configured"
+            }
+        },
+        "workspace": {
+            "defaultValue": "",
+            "type": "string",
+            "metadata": {
+                "description": "the log analytics workspace enabled for Microsoft Sentinel"
+            }
+        }
+    },
+    // Next is the variables section here
+    "variables": {
+        "workspaceResourceId": "[resourceId('microsoft.OperationalInsights/Workspaces', parameters('workspace'))]",
+        "_solutionName": "Solution name", // Enter your solution name, need customize
+        "_solutionVersion": "3.0.0", // must be 3.0.0 or above
+        "_solutionAuthor": "Contoso", // Enter the name of the author, need customize
+        "_packageIcon": "<img src=\"{LogoLink}\" width=\"75px\" height=\"75px\">", // Enter the http link for the logo. NOTE: This field is only recommended for Azure Global Cloud.
+        "_solutionId": "azuresentinel.azure-sentinel-solution-azuresentinel.azure-sentinel-MySolution", // Enter a name for your solution with this format but exchange the 'MySolution' portion, need customize
+        "dataConnectorVersionConnectorDefinition": "1.0.0",
+        "dataConnectorVersionConnections": "1.0.0",
+        "_solutionTier": "Community", // This designates the appropriate support - all custom data connectors are "Community"
+        "_dataConnectorContentIdConnectorDefinition": "MySolutionTemplateConnectorDefinition", // Enter a name for the connector, need customize
+        "dataConnectorTemplateNameConnectorDefinition": "[concat(parameters('workspace'),'-dc-',uniquestring(variables('_dataConnectorContentIdConnectorDefinition')))]",
+        "_dataConnectorContentIdConnections": "MySolutionTemplateConnections", // Enter a name for the connections this connector makes, need customize
+        "dataConnectorTemplateNameConnections": "[concat(parameters('workspace'),'-dc-',uniquestring(variables('_dataConnectorContentIdConnections')))]",
+        "asimTableName": "ExampleConnectorAlerts_CL" // Enter the custom table name - not needed if you are ingesting data into standard tables, need customize
+        // Enter more variables as needed "":""
+    },
+    // Next is the resources sections here
+    "resources": [
+        // resource section 1 - contentTemplates
+        {
+            "type": "Microsoft.OperationalInsights/workspaces/providers/contentTemplates",
+            "apiVersion": "2023-04-01-preview",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/', variables('dataConnectorTemplateNameConnectorDefinition'), variables('dataConnectorVersionConnectorDefinition'))]",
+            "location": "[parameters('workspace-location')]",
+            "dependsOn": [
+                "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
+            ],
+            "properties": {
+                "contentId": "[variables('_dataConnectorContentIdConnectorDefinition')]",
+                "displayName": "[concat(variables('_solutionName'), variables('dataConnectorTemplateNameConnectorDefinition'))]",
+                "contentKind": "DataConnector",
+                "mainTemplate": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "[variables('dataConnectorVersionConnectorDefinition')]",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat('DataConnector-', variables('_dataConnectorContentIdConnectorDefinition')))]",
+                            "apiVersion": "2022-01-01-preview",
+                            "type": "Microsoft.OperationalInsights/workspaces/providers/metadata",
+                            "properties": {
+                                "parentId": "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/dataConnectorDefinitions', variables('_dataConnectorContentIdConnectorDefinition'))]",
+                                "contentId": "[variables('_dataConnectorContentIdConnectorDefinition')]",
+                                "kind": "DataConnector",
+                                "version": "[variables('dataConnectorVersionConnectorDefinition')]",
+                                "source": {
+                                    "sourceId": "[variables('_solutionId')]",
+                                    "name": "[variables('_solutionName')]",
+                                    "kind": "Solution"
+                                },
+                                "author": {
+                                    "name": "[variables('_solutionAuthor')]"
+                                },
+                                "support": {
+                                    "name": "[variables('_solutionAuthor')]",
+                                    "tier": "[variables('_solutionTier')]"
+                                },
+                                "dependencies": {
+                                    "criteria": [
+                                        {
+                                            "version": "[variables('dataConnectorVersionConnections')]",
+                                            "contentId": "[variables('_dataConnectorContentIdConnections')]",
+                                            "kind": "ResourcesDataConnector"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "name": "MyDCRV1", // Enter your DCR name, need customize
+                            "apiVersion": "2021-09-01-preview",
+                            "type": "Microsoft.Insights/dataCollectionRules",
+                            "location": "[parameters('workspace-location')]",
+                            "kind": null,
+                            "properties": {
+                                // Enter your DCR properties here. You can find it from json view of DCR
+                                //  Consider using these variables:
+                                //  "dataCollectionEndpointId": "[concat('/subscriptions/',parameters('subscription'),'/resourceGroups/',parameters('resourceGroupName'),'/providers/Microsoft.Insights/dataCollectionEndpoints/',parameters('workspace'))]",
+                                //  "workspaceResourceId": "[variables('workspaceResourceId')]",
+                            }
+                        },
+                        {
+                            "name": "[variables('asimTableName')]",
+                            "apiVersion": "2022-10-01",
+                            "type": "Microsoft.OperationalInsights/workspaces/tables",
+                            "location": "[parameters('workspace-location')]",
+                            "kind": null,
+                            "properties": {
+                                // need customize
+                                // Enter your log analytics table schema here. You can get custom table schema following doc https://learn.microsoft.com/en-us/rest/api/loganalytics/tables/get?view=rest-loganalytics-2023-09-01&tabs=HTTP
+                                //  Consider using this variable for the name property:
+                                //  "name": "[variables('asimTableName')]",
+                            }
+                        }
+                        // Enter more tables if needed.
+                    ]
+                },
+                "packageKind": "Solution",
+                "packageVersion": "[variables('_solutionVersion')]",
+                "packageName": "[variables('_solutionName')]",
+                "contentProductId": "[concat(substring(variables('_solutionId'), 0, 50),'-','dc','-', uniqueString(concat(variables('_solutionId'),'-','DataConnector','-',variables('_dataConnectorContentIdConnectorDefinition'),'-', variables('dataConnectorVersionConnectorDefinition'))))]",
+                "packageId": "[variables('_solutionId')]",
+                "contentSchemaVersion": "3.0.0",
+                "version": "[variables('_solutionVersion')]"
+            }
+        },
+        // resource 2 section here
+        // resource section 2 - dataConnectorDefinitions
+        {
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',variables('_dataConnectorContentIdConnectorDefinition'))]",
+            "apiVersion": "2022-09-01-preview",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectorDefinitions",
+            "location": "[parameters('workspace-location')]",
+            "kind": "Customizable",
+            "properties": { //Enter your data connector definition properties here, need customize
+                //"connectorUiConfig": {
+                //	"graphQueriesTableName": "[variables('asimTableName')]",
+                //}, 
+                "connectorUiConfig": {
+                    "title": "<connector titile shown in UI", //input the title in sentinel UI, need customize
+                    "publisher": "<publisher name>", //input publisher name, need customize
+                    "descriptionMarkdown": "Get ADX data via [REST API overview](https://learn.microsoft.com/en-us/kusto/api/rest/?view=microsoft-fabric) and [Query/management HTTP request](https://learn.microsoft.com/en-us/kusto/api/rest/request?view=microsoft-fabric) into Microsoft Sentinel",
+                    "graphQueriesTableName": "<custom table name>", //input the custom name table being monitored, need customize
+                    "graphQueries": [ // need customize queries
+                        {
+                            "metricName": "Total data received",
+                            "legend": "logs ingested from ADX database",
+                            "baseQuery": "{{graphQueriesTableName}}\n| take 100"
+                        }
+                    ],
+                    "sampleQueries": [
+                        {
+                            "description": "Get a sample of logs ingested from ADX database", //input customed description here
+                            "query": "{{graphQueriesTableName}}\n | take 50"
+                        }
+                    ],
+                    "dataTypes": [
+                        {
+                            "name": "{{graphQueriesTableName}}",
+                            "lastDataReceivedQuery": "{{graphQueriesTableName}}\n |summarize Time = max  (TimeGenerated)\n|where isnotempty(Time)"
+                        }
+                    ],
+                    "connectivityCriteria": [
+                        {
+                            "type": "HasDataConnectors"
+                        }
+                    ],
+                    "availability": {
+                        "isPreview": false
+                    },
+                    "permissions": {
+                        "resourceProvider": [
+                            {
+                                "provider": "Microsoft.OperationalInsights/workspaces",
+                                "permissionsDisplayText": "Read and Write permissions are required.",
+                                "providerDisplayName": "Workspace",
+                                "scope": "Workspace",
+                                "requiredPermissions": {
+                                    "write": true,
+                                    "read": true,
+                                    "delete": true
+                                }
+                            }
+                        ],
+                        "customs": [ //input customed info in prerequisites, need customize
+                            {
+                                "name": "ADX API access",
+                                "description": "Access to the ADX API through Oauth are required. You need to registered an application in Entra ID follow the steps in [Create a Microsoft Entra application registration in Azure Data Explorer](https://learn.microsoft.com/en-us/azure/data-explorer/provision-entra-id-app?tabs=portal#use-application-credentials-to-access-a-database)."
+                            }
+                        ]
+                    },
+                    "instructionSteps": [ //input your customed instructions in CCP data connector, need customize
+                        {
+                            "description": "1) Register app in Entra ID following the doc [Create a Microsoft Entra application registration in Azure Data Explorer](https:\/\/learn.microsoft.com\/en-us\/azure\/data-explorer\/provision-entra-id-app?tabs=portal#use-application-credentials-to-access-a-database) \r\n2) Configure the API permission required. \r\n3) Grant service principal access to the database.\r\n4) \"Client Grant Type\": \"Authorization Code\".\r\n5) \"Access Token Type\": \"Bearer\".\r\n6) Configure the \"Redirection URI\": https:\/\/portal.azure.com\/TokenAuthorize\/ExtensionName\/Microsoft_Azure_Security_Insights.\r\n7) Create a new Client secret.\r\n8) Copy the Client ID and Secret before navigateing away from the page, and store it securely.\r\n9) Copy token endpoint V2 and Authorization endpoint V2 from application overview page.\r\n10) Provide the required information below and click \"Connect\". To complete the authentication, you will also need an account with System Auditing permissions to authorize the API Client connection.\n",
+                            "instructions": [
+                                {
+                                    "type": "Textbox",
+                                    "parameters": {
+                                        "label": "Authorization Endpoint",
+                                        "placeholder": "<Authorization endpoint V1/V2>", //input authorization endpoint here, for ADX scenario we use V1 endpoint
+                                        "type": "text",
+                                        "name": "authorizationEndpoint"
+                                    }
+                                },
+                                {
+                                    "type": "Textbox",
+                                    "parameters": {
+                                        "label": "Token Endpoint",
+                                        "placeholder": "<Token endpoint V1/V2>", //input token endpoint here, for ADX it should v1 endpoint
+                                        "type": "text",
+                                        "name": "tokenEndpoint"
+                                    }
+                                },
+                                {
+                                    "type": "Textbox",
+                                    "parameters": {
+                                        "label": "ADX API Endpoint",
+                                        "placeholder": "<ADX cluster endpoint/v2/rest/query>", //This is for ADX scenario, if your are using other data source, replace it with the exact url
+                                        "type": "text",
+                                        "name": "apiEndpoint"
+                                    }
+                                },
+                                {
+                                    "type": "OAuthForm",
+                                    "parameters": {
+                                        "clientIdLabel": "Client ID",
+                                        "clientSecretLabel": "Client Secret",
+                                        "connectButtonLabel": "Connect",
+                                        "disconnectButtonLabel": "Disconnect"
+                                    }
+                                }
+                            ],
+                            "title": "Connect to ADX Cluster to start collecting database table logs in Microsoft Sentinel" //input your customed title
+                        }
+                    ]
+                }
+            }
+        },
+        // resource 3 section here
+        // resource section 3 - metadata
+        {
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat('DataConnector-', variables('_dataConnectorContentIdConnectorDefinition')))]",
+            "apiVersion": "2022-01-01-preview",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/metadata",
+            "properties": {
+                "parentId": "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/dataConnectorDefinitions', variables('_dataConnectorContentIdConnectorDefinition'))]",
+                "contentId": "[variables('_dataConnectorContentIdConnectorDefinition')]",
+                "kind": "DataConnector",
+                "version": "[variables('dataConnectorVersionConnectorDefinition')]",
+                "source": {
+                    "sourceId": "[variables('_solutionId')]",
+                    "name": "[variables('_solutionName')]",
+                    "kind": "Solution"
+                },
+                "author": {
+                    "name": "[variables('_solutionAuthor')]"
+                },
+                "support": {
+                    "name": "[variables('_solutionAuthor')]",
+                    "tier": "[variables('_solutionTier')]"
+                },
+                "dependencies": {
+                    "criteria": [
+                        {
+                            "version": "[variables('dataConnectorVersionConnections')]",
+                            "contentId": "[variables('_dataConnectorContentIdConnections')]",
+                            "kind": "ResourcesDataConnector"
+                        }
+                    ]
+                }
+            }
+        },
+        // resource 4 section here
+        // resource section 4 - contentTemplates
+        {
+            "type": "Microsoft.OperationalInsights/workspaces/providers/contentTemplates",
+            "apiVersion": "2023-04-01-preview",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/', variables('dataConnectorTemplateNameConnections'), variables('dataConnectorVersionConnections'))]",
+            "location": "[parameters('workspace-location')]",
+            "dependsOn": [
+                "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
+            ],
+            "properties": {
+                "contentId": "[variables('_dataConnectorContentIdConnections')]",
+                "displayName": "[concat(variables('_solutionName'), variables('dataConnectorTemplateNameConnections'))]",
+                "contentKind": "ResourcesDataConnector",
+                "mainTemplate": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "[variables('dataConnectorVersionConnections')]",
+                    "parameters":
+                    // These parameters are used by the data connector primarily as properties for the administrator to enter in the UI when configuring the connector
+                    {
+                        "clientSecret": {
+                            "defaultValue": "-NA-",
+                            "type": "string",
+                            "minLength": 1,
+                            "metadata": {
+                                "description": "clientSecret"
+                            }
+                        },
+                        "clientId": {
+                            "defaultValue": "-NA-",
+                            "type": "string",
+                            "minLength": 1,
+                            "metadata": {
+                                "description": "ClientId"
+                            }
+                        },
+                        "authorizationCode": {
+                            "defaultValue": "-NA-",
+                            "type": "string",
+                            "minLength": 1,
+                            "metadata": {
+                                "description": "authorization code"
+                            }
+                        },
+                        "tokenEndpoint": {
+                            "defaultValue": "",
+                            "type": "string",
+                            "metadata": {
+                                "description": "Token endpoint required for ADX authentication through Oauth 2.0."
+                            }
+                        },
+                        "authorizationEndpoint": {
+                            "defaultValue": "",
+                            "type": "string",
+                            "metadata": {
+                                "description": "Authorzation endpoint required for ADX API authentication through Oauth 2.0."
+                            }
+                        },
+                        "apiEndpoint": { //input your customed definition here
+                            "defaultValue": "", //we can leave it empty
+                            "type": "string",
+                            "metadata": {
+                                "description": "ADX cluster logs Rest Api endpoint." //input customed description of metadata
+                            }
+                        },
+                        "connectorDefinitionName": {
+                            "defaultValue": "",
+                            "type": "string",
+                            "minLength": 1,
+                            "metadata": {
+                                "description": "connectorDefinitionName"
+                            }
+                        },
+                        "workspace": {
+                            "defaultValue": "[parameters('workspace')]",
+                            "type": "string"
+                        },
+                        "dcrConfig": {
+                            "type": "object",
+                            "defaultValue": {
+                                "dataCollectionEndpoint": "data collection Endpoint",
+                                "dataCollectionRuleImmutableId": "data collection rule immutableId"
+                            }
+                        }
+                    },
+                    "variables": {
+                        "_dataConnectorContentIdConnections": "[variables('_dataConnectorContentIdConnections')]"
+                    },
+                    "resources": [
+                        {
+                            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat('DataConnector-', variables('_dataConnectorContentIdConnections')))]",
+                            "apiVersion": "2022-01-01-preview",
+                            "type": "Microsoft.OperationalInsights/workspaces/providers/metadata",
+                            "properties": {
+                                "parentId": "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/dataConnectors', variables('_dataConnectorContentIdConnections'))]",
+                                "contentId": "[variables('_dataConnectorContentIdConnections')]",
+                                "kind": "ResourcesDataConnector",
+                                "version": "[variables('dataConnectorVersionConnections')]",
+                                "source": {
+                                    "sourceId": "[variables('_solutionId')]",
+                                    "name": "[variables('_solutionName')]",
+                                    "kind": "Solution"
+                                },
+                                "author": {
+                                    "name": "[variables('_solutionAuthor')]"
+                                },
+                                "support": {
+                                    "name": "[variables('_solutionAuthor')]",
+                                    "tier": "[variables('_solutionTier')]"
+                                }
+                            }
+                        },
+                        {
+                            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/', 'MyDataConnector')]", // Replace the last part of the name with your data connector name
+                            //  To create several connections using this template, make the name dynamic. For example, use the 'concat' function to add the connector name with a GUID using the 'guid' function.
+                            "apiVersion": "2022-12-01-preview",
+                            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
+                            "location": "[parameters('workspace-location')]",
+                            "kind": "RestApiPoller",
+                            "properties": {
+                                "connectorDefinitionName": "[[parameters('connectorDefinitionName')]",
+                                "dataType": "[variables('asimTableName')]",
+                                "dcrConfig": {
+                                    "dataCollectionEndpoint": "[[parameters('dcrConfig').dataCollectionEndpoint]",
+                                    "dataCollectionRuleImmutableId": "[[parameters('dcrConfig').dataCollectionRuleImmutableId]",
+                                    "streamName": "[concat('Custom-',variables('asimTableName'))]"
+                                },
+                                "auth": {
+                                    "type": "OAuth2",
+                                    "ClientSecret": "[[parameters('clientSecret')]",
+                                    "ClientId": "[[parameters('clientId')]",
+                                    "AuthorizationCode": "[[parameters('authorizationCode')]",
+                                    "GrantType": "client_credentials",
+                                    "TokenEndpoint": "[[parameters('tokenEndpoint')]",
+                                    "Resource": "https://api.kusto.windows.net",
+                                    "tokenEndpointHeaders": {
+                                        "Accept": "application/json",
+                                        "Content-Type": "application/x-www-form-urlencoded"
+                                    },
+                                    "TokenEndpointQueryParameters": {
+                                        "resource": "https://api.kusto.windows.net"
+                                    }
+                                },
+                                "request": {
+                                    "apiEndpoint": "[[parameters('apiEndpoint')]",
+                                    "rateLimitQPS": 10,
+                                    "queryWindowInMin": 720, //pull data every 12h
+                                    "httpMethod": "POST", //input method, in ADX integration use POST
+                                    "retryCount": 3,
+                                    "timeoutInSeconds": 60,
+                                    "headers": {
+                                        "Accept": "application/json"
+                                    },
+                                    "StartTimeAttributeName": "from",
+                                    "EndTimeAttributeName": "to",
+                                    "queryParameters": { //input customed query in request body when calling ADX API endpoint
+                                        "db": "<ADX datanase name>", //input database name in ADX cluster
+                                        "csl": "<KQL query you run in the body when send api request to query table in ADX cluster", //input table name in database above
+                                        "properties": {
+                                            "Options": {
+                                                "servertimeout": "00:04:00",
+                                                "queryconsistency": "strongconsistency",
+                                                "query_language": "csl",
+                                                "request_readonly": false,
+                                                "request_readonly_hardline": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "paging": {
+                                    "pagingType": "Offset",
+                                    "pageSize": 1000,
+                                    "PageSizeParaName": "limit",
+                                    "OffsetParaName": "offset"
+                                },
+                                "response": {
+                                    "eventsJsonPaths": [
+                                        "$" //keep root part of output or make change according to API response, for exmaple $.data
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                "packageKind": "Solution",
+                "packageVersion": "[variables('_solutionVersion')]",
+                "packageName": "[variables('_solutionName')]",
+                "contentProductId": "[concat(substring(variables('_solutionId'), 0, 50),'-','rdc','-', uniqueString(concat(variables('_solutionId'),'-','ResourcesDataConnector','-',variables('_dataConnectorContentIdConnections'),'-', variables('dataConnectorVersionConnections'))))]",
+                "packageId": "[variables('_solutionId')]",
+                "contentSchemaVersion": "3.0.0",
+                "version": "[variables('_solutionVersion')]"
+            }
+        },
+        // resource 5 section here
+        // resource section 5 - contentPackages
+        {
+            "type": "Microsoft.OperationalInsights/workspaces/providers/contentPackages",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/', variables('_solutionId'))]",
+            "location": "[parameters('workspace-location')]",
+            "apiVersion": "2023-04-01-preview",
+            "properties": {
+                "version": "[variables('_solutionVersion')]",
+                "kind": "Solution",
+                "contentSchemaVersion": "3.0.0",
+                "contentId": "[variables('_solutionId')]",
+                "source": {
+                    "kind": "Solution",
+                    "name": "[variables('_solutionName')]",
+                    "sourceId": "[variables('_solutionId')]"
+                },
+                "author": {
+                    "name": "[variables('_solutionAuthor')]"
+                },
+                "support": {
+                    "name": "[variables('_solutionAuthor')]"
+                },
+                "dependencies": {
+                    "operator": "AND",
+                    "criteria": [
+                        {
+                            "kind": "DataConnector",
+                            "contentId": "[variables('dataConnectorVersionConnectorDefinition')]",
+                            "version": "[variables('_dataConnectorContentIdConnectorDefinition')]"
+                        }
+                    ]
+                },
+                "firstPublishDate": "2023-12-05",
+                "providers": [
+                    "[variables('_solutionAuthor')]"
+                ],
+                "contentKind": "Solution",
+                "packageId": "[variables('_solutionId')]",
+                "contentProductId": "[concat(substring(variables('_solutionId'), 0, 50),'-','sl','-', uniqueString(concat(variables('_solutionId'),'-','Solution','-',variables('_solutionId'),'-', variables('_solutionVersion'))))]",
+                "displayName": "[variables('_solutionName')]",
+                "publisherDisplayName": "[variables('_solutionId')]",
+                "descriptionHtml": "test",
+                "icon": "[variables('_packageIcon')]"
+            }
+        }
+        // that's the end!
+    ]
+}
+```
