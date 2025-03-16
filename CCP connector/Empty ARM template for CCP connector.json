@@ -54,8 +54,8 @@
         "dataConnectorTemplateNameConnectorDefinition": "[concat(parameters('workspace'),'-dc-',uniquestring(variables('_dataConnectorContentIdConnectorDefinition')))]",
         "_dataConnectorContentIdConnections": "MySolutionTemplateConnections", // Enter a name for the connections this connector makes
         "dataConnectorTemplateNameConnections": "[concat(parameters('workspace'),'-dc-',uniquestring(variables('_dataConnectorContentIdConnections')))]",
-        "_logAnalyticsTableId1": "ExampleConnectorAlerts_CL" // Enter the custom table name - not needed if you are ingesting data into standard tables
-		// Enter more variables as needed "":""
+        "custom_ccp_table": "ExampleConnectorAlerts_CL" // Enter the custom table name - not needed if you are ingesting data into standard tables
+        // Enter more variables as needed "":""
     },
     // Next is the resources sections here
     "resources": [
@@ -116,28 +116,26 @@
                             "type": "Microsoft.Insights/dataCollectionRules",
                             "location": "[parameters('workspace-location')]",
                             "kind": null,
-                            "properties": 
-							{ 
+                            "properties": {
                                 // Enter your DCR properties here.
                                 //  Consider using these variables:
                                 //  "dataCollectionEndpointId": "[concat('/subscriptions/',parameters('subscription'),'/resourceGroups/',parameters('resourceGroupName'),'/providers/Microsoft.Insights/dataCollectionEndpoints/',parameters('workspace'))]",
                                 //  "workspaceResourceId": "[variables('workspaceResourceId')]",
-							}
+                            }
                         },
                         {
-                            "name": "[variables('_logAnalyticsTableId1')]",
+                            "name": "[variables('custom_ccp_table')]",
                             "apiVersion": "2022-10-01",
                             "type": "Microsoft.OperationalInsights/workspaces/tables",
                             "location": "[parameters('workspace-location')]",
                             "kind": null,
-                            "properties": 
-							{
-								// Enter your log analytics table schema here. 
+                            "properties": {
+                                // Enter your log analytics table schema here. 
                                 //  Consider using this variable for the name property:
-                                //  "name": "[variables('_logAnalyticsTableId1')]",
-							}			
+                                //  "name": "[variables('custom_ccp_table')]",
+                            }
                         }
-						// Enter more tables if needed.
+                        // Enter more tables if needed.
                     ]
                 },
                 "packageKind": "Solution",
@@ -157,13 +155,12 @@
             "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectorDefinitions",
             "location": "[parameters('workspace-location')]",
             "kind": "Customizable",
-            "properties": 
-			{
-				//Enter your data connector definition properties here
-				//"connectorUiConfig": {
-				//	"graphQueriesTableName": "[variables('_logAnalyticsTableId1')]",
+            "properties": {
+                //Enter your data connector definition properties here
+                //"connectorUiConfig": {
+                //	"graphQueriesTableName": "[variables('custom_ccp_table')]",
                 //}, 
-			}
+            }
         },
         // resource 3 section here
         // resource section 3 - metadata
@@ -218,7 +215,7 @@
                     "contentVersion": "[variables('dataConnectorVersionConnections')]",
                     "parameters":
                     // These parameters are used by the data connector primarily as properties for the administrator to enter in the UI when configuring the connector
-					{
+                    {
                         "connectorDefinitionName": {
                             "defaultValue": "connectorDefinitionName",
                             "type": "string",
@@ -235,8 +232,8 @@
                             },
                             "type": "object"
                         }
-						// Enter additional parameters, for example:
-						//"domainname": {
+                        // Enter additional parameters, for example:
+                        //"domainname": {
                         //    "defaultValue": "domain name",
                         //    "type": "string",
                         //    "minLength": 1
@@ -281,10 +278,9 @@
                             "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
                             "location": "[parameters('workspace-location')]",
                             "kind": "RestApiPoller",
-                            "properties": 
-							{
-								// Enter your data connector properties here. If you want to use UI parameters remember to escape the parameter like this: "[[parameters('paramName')]"
-								//  Use parameters as needed. For example:	
+                            "properties": {
+                                // Enter your data connector properties here. If you want to use UI parameters remember to escape the parameter like this: "[[parameters('paramName')]"
+                                //  Use parameters as needed. For example:	
                                 // "dataType": "My product security event API",
                                 // "response": {
                                 //   "eventsJsonPaths": [
@@ -314,7 +310,7 @@
                                 //        "User-Agent": "My-Data-Source"
                                 //    },
                                 //    "startTimeAttributeName": "since",
-								//    "endTimeAttributeName": "until"		     
+                                //    "endTimeAttributeName": "until"		     
                                 // },
                                 // "dcrConfig": {
                                 //    "dataCollectionEndpoint": "[[parameters('dcrConfig').dataCollectionEndpoint]",
