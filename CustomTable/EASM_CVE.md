@@ -1,10 +1,10 @@
 # Get EASM CVE
-### 1. [Get Cisa Cves Rest API](https://learn.microsoft.com/en-us/rest/api/defenderforeasm/dataplanepreview/cisa-cves/get-cisa-cves?view=rest-defenderforeasm-dataplanepreview-2024-10-01-preview&tabs=HTTP)
-### 2. [Register entra id application](https://learn.microsoft.com/en-us/graph/auth-register-app-v2)
+## 1. [Get Cisa Cves Rest API](https://learn.microsoft.com/en-us/rest/api/defenderforeasm/dataplanepreview/cisa-cves/get-cisa-cves?view=rest-defenderforeasm-dataplanepreview-2024-10-01-preview&tabs=HTTP)
+## 2. [Register entra id application](https://learn.microsoft.com/en-us/graph/auth-register-app-v2)
 Get `application id` and the `client secret` created <br>
 ![image](https://github.com/user-attachments/assets/34c7aa0f-19ea-436d-a59a-cbfb74d784a2)
 
-### 3. Test API
+## 3. Test API
 #### [Choose authentication method](https://learn.microsoft.com/en-us/rest/api/defenderforeasm/authentication#client-service-principal)
 
 Method
@@ -24,7 +24,7 @@ We can find the region and resource id of EASM workspace here <br>
 ![image](https://github.com/user-attachments/assets/8698fa29-07f2-4d2a-9387-5666fbf9f13c)
 
 
-### 4. Check API response
+## 4. Check API response
 Sample
 ```json
 {
@@ -103,14 +103,14 @@ We need the `value section` part in response
 }
 ```
 
-### 5. Create logic app
-#### 1. Choose the plan <br>
+## 5. Create logic app
+### 1. Choose the plan <br>
 ![image](https://github.com/user-attachments/assets/6bbf0a66-e5d4-46de-bcdb-a513cba488f6)
 
-#### 2. Add Recurrence <br>
+### 2. Add Recurrence <br>
 ![image](https://github.com/user-attachments/assets/a462fdf9-d87f-45d0-85cf-99dc2cf64bb5)
 
-#### 3. Add action > http <br>
+### 3. Add action > http <br>
 ![image](https://github.com/user-attachments/assets/0c3936d2-2b44-4835-8492-47b30335b639)
 
 URL <br>
@@ -128,7 +128,7 @@ https://easm.defender.microsoft.com
 * Secret
 ![image](https://github.com/user-attachments/assets/8cbe9e9c-f0bf-4241-88f3-d9477971aec3)
 
-#### 4. Add action > parse json
+### 4. Add action > parse json
 ![image](https://github.com/user-attachments/assets/f4e2eaeb-1c76-4d79-918a-18310e2ae6c8)
 
 ![image](https://github.com/user-attachments/assets/5e360ae0-993e-4db4-8d4e-69776bd7fe2c)
@@ -201,12 +201,12 @@ Use sample json below to generate schema <br>
 ![image](https://github.com/user-attachments/assets/661c2eda-4490-47fc-9e8c-87f36e02a7d2)
 
 
-#### 5. Add action > create html table
+### 5. Add action > create html table
 ![image](https://github.com/user-attachments/assets/227badcc-3a03-4a5e-8a6d-945129bf566b)
 
 ![image](https://github.com/user-attachments/assets/33c4aaf1-656c-4e94-9743-4fc8c56811bc)
 
-#### 6. Add action > send an email(v2)
+### 6. Add action > send an email(v2)
 * Input the email addressed to receive the mail
 * Input the subject of the mail
 * In body, add part below
@@ -247,7 +247,7 @@ Output of previous step <br>
 
 ![image](https://github.com/user-attachments/assets/b1ddf00a-68a0-4bf1-9412-87fd223d9e3f)
 
-#### 7. Test logic app
+### 7. Test logic app
 Sample in my mail <br>
 ![image](https://github.com/user-attachments/assets/d0a624f6-1478-4702-9a08-1de199f72106)
 
