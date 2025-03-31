@@ -105,3 +105,6 @@ We need the `value section` part in response
 ```
 
 ### 5. Create logic app
+
+![image](https://github.com/user-attachments/assets/6bbf0a66-e5d4-46de-bcdb-a513cba488f6)
+
