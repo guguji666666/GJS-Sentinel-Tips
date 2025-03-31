@@ -105,6 +105,29 @@ We need the `value section` part in response
 ```
 
 ### 5. Create logic app
-
+#### 1. Choose the plan <br>
 ![image](https://github.com/user-attachments/assets/6bbf0a66-e5d4-46de-bcdb-a513cba488f6)
+
+#### 2. Add Recurrence <br>
+![image](https://github.com/user-attachments/assets/a462fdf9-d87f-45d0-85cf-99dc2cf64bb5)
+
+#### 3. Add action > http <br>
+![image](https://github.com/user-attachments/assets/0c3936d2-2b44-4835-8492-47b30335b639)
+
+URL <br>
+```
+endpoint}/cisaCves?api-version=2024-10-01-preview
+```
+
+Input the info below: <br>
+* Tenant
+* Audience
+```
+https://easm.defender.microsoft.com
+```
+* Client ID
+* Secret
+![image](https://github.com/user-attachments/assets/8cbe9e9c-f0bf-4241-88f3-d9477971aec3)
+
+
 
