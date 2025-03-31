@@ -202,17 +202,49 @@ Use sample json below to generate schema <br>
 ![image](https://github.com/user-attachments/assets/661c2eda-4490-47fc-9e8c-87f36e02a7d2)
 
 
+#### 5. Add action > create html table
+![image](https://github.com/user-attachments/assets/227badcc-3a03-4a5e-8a6d-945129bf566b)
 
-#### 5. Add action > create csv table
-![image](https://github.com/user-attachments/assets/19c690b1-def0-41ea-acb3-899ad5719986)
+![image](https://github.com/user-attachments/assets/33c4aaf1-656c-4e94-9743-4fc8c56811bc)
 
-![image](https://github.com/user-attachments/assets/af77e42c-072b-4fb7-b6ab-96490e9aae84)
+#### 6. Add action > send an email(v2)
+* Input the email addressed to receive the mail
+* Input the subject of the mail
+* In body, add part below
+html
+```html
+<style>
+  table {
+    width: 100%; /* Make the table width fill the container */
+    border-collapse: collapse; /* Merge borders */
+    margin: 20px 0; /* Margin at the top and bottom */
+    font-size: 1em; /* Font size */
+    font-family: Arial, sans-serif; /* Font type */
+  }
 
-![image](https://github.com/user-attachments/assets/b29a4a87-4b19-4137-b139-0c21b45f0888)
+  th, td {
+    border: 1px solid #ddd; /* Border color */
+    padding: 12px; /* Inner padding */
+    text-align: left; /* Text aligned to the left */
+  }
 
-![image](https://github.com/user-attachments/assets/6319465c-8265-4590-8e51-f165e277422b)
+  th {
+    background-color: #4CAF50; /* Header background color */
+    color: white; /* Header font color */
+  }
 
-![image](https://github.com/user-attachments/assets/b3e2c806-24f2-4da0-ad93-0447646d4599)
+  tr:nth-child(even) {
+    background-color: #f2f2f2; /* Even row background color */
+  }
 
+  tr:hover {
+    background-color: #ddd; /* Hover effect */
+  }
+</style>
+```
 
+Output pf previous step <br>
+![image](https://github.com/user-attachments/assets/bd1a2e2b-456d-4830-8465-be2c4f1e2eec)
+
+![image](https://github.com/user-attachments/assets/b1ddf00a-68a0-4bf1-9412-87fd223d9e3f)
 
