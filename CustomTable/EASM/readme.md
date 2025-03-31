@@ -6,6 +6,8 @@ Get `application id` and the `client secret` created <br>
 ![image](https://github.com/user-attachments/assets/34c7aa0f-19ea-436d-a59a-cbfb74d784a2)
 
 ### 3. Test API
+#### [Choose authentication method](https://learn.microsoft.com/en-us/rest/api/defenderforeasm/authentication#client-service-principal)
+
 Method
 ```
 GET
