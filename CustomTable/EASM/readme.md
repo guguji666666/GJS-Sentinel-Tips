@@ -14,6 +14,10 @@ Endpoint: The endpoint hosting the requested resource. For example
 ```
 https://{region}.easm.defender.microsoft.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/workspaces/{workspaceName}
 ```
+URL will be <br>
+```
+endpoint}/cisaCves?api-version=2024-10-01-preview
+```
 
 We can find the region and resource id of EASM workspace here <br>
 ![image](https://github.com/user-attachments/assets/8698fa29-07f2-4d2a-9387-5666fbf9f13c)
