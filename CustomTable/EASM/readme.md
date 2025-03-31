@@ -6,8 +6,7 @@ Method
 ```
 GET
 ```
-Endpoint <br>
-The endpoint hosting the requested resource. For example 
+Endpoint: The endpoint hosting the requested resource. For example 
 ```
 https://{region}.easm.defender.microsoft.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/workspaces/{workspaceName}
 ```
