@@ -201,7 +201,18 @@ Use sample json below to generate schema <br>
 
 ![image](https://github.com/user-attachments/assets/661c2eda-4490-47fc-9e8c-87f36e02a7d2)
 
+
+
 #### 5. Add action > create csv table
 ![image](https://github.com/user-attachments/assets/19c690b1-def0-41ea-acb3-899ad5719986)
+
+![image](https://github.com/user-attachments/assets/af77e42c-072b-4fb7-b6ab-96490e9aae84)
+
+![image](https://github.com/user-attachments/assets/b29a4a87-4b19-4137-b139-0c21b45f0888)
+
+![image](https://github.com/user-attachments/assets/6319465c-8265-4590-8e51-f165e277422b)
+
+![image](https://github.com/user-attachments/assets/b3e2c806-24f2-4da0-ad93-0447646d4599)
+
 
 
