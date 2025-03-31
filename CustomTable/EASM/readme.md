@@ -133,5 +133,14 @@ https://easm.defender.microsoft.com
 * Secret
 ![image](https://github.com/user-attachments/assets/8cbe9e9c-f0bf-4241-88f3-d9477971aec3)
 
+#### 4. Add action > parse json
+![image](https://github.com/user-attachments/assets/f4e2eaeb-1c76-4d79-918a-18310e2ae6c8)
+
+![image](https://github.com/user-attachments/assets/5e360ae0-993e-4db4-8d4e-69776bd7fe2c)
+
+![image](https://github.com/user-attachments/assets/71baaeab-7481-4c26-9d46-593dac035d47)
+
+
+
 
 
