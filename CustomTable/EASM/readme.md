@@ -140,7 +140,7 @@ https://easm.defender.microsoft.com
 
 ![image](https://github.com/user-attachments/assets/71baaeab-7481-4c26-9d46-593dac035d47)
 
-Use sample json to generate schema <br>
+Use sample json below to generate schema <br>
 ![image](https://github.com/user-attachments/assets/6a23793e-98af-4f80-ad7c-4b9a8b848327)
 
 ```json
