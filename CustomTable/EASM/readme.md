@@ -120,6 +120,10 @@ endpoint}/cisaCves?api-version=2024-10-01-preview
 ```
 
 Input the info below: <br>
+* Authority
+```
+https://login.microsoftonline.com/common/oauth2/authorize
+```
 * Tenant
 * Audience
 ```
