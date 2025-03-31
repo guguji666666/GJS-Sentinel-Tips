@@ -204,7 +204,7 @@ Use sample json below to generate schema <br>
 ### 5. Add action > create html table
 ![image](https://github.com/user-attachments/assets/227badcc-3a03-4a5e-8a6d-945129bf566b)
 
-![image](https://github.com/user-attachments/assets/33c4aaf1-656c-4e94-9743-4fc8c56811bc)
+![image](https://github.com/user-attachments/assets/4661c212-8690-4116-8c1c-583b90bfa227)
 
 ### 6. Add action > send an email(v2)
 * Input the email addressed to receive the mail
