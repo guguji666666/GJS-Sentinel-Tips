@@ -120,10 +120,6 @@ endpoint}/cisaCves?api-version=2024-10-01-preview
 ```
 
 Input the info below: <br>
-* Authority
-```
-https://login.microsoftonline.com/common/oauth2/authorize
-```
 * Tenant
 * Audience
 ```
@@ -205,5 +201,7 @@ Use sample json below to generate schema <br>
 
 ![image](https://github.com/user-attachments/assets/661c2eda-4490-47fc-9e8c-87f36e02a7d2)
 
+#### 5. Add action > create csv table
+![image](https://github.com/user-attachments/assets/19c690b1-def0-41ea-acb3-899ad5719986)
 
 
