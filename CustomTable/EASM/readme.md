@@ -243,8 +243,13 @@ html
 </style>
 ```
 
-Output pf previous step <br>
-![image](https://github.com/user-attachments/assets/bd1a2e2b-456d-4830-8465-be2c4f1e2eec)
+Output of previous step <br>
+![image](https://github.com/user-attachments/assets/e1b2ec36-98da-4dfd-aef3-a2e2b6922028)
 
 ![image](https://github.com/user-attachments/assets/b1ddf00a-68a0-4bf1-9412-87fd223d9e3f)
+
+#### 7. Test logic app
+Sample in my mail <br>
+![image](https://github.com/user-attachments/assets/d0a624f6-1478-4702-9a08-1de199f72106)
+
 
