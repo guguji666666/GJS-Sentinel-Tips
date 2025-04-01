@@ -149,7 +149,7 @@ resources
 
 #### 9.Generate incidents when data source stops ingestion of logs
 
-### SecurityEvent
+SecurityEvent
 ```kql
 // Define a subset of SecurityEvent data
 let SecurityEventData = SecurityEvent
@@ -169,7 +169,7 @@ SecurityEventData
 | project Computer, _ResourceId, Category, TimeGenerated
 ```
 
-### Syslog
+Syslog
 ```kql
 // Define a subset of Syslog data
 let SyslogData = Syslog
@@ -189,11 +189,21 @@ SyslogData
 | project Computer, _ResourceId, Category, TimeGenerated
 ```
 
-### AzureDiagnostics
+AzureDiagnostics
 ```kql
 AzureDiagnostics
     // Summarize to get the latest TimeGenerated for each _ResourceId
     | summarize TimeGenerated=max(TimeGenerated) by _ResourceId
     // Filter to keep only those events that occurred more than 15 minutes ago, you could modify this threshold
     | where TimeGenerated < ago(24h)
+```
+
+
+Check versions of AMA in active status
+```kql
+Heartbeat 
+| where Category contains "Azure Monitor Agent"
+| where TimeGenerated > ago(7d)
+// | summarize AggregatedValue = dcount(Computer) by Version
+| distinct Computer, Category, Version
 ```
