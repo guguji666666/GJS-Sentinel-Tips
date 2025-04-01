@@ -138,7 +138,8 @@ sudo tac /var/log/syslog | grep CEF -m 10
 
 ### 6. [Configure syslog rotation](https://www.systutorials.com/docs/linux/man/5-logrotate.conf/)
 
-### 7. Sample CEF logs with logger command
+### 7. Sample CEF logs
+#### Using logger
 ```cmd
 logger -p local4.warn -P 514 -n 127.0.0.1 -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c113d028ca1ec1250ca0491"
 ```
@@ -170,6 +171,69 @@ logger -p local4.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|LdapBruteForceSuspicio
 logger -p local4.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|EncryptionDowngradeSuspiciousActivity|Encryption downgrade activity|5|start=2018-12-12T18:10:35.0334169Z app=Kerberos msg=The encryption method of the TGT field of TGS_REQ message from W2012R2-000000-Server has been downgraded based on previously learned behavior. This may be a result of a Golden Ticket in-use on W2012R2-000000-Server. externalId=2009 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c114f938ca1ec1250cafcfa"
 
 logger -p user.warn -t CEF "CEF:0|Microsoft|ATA|1.9.0.0|LdapBruteForceSuspiciousActivity|Brute force attack using LDAP simple bind|5|start=2018-12-12T17:52:10.2350665Z app=Ldap msg=10000 password guess attempts were made on 100 accounts from W2012R2-000000-Server. One account password was successfully guessed. externalId=2004 cs1Label=url cs1= https://192.168.0.220/suspiciousActivity/5c114acb8ca1ec1250cacdcb"
+```
+
+#### Using echo
+```sh
+# First log entry
+echo "CEF:0|Microsoft1|ATA1|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1=https://192.168.0.220/suspiciousActivity/5c113d028ca1ec1250ca0491" | logger -p local4.warn -P 514 -n 127.0.0.1 -t CEF
+
+# Second log entry
+echo "CEF:0|Microsoft2|ATA2|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1=https://192.168.0.220/suspiciousActivity/5c113d028ca1ec1250ca0491" | logger -p auth.warn -P 514 -n 127.0.0.1 -t CEF
+
+# Third log entry
+echo "CEF:0|Microsoft3|ATA3|1.9.0.0|LdapBruteForceSuspiciousActivity|Brute force attack using LDAP simple bind|5|start=2018-12-12T17:52:10.2350665Z app=Ldap msg=10000 password guess attempts were made on 100 accounts from W2012R2-000000-Server. One account password was successfully guessed. externalId=2004 cs1Label=url cs1=https://192.168.0.220/suspiciousActivity/5c114acb8ca1ec1250cacdcb" | logger -p local4.warn -t CEF
+
+# Fourth log entry
+echo "CEF:0|Microsoft4|ATA4|1.9.0.0|EncryptionDowngradeSuspiciousActivity|Encryption downgrade activity|5|start=2018-12-12T18:10:35.0334169Z app=Kerberos msg=The encryption method of the TGT field of TGS_REQ message from W2012R2-000000-Server has been downgraded based on previously learned behavior. This may be a result of a Golden Ticket in-use on W2012R2-000000-Server. externalId=2009 cs1Label=url cs1=https://192.168.0.220/suspiciousActivity/5c114f938ca1ec1250cafcfa" | logger -p local4.warn -t CEF
+
+# Fifth log entry
+echo "CEF:0|Microsoft5|ATA5|1.9.0.0|LdapBruteForceSuspiciousActivity|Brute force attack using LDAP simple bind|5|start=2018-12-12T17:52:10.2350665Z app=Ldap msg=10000 password guess attempts were made on 100 accounts from W2012R2-000000-Server. One account password was successfully guessed. externalId=2004 cs1Label=url cs1=https://192.168.0.220/suspiciousActivity/5c114acb8ca1ec1250cacdcb" | logger -p user.warn -t CEF
+
+# Sixth log entry
+echo "CEF:0|Symantec|Endpoint Protection|14.0.0.0|MalwareDetection|Malware detected on system|10|start=2018-12-12T19:15:00.0000000Z app=SymantecEndpointProtection suser=JohnDoe src=192.168.1.100 msg=A malicious file was detected and quarantined. MalwareName=W32.Beagle@mm externalId=123456 cs1Label=url cs1=https://symantec.com/malware/123456" | logger -p local4.info -t CEF
+
+# Seventh log entry
+echo "CEF:0|Splunk|Enterprise|7.2.0|AccountLockout|User account locked out|6|start=2018-12-12T19:30:22.0000000Z app=IdentityManager suser=JaneSmith msg=Account janesmith has been locked out due to multiple failed login attempts. externalId=987654321 cs1Label=url cs1=https://splunk.com/lockout/987654321" | logger -p auth.notice -t CEF
+
+# Eighth log entry
+echo "CEF:0|ArcSight|ESM|7.0.3|LoginSuccess|User login success|3|start=2018-12-12T20:10:00.0000000Z app=ArcSightConsole suser=admin src=192.168.1.50 dhost=arcsight-server msg=User admin successfully logged into the ArcSight ESM console. externalId=112233 cs1Label=url cs1=https://arcsight.com/event/112233" | logger -p auth.info -P 514 -n 127.0.0.1 -t CEF
+
+# Ninth log entry
+echo "CEF:0|Microsoft|Windows|10.0.17134.0|SystemRestart|System was rebooted|1|start=2018-12-12T20:45:00.0000000Z app=WindowsEventLog msg=The system has been rebooted. Reason: User initiated shutdown. externalId=123456789 cs1Label=url cs1=https://windows.com/event/123456789" | logger -p local4.notice -t CEF
+
+# Tenth log entry
+echo "CEF:0|Cisco|ASA|9.8.2|AccessDenied|Firewall blocked unauthorized access|7|start=2018-12-12T21:00:15.0000000Z app=Firewall src=192.168.2.25 dst=10.10.10.10 msg=Unauthorized access attempt from 192.168.2.25 to 10.10.10.10 was blocked. externalId=77777 cs1Label=url cs1=https://cisco.com/asa-event/77777" | logger -p local4.warn -t CEF
+
+# Eleventh log entry
+echo "CEF:0|McAfee|Endpoint Security|5.0.0.0|VirusDetected|Virus detected and quarantined|10|start=2018-12-12T21:15:30.0000000Z app=McAfeeEndpoint suser=Alice src=192.168.1.150 msg=A critical virus was detected and removed. VirusName=Rogue.Malware externalId=54321 cs1Label=url cs1=https://mcafee.com/virus/54321" | logger -p local4.error -t CEF
+
+# Twelfth log entry
+echo "CEF:0|PaloAlto|Firewall|8.1.0|MaliciousTraffic|Blocked malicious traffic|7|start=2018-12-12T21:30:10.1234567Z app=PaloAltoFirewall src=192.168.3.10 dst=10.1.1.5 msg=Malicious traffic from 192.168.3.10 has been blocked. externalId=33333 cs1Label=url cs1=https://paloalto.com/firewall/block/33333" | logger -p local4.warning -t CEF
+
+# Thirteenth log entry
+echo "CEF:0|TrendMicro|OfficeScan|12.0.0.0|ThreatBlocked|Threat has been blocked|9|start=2018-12-12T21:45:00.0000000Z app=OfficeScan suser=Bob src=192.168.2.100 msg=Threat detected and blocked successfully. externalId=88888 cs1Label=url cs1=https://trendmicro.com/threat/88888" | logger -p local4.notice -t CEF
+
+# Fourteenth log entry
+echo "CEF:0|Fortinet|FortiGate|6.2.0|WebFilter|Blocked access to malicious site|5|start=2018-12-12T22:00:00.0000000Z app=FortiGate src=192.168.0.50 dst=malicious.com msg=Access to malicious.com was blocked. externalId=77778 cs1Label=url cs1=https://fortinet.com/webfilter/block/77778" | logger -p local4.info -t CEF
+
+# Fifteenth log entry
+echo "CEF:0|Symantec|Network Security|15.1.0.0|IntrusionDetection|Intrusion detected|6|start=2018-12-12T22:10:15.0000000Z app=NetworkSecurity suser=Charlie msg=An intrusion attempt has been detected and logged. externalId=45612 cs1Label=url cs1=https://symantec.com/intrusion/45612" | logger -p auth.warn -t CEF
+
+# Sixteenth log entry
+echo "CEF:0|F5|BIG-IP|12.1.0|ApplicationAttack|Application attack detected|7|start=2018-12-12T22:30:45.0000000Z app=BIG-IP suser=David msg=Detected multiple attempts to exploit an application vulnerability. externalId=99999 cs1Label=url cs1=https://f5.com/appattack/99999" | logger -p local4.warn -t CEF
+
+# Seventeenth log entry
+echo "CEF:0|Cisco|Identity Services Engine|2.3.0|UserAuthentication|User authenticated successfully|3|start=2018-12-12T23:00:00.0000000Z app=ISE suser=Eve msg=User Eve has successfully authenticated. externalId=11234 cs1Label=url cs1=https://cisco.com/ise/auth/11234" | logger -p auth.info -t CEF
+
+# Eighteenth log entry
+echo "CEF:0|IBM|QRadar|7.4.0|DataBreaches|Potential data breach detected|10|start=2018-12-12T23:15:25.0000000Z app=QRadar msg=A potential data breach was detected from the network. externalId=22222 cs1Label=url cs1=https://ibm.com/qradar/breach/22222" | logger -p local4.crit -t CEF
+
+# Nineteenth log entry
+echo "CEF:0|Splunk|ESM|8.0.0|LogInFailure|User login failure|4|start=2018-12-12T23:25:35.0000000Z app=Splunk suser=Frank msg=Login failed for user Frank due to incorrect password. externalId=33333 cs1Label=url cs1=https://splunk.com/loginfail/33333" | logger -p auth.error -t CEF
+
+# Twentieth log entry
+echo "CEF:0|Microsoft|Azure|12.0.1|UnauthorizedAccess|Unauthorized access attempt|8|start=2018-12-12T23:35:50.0000000Z app=Azure suser=Grace msg=Unauthorized access attempt detected for the service account Grace. externalId=12345 cs1Label=url cs1=https://microsoft.com/azure/unauthorized/12345" | logger -p local4.alert -t CEF
 ```
 
 ### 8. Check if the CEF log received matches the CEF format
