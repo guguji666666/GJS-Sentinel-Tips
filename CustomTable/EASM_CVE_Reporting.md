@@ -2223,7 +2223,7 @@ first(body('Parse_JSON_High')?['assetSummaries'])?['children']
 For the part `Parse_JSON_High`, please replace it with the exact step name in your flow. <br>
 ![image](https://github.com/user-attachments/assets/25cb83f3-24f6-480c-b7e0-6982483dcd80)
 
-In `From` Section, add below:
+In `Filter Query` Section, add below:
 ```
 item()?['count']
 ```
