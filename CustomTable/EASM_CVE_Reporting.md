@@ -17,7 +17,7 @@ https://{region}.easm.defender.microsoft.com/subscriptions/{subscriptionId}/reso
 ```
 URL will be <br>
 ```
-endpoint}/cisaCves?api-version=2024-10-01-preview
+{endpoint}/cisaCves?api-version=2024-10-01-preview
 ```
 
 We can find the region and resource id of EASM workspace here <br>
@@ -2183,7 +2183,7 @@ Request body
 ### 1. Choose the plan <br>
 ![image](https://github.com/user-attachments/assets/6bbf0a66-e5d4-46de-bcdb-a513cba488f6)
 
-### 2. Add Recurrence <br>
+### 2. Add `Recurrence` <br>
 ![image](https://github.com/user-attachments/assets/a462fdf9-d87f-45d0-85cf-99dc2cf64bb5)
 
 ### 3. Add action > http <br>
