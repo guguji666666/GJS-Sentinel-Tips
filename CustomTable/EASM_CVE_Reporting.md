@@ -2227,18 +2227,16 @@ In `From` Section, add below:
 ```
 item()?['count']
 ```
-![image](https://github.com/user-attachments/assets/ad9bd1ec-e63a-48d0-ac17-7422418ef9a2)
+![image](https://github.com/user-attachments/assets/eade3fcc-e673-4211-812a-7aff3af2834f)
 
 Complete the condition `Greater than 0`
 ![image](https://github.com/user-attachments/assets/f40fb039-4108-4585-a3a8-403b1d3cb686)
 
 
 ### 6. Add action > `Create HTML table`
-![image](https://github.com/user-attachments/assets/227badcc-3a03-4a5e-8a6d-945129bf566b)
+![image](https://github.com/user-attachments/assets/4c8628f6-f052-436c-9fcf-e6f0e04ea91c)
 
-![image](https://github.com/user-attachments/assets/4661c212-8690-4116-8c1c-583b90bfa227)
-
-### 7. Add action > send an email(v2)
+### 7. Add action > `Send an email (V2)`
 * Input the email addressed to receive the mail
 * Input the subject of the mail
 * In body, add part below
