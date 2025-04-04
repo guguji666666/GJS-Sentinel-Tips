@@ -2186,12 +2186,12 @@ Request body
 ### 2. Add `Recurrence` <br>
 ![image](https://github.com/user-attachments/assets/a462fdf9-d87f-45d0-85cf-99dc2cf64bb5)
 
-### 3. Add action > http <br>
-![image](https://github.com/user-attachments/assets/0c3936d2-2b44-4835-8492-47b30335b639)
+### 3. Add action `HTTP` <br>
+![image](https://github.com/user-attachments/assets/63f297f7-05b4-4a0a-915b-9032423c5fe5)
 
 URL <br>
 ```
-endpoint}/cisaCves?api-version=2024-10-01-preview
+{endpoint}/cisaCves?api-version=2024-10-01-preview
 ```
 
 Input the info below: <br>
@@ -2211,78 +2211,34 @@ https://easm.defender.microsoft.com
 
 ![image](https://github.com/user-attachments/assets/71baaeab-7481-4c26-9d46-593dac035d47)
 
-Use sample json below to generate schema <br>
-![image](https://github.com/user-attachments/assets/6a23793e-98af-4f80-ad7c-4b9a8b848327)
-
-```json
-{
-    "totalElements": 4,
-    "value": [
-        {
-            "cveID": "CVE-2020-11023",
-            "vendorProject": "JQuery",
-            "product": "JQuery",
-            "vulnerabilityName": "JQuery Cross-Site Scripting (XSS) Vulnerability",
-            "shortDescription": "JQuery contains a persistent cross-site scripting (XSS) vulnerability. When passing maliciously formed, untrusted input enclosed in HTML tags, JQuery's DOM manipulators can execute untrusted code in the context of the user's browser.",
-            "requiredAction": "Apply mitigations per vendor instructions or discontinue use of the product if mitigations are unavailable.",
-            "notes": "https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/ ; https://nvd.nist.gov/vuln/detail/CVE-2020-11023",
-            "dateAdded": "2025-01-23T00:00:00Z",
-            "dueDate": "2025-02-13T00:00:00Z",
-            "updatedAt": "2025-03-31T00:07:12Z",
-            "count": 119
-        },
-        {
-            "cveID": "CVE-2021-40438",
-            "vendorProject": "Apache",
-            "product": "Apache",
-            "vulnerabilityName": "Apache HTTP Server-Side Request Forgery (SSRF)",
-            "shortDescription": "A crafted request uri-path can cause mod_proxy to forward the request to an origin server choosen by the remote user. This issue affects Apache HTTP Server 2.4.48 and earlier.",
-            "requiredAction": "Apply updates per vendor instructions.",
-            "notes": "",
-            "dateAdded": "2021-12-01T00:00:00Z",
-            "dueDate": "2021-12-15T00:00:00Z",
-            "updatedAt": "2025-03-31T00:07:12Z",
-            "count": 12
-        },
-        {
-            "cveID": "CVE-2019-11043",
-            "vendorProject": "PHP",
-            "product": "FastCGI Process Manager (FPM)",
-            "vulnerabilityName": "PHP FastCGI Process Manager (FPM) Buffer Overflow Vulnerability",
-            "shortDescription": "In some versions of PHP in certain configurations of FPM setup, it is possible to cause FPM module to write past allocated buffers allowing the possibility of remote code execution.",
-            "requiredAction": "Apply updates per vendor instructions.",
-            "notes": "",
-            "dateAdded": "2022-03-25T00:00:00Z",
-            "dueDate": "2022-04-15T00:00:00Z",
-            "updatedAt": "2025-03-31T00:07:12Z",
-            "count": 6
-        },
-        {
-            "cveID": "CVE-2019-0211",
-            "vendorProject": "Apache",
-            "product": "HTTP Server",
-            "vulnerabilityName": "Apache HTTP Server Privilege Escalation Vulnerability",
-            "shortDescription": "Apache HTTP Server, with MPM event, worker or prefork, code executing in less-privileged child processes or threads (including scripts executed by an in-process scripting interpreter) could execute code with the privileges of the parent process (usually root) by manipulating the scoreboard.",
-            "requiredAction": "Apply updates per vendor instructions.",
-            "notes": "",
-            "dateAdded": "2021-11-03T00:00:00Z",
-            "dueDate": "2022-05-03T00:00:00Z",
-            "updatedAt": "2025-03-31T00:07:12Z",
-            "count": 1
-        }
-    ]
-}
-```
+Use sample json with high priority findings `above` to generate schema <br>
 
 ![image](https://github.com/user-attachments/assets/661c2eda-4490-47fc-9e8c-87f36e02a7d2)
 
+### 5. Add action > `Filter array` (Optional if you want to configure condition)
+In `From` Section, add the function below
+```
+first(body('Parse_JSON_High')?['assetSummaries'])?['children']
+```
+For the part `Parse_JSON_High`, please replace it with the exact step name in your flow. <br>
+![image](https://github.com/user-attachments/assets/25cb83f3-24f6-480c-b7e0-6982483dcd80)
 
-### 5. Add action > create html table
+In `From` Section, add below:
+```
+item()?['count']
+```
+![image](https://github.com/user-attachments/assets/ad9bd1ec-e63a-48d0-ac17-7422418ef9a2)
+
+Complete the condition `Greater than 0`
+![image](https://github.com/user-attachments/assets/f40fb039-4108-4585-a3a8-403b1d3cb686)
+
+
+### 6. Add action > `Create HTML table`
 ![image](https://github.com/user-attachments/assets/227badcc-3a03-4a5e-8a6d-945129bf566b)
 
 ![image](https://github.com/user-attachments/assets/4661c212-8690-4116-8c1c-583b90bfa227)
 
-### 6. Add action > send an email(v2)
+### 7. Add action > send an email(v2)
 * Input the email addressed to receive the mail
 * Input the subject of the mail
 * In body, add part below
@@ -2324,7 +2280,7 @@ Output of previous step <br>
 ![image](https://github.com/user-attachments/assets/b1ddf00a-68a0-4bf1-9412-87fd223d9e3f)
 
 ### 7. Test logic app
-Sample in my mail <br>
-![image](https://github.com/user-attachments/assets/d0a624f6-1478-4702-9a08-1de199f72106)
+Sample in my mail (it only outputs findings under Chidlren section whose count is greater than 0) <br>
+![image](https://github.com/user-attachments/assets/66feda75-15c1-4141-ac5b-040752edaf89)
 
 
