@@ -2227,7 +2227,7 @@ In `Filter Query` Section, add below:
 ```
 item()?['count']
 ```
-![image](https://github.com/user-attachments/assets/eade3fcc-e673-4211-812a-7aff3af2834f)
+![image](https://github.com/user-attachments/assets/d78d1adb-b623-4319-872d-5ae056aebde1)
 
 Complete the condition `Greater than 0`
 ![image](https://github.com/user-attachments/assets/f40fb039-4108-4585-a3a8-403b1d3cb686)
