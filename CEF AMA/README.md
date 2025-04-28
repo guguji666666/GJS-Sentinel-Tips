@@ -236,6 +236,24 @@ echo "CEF:0|Splunk|ESM|8.0.0|LogInFailure|User login failure|4|start=2018-12-12T
 echo "CEF:0|Microsoft|Azure|12.0.1|UnauthorizedAccess|Unauthorized access attempt|8|start=2018-12-12T23:35:50.0000000Z app=Azure suser=Grace msg=Unauthorized access attempt detected for the service account Grace. externalId=12345 cs1Label=url cs1=https://microsoft.com/azure/unauthorized/12345" | logger -p local4.alert -t CEF
 ```
 
+```sh
+# Facility: local4 (20), Severity: warning (4)
+echo "<164>$(date '+%b %d %H:%M:%S') 40.112.72.205 CEF:0|Microsoft1|ATA1|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1=https://192.168.0.220/suspiciousActivity/5c113d028ca1ec1250ca0491"
+
+# Facility: auth (4), Severity: warning (4)
+echo "<36>$(date '+%b %d %H:%M:%S') 40.112.72.205 CEF:0|Microsoft2|ATA2|1.9.0.0|AbnormalSensitiveGroupMembershipChangeSuspiciousActivity|Abnormal modification of sensitive groups|5|start=2018-12-12T18:52:58.0000000Z app=GroupMembershipChangeEvent suser=krbtgt msg=krbtgt has uncharacteristically modified sensitive group memberships. externalId=2024 cs1Label=url cs1=https://192.168.0.220/suspiciousActivity/5c113d028ca1ec1250ca0491"
+
+# Facility: local4 (20), Severity: warning (4)
+echo "<164>$(date '+%b %d %H:%M:%S') 40.112.72.205 CEF:0|Microsoft3|ATA3|1.9.0.0|LdapBruteForceSuspiciousActivity|Brute force attack using LDAP simple bind|5|start=2018-12-12T17:52:10.2350665Z app=Ldap msg=10000 password guess attempts were made on 100 accounts from W2012R2-000000-Server. One account password was successfully guessed. externalId=2004 cs1Label=url cs1=https://192.168.0.220/suspiciousActivity/5c114acb8ca1ec1250cacdcb"
+
+# Facility: local4 (20), Severity: warning (4)
+echo "<164>$(date '+%b %d %H:%M:%S') 40.112.72.205 CEF:0|Microsoft4|ATA4|1.9.0.0|EncryptionDowngradeSuspiciousActivity|Encryption downgrade activity|5|start=2018-12-12T18:10:35.0334169Z app=Kerberos msg=The encryption method of the TGT field of TGS_REQ message from W2012R2-000000-Server has been downgraded based on previously learned behavior. This may be a result of a Golden Ticket in-use on W2012R2-000000-Server. externalId=2009 cs1Label=url cs1=https://192.168.0.220/suspiciousActivity/5c114f938ca1ec1250cafcfa"
+
+# Facility: user (1), Severity: warning (4)
+echo "<12>$(date '+%b %d %H:%M:%S') 40.112.72.205 CEF:0|Microsoft5|ATA5|1.9.0.0|LdapBruteForceSuspiciousActivity|Brute force attack using LDAP simple bind|5|start=2018-12-12T17:52:10.2350665Z app=Ldap msg=10000 password guess attempts were made on 100 accounts from W2012R2-000000-Server. One account password was successfully guessed. externalId=2004 cs1Label=url cs1=https://192.168.0.220/suspiciousActivity/5c114acb8ca1ec1250cacdcb"
+```
+
+
 ### 8. Check if the CEF log received matches the CEF format
 
 1. Navigate to [CEF debug regex](https://regex101.com/)
