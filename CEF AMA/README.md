@@ -235,6 +235,33 @@ echo "CEF:0|Splunk|ESM|8.0.0|LogInFailure|User login failure|4|start=2018-12-12T
 # Twentieth log entry
 echo "CEF:0|Microsoft|Azure|12.0.1|UnauthorizedAccess|Unauthorized access attempt|8|start=2018-12-12T23:35:50.0000000Z app=Azure suser=Grace msg=Unauthorized access attempt detected for the service account Grace. externalId=12345 cs1Label=url cs1=https://microsoft.com/azure/unauthorized/12345" | logger -p local4.alert -t CEF
 ```
+| Facility 名字         | Facility 值 | Severity 名字     | Severity 值 | PRI (Facility × 8 + Severity) |
+|:----------------------|:------------|:------------------|:------------|:------------------------------|
+| kernel messages       | 0            | emergency         | 0            | 0                              |
+| kernel messages       | 0            | alert             | 1            | 1                              |
+| kernel messages       | 0            | critical          | 2            | 2                              |
+| kernel messages       | 0            | error             | 3            | 3                              |
+| user-level messages    | 1            | informational     | 6            | 14                             |
+| user-level messages    | 1            | warning           | 4            | 12                             |
+| user-level messages    | 1            | error             | 3            | 11                             |
+| mail system           | 2            | warning           | 4            | 20                             |
+| system daemons        | 3            | informational     | 6            | 30                             |
+| system daemons        | 3            | error             | 3            | 27                             |
+| auth/authpriv (security) | 4          | warning           | 4            | 36                             |
+| auth/authpriv (security) | 4          | error             | 3            | 35                             |
+| auth/authpriv (security) | 4          | informational     | 6            | 38                             |
+| auth/authpriv (security) | 4          | notice            | 5            | 37                             |
+| syslog internal       | 5            | informational     | 6            | 46                             |
+| syslog internal       | 5            | error             | 3            | 43                             |
+| local0                 | 16           | informational     | 6            | 134                            |
+| local0                 | 16           | warning           | 4            | 132                            |
+| local0                 | 16           | error             | 3            | 131                            |
+| local4                 | 20           | warning           | 4            | 164                            |
+| local4                 | 20           | informational     | 6            | 166                            |
+| local4                 | 20           | notice            | 5            | 165                            |
+| local4                 | 20           | error             | 3            | 163                            |
+| local4                 | 20           | alert             | 1            | 161                            |
+| daemon                | 3            | critical          | 2            | 26                             |
 
 ```sh
 # Facility: local4 (20), Severity: warning (4)
