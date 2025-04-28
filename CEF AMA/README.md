@@ -235,6 +235,9 @@ echo "CEF:0|Splunk|ESM|8.0.0|LogInFailure|User login failure|4|start=2018-12-12T
 # Twentieth log entry
 echo "CEF:0|Microsoft|Azure|12.0.1|UnauthorizedAccess|Unauthorized access attempt|8|start=2018-12-12T23:35:50.0000000Z app=Azure suser=Grace msg=Unauthorized access attempt detected for the service account Grace. externalId=12345 cs1Label=url cs1=https://microsoft.com/azure/unauthorized/12345" | logger -p local4.alert -t CEF
 ```
+
+### Facility Severity reference
+
 | Facility 宏名字 | Facility 英文名字/模块 | Facility Value |
 |:----------------|:----------------------|:--------------|
 | LOG_KERN         | kernel messages         | 0             |
