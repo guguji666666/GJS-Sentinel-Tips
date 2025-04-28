@@ -235,6 +235,35 @@ echo "CEF:0|Splunk|ESM|8.0.0|LogInFailure|User login failure|4|start=2018-12-12T
 # Twentieth log entry
 echo "CEF:0|Microsoft|Azure|12.0.1|UnauthorizedAccess|Unauthorized access attempt|8|start=2018-12-12T23:35:50.0000000Z app=Azure suser=Grace msg=Unauthorized access attempt detected for the service account Grace. externalId=12345 cs1Label=url cs1=https://microsoft.com/azure/unauthorized/12345" | logger -p local4.alert -t CEF
 ```
+| Facility 宏名字 | Facility 英文名字/模块 | Facility Value |
+|:----------------|:----------------------|:--------------|
+| LOG_KERN         | kernel messages         | 0             |
+| LOG_USER         | user-level messages     | 1             |
+| LOG_MAIL         | mail system             | 2             |
+| LOG_DAEMON       | system daemons          | 3             |
+| LOG_AUTH         | security/authorization messages | 4  |
+| LOG_SYSLOG       | messages generated internally by syslogd | 5 |
+| LOG_LPR          | line printer subsystem  | 6             |
+| LOG_NEWS         | network news subsystem  | 7             |
+| LOG_UUCP         | UUCP subsystem           | 8             |
+| LOG_CLOCK        | clock daemon             | 9             |
+| LOG_AUTHPRIV     | security/authorization messages (private) | 10 |
+| LOG_FTP          | FTP daemon               | 11            |
+| LOG_NTP          | NTP subsystem             | 12            |
+| LOG_AUDIT        | log audit                | 13            |
+| LOG_ALERT        | log alert                | 14            |
+| (备用 clock daemon) | clock daemon (private) | 15            |
+| LOG_LOCAL0       | local use 0 (local0)     | 16            |
+| LOG_LOCAL1       | local use 1 (local1)     | 17            |
+| LOG_LOCAL2       | local use 2 (local2)     | 18            |
+| LOG_LOCAL3       | local use 3 (local3)     | 19            |
+| LOG_LOCAL4       | local use 4 (local4)     | 20            |
+| LOG_LOCAL5       | local use 5 (local5)     | 21            |
+| LOG_LOCAL6       | local use 6 (local6)     | 22            |
+| LOG_LOCAL7       | local use 7 (local7)     | 23            |
+
+
+
 | Facility 名字         | Facility 值 | Severity 名字     | Severity 值 | PRI (Facility × 8 + Severity) |
 |:----------------------|:------------|:------------------|:------------|:------------------------------|
 | kernel messages       | 0            | emergency         | 0            | 0                              |
