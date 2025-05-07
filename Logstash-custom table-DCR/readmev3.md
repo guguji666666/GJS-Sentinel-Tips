@@ -1,7 +1,3 @@
-Here is an optimized and professional title for your markdown guide, followed by the **full markdown** content preserving all original links and images:
-
----
-
 # 🚀 Quickstart Guide: Installing `microsoft-sentinel-log-analytics-logstash-output-plugin` for Logstash Integration with Microsoft Sentinel
 
 This guide helps you:
@@ -282,5 +278,3 @@ Wait a few minutes, then check the table:
 * [📥 DownGit Tool](https://minhaskamal.github.io/DownGit/)
 
 ---
-
-Would you like me to generate a downloadable `.md` version of this guide as well?
