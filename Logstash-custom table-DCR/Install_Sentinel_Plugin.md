@@ -75,6 +75,24 @@ dpkg -L logstash | grep bin/logstash
 
 ---
 
+
+### 🔹Start Logstash service
+```sh
+systemctl enable logstash
+```
+
+```sh
+systemctl start logstash
+```
+
+Check the service state again
+```sh
+systemctl status logstash
+```
+![image](https://github.com/user-attachments/assets/f381428c-d8d0-4342-9626-3cff8249b96e)
+
+---
+
 ## 📦 Step 2: Download Only the Plugin Folder
 
 ### Option 1: Use Git Sparse Checkout (Recommended)
