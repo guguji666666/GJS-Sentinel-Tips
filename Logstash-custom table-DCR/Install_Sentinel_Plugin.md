@@ -137,16 +137,15 @@ output {
   }
 }
 ```
+![image](https://github.com/user-attachments/assets/1604595e-6d7d-469c-b210-f9e267aeaade)
 
 Verify if the pipeline configuration works as expected
 ```
 systemctl restart logstash
 ```
+
 ```
-cd /tmp
-```
-```
-ll
+cd /tmp && ls -al
 ``` 
 You should see the new sample files generated, `download` this file
 
