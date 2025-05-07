@@ -1,73 +1,132 @@
 # 🔧 Installing `microsoft-sentinel-log-analytics-logstash-output-plugin` for Logstash
 
-This guide walks through installing the [Microsoft Sentinel Log Analytics Logstash output plugin](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-sentinel-log-analytics-logstash-output-plugin) using instructions from the [Logstash Plugin documentation](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html).
+This guide helps you:
+
+* ✅ Install **Logstash**
+* ✅ Fetch only the Microsoft Sentinel output plugin (no full repo needed)
+* ✅ Install the plugin into Logstash
+* ✅ Use it in a working config
 
 ---
 
 ## ✅ Prerequisites
 
-* A working Logstash installation (`logstash --version`)
-* `git`, `java`, and `ruby` installed
-* Environment variable `JAVA_HOME` is correctly set
-* Logstash is installed in a directory like `/opt/logstash`
+* Root or `sudo` access
+* Internet access from the machine
+* `java`, `git`, and `ruby` installed
+* Logstash version 7.x or 8.x supported
 
 ---
 
-## 📝 Installation Steps
+## 🏗 Step 1: Install Logstash
 
-### 1. Navigate to Logstash Installation Directory
+### 🔹 For RHEL / CentOS / Rocky Linux
 
 ```bash
-cd /opt/logstash
+# Import Elastic GPG key
+sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+# Create repo file
+sudo tee /etc/yum.repos.d/logstash.repo <<EOF
+[logstash]
+name=Elastic repository for Logstash
+baseurl=https://artifacts.elastic.co/packages/8.x/yum
+gpgcheck=1
+enabled=1
+autorefresh=1
+type=rpm-md
+EOF
+
+# Install Logstash
+sudo yum install logstash -y
 ```
 
 ---
 
-### 2. Clone the Plugin Repository
+### 🔹 For Ubuntu / Debian
 
 ```bash
-git clone https://github.com/Azure/Azure-Sentinel.git
+# Install dependencies
+sudo apt-get update && sudo apt-get install apt-transport-https gnupg -y
+
+# Add Elastic GPG key
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+
+# Add Logstash APT repo
+echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list
+
+# Install Logstash
+sudo apt-get update && sudo apt-get install logstash -y
 ```
 
 ---
 
-### 3. Navigate to the Plugin Directory
+### 🔹 Verify Logstash Installed
 
 ```bash
-cd Azure-Sentinel/DataConnectors/microsoft-sentinel-log-analytics-logstash-output-plugin
+logstash --version
 ```
 
 ---
 
-### 4. Install the Plugin (Direct Method)
+## 📦 Step 2: Download Only the Plugin Folder
+
+### Option 1: Use Git Sparse Checkout (Recommended)
 
 ```bash
-/opt/logstash/bin/logstash-plugin install no-verify --local .
-```
+# Create working dir
+mkdir sentinel-plugin && cd sentinel-plugin
 
-If this fails, proceed with manual packaging.
+# Init sparse git repo
+git init
+git remote add origin https://github.com/Azure/Azure-Sentinel.git
+git config core.sparseCheckout true
+
+# Define target folder only
+echo "DataConnectors/microsoft-sentinel-log-analytics-logstash-output-plugin" >> .git/info/sparse-checkout
+
+# Pull only that subfolder
+git pull origin master
+
+# Move into plugin directory
+cd DataConnectors/microsoft-sentinel-log-analytics-logstash-output-plugin
+```
 
 ---
 
-### 5. \[Alternative] Build the Plugin Gem
+### Option 2: Direct ZIP Download (No Git Required)
+
+📥 Use [DownGit](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-sentinel-log-analytics-logstash-output-plugin) to download only the plugin folder as ZIP.
+
+Then extract and `cd` into the plugin directory.
+
+---
+
+## 🛠 Step 3: Install the Plugin
+
+### Method 1: Install from Folder (Direct Install)
 
 ```bash
+/opt/logstash/bin/logstash-plugin install --no-verify --local .
+```
+
+If this fails, proceed to manual `.gem` build method.
+
+---
+
+### Method 2: Build and Install Gem
+
+```bash
+# Build the plugin gem
 gem build microsoft-sentinel-log-analytics-logstash-output-plugin.gemspec
-```
 
-This generates a `.gem` file (e.g., `logstash-output-microsoft-sentinel-log-analytics-0.1.0.gem`).
-
----
-
-### 6. Install the Plugin from the Gem File
-
-```bash
-/opt/logstash/bin/logstash-plugin install logstash-output-microsoft-sentinel-log-analytics-*.gem
+# Install the .gem file into Logstash
+sudo /opt/logstash/bin/logstash-plugin install logstash-output-microsoft-sentinel-log-analytics-*.gem
 ```
 
 ---
 
-### 7. Verify Installation
+## ✅ Step 4: Verify Plugin Installation
 
 ```bash
 /opt/logstash/bin/logstash-plugin list --verbose | grep sentinel
@@ -75,24 +134,34 @@ This generates a `.gem` file (e.g., `logstash-output-microsoft-sentinel-log-anal
 
 ---
 
-## 🔁 Example Output Configuration
+## 📄 Step 5: Example Logstash Configuration
 
 ```ruby
+input {
+  stdin {}
+}
+
 output {
   microsoft-sentinel-log-analytics-logstash-output-plugin {
     workspace_id => "<Your Workspace ID>"
-   shared_key   => "<Your Primary Key>"
+    shared_key   => "<Your Primary Key>"
     log_type     => "CustomLog"
   }
 }
 ```
 
+Save as `test_logstash.conf` and run:
+
+```bash
+/opt/logstash/bin/logstash -f test_logstash.conf
+```
+
 ---
 
-## 🧩 References
+## 🔗 References
 
-* [Logstash Plugin Dev Guide](https://www.elastic.co/guide/en/logstash/current/workin-with-plugins.html)
-* [Azure Sentinel Plugin Source](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-sentinel-log-analytics-logstash-output-plugin)
+* [Microsoft Sentinel Plugin](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-sentinel-log-analytics-logstash-output-plugin)
+* [Logstash Plugin Dev Guide](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html)
+* [DownGit (Download GitHub folder)](https://minhaskamal.github.io/DownGit/)
 
 ---
-
