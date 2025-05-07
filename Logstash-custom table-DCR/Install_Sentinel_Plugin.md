@@ -59,6 +59,8 @@ echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee 
 sudo apt-get update && sudo apt-get install logstash -y
 ```
 
+![image](https://github.com/user-attachments/assets/b7ad2873-047e-47f0-b2dd-eb5845e2dfb1)
+
 ---
 
 ### 🔹 Verify Logstash Installed
