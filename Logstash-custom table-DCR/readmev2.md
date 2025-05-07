@@ -1,7 +1,3 @@
-Certainly! Here's an optimized and comprehensive `README.md` for your GitHub repository [GJS-Sentinel-Tips](https://github.com/guguji666666/GJS-Sentinel-Tips/tree/main/Logstash-custom%20table-DCR), specifically tailored for the `Logstash-custom table-DCR` directory. This guide provides clear instructions on setting up Logstash to forward logs to Microsoft Sentinel using Data Collection Rules (DCRs).
-
----
-
 # 📘 Logstash to Microsoft Sentinel via DCR (Custom Table)
 
 This guide demonstrates how to configure Logstash to forward logs to Microsoft Sentinel using Data Collection Rules (DCRs) and the `microsoft-sentinel-log-analytics-logstash-output-plugin`.([Microsoft Learn][1])
@@ -193,8 +189,6 @@ sudo journalctl -u logstash -f
 * [Azure Monitor: Custom Logs Migration](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/custom-logs-migrate)
 
 ---
-
-Feel free to contribute or raise issues for any enhancements or problems encountered.
 
 ---
 
