@@ -380,7 +380,7 @@ systemctl restart logstash
 
 Wait a few minutes, then check the table:
 
-![image](https://user-images.githubusercontent.com/96930989/217994591-d8d67409-11c5-44f1-b275-6ebdc0aea3b8.png)
+![image](https://github.com/user-attachments/assets/e3b67f0e-2bb0-4403-b395-d678f84e55df)
 
 ---
 
