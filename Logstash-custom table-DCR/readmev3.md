@@ -11,7 +11,7 @@ This guide helps you:
 ---
 
 Logstash Workflow Diagram
-
+```
 +---------------------------+
 |   Pipeline Configuration  |
 |   /etc/logstash/conf.d/   |
@@ -29,6 +29,7 @@ Logstash Workflow Diagram
 +----------+   | PagerDuty|   | StatsD  |
 +----------+   +----------+
 ---
+```
 
 ## ✅ Prerequisites
 
