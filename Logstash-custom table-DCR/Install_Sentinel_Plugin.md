@@ -113,7 +113,214 @@ Installation
 ---
 
 ## 📄 Step 4: Example Logstash Configuration 
+```
+cd /etc/logstash/conf.d
+```
+```
+cat > pipeline.conf
+```
+copy the content below to pipeline.conf
 
+```
+input {
+    generator {
+          lines => [
+               "This is a test log message from demo"
+          ]
+         count => 10
+    }
+}
+output {
+  microsoft-sentinel-logstash-output-plugin {
+    create_sample_file => true
+    sample_file_path => "/tmp" #for example: "c:\\temp" (for windows) or "/tmp" for Linux. 
+  }
+}
+```
+
+### 8. Verify if the pipeline configuration works as expected
+```
+systemctl restart logstash
+```
+```
+cd /tmp
+```
+```
+ll
+``` 
+You should see the new sample files generated, `download` this file
+![image](https://user-images.githubusercontent.com/96930989/217975380-35ff9cf2-61a3-4324-80d0-d8ddad7913a7.png)
+
+Check this sample file
+![image](https://user-images.githubusercontent.com/96930989/217975602-8ad51192-88d9-403c-a97a-cc88bcdbf0a0.png)
+![image](https://user-images.githubusercontent.com/96930989/217975608-a8d73c10-9c27-4788-8bca-58430054f6a7.png)
+
+### 9. [Create DCR resources for ingestion into a custom table](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules#create-dcr-resources-for-ingestion-into-a-custom-table)
+#### 1. [Configure the application](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#configure-the-application)
+##### Collect the information:
+* tenant id
+* app name
+* app id (client id)
+* client secret
+#### 2. [Create data collection endpoint](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-a-data-collection-endpoint)
+##### Collect the information:
+* DCE name
+* DCE Log ingestion URI
+![image](https://user-images.githubusercontent.com/96930989/217995625-8a16f928-2aad-4ef4-9b6b-b5a4b8c7cf7b.png)
+
+#### 3. Create a custom table in the workspace 
+#### [Parse and filter sample data](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#parse-and-filter-sample-data)
+![image](https://user-images.githubusercontent.com/96930989/217976554-c7fcf066-8d80-4299-99c7-13db378fcb4f.png)
+![image](https://user-images.githubusercontent.com/96930989/217976584-99ad21cb-6608-45dc-8f75-665ba077455e.png)
+
+Modify the KQL query
+```kusto
+source
+| extend TimeGenerated = ls_timestamp
+```
+![image](https://user-images.githubusercontent.com/96930989/217982753-7ae92e05-efca-441a-92c6-394147e37f97.png)
+![image](https://user-images.githubusercontent.com/96930989/217982769-d31c11f7-4e37-4c78-b1cf-76b08805bead.png)
+Then save the results
+
+![image](https://user-images.githubusercontent.com/96930989/217982794-109104b1-be56-4333-9d71-7cf70b050d80.png)
+
+#### 4. [Collect information from DCR](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#collect-information-from-the-dcr)
+* DCR name
+* DCR immutableId
+* DCR stream name
+![image](https://user-images.githubusercontent.com/96930989/217995923-f3c9c9da-6347-4136-bf09-c049b0851874.png)
+
+#### 5. Assign permission to DCR
+```
+This step is to give the application permission to use the DCR. Any application that uses the correct application ID and application key can now send data to the new DCE and DCR.
+```
+![image](https://user-images.githubusercontent.com/96930989/217984174-1ee6f384-6ad8-45ee-ad6f-95725bdcd9cc.png)
+Skip the Send sample data step.
+
+#### 6. Assign new DCR to the VM
+![image](https://user-images.githubusercontent.com/96930989/217984223-fe06060e-1d9f-4e7c-b375-e2876caf7ef4.png)
+
+
+### 10. [Configure Logstash configuration file](https://learn.microsoft.com/en-us/azure/sentinel/connect-logstash-data-connection-rules#configure-logstash-configuration-file)
+
+#### Information required
+* Tenant id
+* App id (client id)
+* client secret
+* DCE Logs ingestion URI
+* DCR immutable ID
+* DCR stream name
+
+Run the commands below
+```
+cd /etc/logstash/conf.d
+```
+
+```
+rm pipeline.conf
+```
+
+```
+cat > pipeline1.conf
+```
+
+New pipeline configuration file should be in the format below
+
+```
+input {
+    generator {
+          lines => [
+               "This is a test log message from demo"
+          ]
+         count => 10
+    }
+}
+output {
+  microsoft-sentinel-logstash-output-plugin {
+    client_app_Id => "<enter your client_app_id value here>"
+    client_app_secret => "<enter your client_app_secret value here>"
+    tenant_id => "<enter your tenant id here> "
+    data_collection_endpoint => "<enter your DCE logsIngestion URI here> "
+    dcr_immutable_id => "<enter your DCR immutableId here> "
+    dcr_stream_name => "<enter your stream name here> "
+    create_sample_file=> false
+    sample_file_path => "/tmp"
+  }
+}
+```
+
+```
+systemctl restart logstash
+``` 
+
+Then wait for 10 mins and check the results in the workspace. If the configuration is correct you will see the output:
+![image](https://user-images.githubusercontent.com/96930989/217994591-d8d67409-11c5-44f1-b275-6ebdc0aea3b8.png)
+
+
+## 3. TSG steps
+If cx fails to find the incoming log in the custom table, we could then follow the steps below
+1. Check if DCR is assigne to the VM and DCE is selected
+![image](https://user-images.githubusercontent.com/96930989/221455738-e43af103-4b5b-4278-b426-047b52ab9b46.png)
+
+2. Check if the desination is the custom table in the workspace with sentinel enabled
+![image](https://user-images.githubusercontent.com/96930989/221455636-0bbd3c78-9cd5-4029-80ef-62e4cba063dd.png)
+
+3. Check the schema of the custom table (we may need it if we want to invole the Azure monitoring team later)
+![image](https://user-images.githubusercontent.com/96930989/221455924-a64d3ce8-9135-4320-8a40-8184ef1f3e13.png)
+![image](https://user-images.githubusercontent.com/96930989/221455946-88d7e80b-248f-4481-8f1d-7dd60d5ff684.png)
+
+We can also check the transfrom KQL in DCR > json view <br>
+![image](https://github.com/guguji666666/GJS-Sentinel-Tips/assets/96930989/e1f70af5-a07b-4d28-941f-55a50cc19ccd)
+
+4. Check the state of logstash service on VM
+Run command
+```sh
+systemctl status logstash
+```
+![image](https://user-images.githubusercontent.com/96930989/213091935-d89b3f36-995c-4559-a49e-bf9e66d4d9fb.png)
+
+Reinstall logstash running commmands
+```sh
+apt-get install logstash
+
+systemctl enable logstash
+
+systemctl start logstash
+```
+* If the logstash service could run successfully after reinstallation, we continue troubleshooting
+* If the logstash service can't run successfully, we'd suggest cx to involve the enginner from logstash team
+
+5. Check the parameters configured in the pipeline file
+* Tenant id
+* App id (client id)
+* client secret
+* DCE Logs ingestion URI
+* DCR immutable ID
+* DCR stream name
+
+6. Create a backup of the current pipeline file, remove it and create a test piepeline file
+```
+input {
+    generator {
+          lines => [
+               "This is a test log message from demo"
+          ]
+         count => 10
+    }
+}
+output {
+  microsoft-sentinel-logstash-output-plugin {
+    create_sample_file => true
+    sample_file_path => "/tmp" #for example: "c:\\temp" (for windows) or "/tmp" for Linux. 
+  }
+}
+```
+Then run the command and see if the sample logs could be generated 
+```
+systemctl restart logstash
+```
+* If the sample logs couldn't be generated, we'd suggest cx to involve the enginner from logstash team since the logstash service is not working properly
+* If the sample logs could be generated and the parameters in the pipeline configuration file are verified, we'd suggest to involve Azure monitoring team for further investigation
 ---
 
 ## 🔗 References
