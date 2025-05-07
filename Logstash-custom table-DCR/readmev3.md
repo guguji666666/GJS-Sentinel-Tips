@@ -310,7 +310,7 @@ Collect:
 
 ### 2. [Create Data Collection Endpoint](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-a-data-collection-endpoint)
 
-![image](https://user-images.githubusercontent.com/96930989/217995625-8a16f928-2aad-4ef4-9b6b-b5a4b8c7cf7b.png)
+![image](https://github.com/user-attachments/assets/08ffceb3-8857-4593-86c6-11acd50d0b4e)
 
 ---
 
