@@ -51,6 +51,12 @@ sudo /usr/share/logstash/bin/logstash-plugin install microsoft-sentinel-log-anal
 
 > Ensure that your Logstash version is compatible with the plugin.
 
+Verify the installation
+```bash
+/usr/share/logstash/bin/logstash-plugin list --verbose | grep sentinel
+```
+![image](https://github.com/user-attachments/assets/e8e70066-77b1-4640-8994-bfe24cd5228a)
+
 ---
 
 ## 🧪 Step 3: Create Sample Log Data
