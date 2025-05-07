@@ -64,10 +64,14 @@ sudo apt-get update && sudo apt-get install logstash -y
 ---
 
 ### 🔹 Verify Logstash Installed
-
+Try to find the installed location:
 ```bash
-logstash --version
+dpkg -L logstash | grep bin/logstash
 ```
+```bash
+/usr/share/logstash/bin/logstash --version
+```
+![image](https://github.com/user-attachments/assets/b8353069-0afb-426f-bf55-4028bd9b0192)
 
 ---
 
