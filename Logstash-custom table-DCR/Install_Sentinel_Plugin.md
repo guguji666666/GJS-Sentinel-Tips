@@ -131,7 +131,7 @@ input {
     }
 }
 output {
-  microsoft-sentinel-logstash-output-plugin {
+ microsoft-sentinel-log-analytics-logstash-output-plugin {
     create_sample_file => true
     sample_file_path => "/tmp" #for example: "c:\\temp" (for windows) or "/tmp" for Linux. 
   }
