@@ -371,13 +371,11 @@ Wait a few minutes, then check the table:
 3. Check schema
    ![image](https://user-images.githubusercontent.com/96930989/221455924-a64d3ce8-9135-4320-8a40-8184ef1f3e13.png)
 
-4. Validate Logstash service
+4. Validate Logstash service, make sure it is running
 
    ```bash
    systemctl status logstash
    ```
-
-   ![image](https://user-images.githubusercontent.com/96930989/213091935-d89b3f36-995c-4559-a49e-bf9e66d4d9fb.png)
 
 5. Backup config & test sample output
 
