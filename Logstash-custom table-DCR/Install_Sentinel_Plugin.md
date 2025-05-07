@@ -147,7 +147,8 @@ systemctl restart logstash
 ```
 cd /tmp && ls -al
 ``` 
-You should see the new sample files generated, `download` this file
+You should see the new sample files generated, `download` one of the them, we need it later
+![image](https://github.com/user-attachments/assets/b2a530a9-d004-4d1f-948b-581ce991947b)
 
 ---
 
