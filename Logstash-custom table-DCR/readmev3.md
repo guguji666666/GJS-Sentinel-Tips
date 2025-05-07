@@ -31,6 +31,9 @@ Logstash Workflow Diagram
 ---
 ```
 
+![image](https://github.com/user-attachments/assets/f8e774a1-df8b-4aa2-85b6-8a26bd6c2582)
+
+
 ## ✅ Prerequisites
 
 * Root or `sudo` access
