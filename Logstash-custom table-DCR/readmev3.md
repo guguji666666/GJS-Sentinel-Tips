@@ -145,14 +145,126 @@ cd /tmp && ls -al
 
 ```json
 [
-  {
-    "event": { "original": "This is a test log message from demo", "sequence": 7 },
-    "message": "This is a test log message from demo",
-    "host": { "name": "Jump" },
-    "ls_timestamp": "2025-05-07T04:12:59.393961364Z",
-    "ls_version": "1"
-  }
-  ...
+    {
+        "event": {
+            "original": "This is a test log message from demo",
+            "sequence": 7
+        },
+        "message": "This is a test log message from demo",
+        "host": {
+            "name": "Jump"
+        },
+        "ls_timestamp": "2025-05-07T04:12:59.393961364Z",
+        "ls_version": "1"
+    },
+    {
+        "event": {
+            "original": "This is a test log message from demo",
+            "sequence": 3
+        },
+        "message": "This is a test log message from demo",
+        "host": {
+            "name": "Jump"
+        },
+        "ls_timestamp": "2025-05-07T04:12:59.392715439Z",
+        "ls_version": "1"
+    },
+    {
+        "event": {
+            "original": "This is a test log message from demo",
+            "sequence": 1
+        },
+        "message": "This is a test log message from demo",
+        "host": {
+            "name": "Jump"
+        },
+        "ls_timestamp": "2025-05-07T04:12:59.391903723Z",
+        "ls_version": "1"
+    },
+    {
+        "event": {
+            "original": "This is a test log message from demo",
+            "sequence": 0
+        },
+        "message": "This is a test log message from demo",
+        "host": {
+            "name": "Jump"
+        },
+        "ls_timestamp": "2025-05-07T04:12:59.387581635Z",
+        "ls_version": "1"
+    },
+    {
+        "event": {
+            "original": "This is a test log message from demo",
+            "sequence": 4
+        },
+        "message": "This is a test log message from demo",
+        "host": {
+            "name": "Jump"
+        },
+        "ls_timestamp": "2025-05-07T04:12:59.393050546Z",
+        "ls_version": "1"
+    },
+    {
+        "event": {
+            "original": "This is a test log message from demo",
+            "sequence": 6
+        },
+        "message": "This is a test log message from demo",
+        "host": {
+            "name": "Jump"
+        },
+        "ls_timestamp": "2025-05-07T04:12:59.393661758Z",
+        "ls_version": "1"
+    },
+    {
+        "event": {
+            "original": "This is a test log message from demo",
+            "sequence": 8
+        },
+        "message": "This is a test log message from demo",
+        "host": {
+            "name": "Jump"
+        },
+        "ls_timestamp": "2025-05-07T04:12:59.394569976Z",
+        "ls_version": "1"
+    },
+    {
+        "event": {
+            "original": "This is a test log message from demo",
+            "sequence": 9
+        },
+        "message": "This is a test log message from demo",
+        "host": {
+            "name": "Jump"
+        },
+        "ls_timestamp": "2025-05-07T04:12:59.394891583Z",
+        "ls_version": "1"
+    },
+    {
+        "event": {
+            "original": "This is a test log message from demo",
+            "sequence": 5
+        },
+        "message": "This is a test log message from demo",
+        "host": {
+            "name": "Jump"
+        },
+        "ls_timestamp": "2025-05-07T04:12:59.393312451Z",
+        "ls_version": "1"
+    },
+    {
+        "event": {
+            "original": "This is a test log message from demo",
+            "sequence": 2
+        },
+        "message": "This is a test log message from demo",
+        "host": {
+            "name": "Jump"
+        },
+        "ls_timestamp": "2025-05-07T04:12:59.392338331Z",
+        "ls_version": "1"
+    }
 ]
 ```
 
