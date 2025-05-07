@@ -10,7 +10,7 @@ This guide helps you:
 
 ---
 
-Logstash workflow
+Logstash Workflow Diagram
 
 +---------------------------+
 |   Pipeline Configuration  |
@@ -18,16 +18,16 @@ Logstash workflow
 +---------------------------+
 
 [Inputs] -----------------------> [Filters] -----------------------> [Outputs]
-  (1)                            (2)                            (3)
-   +-------+   +-------+   +-------+   +----------+   +----------+   +----------+
-   | Redis |   | Apache|   | JDBC  |   | alter    |   | Elastic- |   | Graphite|
-   +-------+   +-------+   +-------+   | aggregate|   | search   |   +----------+
-   +-------+   +-------+   +-------+   | clone    |   +----------+   +----------+
-   | Syslog|   | JMS   |   |RabbitMQ|   | range    |   | MongoDB |   | InfluxDB|
-   +-------+   +-------+   +-------+   | mutate   |   +----------+   +----------+
-                                      | csv      |   +----------+   +----------+
-                                      +----------+   | PagerDuty|   | StatsD  |
-                                                        +----------+   +----------+
+(1)                            (2)                            (3)
++-------+   +-------+   +-------+   +----------+   +----------+   +----------+
+| Redis |   | Apache|   | JDBC  |   | alter    |   | Elastic- |   | Graphite|
++-------+   +-------+   +-------+   | aggregate|   | search   |   +----------+
++-------+   +-------+   +-------+   | clone    |   +----------+   +----------+
+| Syslog|   | JMS   |   |RabbitMQ|   | range    |   | MongoDB |   | InfluxDB|
++-------+   +-------+   +-------+   | mutate   |   +----------+   +----------+
+| csv      |   +----------+   +----------+
++----------+   | PagerDuty|   | StatsD  |
++----------+   +----------+
 ---
 
 ## ✅ Prerequisites
