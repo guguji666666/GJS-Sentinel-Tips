@@ -10,6 +10,26 @@ This guide helps you:
 
 ---
 
+Logstash workflow
+
++---------------------------+
+|   Pipeline Configuration  |
+|   /etc/logstash/conf.d/   |
++---------------------------+
+
+[Inputs] -----------------------> [Filters] -----------------------> [Outputs]
+  (1)                            (2)                            (3)
+   +-------+   +-------+   +-------+   +----------+   +----------+   +----------+
+   | Redis |   | Apache|   | JDBC  |   | alter    |   | Elastic- |   | Graphite|
+   +-------+   +-------+   +-------+   | aggregate|   | search   |   +----------+
+   +-------+   +-------+   +-------+   | clone    |   +----------+   +----------+
+   | Syslog|   | JMS   |   |RabbitMQ|   | range    |   | MongoDB |   | InfluxDB|
+   +-------+   +-------+   +-------+   | mutate   |   +----------+   +----------+
+                                      | csv      |   +----------+   +----------+
+                                      +----------+   | PagerDuty|   | StatsD  |
+                                                        +----------+   +----------+
+---
+
 ## ✅ Prerequisites
 
 * Root or `sudo` access
