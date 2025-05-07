@@ -311,7 +311,7 @@ source
 
 ### 5. Assign DCR Permission
 
-![image](https://user-images.githubusercontent.com/96930989/217984174-1ee6f384-6ad8-45ee-ad6f-95725bdcd9cc.png)
+![image](https://github.com/user-attachments/assets/2f2cdfb3-15c4-4c1c-9c64-ab820e880363)
 
 ---
 
