@@ -112,7 +112,7 @@ Installation
 
 ---
 
-## 📄 Step 4: Example Logstash Configuration
+## 📄 Step 4: Example Logstash Configuration (still in testing stage)
 
 ```ruby
 input {
