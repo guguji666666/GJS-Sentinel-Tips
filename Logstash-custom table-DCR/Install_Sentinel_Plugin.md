@@ -112,27 +112,7 @@ Installation
 
 ---
 
-## 📄 Step 4: Example Logstash Configuration (still in testing stage)
-
-```ruby
-input {
-  stdin {}
-}
-
-output {
-  microsoft-sentinel-log-analytics-logstash-output-plugin {
-    workspace_id => "<Your Workspace ID>"
-    shared_key   => "<Your Primary Key>"
-    log_type     => "CustomLog"
-  }
-}
-```
-
-Save as `test_logstash.conf` and run:
-
-```bash
-/opt/logstash/bin/logstash -f test_logstash.conf
-```
+## 📄 Step 4: Example Logstash Configuration 
 
 ---
 
