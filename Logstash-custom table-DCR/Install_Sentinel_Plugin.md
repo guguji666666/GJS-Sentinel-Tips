@@ -1,7 +1,3 @@
-Here is your plugin installation guide transformed into clean **Markdown format** for GitHub:
-
----
-
 # 🔧 Installing `microsoft-sentinel-log-analytics-logstash-output-plugin` for Logstash
 
 This guide walks through installing the [Microsoft Sentinel Log Analytics Logstash output plugin](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-sentinel-log-analytics-logstash-output-plugin) using instructions from the [Logstash Plugin documentation](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html).
@@ -100,4 +96,3 @@ output {
 
 ---
 
-Let me know if you'd like to include build troubleshooting or known issues sections as well.
