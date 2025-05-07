@@ -89,7 +89,7 @@ Check the service state again
 ```sh
 systemctl status logstash
 ```
-![image](https://github.com/user-attachments/assets/f381428c-d8d0-4342-9626-3cff8249b96e)
+![image](https://github.com/user-attachments/assets/bce10737-29cc-41f0-93ab-79dfc2b6491d)
 
 ---
 
