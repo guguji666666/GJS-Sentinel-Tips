@@ -84,5 +84,3 @@ input {
   ```
 
 ---
-
-Would you like a ready-to-use full Logstash config combining one of these with the Sentinel plugin output block?
