@@ -93,72 +93,26 @@ systemctl status logstash
 
 ---
 
-## 📦 Step 2: Download Only the Plugin Folder
 
-### Option 1: Use Git Sparse Checkout (Recommended)
+## 🛠 Step 2: Install the Plugin
+
+Installation
+```bash
+/usr/share/logstash/bin/logstash-plugin install microsoft-sentinel-log-analytics-logstash-output-plugin
+```
+![image](https://github.com/user-attachments/assets/9651ab79-fd1d-4b32-adac-c868bcecb417)
+
+
+## ✅ Step 3: Verify Plugin Installation
 
 ```bash
-# Create working dir
-mkdir sentinel-plugin && cd sentinel-plugin
-
-# Init sparse git repo
-git init
-git remote add origin https://github.com/Azure/Azure-Sentinel.git
-git config core.sparseCheckout true
-
-# Define target folder only
-echo "DataConnectors/microsoft-sentinel-log-analytics-logstash-output-plugin" >> .git/info/sparse-checkout
-
-# Pull only that subfolder
-git pull origin master
-
-# Move into plugin directory
-cd DataConnectors/microsoft-sentinel-log-analytics-logstash-output-plugin
+/usr/share/logstash/bin/logstash-plugin list --verbose | grep sentinel
 ```
+![image](https://github.com/user-attachments/assets/c075fb27-be35-47c8-bbf4-dd70d732c070)
 
 ---
 
-### Option 2: Direct ZIP Download (No Git Required)
-
-📥 Use [DownGit](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-sentinel-log-analytics-logstash-output-plugin) to download only the plugin folder as ZIP.
-
-Then extract and `cd` into the plugin directory.
-
----
-
-## 🛠 Step 3: Install the Plugin
-
-### Method 1: Install from Folder (Direct Install)
-
-```bash
-/opt/logstash/bin/logstash-plugin install --no-verify --local .
-```
-
-If this fails, proceed to manual `.gem` build method.
-
----
-
-### Method 2: Build and Install Gem
-
-```bash
-# Build the plugin gem
-gem build microsoft-sentinel-log-analytics-logstash-output-plugin.gemspec
-
-# Install the .gem file into Logstash
-sudo /opt/logstash/bin/logstash-plugin install logstash-output-microsoft-sentinel-log-analytics-*.gem
-```
-
----
-
-## ✅ Step 4: Verify Plugin Installation
-
-```bash
-/opt/logstash/bin/logstash-plugin list --verbose | grep sentinel
-```
-
----
-
-## 📄 Step 5: Example Logstash Configuration
+## 📄 Step 4: Example Logstash Configuration
 
 ```ruby
 input {
