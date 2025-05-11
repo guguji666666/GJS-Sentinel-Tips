@@ -158,9 +158,17 @@ Configuration OK
 [ERROR] Expected one of #, => at line 3, column 10 ...
 ```
 
+### Sample
+
+```bash
+/usr/share/logstash/bin/logstash -t -f /etc/logstash/conf.d/pipeline.conf
+```
 ![image](https://github.com/user-attachments/assets/1155a266-a12f-4191-a0b6-40f336796cd3)
 
-
+Enable debug logs
+```bash
+/usr/share/logstash/bin/logstash --log.level debug -t -f /etc/logstash/conf.d/pipeline.conf
+```
 
 ### 🔍 Validate all configs in pipeline directory
 
