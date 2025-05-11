@@ -185,20 +185,41 @@ View debug logs
 
 ---
 
-## 🎉 Installation Summary
+## 🧨 Known Issue Observed During Validation
+
+While validating the Logstash configuration using debug mode, the following issue was encountered:
+
+```bash
+[root@ip-172-31-33-79 conf.d]# /usr/share/logstash/bin/logstash --log.level debug -t -f /etc/logstash/conf.d/pipeline.conf | grep java
+Thread.exclusive is deprecated, use Thread::Mutex
+WARNING: Could not find logstash.yml which is typically located in $LS_HOME/config or /etc/logstash. You can specify the path using --path.settings. Continuing using the defaults
+[DEBUG] 2025-05-11 02:57:53.858 [LogStash::Runner] runner - pipeline.java_execution: true
+[DEBUG] 2025-05-11 02:57:56.764 [LogStash::Runner] Reflections - expanded subtype java.lang.Cloneable -> org.jruby.RubyBasicObject
+[DEBUG] 2025-05-11 02:57:56.765 [LogStash::Runner] Reflections - expanded subtype java.io.Serializable -> org.jruby.RubyBasicObject
+[DEBUG] 2025-05-11 02:57:56.765 [LogStash::Runner] Reflections - expanded subtype java.lang.Comparable -> org.jruby.RubyBasicObject
+[DEBUG] 2025-05-11 02:57:56.766 [LogStash::Runner] Reflections - expanded subtype java.security.SecureClassLoader -> java.net.URLClassLoader
+[DEBUG] 2025-05-11 02:57:56.766 [LogStash::Runner] Reflections - expanded subtype java.lang.ClassLoader -> java.security.SecureClassLoader
+[DEBUG] 2025-05-11 02:57:56.766 [LogStash::Runner] Reflections - expanded subtype java.io.Closeable -> java.net.URLClassLoader
+[DEBUG] 2025-05-11 02:57:56.766 [LogStash::Runner] Reflections - expanded subtype java.lang.AutoCloseable -> java.io.Closeable
+[DEBUG] 2025-05-11 02:57:56.766 [LogStash::Runner] Reflections - expanded subtype java.lang.Comparable -> java.lang.Enum
+[DEBUG] 2025-05-11 02:57:56.766 [LogStash::Runner] Reflections - expanded subtype java.io.Serializable -> java.lang.Enum
+[ERROR] 2025-05-11 02:57:57.788 [LogStash::Runner] Logstash - java.lang.IllegalStateException: Logstash stopped processing because of an error: (SystemExit) exit
+```
+
+📌 **Root Cause Suspected**:
+
+- Missing `logstash.yml` file
+- Possibly incompatible JRuby behavior
+- Exit triggered by `SystemExit` error
+
+📎 **Recommended Troubleshooting**:
+
+- Ensure `/etc/logstash/logstash.yml` or a custom `--path.settings` is defined
+- Confirm JDK 1.8 compatibility and dependencies
+- Test with a minimal pipeline config to isolate the issue
 
 You have successfully installed:
 
 - 🟢 **OpenJDK 1.8**
 - 🟢 **Logstash 7.3.2**
 - 🟢 **Systemd-based Logstash service**
-
----
-
-## 📚 What’s Next?
-
-Try building a real-world Logstash pipeline:
-
-- 🔁 Forward logs to **Elasticsearch**
-- 📤 Send alerts to **Azure Sentinel**
-- 📄 Output to **local files** or **syslog**
