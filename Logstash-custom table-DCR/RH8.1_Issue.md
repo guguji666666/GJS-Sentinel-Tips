@@ -190,20 +190,21 @@ View debug logs
 While validating the Logstash configuration using debug mode, the following issue was encountered:
 
 ```bash
-[root@ip-172-31-33-79 conf.d]# /usr/share/logstash/bin/logstash --log.level debug -t -f /etc/logstash/conf.d/pipeline.conf | grep java
+[root@ip-172-31-33-79 conf.d]# /usr/share/logstash/bin/logstash --log.level debug -t -f /etc/logstash/conf.d/pipeline.conf | grep -E 'sentinel|java'
 Thread.exclusive is deprecated, use Thread::Mutex
 WARNING: Could not find logstash.yml which is typically located in $LS_HOME/config or /etc/logstash. You can specify the path using --path.settings. Continuing using the defaults
-[DEBUG] 2025-05-11 02:57:53.858 [LogStash::Runner] runner - pipeline.java_execution: true
-[DEBUG] 2025-05-11 02:57:56.764 [LogStash::Runner] Reflections - expanded subtype java.lang.Cloneable -> org.jruby.RubyBasicObject
-[DEBUG] 2025-05-11 02:57:56.765 [LogStash::Runner] Reflections - expanded subtype java.io.Serializable -> org.jruby.RubyBasicObject
-[DEBUG] 2025-05-11 02:57:56.765 [LogStash::Runner] Reflections - expanded subtype java.lang.Comparable -> org.jruby.RubyBasicObject
-[DEBUG] 2025-05-11 02:57:56.766 [LogStash::Runner] Reflections - expanded subtype java.security.SecureClassLoader -> java.net.URLClassLoader
-[DEBUG] 2025-05-11 02:57:56.766 [LogStash::Runner] Reflections - expanded subtype java.lang.ClassLoader -> java.security.SecureClassLoader
-[DEBUG] 2025-05-11 02:57:56.766 [LogStash::Runner] Reflections - expanded subtype java.io.Closeable -> java.net.URLClassLoader
-[DEBUG] 2025-05-11 02:57:56.766 [LogStash::Runner] Reflections - expanded subtype java.lang.AutoCloseable -> java.io.Closeable
-[DEBUG] 2025-05-11 02:57:56.766 [LogStash::Runner] Reflections - expanded subtype java.lang.Comparable -> java.lang.Enum
-[DEBUG] 2025-05-11 02:57:56.766 [LogStash::Runner] Reflections - expanded subtype java.io.Serializable -> java.lang.Enum
-[ERROR] 2025-05-11 02:57:57.788 [LogStash::Runner] Logstash - java.lang.IllegalStateException: Logstash stopped processing because of an error: (SystemExit) exit
+[DEBUG] 2025-05-11 03:14:41.044 [LogStash::Runner] runner - pipeline.java_execution: true
+[DEBUG] 2025-05-11 03:14:43.278 [LogStash::Runner] Reflections - expanded subtype java.lang.Cloneable -> org.jruby.RubyBasicObject
+[DEBUG] 2025-05-11 03:14:43.278 [LogStash::Runner] Reflections - expanded subtype java.io.Serializable -> org.jruby.RubyBasicObject
+[DEBUG] 2025-05-11 03:14:43.278 [LogStash::Runner] Reflections - expanded subtype java.lang.Comparable -> org.jruby.RubyBasicObject
+[DEBUG] 2025-05-11 03:14:43.286 [LogStash::Runner] Reflections - expanded subtype java.security.SecureClassLoader -> java.net.URLClassLoader
+[DEBUG] 2025-05-11 03:14:43.286 [LogStash::Runner] Reflections - expanded subtype java.lang.ClassLoader -> java.security.SecureClassLoader
+[DEBUG] 2025-05-11 03:14:43.286 [LogStash::Runner] Reflections - expanded subtype java.io.Closeable -> java.net.URLClassLoader
+[DEBUG] 2025-05-11 03:14:43.286 [LogStash::Runner] Reflections - expanded subtype java.lang.AutoCloseable -> java.io.Closeable
+[DEBUG] 2025-05-11 03:14:43.286 [LogStash::Runner] Reflections - expanded subtype java.lang.Comparable -> java.lang.Enum
+[DEBUG] 2025-05-11 03:14:43.287 [LogStash::Runner] Reflections - expanded subtype java.io.Serializable -> java.lang.Enum
+[FATAL] 2025-05-11 03:14:44.071 [LogStash::Runner] runner - The given configuration is invalid. Reason: undefined local variable or method `sentinel' for #<LogStash::BasePipeline:0x40e0213c>
+[ERROR] 2025-05-11 03:14:44.090 [LogStash::Runner] Logstash - java.lang.IllegalStateException: Logstash stopped processing because of an error: (SystemExit) exit
 ```
 
 📌 **Root Cause Suspected**:
