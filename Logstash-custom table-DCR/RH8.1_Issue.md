@@ -1,4 +1,7 @@
-# 🦾 Install Logstash 7.3.2 + JDK 1.8 on AWS EC2 (Red Hat 8.1)
+# 🛠️ Known issue with Logstash 7.3.2 + JDK 1.8 on Red Hat 8.1
+
+
+## 🦾 Install Logstash 7.3.2 + JDK 1.8 on AWS EC2 (Red Hat 8.1)
 
 This guide walks you through a **clean installation** of Logstash 7.3.2 and OpenJDK 1.8 on a **Red Hat 8.1 EC2 instance**, using the official Elastic YUM repository with full systemd support.
 
