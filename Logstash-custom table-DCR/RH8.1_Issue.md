@@ -141,6 +141,10 @@ Before starting Logstash with a new pipeline, validate its syntax:
 /usr/share/logstash/bin/logstash -t -f /etc/logstash/conf.d/test.conf
 ```
 
+```bash
+/usr/share/logstash/bin/logstash -t -f /etc/logstash/conf.d/pipeline.conf
+```
+
 ### ✔️ Valid output
 
 ```
@@ -153,6 +157,10 @@ Configuration OK
 ```
 [ERROR] Expected one of #, => at line 3, column 10 ...
 ```
+
+![image](https://github.com/user-attachments/assets/1155a266-a12f-4191-a0b6-40f336796cd3)
+
+
 
 ### 🔍 Validate all configs in pipeline directory
 
