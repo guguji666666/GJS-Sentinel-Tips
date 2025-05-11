@@ -1,20 +1,27 @@
-
-
-🦾 Install Logstash 7.3.2 + JDK 1.8 on AWS EC2 (Red Hat 8.1)
-
-This guide walks you through a clean installation of Logstash 7.3.2 and OpenJDK 1.8 on a Red Hat 8.1 EC2 instance using the official Elastic YUM repo — with full systemd support.
+明白了！以下是你可以直接复制粘贴到 GitHub README.md 中使用的 Markdown 格式内容，已处理好所有缩进和代码块，兼容 GitHub 渲染：
 
 ⸻
 
-🧰 Prerequisites
-	•	✅ AWS EC2 instance running Red Hat Enterprise Linux 8.1
-	•	✅ sudo user access
-	•	✅ Internet connectivity
 
-⸻
+# 🦾 Install Logstash 7.3.2 + JDK 1.8 on AWS EC2 (Red Hat 8.1)
 
-📦 Step 1: System Update & Install Base Tools
+This guide walks you through a **clean installation** of Logstash 7.3.2 and OpenJDK 1.8 on a **Red Hat 8.1 EC2 instance**, using the official Elastic YUM repository with full systemd support.
 
+---
+
+## 🧰 Prerequisites
+
+Make sure you have the following ready:
+
+- ✅ AWS EC2 instance running **RHEL 8.1**
+- ✅ `sudo` user privileges
+- ✅ Internet access
+
+---
+
+## 📦 Step 1: Update System & Install Basic Tools
+
+```bash
 sudo dnf update -y
 sudo dnf install -y wget curl unzip vim
 
@@ -25,7 +32,7 @@ sudo dnf install -y wget curl unzip vim
 
 sudo dnf install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel
 
-✅ Verify Java installation:
+✅ Verify Java installation
 
 java -version
 
@@ -56,7 +63,7 @@ EOF
 
 ⸻
 
-🧹 Step 4: Clean Up Previous Install (If Any)
+🧹 Step 4: Clean Previous Installations (If Any)
 
 sudo yum remove -y logstash
 sudo rm -rf /etc/logstash /usr/share/logstash /var/log/logstash /etc/systemd/system/logstash.service
@@ -64,11 +71,11 @@ sudo rm -rf /etc/logstash /usr/share/logstash /var/log/logstash /etc/systemd/sys
 
 ⸻
 
-📥 Step 5: Install Logstash 7.3.2 via Yum
+📥 Step 5: Install Logstash 7.3.2
 
 sudo yum install -y logstash-7.3.2
 
-✅ Verify Logstash version:
+✅ Verify Logstash version
 
 /usr/share/logstash/bin/logstash --version
 
@@ -79,21 +86,21 @@ logstash 7.3.2
 
 ⸻
 
-▶️ Step 6: Enable & Start the Logstash Service
+▶️ Step 6: Enable & Start Logstash Service
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now logstash
 
-✅ Check Logstash status:
+✅ Check Logstash service status
 
 sudo systemctl status logstash
 
 
 ⸻
 
-🧪 Step 7: Test with a Sample Pipeline (Optional)
+🧪 Step 7: Quick Test with Sample Pipeline (Optional)
 
-Create a simple pipeline config:
+Create a sample config
 
 sudo tee /etc/logstash/conf.d/test.conf > /dev/null <<EOF
 input {
@@ -104,26 +111,52 @@ output {
 }
 EOF
 
-Run Logstash manually to test:
+Run Logstash manually
 
 sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/test.conf
 
-Now type something and press Enter — you should see a parsed JSON output.
+🟢 Now type something and hit Enter — you’ll see parsed JSON output.
 
 ⸻
 
-✅ Success!
+🧪 Validate Logstash Configuration (Dry Run)
 
-You’ve successfully installed:
-	•	🟢 JDK 1.8
+Before starting Logstash with a new pipeline, validate its syntax:
+
+/usr/share/logstash/bin/logstash -t -f /etc/logstash/conf.d/test.conf
+
+✔️ Valid output
+
+Sending Logstash logs to /var/log/logstash...
+Configuration OK
+
+❌ On error
+
+[ERROR] Expected one of #, => at line 3, column 10 ...
+
+🔍 Validate all configs in pipeline directory
+
+/usr/share/logstash/bin/logstash -t -f /etc/logstash/conf.d/
+
+
+⸻
+
+🎉 Installation Summary
+
+You have successfully installed:
+	•	🟢 OpenJDK 1.8
 	•	🟢 Logstash 7.3.2
-	•	🟢 Systemd-supported Logstash service
+	•	🟢 Systemd-based Logstash service
 
 ⸻
 
-📚 Next Steps
+📚 What’s Next?
 
-Want to build a real pipeline? Try one of the following:
-	•	Forward logs to Elasticsearch
-	•	Send alerts to Azure Sentinel
-	•	Output to local files or syslog
+Try building a real-world Logstash pipeline:
+	•	🔁 Forward logs to Elasticsearch
+	•	📤 Send alerts to Azure Sentinel
+	•	📄 Output to local files or syslog
+
+---
+
+⚠️ 如果你放进去之后 GitHub 渲染有异常，可以确认是否文件编码为 UTF-8，无 BOM。如果需要我也可以帮你生成 `.md` 文件。是否要我生成该 Markdown 文件供你下载？
