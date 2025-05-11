@@ -165,10 +165,14 @@ Configuration OK
 ```
 ![image](https://github.com/user-attachments/assets/1155a266-a12f-4191-a0b6-40f336796cd3)
 
-Enable debug logs
+
+View debug logs
 ```bash
 /usr/share/logstash/bin/logstash --log.level debug -t -f /etc/logstash/conf.d/pipeline.conf
 ```
+
+![image](https://github.com/user-attachments/assets/14d69029-5d7c-419b-9e47-cf8c6bf8e972)
+
 
 ### 🔍 Validate all configs in pipeline directory
 
