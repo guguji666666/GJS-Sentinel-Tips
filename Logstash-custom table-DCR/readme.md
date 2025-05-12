@@ -93,6 +93,12 @@ dpkg -L logstash | grep bin/logstash
 
 ![image](https://github.com/user-attachments/assets/b8353069-0afb-426f-bf55-4028bd9b0192)
 
+Verify if OpenJDK exists as well (after logstash 7.10.0)
+```bash
+/usr/share/logstash/jdk/bin/java -version
+```
+![image](https://github.com/user-attachments/assets/3dbafe86-d56f-4644-90dd-341a5fb7f6f6)
+
 ---
 
 ### 🔹 Start Logstash
