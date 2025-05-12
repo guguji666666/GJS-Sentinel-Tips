@@ -1,4 +1,6 @@
-# 🚀 Quickstart Guide: Installing `microsoft-sentinel-log-analytics-logstash-output-plugin` for Logstash Integration with Microsoft Sentinel
+# 🚀 Quickstart Guide
+
+## Installing `microsoft-sentinel-log-analytics-logstash-output-plugin` for Logstash Integration with Microsoft Sentinel
 
 This guide helps you:
 
@@ -42,6 +44,16 @@ Logstash Workflow Diagram
 * Logstash version **7.x** or **8.x**
 
 ---
+
+## Logstash JDK integration (Start from 7.10.0)
+[Logstash 7.10.0 Release Notes](https://www.elastic.co/guide/en/logstash/7.14/logstash-7-10-0.html)
+
+Logstash 7.10.0 offers new architecture-specific download and installation options that include a bundled Java Development Kit (JDK)
+
+![image](https://github.com/user-attachments/assets/521f516d-eefe-47c0-a42b-73873b3d5a5c)
+
+
+
 
 ## 🏗 Step 1: Install Logstash
 
