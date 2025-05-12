@@ -1,59 +1,63 @@
 # 🚀 Quickstart Guide
 
-## Installing `microsoft-sentinel-log-analytics-logstash-output-plugin` for Logstash Integration with Microsoft Sentinel
+## Integrate Logstash with Microsoft Sentinel using `microsoft-sentinel-log-analytics-logstash-output-plugin`
 
-This guide helps you:
+This guide walks you through:
 
-* ✅ Install **Logstash**
-* ✅ Install the Microsoft Sentinel output plugin only (no full repo clone needed)
-* ✅ Integrate the plugin with Logstash
-* ✅ Configure and test ingestion with sample data
-* ✅ Create DCR/DCE and a custom table for Microsoft Sentinel ingestion
+* ✅ Installing **Logstash**
+* ✅ Installing the **Microsoft Sentinel Log Analytics output plugin** (no full repo clone required)
+* ✅ Configuring the plugin within Logstash
+* ✅ Sending test data to verify ingestion
+* ✅ Creating **DCR**, **DCE**, and a custom **Log Analytics table** for Microsoft Sentinel
 
 ---
 
-Logstash Workflow Diagram
-```
+## 🔄 Logstash Processing Workflow
+
+```text
 +---------------------------+
 |   Pipeline Configuration  |
-|   /etc/logstash/conf.d/   |
+|  (/etc/logstash/conf.d/) |
 +---------------------------+
 
-[Inputs] -----------------------> [Filters] -----------------------> [Outputs]
-(1)                            (2)                            (3)
-+-------+   +-------+   +-------+   +----------+   +----------+   +----------+
-| Redis |   | Apache|   | JDBC  |   | alter    |   | Elastic- |   | Graphite|
-+-------+   +-------+   +-------+   | aggregate|   | search   |   +----------+
-+-------+   +-------+   +-------+   | clone    |   +----------+   +----------+
-| Syslog|   | JMS   |   |RabbitMQ|   | range    |   | MongoDB |   | InfluxDB|
-+-------+   +-------+   +-------+   | mutate   |   +----------+   +----------+
-| csv      |   +----------+   +----------+
-+----------+   | PagerDuty|   | StatsD  |
-+----------+   +----------+
----
+[Inputs] --> [Filters] --> [Outputs]
+     (1)        (2)           (3)
+
++---------+ +---------+ +----------+ +------------+ +-----------+ +----------+
+| Redis   | | Apache  | | JDBC     | | alter      | | Elastic   | | Graphite |
+| Syslog  | | JMS     | | RabbitMQ| | aggregate  | | MongoDB   | | InfluxDB |
+| csv     |           |           | | clone      | |           | | StatsD   |
++---------+ +---------+ +----------+ | range      | +-----------+ +----------+
+                                     | mutate     |
+                                     +------------+
 ```
 
-![image](https://github.com/user-attachments/assets/f8e774a1-df8b-4aa2-85b6-8a26bd6c2582)
+![Logstash Workflow](https://github.com/user-attachments/assets/f8e774a1-df8b-4aa2-85b6-8a26bd6c2582)
 
+---
 
 ## ✅ Prerequisites
 
+Before starting, ensure the following are available:
+
 * Root or `sudo` access
-* Internet access
-* `java`, `git`, and `ruby` installed
+* Internet connectivity
+* Installed: `java`, `git`, `ruby`
 * Logstash version **7.x** or **8.x**
 
 ---
 
-## Logstash JDK integration (Start from 7.10.0)
-[Logstash 7.10.0 Release Notes](https://www.elastic.co/guide/en/logstash/7.14/logstash-7-10-0.html)
+## ☕ JDK Integration in Logstash (7.10.0+)
 
-Logstash 7.10.0 offers new architecture-specific download and installation options that include a bundled Java Development Kit (JDK)
+From **Logstash 7.10.0**, the distribution includes a bundled JDK for easier setup.
 
-![image](https://github.com/user-attachments/assets/521f516d-eefe-47c0-a42b-73873b3d5a5c)
+📘 [Logstash 7.10.0 Release Notes](https://www.elastic.co/guide/en/logstash/7.14/logstash-7-10-0.html)
 
+> No need to install Java separately – it's already bundled.
 
+![JDK Info](https://github.com/user-attachments/assets/521f516d-eefe-47c0-a42b-73873b3d5a5c)
 
+---
 
 ## 🏗 Step 1: Install Logstash
 
