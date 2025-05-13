@@ -272,10 +272,8 @@ sudo yum install -y logstash-7.10.0
 
 Example output:
 
-```
-logstash 7.10.0
-openjdk version "15.0.1"
-```
+![image](https://github.com/user-attachments/assets/0f11c4a8-84b8-41c1-b811-945d602b69c8)
+
 
 ### ▶️ Start and enable the Logstash service
 
