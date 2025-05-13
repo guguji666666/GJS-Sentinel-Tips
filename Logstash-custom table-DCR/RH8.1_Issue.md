@@ -261,6 +261,7 @@ EOF
 # Install logstash 7.10.0
 sudo yum install -y logstash-7.10.0
 ```
+![image](https://github.com/user-attachments/assets/c10687a7-d161-47c4-9f8e-a1805790d113)
 
 ### ✅ Verify Logstash and bundled Java version
 
