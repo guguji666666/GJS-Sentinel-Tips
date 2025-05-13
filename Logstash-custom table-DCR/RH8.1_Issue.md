@@ -331,7 +331,14 @@ cd /tmp && ls -al
 /usr/share/logstash/bin/logstash --log.level debug -t -f /etc/logstash/conf.d/pipeline.conf | grep -E 'sentinel|java'
 ```
 
+Error in logstash 7.10
+
 ![image](https://github.com/user-attachments/assets/ca3737f5-ef6f-4bc2-b135-16b685f249c7)
+
+
+Error in logstash 7.14
+
+![image](https://github.com/user-attachments/assets/c3086ced-39fa-43ec-b759-b4ae212cb1f8)
 
 
 ## 📚 Reference: Bundled JDK in Logstash
