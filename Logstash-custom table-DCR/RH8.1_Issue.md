@@ -327,6 +327,13 @@ systemctl restart logstash
 cd /tmp && ls -al
 ```
 
+```bash
+/usr/share/logstash/bin/logstash --log.level debug -t -f /etc/logstash/conf.d/pipeline.conf | grep -E 'sentinel|java'
+```
+
+![image](https://github.com/user-attachments/assets/ca3737f5-ef6f-4bc2-b135-16b685f249c7)
+
+
 ## 📚 Reference: Bundled JDK in Logstash
 
 Elastic added bundled JDK support starting in version **7.9.0** and continued in all 7.x versions including **7.10.0**, **7.13.0**, and **7.14.0**. Here are links to the official release notes confirming this:
