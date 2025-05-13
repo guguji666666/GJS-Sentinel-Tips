@@ -229,43 +229,59 @@ You have successfully installed:
 
 ---
 
-## ⚙️ Optional: Install Logstash 7.11.0 (with bundled JDK)
 
-If you prefer a more recent version (e.g., **7.11.0**) that **includes a bundled JDK**, you can follow the steps below.
+## ⚙️ Optional: Install Logstash 7.10.0 (with bundled JDK)
 
-> ✅ No need to pre-install OpenJDK separately — Logstash 7.11.0 comes bundled with JDK out of the box.
+If you prefer to install **Logstash 7.10.0**, note that this version **includes a bundled JDK**, so there's **no need to install OpenJDK manually**.
 
-### 📥 Install Logstash 7.11.0
+> ✅ Starting from version 7.9.0, Logstash comes with a built-in JDK.
+
+### 📥 Install Logstash 7.10.0
 
 ```bash
-sudo yum install -y logstash-7.11.0
+sudo yum install -y logstash-7.10.0
 ```
 
-### ✅ Verify version and bundled Java
+### ✅ Verify Logstash and bundled Java version
 
 ```bash
 /usr/share/logstash/bin/logstash --version
 /usr/share/logstash/jdk/bin/java -version
 ```
 
-Expected output includes:
+Example output:
 
 ```
-logstash 7.11.0
-openjdk version "15.0.1"  (or similar)
+logstash 7.10.0
+openjdk version "15.0.1"
 ```
 
-### ▶️ Enable & Start Logstash
+### ▶️ Start and enable the Logstash service
 
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable --now logstash
 ```
 
-### ✅ Check Logstash service status
+---
 
-```bash
-sudo systemctl status logstash
-```
+## 📚 Reference: Bundled JDK in Logstash
+
+Elastic added bundled JDK support starting in version **7.9.0** and continued in all 7.x versions including **7.10.0**, **7.13.0**, and **7.14.0**. Here are links to the official release notes confirming this:
+
+* 🔗 [Logstash 7.10.0 Release Notes](https://www.elastic.co/guide/en/logstash/7.14/logstash-7-10-0.html)
+
+  > *"Logstash now uses the bundled JDK by default..."*
+
+* 🔗 [Logstash 7.13.0 Release Notes](https://www.elastic.co/guide/en/logstash/7.14/logstash-7-13-0.html)
+
+  > *"The bundled Java is used by default unless another JAVA\_HOME is explicitly set."*
+
+* 🔗 [Logstash 7.14.0 Release Notes](https://www.elastic.co/guide/en/logstash/7.14/logstash-7-14-0.html)
+
+  > *"Bundled Java continues to be the default runtime environment."*
+
+✅ This confirms that you **do not need to manually install Java** when using Logstash 7.10.0 or later.
 
 ---
+
