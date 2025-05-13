@@ -244,6 +244,21 @@ If you prefer to install **Logstash 7.10.0**, note that this version **includes 
 ### 📥 Install Logstash 7.10.0
 
 ```bash
+# Import Elastic GPG key
+sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+# Add Elastic 7.x repository
+sudo tee /etc/yum.repos.d/logstash.repo > /dev/null <<EOF
+[logstash-7.x]
+name=Elastic repository for 7.x packages
+baseurl=https://artifacts.elastic.co/packages/7.x/yum
+gpgcheck=1
+enabled=1
+autorefresh=1
+type=rpm-md
+EOF
+
+# Install logstash 7.10.0
 sudo yum install -y logstash-7.10.0
 ```
 
