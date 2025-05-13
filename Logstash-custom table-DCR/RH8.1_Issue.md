@@ -261,7 +261,7 @@ EOF
 # Install logstash 7.10.0
 sudo yum install -y logstash-7.10.0
 ```
-![image](https://github.com/user-attachments/assets/c10687a7-d161-47c4-9f8e-a1805790d113)
+![image](https://github.com/user-attachments/assets/8e5ae4e6-0b2a-4bce-a000-27cc7df4d903)
 
 ### ✅ Verify Logstash and bundled Java version
 
@@ -270,9 +270,9 @@ sudo yum install -y logstash-7.10.0
 /usr/share/logstash/jdk/bin/java -version
 ```
 
-Example output:
+Example output: （Indicate bundled JDK installed, standlone JDK not installed indeed)
 
-![image](https://github.com/user-attachments/assets/0f11c4a8-84b8-41c1-b811-945d602b69c8)
+![image](https://github.com/user-attachments/assets/0d6dfefa-f7fa-4954-b4fd-e4f3e28ea1a0)
 
 
 ### ▶️ Start and enable the Logstash service
@@ -281,6 +281,7 @@ Example output:
 sudo systemctl daemon-reload
 sudo systemctl enable --now logstash
 ```
+![image](https://github.com/user-attachments/assets/5adc0af7-7c0d-4a1c-9d40-f2c7a7c865c4)
 
 ---
 
