@@ -236,6 +236,11 @@ If you prefer to install **Logstash 7.10.0**, note that this version **includes 
 
 > ✅ Starting from version 7.9.0, Logstash comes with a built-in JDK.
 
+### OS info
+
+![image](https://github.com/user-attachments/assets/26b4ca8c-8ded-4aa7-af72-f10f3d62bdb5)
+
+
 ### 📥 Install Logstash 7.10.0
 
 ```bash
