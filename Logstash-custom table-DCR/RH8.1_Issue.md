@@ -285,6 +285,48 @@ sudo systemctl enable --now logstash
 
 ---
 
+### Install sentinel plugin and verify if logstash could run properly
+```bash
+/usr/share/logstash/bin/logstash-plugin install microsoft-sentinel-log-analytics-logstash-output-plugin
+```
+
+```bash
+/usr/share/logstash/bin/logstash-plugin list --verbose | grep sentinel
+```
+![image](https://github.com/user-attachments/assets/f8747a55-fa81-4de0-8f82-8830be6401d9)
+
+
+ Sample Logstash Config
+
+```bash
+cd /etc/logstash/conf.d
+cat > pipeline.conf
+```
+
+Copy this content into `pipeline.conf`:
+
+```logstash
+input {
+    generator {
+        lines => [ "This is a test log message from demo" ]
+        count => 10
+    }
+}
+output {
+    microsoft-sentinel-log-analytics-logstash-output-plugin {
+        create_sample_file => true
+        sample_file_path => "/tmp"
+    }
+}
+```
+
+Restart Logstash:
+
+```bash
+systemctl restart logstash
+cd /tmp && ls -al
+```
+
 ## 📚 Reference: Bundled JDK in Logstash
 
 Elastic added bundled JDK support starting in version **7.9.0** and continued in all 7.x versions including **7.10.0**, **7.13.0**, and **7.14.0**. Here are links to the official release notes confirming this:
