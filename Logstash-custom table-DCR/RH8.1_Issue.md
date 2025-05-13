@@ -224,3 +224,48 @@ You have successfully installed:
 - 🟢 **OpenJDK 1.8**
 - 🟢 **Logstash 7.3.2**
 - 🟢 **Systemd-based Logstash service**
+- 
+
+
+---
+
+## ⚙️ Optional: Install Logstash 7.11.0 (with bundled JDK)
+
+If you prefer a more recent version (e.g., **7.11.0**) that **includes a bundled JDK**, you can follow the steps below.
+
+> ✅ No need to pre-install OpenJDK separately — Logstash 7.11.0 comes bundled with JDK out of the box.
+
+### 📥 Install Logstash 7.11.0
+
+```bash
+sudo yum install -y logstash-7.11.0
+```
+
+### ✅ Verify version and bundled Java
+
+```bash
+/usr/share/logstash/bin/logstash --version
+/usr/share/logstash/jdk/bin/java -version
+```
+
+Expected output includes:
+
+```
+logstash 7.11.0
+openjdk version "15.0.1"  (or similar)
+```
+
+### ▶️ Enable & Start Logstash
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now logstash
+```
+
+### ✅ Check Logstash service status
+
+```bash
+sudo systemctl status logstash
+```
+
+---
