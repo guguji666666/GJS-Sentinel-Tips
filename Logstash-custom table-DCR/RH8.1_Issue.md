@@ -1,4 +1,4 @@
-# 🛠️ Issue with Logstash 7.3.2 + JDK 1.8 on Red Hat 8.1
+![image](https://github.com/user-attachments/assets/cbebda15-90dc-493a-8384-bc24ef7bf3d3)# 🛠️ Issue with Logstash 7.3.2 + JDK 1.8 on Red Hat 8.1
 
 
 ## 🦾 Install Logstash 7.3.2 + JDK 1.8 on AWS EC2 (Red Hat 8.1)
@@ -331,14 +331,90 @@ cd /tmp && ls -al
 /usr/share/logstash/bin/logstash --log.level debug -t -f /etc/logstash/conf.d/pipeline.conf | grep -E 'sentinel|java'
 ```
 
-Error in logstash 7.10
+🧨 Erron in logstash 7.10
 
 ![image](https://github.com/user-attachments/assets/ca3737f5-ef6f-4bc2-b135-16b685f249c7)
 
 
-Error in logstash 7.14
+🧨 Erron in logstash 7.14
 
 ![image](https://github.com/user-attachments/assets/c3086ced-39fa-43ec-b759-b4ae212cb1f8)
+
+
+以下是对你提供的 Logstash 8.18.1 + Sentinel 插件测试日志的总结内容，**已集成到你原本的 Logstash 安装指南中**，并保留了原格式、图片链接及逻辑层次：
+
+---
+
+🧨 Erron in Logstash 8.18.1
+
+While validating the configuration with **Logstash 8.18.1**, the following environment and output were observed:
+
+```bash
+/usr/share/logstash/bin/logstash --log.level debug -t -f /etc/logstash/conf.d/pipeline.conf | grep -E 'sentinel|java'
+```
+
+### 🛑 Output highlights:
+
+```bash
+WARNING: Could not find logstash.yml which is typically located in $LS_HOME/config or /etc/logstash.
+You can specify the path using --path.settings. Continuing using the defaults
+
+[INFO ] 2025-05-18 13:22:37.350 [main] runner - JVM bootstrap flags: [...long list of --add-exports and --add-opens...]
+
+microsoft-sentinel-log-analytics-logstash-output-plugin {
+    at org.jruby.RubyKernel.exit...
+}
+```
+![image](https://github.com/user-attachments/assets/563946c4-a110-48e2-8903-4dea63549e56)
+
+
+### ✅ Plugin Verification
+
+```bash
+/usr/share/logstash/bin/logstash-plugin list --verbose | grep sentinel
+```
+
+Result:
+
+```bash
+microsoft-sentinel-log-analytics-logstash-output-plugin (1.1.4)
+```
+
+![image](https://github.com/user-attachments/assets/907c20cf-3fc2-4e98-b08e-c066affdde41)
+
+
+### ✅ Version Checks
+
+```bash
+/usr/share/logstash/bin/logstash --version
+```
+
+```bash
+logstash 8.18.1
+```
+![image](https://github.com/user-attachments/assets/ba1ab75f-7174-4352-a89b-41b7a844ab3c)
+
+
+```bash
+/usr/share/logstash/jdk/bin/java -version
+```
+
+```bash
+openjdk version "21.0.7" 2025-04-15 LTS
+OpenJDK Runtime Environment Temurin-21.0.7+6 ...
+```
+![image](https://github.com/user-attachments/assets/1c781953-c137-4ad3-b282-286b6344f545)
+
+---
+
+### 🔍 Analysis and Integration
+
+This confirms that **Logstash 8.18.1** runs with a **bundled JDK 21.0.7**, and that the `microsoft-sentinel-log-analytics-logstash-output-plugin` v1.1.4 is correctly installed.
+
+However, the debug output suggests:
+
+* `logstash.yml` is **missing** — while not fatal, it's best practice to define it or explicitly set `--path.settings`.
+* The plugin loads but leads to a **JRuby SystemExit**, possibly due to **improper configuration** or **plugin compatibility issues** with Logstash 8.x.
 
 
 ## 📚 Reference: Bundled JDK in Logstash
