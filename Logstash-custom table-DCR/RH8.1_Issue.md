@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/cbebda15-90dc-493a-8384-bc24ef7bf3d3)# 🛠️ Issue with Logstash 7.3.2 + JDK 1.8 on Red Hat 8.1
+# 🛠️ Issue with Logstash 7.3.2 + JDK 1.8 on Red Hat 8.1
 
 
 ## 🦾 Install Logstash 7.3.2 + JDK 1.8 on AWS EC2 (Red Hat 8.1)
