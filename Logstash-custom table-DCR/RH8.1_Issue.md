@@ -331,21 +331,22 @@ cd /tmp && ls -al
 /usr/share/logstash/bin/logstash --log.level debug -t -f /etc/logstash/conf.d/pipeline.conf | grep -E 'sentinel|java'
 ```
 
-🧨 Erron in logstash 7.10
+---
+
+## Error in other logstash version
+
+🧨 Error in logstash 7.10
 
 ![image](https://github.com/user-attachments/assets/ca3737f5-ef6f-4bc2-b135-16b685f249c7)
 
 
-🧨 Erron in logstash 7.14
+🧨 Error in logstash 7.14
 
 ![image](https://github.com/user-attachments/assets/c3086ced-39fa-43ec-b759-b4ae212cb1f8)
 
 
-以下是对你提供的 Logstash 8.18.1 + Sentinel 插件测试日志的总结内容，**已集成到你原本的 Logstash 安装指南中**，并保留了原格式、图片链接及逻辑层次：
 
----
-
-🧨 Erron in Logstash 8.18.1
+🧨 Error in Logstash 8.18.1
 
 While validating the configuration with **Logstash 8.18.1**, the following environment and output were observed:
 
@@ -416,6 +417,7 @@ However, the debug output suggests:
 * `logstash.yml` is **missing** — while not fatal, it's best practice to define it or explicitly set `--path.settings`.
 * The plugin loads but leads to a **JRuby SystemExit**, possibly due to **improper configuration** or **plugin compatibility issues** with Logstash 8.x.
 
+---
 
 ## 📚 Reference: Bundled JDK in Logstash
 
