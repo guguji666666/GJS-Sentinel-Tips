@@ -84,3 +84,52 @@ input {
   ```
 
 ---
+
+### Legacy sentinel extension with one time log generation
+```conf
+input {
+  generator {
+    lines => [ "This is a test log message from demo" ]
+    count => 10
+    id => "sample-generator"
+  }
+
+  stdin {
+    id => "keep-alive"
+  }
+}
+
+output {
+  if [_id] == "sample-generator" {
+    microsoft-sentinel-logstash-output-plugin {
+      create_sample_file => true
+      sample_file_path => "/tmp"
+    }
+  }
+}
+```
+
+
+### New sentinel extension with one time log generation
+```conf
+input {
+  generator {
+    lines => [ "This is a test log message from demo" ]
+    count => 10
+    id => "sample-generator"
+  }
+
+  stdin {
+    id => "keep-alive"
+  }
+}
+
+output {
+  if [_id] == "sample-generator" {
+    microsoft-sentinel-log-analytics-logstash-output-plugin {
+      create_sample_file => true
+      sample_file_path => "/tmp"
+    }
+  }
+}
+```
