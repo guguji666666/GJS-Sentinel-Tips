@@ -439,3 +439,186 @@ Elastic added bundled JDK support starting in version **7.9.0** and continued in
 
 ---
 
+
+
+当然可以！以下是你请求的完整 GitHub Markdown 文件内容，去除了邮件语气，保留内容重点、结构清晰、样式美化，适合直接复制粘贴到 .md 文件中使用：
+
+[[ _TOC_ ]]
+
+# ✅ Logstash Version Testing Results on Red Hat 8.1
+
+This document summarizes internal testing results of Logstash on **Red Hat 8.1**, focusing on compatibility with **Microsoft Sentinel output plugins**.
+
+---
+
+## 🔍 Test Scope
+
+The following Logstash versions were tested with:
+
+- `microsoft-sentinel-logstash-output-plugin` (legacy)
+- `microsoft-sentinel-log-analytics-logstash-output-plugin` (new)
+
+### ✅ Versions Tested
+
+- 7.10.0  
+- 7.13.0  
+- 7.14.0  
+- 7.17.0  
+- 8.18.1 *(latest as of test time)*
+
+---
+
+## 📌 Key Findings
+
+### 🔹 Bundled JDK Support
+
+Elastic started including bundled JDK support from **Logstash 7.9.0**, eliminating the need for external Java installation.
+
+📎 References:
+
+- [Logstash 7.10.0 Release Notes](https://www.elastic.co/guide/en/logstash/7.14/logstash-7-10-0.html)
+- [Logstash 7.13.0 Release Notes](https://www.elastic.co/guide/en/logstash/7.14/logstash-7-13-0.html)
+- [Logstash 7.14.0 Release Notes](https://www.elastic.co/guide/en/logstash/7.14/logstash-7-14-0.html)
+
+---
+
+### 🔹 Plugin Stability
+
+- **Logstash 7.x**: Generally unstable with both plugins  
+  Issues included:
+  - Configuration parsing failures  
+  - Plugin loading errors  
+  - Service crashes  
+
+- **Logstash 8.18.1**: Demonstrated stable and consistent performance with both plugin types
+
+---
+
+## 🧪 Test Configuration Files
+
+### ✅ New Plugin: `microsoft-sentinel-log-analytics-logstash-output-plugin`
+
+```conf
+input {
+  generator {
+    lines => [
+      '{"message": "This is a test log message from demo new plugin", "source": "logstash-generator"}'
+    ]
+    count => 1
+  }
+}
+
+filter {
+  json {
+    source => "message"
+    target => "parsed"
+  }
+  mutate {
+    remove_field => ["message"]
+  }
+}
+
+output {
+  stdout {
+    codec => json_lines
+  }
+  microsoft-sentinel-log-analytics-logstash-output-plugin {
+    create_sample_file => true
+    sample_file_path => "/tmp"
+  }
+}
+```
+
+⸻
+
+✅ Legacy Plugin: microsoft-sentinel-logstash-output-plugin
+
+```conf
+input {
+  generator {
+    lines => [
+      '{"message": "This is a test log message from demo legacy plugin", "source": "logstash-generator"}'
+    ]
+    count => 1
+  }
+}
+
+filter {
+  json {
+    source => "message"
+    target => "parsed"
+  }
+  mutate {
+    remove_field => ["message"]
+  }
+}
+
+output {
+  stdout {
+    codec => json_lines
+  }
+  microsoft-sentinel-logstash-output-plugin {
+    create_sample_file => true
+    sample_file_path => "/tmp"
+  }
+}
+
+```
+⸻
+
+🧪 Validation & Debugging Commands
+
+```bash
+# Locate Logstash binary path (installed via dpkg)
+dpkg -L logstash | grep bin/logstash
+
+# Check Logstash version
+/usr/share/logstash/bin/logstash --version
+
+# Check bundled JDK version (if applicable)
+/usr/share/logstash/jdk/bin/java -version
+
+# View full logstash service logs in reverse order
+journalctl -u logstash.service --no-pager -r
+
+# View the last 50 lines of logstash logs
+journalctl -u logstash.service --no-pager -r -n 50
+
+# List 10 most recently modified files in /tmp (verify plugin output)
+cd /tmp && ls -lt | head -n 10
+
+# Stop the Logstash service
+systemctl stop logstash
+
+# Remove old test output files
+rm -f /tmp/sampleFile*.json
+
+# Check current status of Logstash service
+systemctl status logstash
+
+# Remove existing pipeline and prepare a new one
+cd /etc/logstash/conf.d && rm -rf pipeline.conf
+cat > pipeline.conf  # Paste your test config here
+
+# Reload systemd and restart Logstash service
+sudo systemctl daemon-reload && systemctl restart logstash
+
+# Restart Logstash and check recent output files again
+sudo systemctl daemon-reload && systemctl restart logstash && cd /tmp && ls -lt | head -n 10
+
+# Run a config test with debug logging and filter plugin-related output
+/usr/share/logstash/bin/logstash --log.level debug -t -f /etc/logstash/conf.d/pipeline.conf | grep -E 'sentinel|java|exit'
+```
+
+⸻
+
+💡 Recommendation
+
+The issue appears to be related to how Logstash handles pipeline configuration, especially when Sentinel plugins are involved.
+
+Since Logstash is an open-source tool not maintained by Microsoft, support limitations apply. However, based on test results:
+
+✅ Recommended Action:
+Use Logstash 8.18.1 on Red Hat 8.1 to ensure compatibility and plugin stability.
+
+⸻
