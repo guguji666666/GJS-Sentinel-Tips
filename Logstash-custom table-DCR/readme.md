@@ -176,7 +176,14 @@ output {
 Restart Logstash:
 
 ```bash
+sudo systemctl daemon-reload
+```
+
+```bash
 systemctl restart logstash
+```
+
+```bash
 cd /tmp && ls -al
 ```
 
