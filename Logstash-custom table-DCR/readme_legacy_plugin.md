@@ -124,9 +124,15 @@ output {
 ```
 
 ### 8. Verify if the pipeline configuration works as expected
+
+```bash
+sudo systemctl daemon-reload
+```
+
 ```
 systemctl restart logstash
 ```
+
 ```
 cd /tmp
 ```
