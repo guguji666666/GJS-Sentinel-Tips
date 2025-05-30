@@ -2,7 +2,10 @@
 
 ##  1. API test
 
-url:
+url with `POST` binding:
+```
+https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2022-10-01
+```
 
 
 request body:
