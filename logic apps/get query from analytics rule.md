@@ -432,7 +432,7 @@ https://management.azure.com/subscriptions/@{body('Parse_JSON_orgin_XDR')?['work
 > ✅ Example (if your Parse JSON action is named `Parse_JSON_SentinelIncident`):
 
 ```plaintext
-@{body('Parse_JSON_SentinelIncident')?['workspaceInfo']?['SubscriptionId']}
+[@{body('Parse_JSON_SentinelIncident')?['workspaceInfo']?['SubscriptionId']}](https://management.azure.com/subscriptions/@{body('Parse_JSON_SentinelIncident')?['workspaceInfo']?['SubscriptionId']}/resourceGroups/@{body('Parse_JSON_SentinelIncident')?['workspaceInfo']?['ResourceGroupName']}/providers/Microsoft.OperationalInsights/workspaces/@{body('Parse_JSON_SentinelIncident')?['workspaceInfo']?['WorkspaceName']}/providers/Microsoft.SecurityInsights/alertRules/@{outputs('Compose_analytics_rule_id')}?api-version=2024-09-01)
 ```
 This ensures your Logic App references the correct dynamic output from the earlier action when building the URI to retrieve the analytics rule definition.
 
