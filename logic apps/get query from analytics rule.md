@@ -2,10 +2,34 @@
 
 ## 🛠️ Preparation Steps
 
-1. **Enable System-Assigned Managed Identity** for your Logic App.
-2. **Assign `Microsoft Sentinel Contributor` Role** to the Logic App's managed identity.
+Before configuring your Logic App to retrieve analytics rule queries from Microsoft Sentinel incidents, ensure the following setup is complete:
+
+### 1. Enable System-Assigned Managed Identity
+
+Enable the **system-assigned managed identity** for your Logic App so it can securely authenticate with Azure services.
+
+🔗 [How to enable managed identity in Logic Apps](https://learn.microsoft.com/en-us/azure/logic-apps/authenticate-with-managed-identity?tabs=consumption)
+
+### 2. Assign the `Microsoft Sentinel Contributor` Role
+
+Grant your Logic App's managed identity the **Microsoft Sentinel Contributor** role. You can assign this role at the **resource group level** or **Sentinel workspace level**, depending on your scoping needs.
+
+🔗 [Microsoft Sentinel built-in roles and permissions](https://learn.microsoft.com/en-us/azure/sentinel/roles)
+
+> 💡 **Recommendation**: Assign the role at the **resource group level** that contains the Microsoft Sentinel workspace. This ensures access to all related resources (such as the workspace, playbooks, and analytics rules) in one scope.
 
 ---
+
+### 🧾 Microsoft Sentinel Role Summary
+
+| Role                       | Description                                                                                          |
+| -------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Sentinel Reader**        | View data, incidents, workbooks, and Sentinel resources.                                             |
+| **Sentinel Responder**     | All Reader permissions + ability to manage incidents (assign, dismiss, etc.).                        |
+| **Sentinel Contributor**   | All Responder permissions + create/edit Sentinel resources, analytics rules, install solutions, etc. |
+| **Playbook Operator**      | List, view, and manually run Sentinel playbooks.                                                     |
+| **Automation Contributor** | Allows Sentinel to attach playbooks to automation rules (not intended for user accounts).            |
+
 
 ## 🔁 Step 1: Trigger — Microsoft Sentinel Incident
 
