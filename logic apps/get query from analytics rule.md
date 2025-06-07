@@ -460,6 +460,7 @@ Sample configuration:
 * **Schema**: Paste the following directly.
 <details>
   <summary>Click to expand JSON schema</summary>
+	
 ```json
 {
   "type": "object",
@@ -596,6 +597,7 @@ Sample output:
 
 <details>
   <summary>Click to expand JSON schema</summary>
+	
 ```json
 {
 	"id": "/subscriptions/59a6ba34-6a79-4b81-8cc1-64d5e21a4c4c/resourceGroups/demo-sentinel-logic-app-rg/providers/Microsoft.OperationalInsights/workspaces/demo-sentinel-logic-app-rg-workspace1/providers/Microsoft.SecurityInsights/alertRules/a1d7ba82-a14c-4245-a781-81481901f558",
