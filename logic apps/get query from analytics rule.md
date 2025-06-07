@@ -382,7 +382,6 @@ Insert a **Parse JSON** action right after the trigger to extract the incident p
   }
 }
 ```
-
 </details>
 
 ---
@@ -596,7 +595,7 @@ You can now test your workflow with a sample incident. At the final output of St
 Sample output:
 
 <details>
-  <summary>Click to expand JSON schema</summary>
+  <summary>Click to expand detailed ouput</summary>
 	
 ```json
 {
