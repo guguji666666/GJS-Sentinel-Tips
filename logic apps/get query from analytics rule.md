@@ -507,10 +507,56 @@ Sample for this action in my lab
   }
 }
 ```
-sss
 
 Sample in my lab
 
 ![image](https://github.com/user-attachments/assets/174a58cd-2170-41a3-838f-46c037cbd1ce)
 
-![image](https://github.com/user-attachments/assets/e92795e1-515d-44e3-a3fa-502b49c78024)
+
+## 7. Pick one incident for test run
+Check body part of output of last step, we can see the complete query defined in analuytics rule involved
+```json
+{
+	"id": "/subscriptions/59a6ba34-6a79-4b81-8cc1-64d5e21a4c4c/resourceGroups/demo-sentinel-logic-app-rg/providers/Microsoft.OperationalInsights/workspaces/demo-sentinel-logic-app-rg-workspace1/providers/Microsoft.SecurityInsights/alertRules/a1d7ba82-a14c-4245-a781-81481901f558",
+	"name": "a1d7ba82-a14c-4245-a781-81481901f558",
+	"etag": "\"0600cacf-0000-1800-0000-68427ffb0000\"",
+	"type": "Microsoft.SecurityInsights/alertRules",
+	"kind": "Scheduled",
+	"properties": {
+		"queryFrequency": "PT5M",
+		"queryPeriod": "PT30M",
+		"triggerOperator": "GreaterThan",
+		"triggerThreshold": 0,
+		"eventGroupingSettings": {
+			"aggregationKind": "SingleAlert"
+		},
+		"incidentConfiguration": {
+			"createIncident": true,
+			"groupingConfiguration": {
+				"enabled": false,
+				"reopenClosedIncident": false,
+				"lookbackDuration": "PT5H",
+				"matchingMethod": "AllEntities",
+				"groupByEntities": [],
+				"groupByAlertDetails": [],
+				"groupByCustomDetails": []
+			}
+		},
+		"customDetails": {},
+		"alertDetailsOverride": {
+			"alertDynamicProperties": []
+		},
+		"severity": "Medium",
+		"query": "ASimDnsActivityLogs\r\n// Querying the ASimDnsActivityLogs table, which contains normalized DNS activity data for analysis.\r\n\r\n| where TimeGenerated > ago(7d)\r\n// Filtering records to only include DNS events that occurred in the last 7 days from the current timestamp.\r\n// This ensures that we are analyzing recent DNS traffic for relevancy.\r\n\r\n| where SrcIpAddr == \"192.168.50.35\"\r\n// Further filtering to only include DNS queries that originated from a specific source IP address.\r\n// This is likely an endpoint or server of interest for investigation.\r\n\r\n| where EventSubType == \"request\"\r\n// Narrowing the focus to only include DNS *query* events (requests), excluding responses or other subtypes.\r\n// This is important for understanding what was asked, not necessarily what was answered.\r\n\r\n| where DnsQuery has \"microsoft.com\"\r\n// Filtering DNS queries that contain the string “microsoft.com” anywhere in the query.\r\n// This helps isolate traffic related to Microsoft domains, possibly for compliance or investigation.\r\n\r\n| extend\r\n    TopLevelDomain = tostring(split(DnsQuery, \".\")[-1]),\r\n// Extracting the top-level domain (TLD) from the DNS query string.\r\n// This is achieved by splitting the domain by periods and taking the last segment, e.g., \"com\" from \"www.microsoft.com\".\r\n\r\n    SecondLevelDomain = tostring(split(DnsQuery, \".\")[-2]),\r\n// Extracting the second-level domain (SLD), typically the domain name itself.\r\n// For \"www.microsoft.com\", this would be \"microsoft\".\r\n\r\n    QueryCategory = iif(\r\n        DnsQuery endswith \".local\" or DnsQuery startswith \"intranet.\", \r\n        \"Internal\", \r\n        \"External\"\r\n    ),\r\n// Categorizing the DNS query as \"Internal\" or \"External\".\r\n// Queries ending with \".local\" or starting with \"intranet.\" are assumed to be part of private or enterprise networks.\r\n// All other queries are treated as external, likely directed to public DNS resolvers.\r\n\r\n    ProtocolType = iif(\r\n        NetworkProtocol =~ \"udp\", \r\n        \"UDP\", \r\n        iif(NetworkProtocol =~ \"tcp\", \"TCP\", \"Other\")\r\n    ),\r\n// Interpreting the network protocol used for the DNS request.\r\n// Since DNS usually uses UDP (or sometimes TCP for large responses), this field helps track protocol-specific behavior.\r\n// If it's not UDP or TCP, we classify it as \"Other\".\r\n\r\n    QueryStatus = case(\r\n        EventResult has \"Success\", \"Success\",\r\n        EventResult has \"Fail\", \"Failure\",\r\n        \"Unknown\"\r\n    )\r\n// Deriving a simplified status value for the query based on the EventResult field.\r\n// If it contains \"Success\", we mark it as successful; if it has \"Fail\", it's marked as a failure.\r\n// Any other unrecognized value results in \"Unknown\", ensuring robustness.\r\n\r\n| where DnsQueryTypeName in~ (\"A\", \"AAAA\", \"CNAME\", \"MX\", \"TXT\", \"SOA\")\r\n// Further narrowing results to only include specific DNS record types of interest.\r\n// These include:\r\n//   - \"A\" and \"AAAA\": IP address mappings for IPv4 and IPv6 respectively.\r\n//   - \"CNAME\": Canonical name (alias) records.\r\n//   - \"MX\": Mail exchange records for email delivery.\r\n//   - \"TXT\": Arbitrary text data often used for domain verification.\r\n//   - \"SOA\": Start of authority records, indicating DNS zone ownership.\r\n// The `in~` operator performs case-insensitive matching.\r\n\r\n| summarize\r\n    TotalQueries = count(),\r\n// Counting the total number of matching DNS requests for each time bin and grouping.\r\n\r\n    SuccessQueries = countif(QueryStatus == \"Success\"),\r\n// Counting how many of those requests were marked as successful (resolved properly).\r\n\r\n    FailureQueries = countif(QueryStatus == \"Failure\"),\r\n// Counting how many requests failed (e.g., domain not found, timeout, refused).\r\n\r\n    ExternalQueries = countif(QueryCategory == \"External\"),\r\n// Counting how many queries were classified as \"External\" DNS lookups.\r\n// This is useful to understand exposure to public domains or exfiltration behavior.\r\n\r\n    DistinctDomains = dcount(DnsQuery)\r\n// Calculating the number of unique DNS queries (de-duplicated) for each grouping.\r\n// Helps assess variety in DNS activity — high diversity may indicate scanning or malware behavior.\r\n\r\n    by bin(TimeGenerated, 1h), SrcIpAddr, DnsQueryTypeName, ProtocolType\r\n// Grouping the results by:\r\n//   - 1-hour time windows (`bin(TimeGenerated, 1h)`) for temporal trend analysis.\r\n//   - Source IP address, to keep activity per host separate.\r\n//   - DNS query type, to analyze trends by record type (e.g., A vs MX).\r\n//   - Network protocol used, to compare usage patterns across UDP, TCP, etc.\r\n\r\n| order by TimeGenerated desc\r\n// Sorting the final output in reverse chronological order, so the most recent activity appears first.\r\n// This is typical for time-series dashboards and investigative workflows.\r\n",
+		"suppressionDuration": "PT5H",
+		"suppressionEnabled": false,
+		"tactics": [],
+		"techniques": [],
+		"displayName": "Notify dns query events",
+		"enabled": false,
+		"description": "",
+		"alertRuleTemplateName": null,
+		"lastModifiedUtc": "2025-06-06T05:43:22.3300748Z"
+	}
+}
+```
