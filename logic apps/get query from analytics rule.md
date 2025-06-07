@@ -591,9 +591,6 @@ Sample configuration:
 You can now test your workflow with a sample incident. At the final output of Step 6, you will get the full details of the analytics rule, including the original **KQL query**.
 
 Sample output:
-
-<details>
-  <summary>Click to expand JSON schema</summary>
 	
 ```json
 {
@@ -640,7 +637,6 @@ Sample output:
 	}
 }
 ```
-<details>
 	
 The `query` field will contain the exact rule logic used to trigger the incident, such as:
 
