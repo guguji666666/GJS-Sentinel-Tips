@@ -30,7 +30,11 @@ Grant your Logic App's managed identity the **Microsoft Sentinel Contributor** r
 | **Playbook Operator**      | List, view, and manually run Sentinel playbooks.                                                     |
 | **Automation Contributor** | Allows Sentinel to attach playbooks to automation rules (not intended for user accounts).            |
 
+---
 
+## 🚀 Start Building the Logic App Workflow
+
+With the prerequisites complete, you're ready to start building the Logic App that retrieves analytics rule queries from Microsoft Sentinel incidents.
 ## 🔁 Step 1: Trigger — Microsoft Sentinel Incident
 
 Use the **Microsoft Sentinel incident trigger** as the first step in your Logic App.
