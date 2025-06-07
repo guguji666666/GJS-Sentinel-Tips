@@ -413,6 +413,8 @@ last(split(items('For_each'), '/'))
 
 ## 🌐 Step 5: Add Action — HTTP (Get Analytics Rule)
 
+> 📚 **Reference**: This call uses the [Microsoft Sentinel REST API — Get Alert Rule](https://learn.microsoft.com/en-us/rest/api/securityinsights/alert-rules/get?view=rest-securityinsights-2024-09-01&tabs=HTTP), which allows you to programmatically retrieve the full definition of a scheduled analytics rule, including the query that generated the alert.
+
 Configure an HTTP GET action to retrieve the analytics rule.
 
 ![image](https://github.com/user-attachments/assets/dca51f7f-0663-4615-921c-568ce74cb1fe)
