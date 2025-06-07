@@ -342,6 +342,7 @@
 	}
 }
 ```
+</details>
 
 ## 3. Add Action - Control - `For each` (if the for each loop doesn't show up automatically then we create and add it manually)
 ![image](https://github.com/user-attachments/assets/79618df7-fb89-4f70-9293-431d9a8ca0b8)
