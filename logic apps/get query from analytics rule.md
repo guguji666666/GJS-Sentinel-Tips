@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/e92795e1-515d-44e3-a3fa-502b49c78024)# Get query from analytics rule - sentinel incident trigger
+# Get query from analytics rule - sentinel incident trigger
 
 ## Prepare
 * Enable system managed identity for logic app
@@ -510,3 +510,4 @@ Sample for this action in my lab
 Sample in my lab
 ![image](https://github.com/user-attachments/assets/174a58cd-2170-41a3-838f-46c037cbd1ce)
 
+![image](https://github.com/user-attachments/assets/e92795e1-515d-44e3-a3fa-502b49c78024)
