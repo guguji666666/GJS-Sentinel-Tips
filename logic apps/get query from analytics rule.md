@@ -459,9 +459,6 @@ Sample configuration:
 
 * **Schema**: Paste the following directly.
 
-<details>
-  <summary>Click to expand sample JSON</summary>
-	
 ```json
 {
   "type": "object",
@@ -586,7 +583,6 @@ Sample configuration:
   }
 }
 ```
-<details>
 
 ---
 
