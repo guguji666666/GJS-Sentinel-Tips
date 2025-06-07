@@ -2201,10 +2201,8 @@ Then append this to the endpoint:
         }
     ]
 }
-````
-
-</details>
 ```
+</details>
 
 ## ⚙️ 5. Automate with Logic App
 
