@@ -80,6 +80,8 @@ Then append this to the endpoint:
 
 ---
 
+
+
 ## 🔍 4. View API Response
 
 ### 📂 Sample Response (High Priority Findings)
@@ -2199,7 +2201,7 @@ Then append this to the endpoint:
         }
     ]
 }
-```
+````
 
 </details>
 ```
