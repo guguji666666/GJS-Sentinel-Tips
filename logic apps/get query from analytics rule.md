@@ -458,6 +458,7 @@ Sample configuration:
 ![image](https://github.com/user-attachments/assets/6111d1b1-ac79-483e-b014-4029933f2e16)
 
 * **Schema**: Paste the following directly.
+
 <details>
   <summary>Click to expand sample JSON</summary>
 	
