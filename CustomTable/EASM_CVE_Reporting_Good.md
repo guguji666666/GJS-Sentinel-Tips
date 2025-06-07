@@ -1,7 +1,3 @@
-Sure! Here's the **fully optimized and beautified English version** of your guide to **Get EASM CVE Reporting (Attack Surface Summary)** — with all original image links preserved:
-
----
-
 # 🛡️ Get EASM CVE Reporting (Attack Surface Summary)
 
 ## 📘 1. [API Reference – Reports: Get Summary](https://learn.microsoft.com/en-us/rest/api/defenderforeasm/dataplanepreview/reports/get-summary?view=rest-defenderforeasm-dataplanepreview-2024-10-01-preview&tabs=HTTP)
@@ -229,6 +225,3 @@ Here’s an example output in email:
 Only shows `children` with `count > 0`
 ![image](https://github.com/user-attachments/assets/66feda75-15c1-4141-ac5b-040752edaf89)
 
----
-
-Would you like this converted into a downloadable `.md` file or a GitHub-ready documentation template?
