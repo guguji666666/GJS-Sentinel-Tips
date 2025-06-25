@@ -127,3 +127,86 @@ Client → DC (DNS) → Third-party forwarder → Azure VM DNS
 It’s **expected** that the original source IP might not appear in logs due to intermediate forwarding. In such cases, the event only reflects that the DNS name was resolved—not the identity of the original requester.
 
 ---
+
+## Filters in DCR
+
+### Filter for `DnsQuery` - domain name
+
+| 域名通配符 | 用途分类 | 说明 |
+|------------|----------|------|
+| *.microsoft.com | Microsoft 官方域名 | 广泛用于微软各类服务和产品 |
+| *.windows.com | Windows 系统服务 | 系统功能、更新、激活、遥测等 |
+| *.msftconnecttest.com | 网络连通性测试 | 用于 Windows 网络状态检测（NCSI） |
+| *.msedge.net | CDN/内容分发 | Microsoft 服务常用 CDN，例如 Edge 浏览器 |
+| *.office.com | Office 服务 | Office Web、Teams、Outlook 等 |
+| *.office365.com | Office 365 平台 | 企业办公入口 |
+| *.live.com | 账户登录/同步 | 微软账户服务 |
+| *.msn.com | 内容门户 | MSN 新闻、天气等 |
+| *.microsoftonline.com | 身份验证 | AAD 登录/身份验证 |
+| *.microsoftonline-p.com | 身份验证/CDN | 配合 AAD 验证与内容加载 |
+| *.msocdn.com | Office CDN | Office 应用资源分发 |
+| *.microsoft365.com | Office 365 门户 | Microsoft 365 总入口 |
+| *.s-microsoft.com | 分析与遥测 | 用于遥测、遥控和合规性上报 |
+| *.azure.com | Azure 官方服务 | Azure 控制台及子服务 |
+| *.azureedge.net | Azure CDN | Azure 静态内容边缘加速 |
+| *.azurefd.net | Azure Front Door | 流量调度/全局负载均衡 |
+| *.azurerms.com | Azure RMS | 资源管理或策略服务 |
+| *.visualstudio.com | DevOps 平台 | Azure DevOps、构建服务 |
+| *.vsts.me | DevOps 登录 | Azure DevOps 服务子域 |
+| *.vsassets.io | 开发资源 | Visual Studio 内容分发 |
+| *.onedrive.com | 文件同步 | OneDrive 云盘 |
+| *.sharepoint.com | 文件协作 | SharePoint 站点 |
+| *.microsoftstream.com | 视频会议 | Microsoft Stream 视频服务 |
+| *.msappproxy.net | 反向代理 | Azure App Proxy 通道 |
+| *.msidentity.com | 身份验证 | Microsoft Identity 平台 |
+| *.aadcdn.microsoftonline-p.com | 身份验证 CDN | AAD 验证相关静态资源 |
+| *.windowsupdate.com | Windows 更新 | 系统补丁和服务包获取 |
+| *.update.microsoft.com | 更新服务主域 | 系统更新主入口 |
+| *.delivery.mp.microsoft.com | 更新 CDN | 分发系统补丁/更新内容 |
+| *.dl.delivery.mp.microsoft.com | 更新 CDN | 下载服务器 |
+| *.fe2.update.microsoft.com | 更新前端 | 前端代理 |
+| *.statsfe2.update.microsoft.com | 遥测统计 | 更新上传统计 |
+| *.au.windowsupdate.com | 自动更新 | 旧版 Windows 使用 |
+| *.tsfe.trafficshaping.dsp.mp.microsoft.com | 下载调度 | 动态带宽控制 |
+| *.do.dsp.mp.microsoft.com | 调度服务 | 优化更新下载路径 |
+| *.sls.update.microsoft.com | 许可服务 | SLS 授权与验证 |
+| *.emdl.ws.microsoft.com | 电子分发 | 某些 OEM 安装或资源 |
+| *.ntservicepack.microsoft.com | 旧版服务包 | Service Pack 下载 |
+| *.bing.com | 搜索引擎 | Microsoft Bing |
+| *.gstatic.com | Google 静态资源 | 如字体、js等 |
+| *.google.com | Google 服务 | 常规搜索、登录 |
+| *.googleapis.com | Google API | API服务 |
+| *.apple.com | Apple 服务 | iOS/macOS 系统行为 |
+| *.icloud.com | iCloud 服务 | 苹果云存储 |
+| *.amazon.com | Amazon 网站 | 购物平台 |
+| *.aws.amazon.com | AWS 控制台 | Amazon 云服务 |
+| *.facebook.com | Facebook 平台 | 社交平台 |
+| *.fbcdn.net | Facebook CDN | 内容分发 |
+| *.instagram.com | Instagram 平台 | 社交图片分享 |
+| *.cdninstagram.com | Instagram CDN | 图片内容分发 |
+| *.whatsapp.com | 即时通讯 | WhatsApp 服务 |
+| *.baidu.com | 搜索引擎 | 百度搜索与服务 |
+| *.bdstatic.com | 百度静态资源 | JS、CSS 等 |
+| *.alibaba.com | 阿里巴巴 | 电商/采购平台 |
+| *.alicdn.com | 阿里 CDN | 淘宝/天猫 静态资源 |
+| *.alipay.com | 支付宝 | 支付服务 |
+| *.tencent.com | 腾讯服务 | QQ、微信等 |
+| *.wechat.com | 微信官方 | 微信服务 |
+| *.qq.com | QQ 相关 | 邮箱、IM等 |
+| *.github.com | 开发平台 | GitHub 主站 |
+| *.githubusercontent.com | 开发内容 | 代码托管内容 |
+| *.youtube.com | 视频服务 | YouTube |
+| *.ytimg.com | YouTube CDN | 视频封面/资源 |
+| *.netflix.com | 视频平台 | Netflix |
+| *.nflximg.net | Netflix CDN | 静态资源 |
+| *.nflxvideo.net | Netflix 视频 | 视频流 |
+| *.arc-msedge.net | Azure Arc 路由 | Arc 客户端与控制平面通信 |
+| *.t-msedge.net | Microsoft 路由层 | Traffic Manager 子域 |
+| *.a-msedge.net | CDN 层 | Microsoft 边缘分发 |
+| *.ax-msedge.net | CDN 层 | 附加边缘分发域 |
+| *.b-msedge.net | CDN 层 | 静态资源分发 |
+| *.l-msedge.net | CDN 层 | Edge/Skype/配置服务 |
+| *.cn-msedge.net | 中国节点 | 针对中国地区优化访问 |
+| *.ln-msedge.net | LinkedIn 节点 | LinkedIn 加速 |
+| *.trafficmanager.net | 流量调度平台 | Microsoft Azure Traffic Manager 动态负载均衡服务 |
+
