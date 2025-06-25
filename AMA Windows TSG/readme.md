@@ -29,6 +29,7 @@ Right-click the process and select **End Task**.
 > 🔍 Note: This is the core agent host process. Terminating it will trigger a self-recovery mechanism.
 
 ---
+![image](https://github.com/user-attachments/assets/76ab15a7-dd0d-41df-bb4d-ff0e46521d80)
 
 ### ✅ Step 4: Wait for Auto-Restart
 
